@@ -1,6 +1,6 @@
 import React from 'react'
 import { assets } from '../../assets/assets'
-import './yoga.css';
+import './Yoga.css';
 
 export default function Yoga() {
   return (
