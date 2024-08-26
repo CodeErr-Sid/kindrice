@@ -7,7 +7,7 @@ import Thoughts from '../../Components/Thoughts/Thoughts'
 import Moment from '../../Components/Moment/Moment'
 import Workers from '../../Components/Workers-work/Workers'
 import AboutKindrice from '../../Components/About-Kindrice/AboutKindrice'
-import Founder from '../../Components/founder/Founder'
+import Founder from '../../Components/Founder/Founder'
 
 
 export default function Story() {
