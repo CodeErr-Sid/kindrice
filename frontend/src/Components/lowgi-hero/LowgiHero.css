@@ -1,0 +1,34 @@
+.lowgi-hero-section {
+  margin: 0;
+  padding: 4vw 0;
+  width: 100vw;
+  height: auto;
+}
+.lowgi-hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.lowgi-hero-content {
+  width: 90vw;
+}
+.lowgi-hero-title {
+  font-size: 8vw;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  color: #006633;
+}
+.lowgi-img-container {
+  width: 80vw;
+}
+.lowgi-img-container img {
+  width: 69.24vw;
+  height: 26.19vw;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 auto;
+  /* padding: 1vw 0; */
+}

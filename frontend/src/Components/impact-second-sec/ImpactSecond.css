@@ -1,0 +1,95 @@
+/* ImpactSecond.css */
+
+.ImpactSecond {
+  width: 100vw;
+  padding: 6vw 4vw; /* Padding for spacing */
+}
+
+.ImpactSecond__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90vw;
+  margin: 0 auto;
+  gap: 1vw;
+}
+
+.ImpactSecond__content_left {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ImpactSecond__content_up {
+  width: 23.384vw;
+  height: 9.011vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ImpactSecond__content_up img {
+  width: 45.117vw; /* Converted from 451.17px */
+  height: 37.444vw; /* Converted from 374.44px */
+}
+
+.ImpactSecond__content_up h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 2.5vw;
+  font-weight: 700;
+  color: #006633;
+}
+
+.ImpactSecond__content_down {
+  display: flex;
+  justify-content: center;
+  margin-top: 4vw;
+}
+
+.ImpactSecond__content_down img {
+  width: 24vw;
+  height: auto;
+}
+
+.ImpactSecond__content_right {
+  flex: 40vw;
+  padding-left: 4vw;
+}
+
+.ImpactSecond__content_right p {
+  font-family: "Nunito", sans-serif;
+  font-size: 3vw;
+  line-height: 1.5;
+  color: #006633;
+  text-align: justify;
+}
+.ImpactSecond__content_right p span {
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .ImpactSecond__container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ImpactSecond__content_left,
+  .ImpactSecond__content_right {
+    flex: none;
+    width: 100%;
+    margin-bottom: 4vw; /* Spacing between sections on small screens */
+  }
+  .ImpactSecond__content_right {
+    width: 70vw !important;
+  }
+
+  .ImpactSecond__content_up img,
+  .ImpactSecond__content_down img {
+    width: 40vw; /* Adjust image size for smaller screens */
+  }
+
+  .ImpactSecond__content_right p {
+    font-size: 4vw; /* Adjust font size for smaller screens */
+  }
+}

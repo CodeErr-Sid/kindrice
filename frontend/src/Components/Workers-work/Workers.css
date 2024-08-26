@@ -1,0 +1,109 @@
+/* Workers.css */
+
+.workers-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw 5vw;
+  width: 100vw;
+  height: 45.33vw;
+  margin: 3rem 0;
+}
+
+.workers-content-container {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.workers-left {
+  flex: 1;
+  margin-right: 2vw;
+  max-width: 48.42vw;
+}
+
+.workers-left img {
+  width: 45.42vw;
+  height: 42.56vw;
+  border-radius: 2.08vw;
+  object-fit: cover;
+  object-position: center;
+}
+
+.workers-right {
+  flex: 1;
+  text-align: center;
+}
+
+.workers-right p {
+  font-family: "Nunito", sans-serif;
+  font-size: 2.78vw;
+  font-weight: 500;
+  line-height: 4.17vw;
+  text-align: left;
+  color: #006633;
+}
+.workers-right span {
+  font-weight: 700;
+}
+.order-1 {
+  order: 2;
+}
+.order-2 {
+  order: 1;
+}
+/* Mobile Styles */
+@media (max-width: 530px) {
+  .workers-section {
+    flex-direction: column;
+    padding: 3vw 5vw;
+    height: auto;
+  }
+
+  .workers-content-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .workers-left {
+    margin-right: 0;
+    margin-bottom: 4vw;
+    max-width: 80vw;
+  }
+
+  .workers-left img {
+    width: 90vw;
+    height: 80vw;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .workers-right {
+    text-align: center;
+    max-width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .workers-right h1 {
+    font-size: 4vw;
+    line-height: 1.3;
+    margin-bottom: 2vw;
+    max-width: 70vw;
+  }
+
+  .workers-right p {
+    font-size: 3vw; /* Adjust font-size for smaller screens */
+    line-height: 1.8;
+    text-align: center; /* Center align text for better readability */
+  }
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
+}

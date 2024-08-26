@@ -1,0 +1,62 @@
+/* Howlowgi.css */
+
+.howlowgi-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw;
+}
+
+.howlowgi-container {
+  max-width: 80vw;
+  width: 100%;
+  text-align: left;
+  color: #006633;
+}
+
+.howlowgi-title {
+  font-size: 4vw; /* Adjusted to vw units */
+  margin-bottom: 2vw; /* Adjusted to vw units */
+  font-weight: 700;
+}
+
+.howlowgi-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw; /* Adjust spacing between elements */
+}
+
+.howlowgi-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw; /* Adjust spacing between paragraphs */
+}
+
+.howlowgi-first-para {
+  font-size: 2.5vw; /* Converted to vw units */
+  line-height: 2.5vw; /* Converted to vw units */
+  font-weight: 700; /* Optional: Make it bold */
+}
+
+.howlowgi-second-para {
+  font-size: 2.5vw; /* Converted to vw units */
+  line-height: 2.9vw; /* Converted to vw units */
+  margin-bottom: 2.5vw;
+}
+
+.howlowgi-third-para {
+  font-size: 2.5vw; /* Converted to vw units */
+  line-height: 2.9vw; /* Converted to vw units */
+}
+
+.howlowgi-third-para span {
+  font-weight: 700;
+}
+
+.howlowgi-list {
+  padding-left: 2vw; /* Adjust list indentation */
+  margin: 0;
+}
+.howlowgi-list li {
+  list-style: 1;
+}

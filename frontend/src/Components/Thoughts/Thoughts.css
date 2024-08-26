@@ -1,0 +1,103 @@
+/* Thoughts.css */
+
+.his-thoughts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw 5vw;
+  width: 100vw;
+  height: 45.33vw;
+  margin: 3rem 0;
+}
+
+.section-content-container {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.left-sec {
+  flex: 1;
+  margin-right: 2vw;
+  max-width: 35.4vw;
+}
+
+.left-sec img {
+  width: 32.4vw;
+  height: 42.3vw;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.right-sec {
+  flex: 1;
+  text-align: center;
+}
+
+.right-sec h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 3vw;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #333;
+  margin-bottom: 1.5vw;
+}
+
+.right-sec p {
+  font-family: "Nunito", sans-serif;
+  font-size: 2.5vw;
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+  font-weight: 500;
+}
+/* Mobile Styles */
+@media (max-width: 530px) {
+  .his-thoughts {
+    flex-direction: column;
+    padding: 3vw 5vw;
+    height: auto;
+  }
+
+  .section-content-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-sec {
+    margin-right: 0;
+    margin-bottom: 4vw;
+    max-width: 80vw;
+  }
+
+  .left-sec img {
+    width: 90vw;
+    height: 80vw;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .right-sec {
+    text-align: center;
+    max-width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .right-sec h1 {
+    font-size: 4vw;
+    line-height: 1.3;
+    margin-bottom: 2vw;
+    max-width: 70vw;
+  }
+
+  .right-sec p {
+    font-size: 3vw; /* Adjust font-size for smaller screens */
+    line-height: 1.8;
+    text-align: center; /* Center align text for better readability */
+  }
+}

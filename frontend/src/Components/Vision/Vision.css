@@ -1,0 +1,103 @@
+/* General styles for the section */
+.vision-sec {
+  width: 100vw;
+  padding: 4vw 2vw; /* Responsive padding */
+}
+
+/* Container styling */
+.vision-container {
+  max-width: 1200px; /* Max width for large screens */
+  margin: 0 auto; /* Centering container */
+  padding: 2vw; /* Responsive padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styling for the top section */
+.vision-up {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3vw;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.logo-img img {
+  width: 10vw; /* Adjust size as needed */
+  max-width: 150px; /* Max width for larger screens */
+}
+
+.vision-text {
+  margin-left: 2vw;
+}
+
+.vision-text h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 4vw; /* Responsive font size */
+  font-weight: 500;
+  color: #016533; /* Primary color */
+  margin: 0;
+}
+
+/* Styling for the middle section */
+.vision-mid {
+  text-align: center;
+  margin-bottom: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75vw;
+}
+
+.vision-mid p {
+  font-family: "Nunito", sans-serif;
+  font-size: 3vw; /* Responsive font size */
+  color: #016533; /* Dark grey color for text */
+  line-height: 1.5;
+  max-width: 80%; /* Prevent text from being too wide */
+}
+
+/* Styling for the bottom section */
+.vision-down {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2vw;
+}
+
+.img-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.img-contents img {
+  margin-bottom: 1vw;
+  width: 9vw; /* Adjusted width */
+  height: 9vw; /* Adjusted height based on 3:4 aspect ratio */
+  object-fit: cover;
+  object-position: center;
+}
+
+.img-contents p {
+  font-family: "Nunito", sans-serif;
+  font-size: 1vw; /* Responsive font size */
+  color: #016533; /* Primary color */
+  margin: 0;
+  line-height: 1vw;
+  font-weight: 700;
+}
+
+.line {
+  border-bottom: 0.2vw solid #016533;
+  transform: rotate(90deg);
+  width: 4vw;
+}
+
+.second img {
+  background-color: #016533;
+}

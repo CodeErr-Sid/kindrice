@@ -1,0 +1,51 @@
+/* Base Styles */
+.lowgi-tagline-section {
+  width: 100vw;
+  padding: 0 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 53.33vw;
+}
+
+.tagline-container {
+  max-width: 80vw;
+  padding: 4vw;
+  text-align: center;
+}
+
+.tagline-container-up h1 {
+  font-size: 8vw;
+  color: #006633;
+  font-weight: 700;
+  line-height: 7vw;
+}
+
+.tagline-container-up p {
+  font-size: 3vw;
+  color: #006633;
+  margin-bottom: 3vw;
+  font-weight: 700;
+}
+
+.tagline-container-down {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15vw;
+}
+
+.tagline-container-down .tag-one {
+  font-size: 2vw;
+  font-weight: 700;
+  color: #006633;
+}
+
+.tagline-container-down .tag-two {
+  font-size: 2vw;
+  cursor: pointer;
+  color: #006633;
+  font-weight: 700;
+}

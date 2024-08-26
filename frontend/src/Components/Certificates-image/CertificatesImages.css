@@ -1,0 +1,25 @@
+.certificates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+}
+
+.certificates-container {
+  gap: 2vw; /* Space between the images */
+  max-width: 90vw;
+}
+
+.certificates-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px; /* Rounded corners */
+}
+
+.certificates-image img {
+  width: 100%;
+  height: 100%;
+  margin: 6vw 0;
+}

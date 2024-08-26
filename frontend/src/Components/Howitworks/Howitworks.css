@@ -1,0 +1,75 @@
+/* Howitworks.css */
+
+.howitworks-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw;
+}
+
+.how-container {
+  max-width: 90vw;
+  width: 100%;
+  text-align: left;
+  color: #006633;
+}
+
+.how-container h1 {
+  font-size: 4vw;
+  margin-bottom: 2vw;
+  font-weight: 700;
+}
+.how-it-works {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.how-it-works p {
+  margin-bottom: 2rem;
+}
+.first-container {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  padding-right: 3vw;
+}
+
+.first-container img {
+  width: 7vw;
+  height: 4vw;
+  border-radius: 0.5vw;
+  position: relative;
+  top: -10vw;
+  object-fit: cover;
+}
+
+.first-para {
+  font-size: 3vw;
+  line-height: 4vw;
+  border-bottom: 12vw;
+}
+
+.first-para span {
+  font-weight: 700;
+  color: #006633;
+}
+
+.second-para,
+.third-para {
+  font-size: 3vw;
+  line-height: 4vw;
+  margin: 1vw 0; /* Converted to vw units */
+  border-bottom: 7vw;
+}
+
+.second-para span {
+  font-weight: 700;
+  color: #ff914d;
+}
+
+.third-para span {
+  color: #ff3131;
+  font-weight: 700;
+}

@@ -1,0 +1,75 @@
+/* AboutKindrice.css */
+.about-kindrice {
+  position: relative;
+  width: 100vw;
+  height: 50.9vw; /* Adjust as needed */
+}
+
+.content-container {
+  position: relative;
+  width: 100vw;
+  height: 50.9vw; /* Ensure this matches the height of .about-kindrice */
+}
+
+.image-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+}
+
+.image-section img {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.text-section-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.left {
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw; /* Adjust padding as needed */
+}
+
+.left img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right {
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw; /* Adjust padding as needed */
+
+  box-sizing: border-box;
+}
+
+.right p {
+  margin: 0;
+  margin-right: 2vw;
+  font-family: "Nunito", sans-serif;
+  font-size: 2.5vw;
+  font-weight: 500;
+  line-height: 3.5vw;
+  text-align: left;
+  color: #006633;
+}
+.right p span {
+  font-weight: 700;
+}

@@ -1,0 +1,65 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+}
+
+.pagination ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5vw;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  margin: 0;
+}
+
+.pagination a {
+  display: block;
+  padding: 1vw 2vw;
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  color: #006633;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 50%;
+  border: none;
+  width: 4.17vw;
+  height: 4.17vw;
+  padding: 0.56vw 1.39vw;
+  gap: 0.69vw;
+  font-size: 1.67vw;
+  font-weight: 700;
+  line-height: 2.27vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination a:hover,
+.pagination a.active {
+  background-color: #006633;
+  color: white;
+}
+.pagination .active a {
+  background-color: #006633;
+  color: white;
+}
+/* Media Queries for Mobile Screens */
+/* @media (max-width: 768px) {
+  .pagination {
+    margin-top: 2vw;
+    display: inline-block;
+  }
+
+  .pagination a {
+    padding: 1vw;
+    font-size: 4vw;
+    border-radius: 3px;
+  }
+} */

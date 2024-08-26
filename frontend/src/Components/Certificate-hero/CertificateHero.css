@@ -1,0 +1,58 @@
+.certificate-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+}
+
+.certificate-container {
+  display: flex;
+  align-items: center;
+  width: 90vw;
+}
+
+.certificate-left {
+  flex: 60%;
+}
+
+.certificate-left img {
+  max-width: 100%;
+  height: auto;
+}
+
+.certificate-right {
+  flex: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+  flex-direction: column;
+}
+
+.certificate-right .one {
+  font-family: "Nunito", sans-serif;
+  font-size: 7vw; /* Converted from 90px */
+  font-weight: 700;
+  line-height: 8.25vw; /* Converted from 112.5px */
+  text-align: left;
+  color: #016533;
+}
+.certificate-right .two {
+  font-family: "Nunito", sans-serif;
+  font-size: 4vw;
+  font-weight: 400;
+  line-height: 6.25vw;
+  text-align: left;
+  color: #016533;
+}
+@media screen and (max-width: 550px) {
+  .certificate-container {
+    flex-direction: column;
+  }
+  .certificate-right {
+    width: 80vw;
+  }
+  .certificate-left {
+    width: 80vw;
+  }
+}

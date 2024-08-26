@@ -1,0 +1,38 @@
+.return-policy-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw 2vw;
+}
+
+.return-policy-container {
+  display: flex;
+  align-items: center;
+  width: 90vw;
+}
+
+.return-policy-left {
+  flex: 50vw;
+}
+
+.return-policy-left img {
+  max-width: 100%;
+  height: auto;
+}
+
+.return-policy-right {
+  flex: 40vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+}
+
+.return-policy-right h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 3.5vw; /* Responsive text size */
+  font-weight: 700;
+  line-height: 1.2;
+  color: #016533;
+  text-align: left;
+}

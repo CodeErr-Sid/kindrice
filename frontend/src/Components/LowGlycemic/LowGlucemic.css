@@ -1,0 +1,67 @@
+/* LowGlycemic.css */
+
+.lowglycemic-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4vw;
+  gap: 2vw;
+  color: #006633;
+}
+
+.lowglycemic-content-left {
+  flex: 1;
+  max-width: 45vw; /* Image will take up to 45% of the viewport width */
+  height: 32.68vw;
+}
+
+.lowglycemic-content-left img {
+  width: 30.4vw;
+  height: 30.68vw;
+  border-radius: 8px; /* Optional: Rounded corners for the image */
+  object-fit: cover;
+  object-position: center;
+}
+
+.lowglycemic-section__content-right {
+  flex: 1;
+  max-width: 50vw; /* Text will take up to 50% of the viewport width */
+}
+
+.lowglycemic-section__content-right p {
+  font-size: 2.2vw;
+  line-height: 2.9vw;
+  text-align: justify;
+}
+
+.lowglycemic-section__content-right span {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .lowglycemic-section {
+    flex-direction: column; /* Stack content vertically on smaller screens */
+    text-align: center;
+  }
+
+  .lowglycemic-content-left,
+  .lowglycemic-section__content-right {
+    max-width: 100%; /* Full width for each section */
+  }
+
+  .lowglycemic-section__content-right h2 {
+    font-size: 4vw; /* Adjust font size for smaller screens */
+    order: 1;
+    width: 60vw;
+    margin: 0 auto;
+    padding-bottom: 3vw;
+  }
+
+  .lowglycemic-section__content-right p {
+    font-size: 4vw;
+    line-height: 5.5vw;
+  }
+  .lowglycemic-content-left img {
+    margin: 3vw 0;
+  }
+}

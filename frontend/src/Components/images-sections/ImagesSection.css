@@ -1,0 +1,33 @@
+.multiple-sections {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: auto;
+}
+
+.images-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.images-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.images-container .philosophy {
+  background-color: #ffffff;
+  margin-top: 10rem;
+}
+
+.images-container .truth {
+  background-color: #ffffff;
+}
+
+.images-container .whyKindRice {
+  background-color: #ffffff;
+}

@@ -1,0 +1,161 @@
+.publication {
+  padding: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  margin-top: 4vw;
+}
+
+.publication-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.up-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vw;
+}
+
+.left-container {
+  flex: 1;
+}
+
+.left-container h1 {
+  font-size: 3vw;
+  margin: 0;
+  color: #333;
+}
+
+.left-container p {
+  font-size: 1.6vw;
+  color: #666;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+}
+
+.previous-arrow,
+.after-arrow {
+  width: 3vw;
+  height: 3vw;
+  cursor: pointer;
+}
+
+.previous-arrow {
+  margin-right: 1vw;
+}
+
+.after-arrow {
+  margin-left: 1vw;
+}
+
+.down-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  justify-content: space-between;
+}
+
+.publication-card {
+  border-radius: 8px;
+  margin-bottom: 2vw;
+  display: flex;
+  flex-direction: column;
+  width: 27.4vw;
+  height: 24.2vw;
+  gap: 1.4vw;
+}
+
+.publication-image img {
+  object-fit: cover;
+  width: 25.2vw;
+  height: 16.9vw;
+  border-radius: 1.4vw;
+  box-shadow: 0px 25px 45px 0px #f9f6d280;
+}
+
+.info-content2 {
+  padding-top: 1.5vw;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-content2 p {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.67vw;
+  font-weight: 400;
+  line-height: 3vw;
+  text-align: left;
+}
+
+.info-content2 .two {
+  font-size: 1.5vw;
+}
+
+/* Media Queries for Mobile Screens */
+@media (max-width: 768px) {
+  .publication {
+    padding: 4vw 4vw;
+  }
+
+  .publication-container {
+    width: 100%;
+    max-width: none;
+  }
+
+  .up-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .left-container h1 {
+    font-size: 5vw;
+  }
+
+  .left-container p {
+    font-size: 3vw;
+  }
+
+  .right-container {
+    margin-top: 2vw;
+  }
+
+  .previous-arrow,
+  .after-arrow {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .down-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .publication-card {
+    width: 80vw;
+    height: auto;
+    margin-bottom: 4vw;
+  }
+
+  .publication-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .info-content2 p {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+
+  .info-content2 .two {
+    font-size: 3.5vw;
+  }
+}

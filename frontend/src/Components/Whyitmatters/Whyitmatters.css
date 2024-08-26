@@ -1,0 +1,53 @@
+/* Whyitmatters.css */
+
+.whyitmatters-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw;
+}
+
+.whyitmatters-container {
+  max-width: 80vw;
+  width: 100%;
+  text-align: left;
+  color: #006633;
+}
+
+.whyitmatters-title {
+  font-size: 4vw; /* Adjusted to vw units */
+  margin-bottom: 4vw; /* Adjusted to vw units */
+  font-weight: 700;
+}
+
+.whyitmatters-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw; /* Adjust spacing between elements */
+}
+
+.whyitmatters-paragraphs {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw; /* Adjust spacing between paragraphs */
+}
+
+.whyitmatters-image {
+  width: 10.12vw;
+  height: 9.61vw;
+  border-radius: 8px;
+  margin-bottom: 1.5vw;
+}
+
+.whyitmatters-first-para,
+.whyitmatters-second-para {
+  font-size: 2.8vw;
+  line-height: 3.5vw;
+  color: #3f7e44;
+}
+
+.whyitmatters-first-para span,
+.whyitmatters-second-para span {
+  font-weight: 700;
+  color: #3f7e44;
+}

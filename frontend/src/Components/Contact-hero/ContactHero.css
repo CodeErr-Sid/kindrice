@@ -1,0 +1,77 @@
+/* Base Styles */
+.contact-hero-section {
+  width: 100vw;
+  padding: 0 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90vw;
+  overflow: hidden;
+  gap: 2vw;
+}
+
+.contact-left-container {
+  flex: 1;
+}
+
+.contact-left-container img {
+  width: 40.78vw;
+  height: 45.3vw;
+  object-fit: cover;
+}
+
+.contact-right-container {
+  flex: 1;
+  padding: 2vw;
+  text-align: center;
+}
+
+.contact-right-container h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 5.25vw;
+  font-weight: 700;
+  line-height: 6.81vw;
+  text-align: left;
+  color: #016533;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-left-container img {
+    width: 50.78vw;
+    height: 55.3vw;
+    object-fit: cover;
+  }
+
+  .contact-right-container {
+    padding: 4vw;
+  }
+
+  .contact-right-container h1 {
+    font-size: 6vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-left-container img {
+    border-radius: 1vw 1vw 0 0;
+  }
+
+  .contact-right-container h1 {
+    font-size: 8vw;
+  }
+}

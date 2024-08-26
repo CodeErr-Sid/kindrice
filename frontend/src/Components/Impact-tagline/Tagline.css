@@ -1,0 +1,38 @@
+/* General styles for the tagline section */
+.tagline {
+  width: 100vw;
+  padding: 10vw 2vw; /* Responsive padding */
+  text-align: center;
+}
+
+/* Container styling */
+.tagline-contents {
+  max-width: 1200px; /* Max width for large screens */
+  margin: 0 auto; /* Centering container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Title styling */
+.tagline-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 6vw; /* Responsive font size */
+  font-weight: 700;
+  color: #016533; /* Primary color */
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Paragraph styling */
+.tagline p {
+  font-family: "Nunito", sans-serif;
+  font-size: 4.5vw;
+  color: #016533;
+  margin: 1vw 0 0;
+  line-height: 1.4;
+}
+.tagline p span {
+  font-weight: 700;
+}

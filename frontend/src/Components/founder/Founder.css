@@ -1,0 +1,40 @@
+.founder-sec {
+  margin: 0;
+  padding: 0;
+}
+.founder-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3rem 0 0 0;
+  width: 70vw;
+  margin: 0 auto;
+}
+.founder-container p {
+  font-family: "Nunito", sans-serif;
+  font-size: 3.33vw;
+  font-weight: 500;
+  line-height: 5vw;
+  text-align: center;
+}
+.founder-container .founder-details {
+  font-weight: 700;
+  padding-top: 4vw;
+}
+.know {
+  width: 20.94vw;
+  height: 8.33vh;
+  padding: 0.73vh 3.48vw;
+  gap: 0.52vw;
+  border-radius: 0.63vw;
+  cursor: pointer;
+  background-color: #006633;
+  font-family: Nunito;
+  font-size: 2vw;
+  font-weight: 600;
+  line-height: 1.88vw;
+  text-align: center;
+  color: white;
+  margin-top: 4vw;
+}

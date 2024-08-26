@@ -1,0 +1,155 @@
+.healthy-rice-section {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9rem;
+  position: relative;
+  color: #006633;
+}
+
+.healthy-rice-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.healthy-rice-heading {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* position: absolute;
+  right: 0;
+  padding-right: 5rem;
+  padding-bottom: 30vw; */
+}
+
+.healthy-rice-heading h1 {
+  font-size: 4.7vw;
+  font-weight: 700;
+  line-height: 5.85vw;
+}
+.healthy-rice-heading p {
+  font-size: 500;
+  font-size: 2vw;
+  line-height: 2.78vw;
+}
+
+.heading-bold {
+  font-size: 4.7vw;
+  line-height: 5.85vw;
+  font-weight: 700;
+}
+
+.healthy-rice-details {
+  font-size: 2.36vw;
+  line-height: 3.45vw;
+  width: 40vw;
+  font-weight: 500;
+  padding-top: 3.07vh;
+  padding-right: 3rem;
+}
+
+.healthy-rice-details span {
+  font-weight: 700;
+}
+
+.healthy-rice-info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.healthy-rice-image {
+  width: 100%;
+  max-width: 40vw;
+  margin-top: 2rem;
+  margin-right: 6rem;
+}
+
+.healthy-rice-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.healthy-rice-details {
+  text-align: left;
+  margin-top: 5rem;
+  margin-left: 2rem;
+}
+
+.healthy-rice-details p {
+  font-size: 1.38vw;
+  font-weight: 700;
+}
+
+/* Media Queries for smaller screens */
+@media screen and (max-width: 800px) {
+  .healthy-rice-section {
+    height: auto;
+    margin-top: 0;
+  }
+
+  .healthy-rice-heading {
+    padding-left: 2rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .healthy-rice-heading h1 {
+    font-size: 8vw;
+    line-height: 9vw;
+  }
+
+  .heading-bold {
+    font-size: 5vw;
+  }
+
+  .healthy-rice-details {
+    font-size: 4vw;
+    line-height: 5vw;
+    width: 80vw;
+  }
+
+  .healthy-rice-info-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .healthy-rice-image {
+    width: 100%;
+    max-width: 60vw;
+    height: auto;
+    margin-top: 0;
+    order: -1;
+    margin: 3rem 0;
+  }
+
+  .healthy-rice-details {
+    margin-left: 0;
+    text-align: center;
+    position: relative;
+    order: 1;
+    margin-top: 0;
+  }
+
+  .healthy-rice-details h2 {
+    font-size: 4vw;
+    line-height: 5vw;
+    width: 80vw;
+  }
+
+  .healthy-rice-details p {
+    font-size: 2vw;
+  }
+}
