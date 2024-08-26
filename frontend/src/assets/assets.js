@@ -20,7 +20,7 @@ import facebook from "./facebook.png";
 import insta from "./insta.png";
 import twitter from "./twitter.png";
 import linkedin from "./linkedin.png";
-import letterLogo from "./k-logo.png";
+import letterLogo from "./K-logo.png";
 import footerLogo from "./footerLogo.png";
 import youtube from "./youtube.png";
 import place from "./place.png";
