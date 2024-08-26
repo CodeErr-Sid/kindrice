@@ -31,7 +31,7 @@ import farmers from "./farmers.jpeg";
 import man from "./man.jpeg";
 import man2 from "./man2.jpeg";
 import paddy from "./paddy.jpeg";
-import Workers from "./Workers.jpeg";
+import Workers from "./workers.jpeg";
 import earth from "./earth.svg";
 import community from "./community.png";
 import heart1 from "./heart1.png";
