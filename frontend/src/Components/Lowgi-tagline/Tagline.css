@@ -123,12 +123,12 @@
   }
 
   .tagline-container-up h1 {
-    font-size: 5vw;
+    font-size: 4vw;
     line-height: 7vw;
   }
 
   .tagline-container-up p {
-    font-size: 2.5vw;
+    font-size: 2vw;
     margin-bottom: 1vw;
   }
 
@@ -138,6 +138,6 @@
 
   .tagline-container-down .tag-one,
   .tagline-container-down .tag-two {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
 }
