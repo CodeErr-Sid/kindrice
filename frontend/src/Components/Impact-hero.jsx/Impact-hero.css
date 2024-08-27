@@ -1,13 +1,15 @@
 .Impact-hero-section {
-  width: 100vw;
+  width: 80vw;
+  margin: 0 auto;
 }
 
 .Impact-hero-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 90vw; /* Limit max width */
+  max-width: 80vw; /* Limit max width */
   margin: 0 auto;
+  flex-direction: row; /* Ensure row layout by default */
 }
 
 .Impact-hero-image-left {
@@ -17,8 +19,8 @@
 }
 
 .Impact-hero-image-left img {
-  width: 55.3vw;
-  height: 46.582vw;
+  width: 39vw;
+  height: auto; /* Maintain aspect ratio */
   border-radius: 0.8vw; /* Adjusted border radius */
   object-fit: cover;
   object-position: center;
@@ -34,29 +36,82 @@
 
 .Impact-hero-content-right h1 {
   font-family: "Nunito", sans-serif;
-  font-size: 4.5vw;
+  font-size: 3.5vw;
   font-weight: 500;
-  line-height: 5.5vw;
-  text-align: left;
+  line-height: 4.5vw;
   color: #016533;
 }
+
 .Impact-hero-content-right h1 span {
   font-weight: 700;
 }
-@media (max-width: 48vw) {
-  /* Adjusted breakpoint */
+
+/* Media Queries */
+
+/* Screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .Impact-hero-image-left img {
+    width: 60vw;
+  }
+
+  .Impact-hero-content-right {
+    padding: 4vw;
+  }
+
+  .Impact-hero-content-right h1 {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+}
+
+/* Screens smaller than 992px */
+@media (max-width: 992px) {
+  .Impact-hero-image-left img {
+    width: 55vw;
+  }
+
+  .Impact-hero-content-right h1 {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+}
+
+/* Screens smaller than 768px */
+@media (max-width: 768px) {
+  .Impact-hero-image-left img {
+    width: 50vw;
+  }
   .Impact-hero-container {
     flex-direction: column;
     text-align: center;
   }
+  .Impact-hero-content-right h1 {
+    font-size: 6vw;
+    line-height: 7vw;
+    text-align: center;
+  }
+}
 
-  .Impact-hero-image-left,
-  .Impact-hero-content-right {
-    flex: none;
-    margin-bottom: 4vw; /* Adjusted margin */
+/* Screens smaller than 576px */
+@media (max-width: 576px) {
+  .Impact-hero-image-left img {
+    width: 60vw;
   }
 
+  .Impact-hero-content-right h1 {
+    font-size: 6.5vw;
+    line-height: 7.5vw;
+  }
+}
+
+/* Screens smaller than 360px */
+@media (max-width: 360px) {
   .Impact-hero-image-left img {
-    width: 80vw; /* Adjusted width */
+    width: 70vw;
+  }
+
+  .Impact-hero-content-right h1 {
+    font-size: 7vw;
+    line-height: 8vw;
   }
 }

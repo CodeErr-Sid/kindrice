@@ -1,17 +1,17 @@
-/* ImpactSecond.css */
-
+/* General Styles */
 .ImpactSecond {
-  width: 100vw;
-  padding: 6vw 4vw; /* Padding for spacing */
+  width: 80vw;
+  padding: 3vw 4vw; /* Padding for spacing */
+  margin: 0 auto;
 }
 
 .ImpactSecond__container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  max-width: 90vw;
+  max-width: 80vw; /* Limit container width to 80vw */
   margin: 0 auto;
-  gap: 1vw;
+  gap: -3vw;
 }
 
 .ImpactSecond__content_left {
@@ -22,8 +22,6 @@
 }
 
 .ImpactSecond__content_up {
-  width: 23.384vw;
-  height: 9.011vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,13 +29,13 @@
 }
 
 .ImpactSecond__content_up img {
-  width: 45.117vw; /* Converted from 451.17px */
-  height: 37.444vw; /* Converted from 374.44px */
+  width: 15vw; /* Adjusted image width */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .ImpactSecond__content_up h1 {
   font-family: "Nunito", sans-serif;
-  font-size: 2.5vw;
+  font-size: 1.8vw; /* Adjusted font size */
   font-weight: 700;
   color: #006633;
 }
@@ -45,29 +43,32 @@
 .ImpactSecond__content_down {
   display: flex;
   justify-content: center;
-  margin-top: 4vw;
+  margin-top: 2vw;
 }
 
 .ImpactSecond__content_down img {
-  width: 24vw;
+  width: 15vw; /* Adjusted image width */
   height: auto;
 }
 
 .ImpactSecond__content_right {
-  flex: 40vw;
+  width: 50vw;
   padding-left: 4vw;
 }
 
 .ImpactSecond__content_right p {
   font-family: "Nunito", sans-serif;
-  font-size: 3vw;
-  line-height: 1.5;
+  font-size: 1.8vw; /* Adjusted font size */
+  line-height: 2.4vw; /* Adjusted line height */
   color: #006633;
   text-align: justify;
 }
+
 .ImpactSecond__content_right p span {
   font-weight: 700;
 }
+
+/* Media Queries for Smaller Screens */
 @media (max-width: 768px) {
   .ImpactSecond__container {
     flex-direction: column;
@@ -80,8 +81,9 @@
     width: 100%;
     margin-bottom: 4vw; /* Spacing between sections on small screens */
   }
+
   .ImpactSecond__content_right {
-    width: 70vw !important;
+    width: 80vw !important; /* Set to 80vw on smaller screens */
   }
 
   .ImpactSecond__content_up img,
@@ -90,6 +92,17 @@
   }
 
   .ImpactSecond__content_right p {
-    font-size: 4vw; /* Adjust font size for smaller screens */
+    font-size: 3.6vw; /* Adjust font size for smaller screens */
+    line-height: 4.8vw; /* Adjust line height for smaller screens */
+  }
+}
+
+/* Additional Media Queries if needed */
+
+/* Screens smaller than 576px */
+@media (max-width: 576px) {
+  .ImpactSecond__content_right p {
+    font-size: 4vw; /* Adjust font size further for very small screens */
+    line-height: 5vw; /* Adjust line height further for very small screens */
   }
 }

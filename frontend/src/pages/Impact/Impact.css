@@ -1,0 +1,62 @@
+.Impact-hero-section {
+  width: 100vw;
+}
+
+.Impact-hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90vw; /* Limit max width */
+  margin: 0 auto;
+}
+
+.Impact-hero-image-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.Impact-hero-image-left img {
+  width: 55.3vw;
+  height: 46.582vw;
+  border-radius: 0.8vw; /* Adjusted border radius */
+  object-fit: cover;
+  object-position: center;
+}
+
+.Impact-hero-content-right {
+  flex: 1;
+  padding: 4vw; /* Adjusted padding */
+  text-align: left;
+  font-family: "Nunito", sans-serif;
+  color: #333;
+}
+
+.Impact-hero-content-right h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 4.5vw;
+  font-weight: 500;
+  line-height: 5.5vw;
+  text-align: left;
+  color: #016533;
+}
+.Impact-hero-content-right h1 span {
+  font-weight: 700;
+}
+@media (max-width: 48vw) {
+  /* Adjusted breakpoint */
+  .Impact-hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .Impact-hero-image-left,
+  .Impact-hero-content-right {
+    flex: none;
+    margin-bottom: 4vw; /* Adjusted margin */
+  }
+
+  .Impact-hero-image-left img {
+    width: 80vw; /* Adjusted width */
+  }
+}
