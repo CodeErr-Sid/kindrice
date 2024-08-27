@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { assets } from '../../assets/assets';
-import './KindLowGi.css';
+import './KindLowGI.css';
 
 export default function KindLowGi() {
   const navigate = useNavigate();
