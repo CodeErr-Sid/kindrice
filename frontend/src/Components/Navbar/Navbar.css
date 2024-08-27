@@ -60,7 +60,7 @@
   color: #016533;
   font-weight: 700;
   text-decoration: none;
-  font-size: 1.67vw;
+  font-size: 1.55vw;
 }
 
 .navbar-menu ul li a:hover {
@@ -145,7 +145,7 @@
 .overlay-active {
   display: none;
 }
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1029px) {
   .navbar-icons {
     font-size: 2vw;
   }

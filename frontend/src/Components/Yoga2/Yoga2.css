@@ -13,28 +13,38 @@
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 5vw;
+  gap: 10vw;
 }
 
 .yoga2-left-container {
-  width: 50%;
+  width: 40%;
 }
 .yoga2-right-container {
-  width: 30%;
+  width: 40%;
 }
 .yoga2-left-container img {
-  width: 50vw;
-  height: 40vw;
+  width: 30vw;
+  height: 30vw;
   object-fit: cover;
   object-position: center;
 }
 .yoga2-right-container h2 {
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: 700;
   color: #016533;
   text-align: center;
+  line-height: 6vw;
+  width: 30vw;
+}
+.third-section {
+  width: 80vw;
+  height: auto;
 }
 .third-section img {
   margin: 0 auto;
   padding-right: 2vw;
+  width: 70vw;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
 }

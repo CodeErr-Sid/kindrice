@@ -1,68 +1,63 @@
-/* Howitworks.css */
-
 .howitworks-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5vw;
+  padding: 2vw 5vw;
+  width: 80vw; /* Set the width to 80vw */
+  margin: 0 auto;
 }
 
 .how-container {
-  max-width: 90vw;
   width: 100%;
   text-align: left;
   color: #006633;
 }
 
 .how-container h1 {
-  font-size: 4vw;
+  font-size: 2.8vw; /* Font size for desktop */
   margin-bottom: 2vw;
   font-weight: 700;
 }
+
 .how-it-works {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: start; /* Align items to the start */
+  align-items: start;
   position: relative;
 }
 
 .how-it-works p {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
+
 .first-container {
   position: sticky;
-  top: 2rem; /* Adjust as needed */
+  top: 9vw !important;
   display: flex;
-  flex-direction: column; /* Stack image vertically */
-  align-items: flex-start; /* Align items to the start */
+  flex-direction: column;
+  align-items: flex-start;
   padding-right: 3vw;
 }
 
 .first-container img {
-  width: 7vw;
-  height: auto; /* Maintain aspect ratio */
+  width: 5vw; /* Adjusted size */
+  height: auto;
   border-radius: 0.5vw;
   object-fit: cover;
 }
 
-.first-para {
-  font-size: 3vw;
-  line-height: 4vw;
-  border-bottom: 12vw;
+.first-para,
+.second-para,
+.third-para {
+  font-size: 1.8vw; /* Font size for desktop */
+  line-height: 2.4vw; /* Line height for desktop */
+  margin: 1vw 0;
 }
 
 .first-para span {
   font-weight: 700;
   color: #006633;
-}
-
-.second-para,
-.third-para {
-  font-size: 3vw;
-  line-height: 4vw;
-  margin: 1vw 0; /* Converted to vw units */
-  border-bottom: 7vw;
 }
 
 .second-para span {
@@ -73,4 +68,82 @@
 .third-para span {
   color: #ff3131;
   font-weight: 700;
+}
+
+/* Media Queries */
+
+/* For screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .how-container h1 {
+    font-size: 2.4vw; /* Adjusted font size */
+  }
+
+  .first-para,
+  .second-para,
+  .third-para {
+    font-size: 2vw; /* Larger font size for tablet */
+    line-height: 2.7vw; /* Adjusted line height */
+    margin: 1vw 0;
+  }
+
+  .first-container img {
+    width: 6vw;
+  }
+}
+
+/* For screens smaller than 992px */
+@media (max-width: 992px) {
+  .how-container h1 {
+    font-size: 3.5vw; /* Adjusted font size */
+  }
+
+  .first-para,
+  .second-para,
+  .third-para {
+    font-size: 2.2vw; /* Larger font size for tablets and small screens */
+    line-height: 2.8vw; /* Adjusted line height */
+    margin: 1vw 0;
+  }
+
+  .first-container img {
+    width: 6vw;
+  }
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .how-container h1 {
+    font-size: 3.5vw; /* Adjusted font size */
+  }
+
+  .first-para,
+  .second-para,
+  .third-para {
+    font-size: 2.4vw; /* Larger font size for mobile */
+    line-height: 3vw; /* Adjusted line height */
+    margin: 1vw 0;
+  }
+
+  .first-container img {
+    width: 6vw;
+  }
+}
+
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+  .how-container h1 {
+    font-size: 3.5vw; /* Adjusted font size */
+  }
+
+  .first-para,
+  .second-para,
+  .third-para {
+    font-size: 2.6vw; /* Larger font size for mobile */
+    line-height: 3.2vw; /* Adjusted line height */
+    margin: 1vw 0;
+  }
+
+  .first-container img {
+    width: 6vw;
+  }
 }

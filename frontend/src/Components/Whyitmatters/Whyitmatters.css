@@ -1,22 +1,21 @@
-/* Whyitmatters.css */
-
 .whyitmatters-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5vw;
+  padding: 2vw 5vw;
+  width: 80vw; /* Set the width to 80vw */
+  margin: 0 auto;
 }
 
 .whyitmatters-container {
-  max-width: 80vw;
   width: 100%;
   text-align: left;
   color: #006633;
 }
 
 .whyitmatters-title {
-  font-size: 4vw; /* Adjusted to vw units */
-  margin-bottom: 4vw; /* Adjusted to vw units */
+  font-size: 2.8vw; /* Adjusted font size for desktop */
+  margin-bottom: 4vw; /* Adjusted margin */
   font-weight: 700;
 }
 
@@ -33,16 +32,16 @@
 }
 
 .whyitmatters-image {
-  width: 10.12vw;
-  height: 9.61vw;
+  width: 7.12vw; /* Adjusted size */
+  height: auto;
   border-radius: 8px;
   margin-bottom: 1.5vw;
 }
 
 .whyitmatters-first-para,
 .whyitmatters-second-para {
-  font-size: 2.8vw;
-  line-height: 3.5vw;
+  font-size: 1.8vw; /* Font size for desktop */
+  line-height: 2.4vw; /* Line height for desktop */
   color: #3f7e44;
 }
 
@@ -50,4 +49,82 @@
 .whyitmatters-second-para span {
   font-weight: 700;
   color: #3f7e44;
+}
+
+/* Media Queries */
+
+/* For screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .whyitmatters-title {
+    font-size: 2.4vw; /* Adjusted font size */
+    margin-bottom: 3vw; /* Adjusted margin */
+  }
+
+  .whyitmatters-first-para,
+  .whyitmatters-second-para {
+    font-size: 2vw; /* Adjusted font size */
+    line-height: 2.6vw; /* Adjusted line height */
+  }
+
+  .whyitmatters-image {
+    width: 9vw;
+    height: 8.5vw;
+  }
+}
+
+/* For screens smaller than 992px */
+@media (max-width: 992px) {
+  .whyitmatters-title {
+    font-size: 2vw; /* Adjusted font size */
+    margin-bottom: 2.5vw; /* Adjusted margin */
+  }
+
+  .whyitmatters-first-para,
+  .whyitmatters-second-para {
+    font-size: 2.2vw; /* Adjusted font size */
+    line-height: 2.8vw; /* Adjusted line height */
+  }
+
+  .whyitmatters-image {
+    width: 8.5vw;
+    height: 8vw;
+  }
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .whyitmatters-title {
+    font-size: 2.2vw; /* Adjusted font size */
+    margin-bottom: 2vw; /* Adjusted margin */
+  }
+
+  .whyitmatters-first-para,
+  .whyitmatters-second-para {
+    font-size: 2.4vw; /* Adjusted font size */
+    line-height: 3vw; /* Adjusted line height */
+  }
+
+  .whyitmatters-image {
+    width: 8vw;
+    height: 7.5vw;
+  }
+}
+
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+  .whyitmatters-title {
+    font-size: 2vw; /* Adjusted font size */
+    margin-bottom: 1.5vw; /* Adjusted margin */
+  }
+
+  .whyitmatters-first-para,
+  .whyitmatters-second-para {
+    font-size: 2.6vw; /* Larger font size for mobile */
+    line-height: 3.2vw; /* Adjusted line height */
+  }
+
+  .whyitmatters-image {
+    width: 7vw;
+    height: 6.5vw;
+  }
 }

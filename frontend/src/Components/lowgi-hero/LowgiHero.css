@@ -4,26 +4,31 @@
   width: 100vw;
   height: auto;
 }
+
 .lowgi-hero-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
+
 .lowgi-hero-content {
   width: 90vw;
 }
+
 .lowgi-hero-title {
-  font-size: 8vw;
+  font-size: 4.5vw;
   padding: 0;
   margin: 0;
   text-align: center;
   font-weight: 600;
   color: #006633;
 }
+
 .lowgi-img-container {
   width: 80vw;
 }
+
 .lowgi-img-container img {
   width: 69.24vw;
   height: 26.19vw;
@@ -31,4 +36,34 @@
   object-position: center;
   margin: 0 auto;
   /* padding: 1vw 0; */
+}
+
+/* Media Queries */
+
+/* For screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .lowgi-hero-title {
+    font-size: 5vw;
+  }
+}
+
+/* For screens smaller than 992px */
+@media (max-width: 992px) {
+  .lowgi-hero-title {
+    font-size: 5.5vw;
+  }
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .lowgi-hero-title {
+    font-size: 6vw;
+  }
+}
+
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+  .lowgi-hero-title {
+    font-size: 7vw;
+  }
 }

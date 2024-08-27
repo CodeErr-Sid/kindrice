@@ -1,22 +1,21 @@
-/* Howlowgi.css */
-
 .howlowgi-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5vw;
+  padding: 2vw 0;
+  width: 70vw; /* Set the width to 80vw */
+  margin: 0 auto;
 }
 
 .howlowgi-container {
-  max-width: 80vw;
   width: 100%;
   text-align: left;
   color: #006633;
 }
 
 .howlowgi-title {
-  font-size: 4vw; /* Adjusted to vw units */
-  margin-bottom: 2vw; /* Adjusted to vw units */
+  font-size: 2.8vw; /* Adjusted font size for desktop */
+  margin-bottom: 2vw;
   font-weight: 700;
 }
 
@@ -33,20 +32,19 @@
 }
 
 .howlowgi-first-para {
-  font-size: 2.5vw; /* Converted to vw units */
-  line-height: 2.5vw; /* Converted to vw units */
+  font-size: 1.8vw; /* Font size for desktop */
+  line-height: 2.4vw; /* Line height for desktop */
   font-weight: 700; /* Optional: Make it bold */
 }
 
-.howlowgi-second-para {
-  font-size: 2.5vw; /* Converted to vw units */
-  line-height: 2.9vw; /* Converted to vw units */
-  margin-bottom: 2.5vw;
+.howlowgi-second-para,
+.howlowgi-third-para {
+  font-size: 1.8vw; /* Font size for desktop */
+  line-height: 2.4vw; /* Line height for desktop */
 }
 
-.howlowgi-third-para {
-  font-size: 2.5vw; /* Converted to vw units */
-  line-height: 2.9vw; /* Converted to vw units */
+.howlowgi-second-para {
+  margin-bottom: 2vw; /* Adjusted margin */
 }
 
 .howlowgi-third-para span {
@@ -57,6 +55,81 @@
   padding-left: 2vw; /* Adjust list indentation */
   margin: 0;
 }
+
 .howlowgi-list li {
-  list-style: 1;
+  list-style: decimal; /* Changed list style to decimal */
+}
+
+/* Media Queries */
+
+/* For screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .howlowgi-title {
+    font-size: 2.4vw; /* Adjusted font size */
+  }
+
+  .howlowgi-first-para,
+  .howlowgi-second-para,
+  .howlowgi-third-para {
+    font-size: 2vw; /* Larger font size for tablet */
+    line-height: 2.5vw; /* Adjusted line height */
+  }
+
+  .howlowgi-second-para {
+    margin-bottom: 1.5vw;
+  }
+}
+
+/* For screens smaller than 992px */
+@media (max-width: 992px) {
+  .howlowgi-title {
+    font-size: 4vw; /* Adjusted font size */
+  }
+
+  .howlowgi-first-para,
+  .howlowgi-second-para,
+  .howlowgi-third-para {
+    font-size: 2.2vw; /* Larger font size for tablets and small screens */
+    line-height: 2.7vw; /* Adjusted line height */
+  }
+
+  .howlowgi-second-para {
+    margin-bottom: 1.5vw;
+  }
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .howlowgi-title {
+    font-size: 4vw; /* Adjusted font size */
+  }
+
+  .howlowgi-first-para,
+  .howlowgi-second-para,
+  .howlowgi-third-para {
+    font-size: 2.4vw; /* Larger font size for mobile */
+    line-height: 3vw; /* Adjusted line height */
+  }
+
+  .howlowgi-second-para {
+    margin-bottom: 1vw;
+  }
+}
+
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+  .howlowgi-title {
+    font-size: 4vw; /* Adjusted font size */
+  }
+
+  .howlowgi-first-para,
+  .howlowgi-second-para,
+  .howlowgi-third-para {
+    font-size: 2.6vw; /* Larger font size for mobile */
+    line-height: 3.2vw; /* Adjusted line height */
+  }
+
+  .howlowgi-second-para {
+    margin-bottom: 1vw;
+  }
 }

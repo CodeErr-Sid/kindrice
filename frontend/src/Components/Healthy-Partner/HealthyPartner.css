@@ -1,12 +1,10 @@
 .healthy-section {
   margin: 0;
-  padding: 20vw 0;
-  width: 100vw;
+  width: 80vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 7rem; /* Ensure margin-top is applied */
   position: relative;
   color: #006633;
 }
@@ -19,7 +17,6 @@
 }
 
 .heading-container {
-  margin-bottom: 2rem; /* Space between heading and content */
   text-align: left;
   display: flex;
   align-items: flex-start;
@@ -31,12 +28,12 @@
   padding-bottom: 30vw;
 }
 .heading-container h1 {
-  font-size: 6.49vw; /* 94px converted */
+  font-size: 5.49vw; /* 94px converted */
   font-weight: 700;
   line-height: 5.85vw;
 }
 .medium {
-  font-size: 4.7vw;
+  font-size: 3.7vw;
   line-height: 5.85vw;
   font-weight: 700;
 }
@@ -62,10 +59,10 @@
 .info {
   text-align: left;
   margin-top: 5rem;
-  margin-left: 2rem;
+  margin-left: 6vw;
 }
 .info h2 {
-  font-size: 2.76vw;
+  font-size: 2.5vw;
   line-height: 3.45vw;
   width: 30vw;
   font-weight: 500;
@@ -83,13 +80,19 @@
   .healthy-section {
     height: auto; /* Allow height to adjust based on content */
     margin-top: 3rem; /* Reduce top margin */
+    padding: 20vw 0;
+    margin-left: 10vw;
   }
 
   .heading-container {
-    padding-left: 2rem; /* Reduce padding on smaller screens */
-    padding-bottom: 1rem; /* Reduce bottom padding */
-    position: relative; /* Change to relative positioning */
-    text-align: center; /* Center-align text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    position: relative;
+    text-align: center !important;
+    margin: 0 auto;
+    padding-left: 0 !important;
   }
 
   .heading-container h1 {
@@ -99,8 +102,11 @@
 
   .medium {
     font-size: 5vw; /* Adjust font size for smaller screens */
+    text-align: center;
   }
-
+  .bold {
+    text-align: center;
+  }
   .consultation-container {
     flex-direction: column; /* Stack elements vertically */
     align-items: center;
@@ -123,12 +129,20 @@
   }
 
   .info h2 {
-    font-size: 4vw; /* Increase font size for smaller screens */
-    line-height: 5vw;
+    font-size: 4.8vw; /* Increase font size for smaller screens */
+    line-height: 6vw;
     width: 80vw; /* Adjust width for smaller screens */
+    padding-top: 0;
   }
 
   .info p {
-    font-size: 2vw; /* Increase font size for smaller screens */
+    font-size: 2.8vw; /* Increase font size for smaller screens */
+  }
+  .patient-image img {
+    width: 70vw;
+    height: 50vw;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
   }
 }
