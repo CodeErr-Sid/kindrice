@@ -60,7 +60,7 @@
   color: #016533;
   font-weight: 700;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .navbar-menu ul li a:hover {
@@ -131,7 +131,7 @@
 }
 
 .overlay-content ul li a:hover {
-  color: gray;
+  color: #016533;
 }
 
 .close-icon {
