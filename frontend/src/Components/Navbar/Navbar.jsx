@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
             <ul>
-            <li><Link to='/shop' className='link' style={{ marginLeft: '9rem' }}>Shop</Link></li>
+            <li><Link to='/shop' className='link' style={{ }}>Shop</Link></li>
               <li><Link to='/low-gi' className='link'>Low GI</Link></li>
               <li><Link to='/impact' className='link'>Impact</Link></li>
               <li><Link to='/blog' className='link'>Blog</Link></li>
@@ -34,11 +34,12 @@ export default function Navbar() {
               <li><Link to='/contact' className='link'>Contact</Link></li>
               <li><Link to='/lab-test' className='link'>Lab Test</Link></li>
             </ul>
-          </div>
-          <div className='navbar-icons'>
+            <div className='navbar-icons'>
             <FaUser className='icon user' />
             <FaShoppingCart className='icon cart' />
           </div>
+          </div>
+         
         </div>
       </div>
 

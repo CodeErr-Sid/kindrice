@@ -28,6 +28,15 @@ export default function Footer() {
       
             </div>
         </div>
+        <div className="bottom-center">
+            <div className="footer-image">
+                <img src={assets.place} alt='Place'/>
+            </div>
+            <div className="footer-text">
+                <h2>PROUDLY MADE IN MADURAI</h2>
+                <p>@2024 Rights Reserved</p>
+            </div>
+        </div>
         <div className='footer__content_right'>
         <div className='footer__logo'>
             <img src={assets.letterLogo} alt='Letter Logo'/>
@@ -45,15 +54,7 @@ export default function Footer() {
             </div>
         </div>
         </div>
-        <div className="bottom-center">
-            <div className="footer-image">
-                <img src={assets.place} alt='Place'/>
-            </div>
-            <div className="footer-text">
-                <h2>PROUDLY MADE IN MADURAI</h2>
-                <p>@2024 Rights Reserved</p>
-            </div>
-        </div>
+     
     </div>
    </section>
   )
