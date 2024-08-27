@@ -1,0 +1,40 @@
+.yoga2-section {
+  padding: 2vw 1vw;
+  margin: 0 auto;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.yoga2-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 5vw;
+}
+
+.yoga2-left-container {
+  width: 50%;
+}
+.yoga2-right-container {
+  width: 30%;
+}
+.yoga2-left-container img {
+  width: 50vw;
+  height: 40vw;
+  object-fit: cover;
+  object-position: center;
+}
+.yoga2-right-container h2 {
+  font-size: 4vw;
+  font-weight: 700;
+  color: #016533;
+  text-align: center;
+}
+.third-section img {
+  margin: 0 auto;
+  padding-right: 2vw;
+}

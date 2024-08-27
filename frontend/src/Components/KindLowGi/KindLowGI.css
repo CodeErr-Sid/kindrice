@@ -1,0 +1,53 @@
+.kind-lowgi-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw;
+}
+
+.kind-lowgi-container {
+  display: flex;
+  max-width: 80vw;
+  overflow: hidden;
+  color: #006633;
+}
+
+.kind-lowgi-left img {
+  width: 30vw;
+  height: 30vw;
+  object-fit: cover;
+}
+
+.kind-lowgi-right {
+  padding: 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.up-low-gi h2 {
+  font-size: 5vw;
+  color: #1b5e20;
+  font-weight: 700;
+}
+
+.up-low-gi p {
+  font-size: 2.5vw;
+  font-weight: 500;
+}
+
+.down-low-gi h2 {
+  font-size: 2.5vw;
+  font-weight: 700;
+}
+
+.down-low-gi p {
+  font-size: 1.8vw;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.down-low-gi p:hover {
+  color: #18721e;
+}

@@ -1,0 +1,32 @@
+.philosophy-section1 {
+  width: 100%;
+  padding: 5vw 0; /* Adds padding for spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.images-container1 {
+  margin-top: 8vw;
+  width: 80vw; /* Container width */
+  max-width: 1200px; /* Max width for larger screens */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.philosophy1 {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .images-container1 {
+    width: 90vw; /* Increase container width on smaller screens */
+  }
+  .philosophy-section1 {
+    padding: 0; /* Adds padding for spacing */
+  }
+}

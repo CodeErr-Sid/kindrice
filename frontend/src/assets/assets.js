@@ -65,6 +65,9 @@ import certificate4 from "./certificate4.jpeg";
 import certificate5 from "./certificate5.jpeg";
 import certificate6 from "./certificate6.jpeg";
 import checking from "./checking.svg";
+import yoga2 from "./yoga2.png";
+import Zoom from "./Zoom-green.png";
+import bag from "./bag.png";
 
 export const assets = {
   logo,
@@ -134,4 +137,7 @@ export const assets = {
   certificate5,
   certificate6,
   checking,
+  yoga2,
+  Zoom,
+  bag,
 };

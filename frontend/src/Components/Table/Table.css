@@ -1,0 +1,65 @@
+.table-container {
+  padding: 2rem;
+  text-align: center;
+  font-family: "Nunito", "sans serif";
+}
+
+.table-title {
+  color: #006633;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.kind-rice-table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.kind-rice-table th {
+  border: 2px solid #99cb65;
+  padding: 1rem;
+  font-size: 1.5vw;
+  text-align: center;
+}
+.kind-rice-table td {
+  border: 2px solid #006633;
+  padding: 1rem;
+  font-size: 1.5vw;
+  text-align: center;
+}
+.title-head tr th {
+  padding: 4vw;
+}
+.aspect-header {
+  background-color: #006633;
+  color: white;
+  font-weight: bold;
+}
+
+.kind-header,
+.normal-header {
+  background-color: #006633;
+  color: white;
+  font-weight: bold;
+}
+
+tbody {
+  background-color: #ffffcc;
+}
+.color-unique {
+  background-color: #99cb65;
+  font-weight: 700;
+  border: 2px solid #ffffcc !important;
+}
+.border-right {
+  border-right: 2px solid #ffffcc !important;
+}
+.kind-header {
+  border-right: 2px solid #ffffcc !important;
+  border-left: 2px solid #ffffcc !important;
+}
+.aspect-header {
+  border-right: 2px solid #ffffcc !important;
+}
