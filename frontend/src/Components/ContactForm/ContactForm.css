@@ -1,12 +1,12 @@
 .contact-form-section {
-  padding: 5vw 2vw;
+  padding: 2vw 1vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .contact-form-conatiner {
-  max-width: 90vw;
+  max-width: 80vw;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -16,45 +16,47 @@
 .contact-form-left {
   display: flex;
   flex-direction: column;
-  padding: 4vw;
+  padding: 2vw;
+  flex: 1;
 }
 
 .contact-form-up {
-  max-width: 27.55vw;
+  max-width: 20vw;
 }
 .contact-form-up h2 {
   font-family: "Nunito", sans-serif;
-  font-size: 3.33vw;
+  font-size: 2.5vw;
   font-weight: 600;
-  line-height: 4.55vw;
+  line-height: 3vw;
   text-align: left;
 }
 
 .contact-form-down {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 3vw;
+  align-items: flex-start;
+  gap: 2vw;
+  width: 100%;
 }
 
 .contact-form-info-left {
-  width: 45vw;
+  width: 35vw;
 }
 
 .contact-form-info-left button {
   background-color: #006633;
   color: #fff;
-  width: 12.81vw;
-  height: 3.13vw;
-  padding: 0.94vw 0.68vw;
-  gap: 0.52vw;
-  border-radius: 0.52vw;
+  width: 15vw;
+  height: 3.5vw;
+  padding: 0.75vw 0.5vw;
+  border-radius: 0.5vw;
   font-family: "Nunito", sans-serif;
-  font-size: 1.25vw;
+  font-size: 1.5vw;
   font-weight: 700;
-  line-height: 1.25vw;
+  line-height: 1.2vw;
   text-align: center;
   cursor: pointer;
+  margin-top: 4vw;
 }
 .contact-form-info-left button span {
   color: #969696;
@@ -66,33 +68,32 @@
 .contactForm-img img {
   width: 100%;
   height: auto;
-  border-radius: 1vw;
-  margin-top: 2vw;
+  border-radius: 0.5vw;
+  margin-top: 1vw;
 }
 
 .contact-form-right {
-  width: 45vw;
-  margin-top: -7.67vw;
+  width: 30vw;
+  margin-top: -6vw;
 }
 
 .contact-form-right h1 {
   font-family: "Nunito", sans-serif;
-  font-size: 2.5vw;
+  font-size: 2vw;
   font-weight: 600;
-  line-height: 3.13vw;
-  letter-spacing: -0.05vw;
+  line-height: 2.5vw;
+  letter-spacing: -0.03vw;
   text-align: left;
-
-  margin-bottom: 2vw;
+  margin-bottom: 1vw;
 }
 
 .contact-form-right p {
   font-family: "Inter", sans-serif;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   font-weight: 400;
-  line-height: 1.56vw;
+  line-height: 1.4vw;
   text-align: left;
-  margin-bottom: 3vw;
+  margin-bottom: 2vw;
   color: #667085;
 }
 .mail {
@@ -103,11 +104,11 @@
 .contact-form-right form {
   display: flex;
   flex-direction: column;
-  gap: 2vw;
+  gap: 1.5vw;
 }
 
 .contact-form-right label {
-  font-size: 1.4vw;
+  font-size: 1.2vw;
   font-weight: 500;
   color: #333;
 }
@@ -115,10 +116,10 @@
 .contact-form-right input,
 .contact-form-right textarea {
   width: 100%;
-  padding: 1.5vw;
+  padding: 1vw;
   border: 0.1vw solid #d0d5dd;
-  border-radius: 0.5vw;
-  font-size: 1.6vw;
+  border-radius: 0.3vw;
+  font-size: 1.2vw;
   color: #333;
   box-shadow: 0px 1px 2px 0px #1018280d;
 }
@@ -127,28 +128,28 @@
 .contact-form-right textarea:focus {
   border-color: #333;
   outline: none;
-  box-shadow: 0px 5px 40px 0px #055c30;
+  box-shadow: 0px 5px 20px 0px #055c30;
 }
 
 .contact-form-right textarea {
   resize: vertical;
-  height: 15vw;
+  height: 12vw;
 }
 
 .contact-form-right h2 {
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: #888;
-  margin-top: -1vw;
+  margin-top: -0.5vw;
   text-align: center;
 }
 
 .contact-form-right button[type="submit"] {
   background-color: #006633;
   color: #fff;
-  padding: 1.5vw 2.5vw;
+  padding: 1vw 2vw;
   border: none;
-  border-radius: 0.42vw;
-  font-size: 1.6vw;
+  border-radius: 0.3vw;
+  font-size: 1.2vw;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -156,42 +157,128 @@
 .contact-form-right button[type="submit"]:hover {
   background-color: #038142;
 }
-@media screen and (max-width: 435px) {
+
+@media screen and (max-width: 1024px) {
+  .contact-form-up h2 {
+    font-size: 2vw;
+    line-height: 2.5vw;
+  }
+
+  .contact-form-right h1 {
+    font-size: 1.8vw;
+    line-height: 2.2vw;
+  }
+
+  .contact-form-right p {
+    font-size: 1.5vw;
+    line-height: 1.8vw;
+  }
+
+  .contact-form-right input,
+  .contact-form-right textarea {
+    font-size: 1.5vw;
+    padding: 0.8vw;
+  }
+
+  .contact-form-right label {
+    font-size: 1.5vw;
+  }
+
+  .contact-form-right h2 {
+    font-size: 1.8vw;
+  }
+
+  .contact-form-right button[type="submit"] {
+    font-size: 1.5vw;
+    padding: 1.2vw 2vw;
+  }
+
+  .contact-form-info-left button {
+    font-size: 1.2vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact-form-up h2 {
+    font-size: 2.5vw;
+    line-height: 3vw;
+  }
+
+  .contact-form-right h1 {
+    font-size: 2vw;
+    line-height: 2.5vw;
+  }
+
+  .contact-form-right p {
+    font-size: 1.8vw;
+    line-height: 2vw;
+  }
+
+  .contact-form-right input,
+  .contact-form-right textarea {
+    font-size: 1.8vw;
+    padding: 1vw;
+  }
+
+  .contact-form-right label {
+    font-size: 1.8vw;
+  }
+
+  .contact-form-right h2 {
+    font-size: 2vw;
+  }
+
+  .contact-form-right button[type="submit"] {
+    font-size: 1.8vw;
+    padding: 1.5vw 2.5vw;
+  }
+
+  .contact-form-info-left button {
+    font-size: 1.5vw;
+  }
+}
+@media screen and (max-width: 650px) {
   .contact-form-info-left {
     display: none;
   }
   .contact-form-up {
-    max-width: 80vw;
+    max-width: 70vw;
   }
   .contact-form-up h2 {
     font-family: "Nunito", sans-serif;
-    font-size: 3.33vw;
+    font-size: 3.5vw;
     font-weight: 600;
-    line-height: 4.55vw;
+    line-height: 4vw;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10vw;
   }
   .contact-form-right {
     width: 80vw;
-    margin-top: 7vw;
+    margin-top: 5vw;
   }
   .contact-form-right h1,
   .contact-form-right p {
     text-align: center;
+    font-size: 3vw;
+    line-height: 4.5vw;
   }
   .contact-form-right p {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   .contact-form-right input,
   .contact-form-right textarea {
-    font-size: 2.5vw;
-  }
-  .contact-form-right label {
-    font-size: 2.6vw;
-  }
-  .contact-form-right h2 {
     font-size: 3vw;
   }
+  .contact-form-right label {
+    font-size: 3vw;
+  }
+  .contact-form-right h2 {
+    font-size: 3.5vw;
+  }
   .contact-form-right button[type="submit"] {
-    font-size: 2.6vw;
+    font-size: 3vw;
   }
 }
