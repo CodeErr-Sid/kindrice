@@ -73,34 +73,142 @@
 }
 
 .info2 {
+  margin-top: 2rem;
+  position: relative;
+  width: 44vw; /* Define a consistent width */
   text-align: left;
-  /* margin-top: 2rem; */
-  margin-left: 2rem;
-  position: sticky;
 }
 
 .info2 h2 {
   font-size: 2vw;
   line-height: 3vw;
-  width: 44vw;
   font-weight: 500;
   padding-top: 3.07vh;
-  padding-right: 3rem;
-}
-
-.info2 h2 span {
-  font-weight: 700;
 }
 
 .info2 p {
   font-size: 1.38vw;
   font-weight: 700;
 }
-@media screen and (max-width: 1029px) {
+.info2 h2 span {
+  font-weight: 700;
+}
+@media screen and (max-width: 1200px) {
   .info2 {
-    text-align: left;
-    /* margin-top: 2rem; */
+    margin-left: 0 !important;
+    margin-right: 9vw !important;
+  }
+}
+/* Media Queries for margin adjustments */
+@media screen and (max-width: 955px) {
+  .info2 {
     margin-left: 0;
+    margin-right: 10vw;
+  }
+}
+
+@media screen and (max-width: 945px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 11vw;
+  }
+}
+
+@media screen and (max-width: 935px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 12vw;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 12.5vw;
+  }
+}
+
+@media screen and (max-width: 915px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 13vw;
+  }
+}
+
+@media screen and (max-width: 905px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 13.5vw;
+  }
+}
+
+@media screen and (max-width: 895px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 17vw;
+  }
+}
+
+@media screen and (max-width: 885px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 19.5vw;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 22.4vw;
+  }
+}
+
+@media screen and (max-width: 865px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 29.2vw;
+  }
+}
+
+@media screen and (max-width: 855px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 25vw;
+  }
+}
+
+@media screen and (max-width: 845px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 6.8vw;
+  }
+}
+
+@media screen and (max-width: 835px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 8.6vw;
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 6.4vw;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 6.2vw;
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .info2 {
+    margin-left: 0;
+    margin-right: 6vw;
   }
 }
 /* Media Queries for smaller screens */
@@ -108,23 +216,24 @@
   .healthy-section2 {
     height: auto; /* Allow height to adjust based on content */
     margin-top: 3rem; /* Reduce top margin */
+    margin-left: 0; /* Center section by removing left margin */
+    padding: 0 1rem; /* Add some padding for better spacing */
   }
 
   .heading-container2 {
-    padding-left: 18vw;
+    padding-left: 0; /* Remove left padding */
     padding-bottom: 1rem;
     position: relative;
     margin: 0 auto;
-    width: 100vw;
+    width: 100%;
+    text-align: center; /* Center-align text */
+    padding-right: 0;
+    padding-left: 16vw;
   }
 
   .heading-container2 h1 {
     font-size: 7vw;
     line-height: 9vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     margin: 0 auto;
   }
 
@@ -142,34 +251,41 @@
     flex-direction: column; /* Stack elements vertically */
     align-items: center;
     text-align: center; /* Center-align text */
+    justify-content: center; /* Center-align items horizontally */
+    padding-left: 16vw;
   }
 
   .patient-image2 {
     width: 100%;
-    max-width: 90vw !important;
+    max-width: 90vw;
     height: auto;
-    order: -1;
     margin: 0 auto;
+    order: -1;
   }
 
   .info2 {
-    margin-top: 2rem;
-    margin-left: 0;
     text-align: center;
-    position: relative;
+    width: 80vw;
     order: 1;
+    margin: 0 auto;
+    padding-left: 6vw;
   }
 
   .info2 h2 {
     font-size: 4vw; /* Increase font size for smaller screens */
     line-height: 5vw;
-    width: 80vw;
+    width: 100%; /* Ensure it spans the full width */
     margin: 0 auto;
-    padding-left: 10vw;
+    padding-left: 0; /* Remove left padding */
   }
 
   .info2 p {
     font-size: 2vw; /* Increase font size for smaller screens */
-    width: 80vw;
+    width: 100%; /* Ensure it spans the full width */
+  }
+
+  .patient-image2 img {
+    margin-bottom: 0;
+    margin: 0 auto;
   }
 }

@@ -1,12 +1,11 @@
 .healthy-rice-section {
   margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 70vh;
+  padding: 0 0 0 3rem;
+  width: 80vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 9rem;
+
   position: relative;
   color: #006633;
 }
@@ -21,9 +20,10 @@
 .healthy-rice-heading {
   text-align: left;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   flex-direction: column;
+  margin-right: 24vw;
   /* position: absolute;
   right: 0;
   padding-right: 5rem;
@@ -31,13 +31,13 @@
 }
 
 .healthy-rice-heading h1 {
-  font-size: 4.7vw;
+  font-size: 3.7vw;
   font-weight: 700;
-  line-height: 5.85vw;
+  line-height: 4.85vw;
 }
 .healthy-rice-heading p {
   font-size: 500;
-  font-size: 2vw;
+  font-size: 1.8vw;
   line-height: 2.78vw;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .healthy-rice-details {
-  font-size: 2.36vw;
+  font-size: 2vw;
   line-height: 3.45vw;
   width: 40vw;
   font-weight: 500;
@@ -76,7 +76,7 @@
 }
 
 .healthy-rice-image img {
-  width: 100%;
+  width: 70%;
   height: auto;
   object-fit: cover;
 }
@@ -97,17 +97,21 @@
   .healthy-rice-section {
     height: auto;
     margin-top: 0;
+    margin-left: 16vw;
   }
 
   .healthy-rice-heading {
-    padding-left: 2rem;
     position: relative;
     text-align: center;
   }
 
   .healthy-rice-heading h1 {
-    font-size: 8vw;
-    line-height: 9vw;
+    font-size: 7vw;
+    line-height: 8vw;
+  }
+  .healthy-rice-heading p {
+    font-size: 3vw;
+    line-height: 4vw;
   }
 
   .heading-bold {
@@ -132,7 +136,7 @@
     height: auto;
     margin-top: 0;
     order: -1;
-    margin: 3rem 0;
+    padding: 3vw 0;
   }
 
   .healthy-rice-details {
@@ -141,6 +145,8 @@
     position: relative;
     order: 1;
     margin-top: 0;
+    margin-right: 21vw;
+    width: 80vw;
   }
 
   .healthy-rice-details h2 {

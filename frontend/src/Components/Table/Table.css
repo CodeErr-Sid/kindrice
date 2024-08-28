@@ -5,10 +5,11 @@
 }
 
 .table-title {
-  color: #006633;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 3.7vw;
   font-weight: 700;
+  line-height: 4.85vw;
+  color: #006633;
+  margin-bottom: 1.5rem;
 }
 
 .kind-rice-table {

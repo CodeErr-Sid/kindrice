@@ -19,12 +19,12 @@ export default function Herosection() {
             <img src={assets.outdoor} alt='' />
           </div>
           <div className="content-overlay">
-            <h1>Kind low-GI Rice
+            <h1>Kind <span>low-GI</span> Rice
                 <br />
                 So Clean. So Tasty. So Healthy.
             </h1>
             <p>From ₹210<br />
-            <span onClick={handleBuyNowClick}>Buy Now</span></p>
+            <span className="btn" onClick={handleBuyNowClick}>Buy Now</span></p>
           </div>
         </div>
       </div>
