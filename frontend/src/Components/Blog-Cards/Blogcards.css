@@ -11,7 +11,7 @@
 .blogcards-container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80vw;
 }
 
 .left-con,
@@ -22,7 +22,7 @@
 }
 
 .card-one {
-  width: 40vw;
+  width: 35vw;
   height: auto;
   margin-bottom: 2vw;
   display: flex;
@@ -34,8 +34,8 @@
 }
 .card-one-image h2 {
   position: absolute;
-  width: 26.1vw;
-  height: 7.3vw;
+  width: 20.1vw;
+  height: 5.3vw;
   top: 3.9vw;
   padding: 2.5vw 4vw;
   gap: 1vw;
@@ -46,17 +46,17 @@
   justify-content: center;
   text-align: center;
   color: white;
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-weight: 700;
-  line-height: 4.365vw;
+  line-height: 2.2vw;
 }
 .card-one2 .card-one-image {
   position: relative;
 }
 .card-one2 .card-one-image h2 {
   position: absolute;
-  width: 26.1vw;
-  height: 7.3vw;
+  width: 20.1vw;
+  height: 5.3vw;
   top: 3.9vw;
   right: 0;
   padding: 2.5vw 4vw;
@@ -68,9 +68,9 @@
   justify-content: center;
   text-align: center;
   color: white;
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-weight: 700;
-  line-height: 4.365vw;
+  line-height: 2.2vw;
 }
 .card-one-image img {
   width: 100%;
@@ -84,7 +84,7 @@
 }
 
 .card-one2 {
-  width: 40vw;
+  width: 35vw;
   height: auto;
   opacity: 1;
   margin-bottom: 2vw;
@@ -100,9 +100,9 @@
 }
 .card-content-container p {
   font-family: "Nunito", sans-serif;
-  font-size: 1.8vw;
+  font-size: 1.6vw;
   font-weight: 400;
-  line-height: 3.2vw;
+  line-height: 2.2vw;
   text-align: left;
 }
 
@@ -132,13 +132,55 @@
   }
 
   .card-content-container p {
-    font-size: 4vw;
-    line-height: 5vw;
+    font-size: 3vw;
+    line-height: 4vw;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .blogcards-section {
     margin-top: 12vw;
+  }
+  .card-one2 .card-one-image h2 {
+    position: absolute;
+    width: 35.1vw;
+    height: 12.3vw;
+    top: 3.9vw;
+    right: 0;
+    padding: 2.5vw 4vw;
+    gap: 1vw;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #006633;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 3.8vw;
+    font-weight: 700;
+    line-height: 6.2vw;
+  }
+  .card-one .card-one-image h2 {
+    position: absolute;
+    width: 35.1vw;
+    height: 12.3vw;
+    top: 3.9vw;
+    padding: 2.5vw 4vw;
+    gap: 1vw;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #006633;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 3.8vw;
+    font-weight: 700;
+    line-height: 6.2vw;
+  }
+}
+@media screen and (max-width: 650px) {
+  .card-one {
+    margin-top: 15vw;
   }
 }

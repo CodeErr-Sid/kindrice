@@ -1,6 +1,7 @@
 .pagination {
   display: flex;
   justify-content: center;
+  margin-top: 2vw;
 }
 
 .pagination-container {
@@ -46,20 +47,51 @@
   background-color: #006633;
   color: white;
 }
+
 .pagination .active a {
   background-color: #006633;
   color: white;
 }
-/* Media Queries for Mobile Screens */
-/* @media (max-width: 768px) {
-  .pagination {
-    margin-top: 2vw;
-    display: inline-block;
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 1024px) {
+  .pagination a {
+    width: 6vw;
+    height: 6vw;
+    padding: 1vw;
+    font-size: 2vw;
+    line-height: 2.5vw;
   }
 
-  .pagination a {
-    padding: 1vw;
-    font-size: 4vw;
-    border-radius: 3px;
+  .pagination ul {
+    gap: 1vw;
   }
-} */
+}
+
+@media (max-width: 768px) {
+  .pagination a {
+    width: 8vw;
+    height: 8vw;
+    padding: 1.5vw;
+    font-size: 2.5vw;
+    line-height: 3vw;
+  }
+
+  .pagination ul {
+    gap: 1.5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination a {
+    width: 10vw;
+    height: 10vw;
+    padding: 2vw;
+    font-size: 3vw;
+    line-height: 3.5vw;
+  }
+
+  .pagination ul {
+    gap: 2vw;
+  }
+}
