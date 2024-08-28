@@ -26,6 +26,7 @@ export default function Navbar() {
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
             <ul>
+            <li><Link to='/home2' className='link'>Home</Link></li>
             <li><Link to='/shop' className='link' style={{ }}>Shop</Link></li>
               <li><Link to='/low-gi' className='link'>Low GI</Link></li>
               <li><Link to='/impact' className='link'>Impact</Link></li>
@@ -34,12 +35,12 @@ export default function Navbar() {
               <li><Link to='/contact' className='link'>Contact</Link></li>
               <li><Link to='/lab-test' className='link'>Lab Test</Link></li>
             </ul>
-            <div className='navbar-icons'>
+           
+          </div>
+          <div className='navbar-icons'>
             <FaUser className='icon user' />
             <FaShoppingCart className='icon cart' />
           </div>
-          </div>
-         
         </div>
       </div>
 
@@ -48,6 +49,7 @@ export default function Navbar() {
         <div className="overlay-content">
           <FaTimes className='close-icon' onClick={toggleMenu} /> {/* Close icon */}
           <ul>
+          <li><Link to='/home2' className='link' onClick={toggleMenu}>Home</Link></li>
             <li><Link to='/shop' className='link' onClick={toggleMenu}>Shop</Link></li>
             <li><Link to='/low-gi' className='link' onClick={toggleMenu}>Low GI</Link></li>
             <li><Link to='/impact' className='link' onClick={toggleMenu}>Impact</Link></li>

@@ -70,10 +70,11 @@
 .navbar-icons {
   display: flex;
   flex-direction: row;
-  gap: 1.5rem;
+  gap: 1rem;
   color: #016533;
   font-size: 1.67vw;
-  margin-left: 6vw;
+  margin-left: 1vw;
+  margin-right: 3vw;
 }
 
 .hamburger {
@@ -152,10 +153,13 @@
   .navbar-menu ul li a {
     font-size: 2vw;
   }
+  .navbar-menu ul {
+    gap: 3.5rem;
+  }
 }
 @media screen and (max-width: 980px) {
   .navbar-menu ul {
-    gap: 3rem;
+    gap: 2.5rem;
   }
 }
 @media screen and (max-width: 800px) {
@@ -181,5 +185,10 @@
   }
   .overlay {
     display: block;
+  }
+  .navbar-logo img {
+    width: 100%;
+    max-width: 100px;
+    height: 70px;
   }
 }
