@@ -18,7 +18,7 @@
 
 .inner-container img {
   width: 100%;
-  height: auto;
+  height: 40vw;
   object-fit: cover;
   opacity: 1;
 }
@@ -26,7 +26,7 @@
 
 .about-section-section {
   width: 100vw;
-  height: 35.33vw;
+  height: 30.33vw;
   position: relative;
   overflow: hidden;
 }
@@ -52,11 +52,13 @@
   flex-direction: column;
 }
 .about-overlay-text {
-  font-size: 5.14vw;
+  font-size: 4vw;
   font-weight: 700;
-  line-height: 6.43vw;
+  line-height: 5.43vw;
   text-align: center;
   color: #006633;
+  margin-left: 9vw;
+  max-width: 80vw;
 }
 .border-bottom {
   width: 6vw;

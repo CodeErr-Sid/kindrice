@@ -7,14 +7,14 @@
   padding: 5vw 5vw;
   width: 100vw;
   height: 45.33vw;
-  margin: 3rem 0;
+  margin: 1rem 0;
 }
 
 .section-content-container {
   display: flex;
   align-items: center;
   max-width: 1200px;
-  width: 100%;
+  width: 80%;
 }
 
 .left-sec {
@@ -24,8 +24,8 @@
 }
 
 .left-sec img {
-  width: 32.4vw;
-  height: 42.3vw;
+  width: 28.4vw;
+  height: 35.3vw;
   border-radius: 8px;
   object-fit: cover;
   object-position: center;
@@ -38,7 +38,7 @@
 
 .right-sec h1 {
   font-family: "Nunito", sans-serif;
-  font-size: 3vw;
+  font-size: 2.5vw;
   font-weight: 700;
   line-height: 1.2;
   color: #333;
@@ -47,14 +47,31 @@
 
 .right-sec p {
   font-family: "Nunito", sans-serif;
-  font-size: 2.5vw;
-  line-height: 1.6;
+  font-size: 1.8vw;
+  line-height: 2.8vw;
   margin: 0;
   text-align: left;
   font-weight: 500;
 }
+
+/* Tablet Styles */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .right-sec h1 {
+    font-size: 2.5vw;
+    line-height: 1.4;
+    margin-bottom: 1.5vw;
+    max-width: 80vw;
+  }
+
+  .right-sec p {
+    font-size: 2vw; /* Adjust font-size for tablet screens */
+    line-height: 2.5vw;
+    text-align: center; /* Center align text for better readability */
+  }
+}
+
 /* Mobile Styles */
-@media (max-width: 530px) {
+@media (max-width: 630px) {
   .his-thoughts {
     flex-direction: column;
     padding: 3vw 5vw;
@@ -73,8 +90,8 @@
   }
 
   .left-sec img {
-    width: 90vw;
-    height: 80vw;
+    width: 80vw;
+    height: 70vw;
     object-fit: cover;
     object-position: center;
   }

@@ -1,4 +1,6 @@
 /* AboutKindrice.css */
+
+/* Default Styles (for larger screens) */
 .about-kindrice {
   position: relative;
   width: 100vw;
@@ -21,14 +23,14 @@
 
 .image-section img {
   width: 100vw;
-  height: 100%;
+  height: 60%;
   object-fit: cover;
   opacity: 0.3;
 }
 
 .text-section-overlay {
   position: absolute;
-  top: 0;
+  top: -10vw;
   left: 0;
   width: 100vw;
   height: 100%;
@@ -46,7 +48,7 @@
 }
 
 .left img {
-  max-width: 100%;
+  max-width: 60%;
   height: auto;
 }
 
@@ -56,7 +58,6 @@
   justify-content: center;
   align-items: center;
   padding: 1vw; /* Adjust padding as needed */
-
   box-sizing: border-box;
 }
 
@@ -64,12 +65,96 @@
   margin: 0;
   margin-right: 2vw;
   font-family: "Nunito", sans-serif;
-  font-size: 2.5vw;
+  font-size: 1.8vw;
   font-weight: 500;
-  line-height: 3.5vw;
+  line-height: 2.8vw;
   text-align: left;
   color: #006633;
 }
+
 .right p span {
   font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+  /* .about-kindrice {
+    height: 60vw; 
+  } */
+
+  .text-section-overlay {
+    top: -8vw;
+  }
+
+  .left,
+  .right {
+    width: 85vw;
+  }
+
+  .right p {
+    font-size: 2.5vw;
+    line-height: 3.5vw;
+  }
+
+  .left img {
+    max-width: 50%;
+  }
+}
+
+/* For small screens (max-width: 780px) */
+@media screen and (max-width: 780px) {
+  /* .about-kindrice {
+    height: 70vw; 
+  } */
+
+  .text-section-overlay {
+    top: -5vw;
+  }
+
+  .left,
+  .right {
+    width: 90vw;
+  }
+
+  .right p {
+    font-size: 2.5vw;
+    line-height: 3.5vw;
+    padding: 0 4vw;
+  }
+
+  .left img {
+    max-width: 60%;
+  }
+
+  .image-section img {
+    height: 90%;
+  }
+}
+
+/* For extra small screens (max-width: 530px) */
+@media screen and (max-width: 530px) {
+  /* .about-kindrice {
+    height: 90vw; 
+  } */
+
+  .text-section-overlay {
+    top: 0;
+  }
+
+  .left,
+  .right {
+    width: 95vw;
+  }
+
+  .right p {
+    font-size: 3vw;
+    line-height: 4vw;
+    padding: 0 4vw;
+  }
+
+  .left img {
+    max-width: 70%;
+  }
+  .image-section img {
+    height: 100%;
+  }
 }

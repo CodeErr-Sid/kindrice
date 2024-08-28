@@ -1,9 +1,10 @@
 /* Moment.css */
 
+/* Default Styles */
 .moment-section {
   position: relative;
   width: 100vw;
-  height: 50vw;
+  height: 30vw;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -40,27 +41,88 @@
 
 .moment-overlay-text p {
   font-family: "Nunito", sans-serif;
-  font-size: 3.15vw;
+  font-size: 2vw;
   font-weight: 400;
-  line-height: 5vw;
+  line-height: 3vw;
   text-align: left;
   color: #006633;
 }
+
 .moment-overlay-text span {
   font-weight: 700;
 }
+
 .info-content {
-  width: 85vw;
+  width: 80vw;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   padding: 3vw 0;
 }
+
 .info-content p {
   font-family: "Nunito", sans-serif;
-  font-size: 2.5vw;
+  font-size: 1.8vw;
   font-weight: 500;
-  line-height: 3.75vw;
+  line-height: 2.9vw;
   text-align: center;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .moment-section {
+    height: 40vw;
+  }
+
+  .moment-overlay-text {
+    bottom: 4vw;
+    left: 4vw;
+    right: 4vw;
+    padding: 1.5vw;
+  }
+
+  .moment-overlay-text p {
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+
+  .info-content {
+    width: 80vw;
+    padding: 2vw 0;
+  }
+
+  .info-content p {
+    font-size: 2vw;
+    line-height: 3.9vw;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .moment-section {
+    height: 40vw;
+  }
+
+  .moment-overlay-text {
+    bottom: 4vw;
+    left: 4vw;
+    right: 4vw;
+    padding: 1.5vw;
+  }
+
+  .moment-overlay-text p {
+    font-size: 3.2vw;
+    line-height: 4vw;
+  }
+
+  .info-content {
+    width: 80vw;
+    padding: 2vw 0;
+  }
+
+  .info-content p {
+    font-size: 3vw;
+    line-height: 4.9vw;
+  }
 }
