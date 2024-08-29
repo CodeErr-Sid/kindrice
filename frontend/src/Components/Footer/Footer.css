@@ -132,3 +132,134 @@
   font-size: 0.8vw;
   color: #bbb; /* Light gray text */
 }
+
+/* Media Queries for screens between 800px and 1200px */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .footer__container {
+    padding: 2vw 4vw;
+  }
+
+  .footer__content_left,
+  .footer__content_right {
+    max-width: 40vw;
+    margin: 0 1vw;
+  }
+
+  .footer__logo img {
+    max-width: 12vw;
+    height: auto;
+  }
+
+  .footer__info ul,
+  .footer-links ul {
+    font-size: 1.5vw;
+  }
+
+  .footer__info ul li {
+    margin-bottom: 0.8vw;
+  }
+
+  .social-media svg {
+    width: 3vw;
+    height: 4vw;
+  }
+
+  .footer-text h2 {
+    font-size: 2.5vw;
+  }
+
+  .footer-text p {
+    font-size: 1vw;
+  }
+}
+/* Media Queries for screens between 700px and 800px */
+@media screen and (min-width: 630px) and (max-width: 800px) {
+  .footer__container {
+    padding: 3vw;
+  }
+
+  .footer__content_left,
+  .footer__content_right {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .footer__logo img {
+    max-width: 15vw;
+  }
+
+  .footer__info ul,
+  .footer-links ul {
+    font-size: 2vw;
+  }
+
+  .footer__info ul li {
+    margin-bottom: 1vw;
+  }
+
+  .social-media svg {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  .footer-text h2 {
+    font-size: 2.5vw;
+  }
+
+  .footer-text p {
+    font-size: 1.3vw;
+  }
+  .footer__logo img {
+    margin-right: 13vw;
+  }
+}
+
+/* Media Queries for screens smaller than 630px */
+@media screen and (max-width: 629px) {
+  .footer__container {
+    padding: 3vw;
+  }
+
+  .footer__content_left,
+  .footer__content_right {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .footer__logo img {
+    max-width: 18vw;
+  }
+
+  .footer__info ul,
+  .footer-links ul {
+    font-size: 2.5vw;
+  }
+  .footer-links ul li {
+    margin-bottom: 0.7vw;
+  }
+  .footer__info ul li {
+    margin-bottom: 1.5vw;
+  }
+
+  .social-media svg {
+    width: 3.5vw;
+    height: 3.5vw;
+  }
+  .social-media {
+    gap: 1vw;
+  }
+  .footer-text h2 {
+    font-size: 2.5vw;
+  }
+
+  .footer-text p {
+    font-size: 1.5vw;
+  }
+  .footer__logo img {
+    margin-right: 16vw;
+  }
+  .footer-image img {
+    width: 30vw;
+    height: auto;
+  }
+}

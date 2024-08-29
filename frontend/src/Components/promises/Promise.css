@@ -92,12 +92,13 @@
   font-size: 1.38vw;
   font-weight: 700;
 }
+
 /* Media Queries for smaller screens */
 @media screen and (max-width: 800px) {
   .promise-section {
     height: auto;
-    margin-top: 1rem;
-    padding: 1rem 0;
+    margin: 0 auto;
+    padding: 2rem 0 1rem 0;
   }
 
   .promise-heading {
@@ -108,12 +109,13 @@
   }
 
   .promise-heading h1 {
-    font-size: 7vw;
-    line-height: 8vw;
+    font-size: 6vw;
+    line-height: 7vw;
   }
-
-  .promise-heading-bold {
-    font-size: 4vw;
+  .promise-heading p {
+    font-size: 3.5vw;
+    line-height: 4.5vw;
+    width: 60vw;
   }
 
   .promise-details {
@@ -122,6 +124,7 @@
     width: 90vw;
     /* margin: 1rem auto; */
     text-align: center;
+    padding: 0rem 3rem;
   }
 
   .promise-info-container {
@@ -135,7 +138,7 @@
   .promise-image {
     width: 70vw;
     height: auto;
-    margin: 1rem auto;
+    margin: -1.5rem auto;
     max-width: 80vw;
   }
   .promise-details {
@@ -151,62 +154,77 @@
   }
 
   .promise-image img {
-    margin-bottom: 0;
-    margin-top: 0;
     z-index: -1;
     height: 45vw;
-    max-width: 50vw;
+    max-width: 70vw;
     margin: 0 auto;
   }
 }
 
-@media screen and (max-width: 480px) {
+/* Media Queries for smaller screens */
+@media screen and (max-width: 530px) {
   .promise-section {
-    margin-top: 1rem;
-    padding: 0.5rem 0;
+    height: auto;
+    margin: 0 auto;
+    padding: 2rem 0 1rem 0;
   }
 
   .promise-heading {
-    margin-top: 0.5rem;
-    padding: 0 0.5rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
     text-align: center;
+    z-index: 99;
   }
 
   .promise-heading h1 {
-    font-size: 6vw;
-    line-height: 7vw;
+    font-size: 9vw;
+    line-height: 10vw;
   }
-
-  .promise-heading-bold {
-    font-size: 4.5vw;
+  .promise-heading p {
+    font-size: 4vw;
+    line-height: 5.5vw;
+    width: 60vw;
   }
 
   .promise-details {
-    font-size: 3vw;
-    line-height: 4vw;
+    font-size: 2.5vw;
+    line-height: 3vw;
     width: 90vw;
-    margin: 0.5rem auto;
+    /* margin: 1rem auto; */
     text-align: center;
+    padding: 0rem 3rem;
   }
 
   .promise-info-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.5rem;
+    /* gap: 1rem; */
+    width: 100%;
   }
 
   .promise-image {
-    width: 80vw;
-    margin: 0.5rem auto;
+    width: 70vw;
+    height: auto;
+    margin: -1.5rem auto;
+    max-width: 80vw;
   }
-
+  .promise-details {
+    z-index: 99;
+  }
   .promise-details h2 {
-    font-size: 4vw;
-    line-height: 5vw;
+    font-size: 4.5vw;
+    line-height: 5.5vw;
   }
 
   .promise-details p {
-    font-size: 2vw;
+    font-size: 1.8vw;
+  }
+
+  .promise-image img {
+    z-index: -1;
+    height: 65vw;
+    max-width: 90vw;
+    margin: 0 auto;
   }
 }

@@ -1,6 +1,7 @@
+/* General Styles (For screens wider than 1200px) */
 .philosophy-section1 {
   width: 100%;
-  padding: 0 0 5vw 0; /* Adds padding for spacing */
+  padding: 0 0 5vw 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,12 +11,13 @@
 
 .images-container1 {
   margin-top: 8vw;
-  width: 80vw; /* Container width */
-  max-width: 1200px; /* Max width for larger screens */
+  width: 80vw;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .philosophy-section1 h1 {
   font-size: 3.7vw;
   font-weight: 700;
@@ -25,17 +27,64 @@
   margin-top: 8vw;
   margin-bottom: -9vw;
 }
+
 .philosophy1 {
   width: 100%;
   height: auto;
 }
 
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-  .images-container1 {
-    width: 90vw; /* Increase container width on smaller screens */
+/* Media Queries for screens between 800px and 1200px */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .philosophy-section1 h1 {
+    font-size: 4vw;
+    line-height: 5vw;
+    margin-top: 7vw;
+    margin-bottom: -8vw;
   }
+
+  .images-container1 {
+    margin-top: 7vw;
+    width: 85vw;
+  }
+}
+
+/* Media Queries for screens between 530px and 800px */
+@media screen and (min-width: 530px) and (max-width: 800px) {
+  .philosophy-section1 h1 {
+    font-size: 7vw;
+    line-height: 8vw;
+    margin-top: 6vw;
+    margin-bottom: -7vw;
+  }
+
+  .images-container1 {
+    margin-top: 6vw;
+    width: 90vw;
+  }
+}
+
+/* Media Queries for screens smaller than 530px */
+@media screen and (max-width: 530px) {
   .philosophy-section1 {
-    padding: 0; /* Adds padding for spacing */
+    padding: 0 0 10vw 0;
+  }
+
+  .philosophy-section1 h1 {
+    font-size: 6vw;
+    line-height: 7vw;
+    margin-top: 9vw;
+    margin-bottom: -3vw;
+  }
+
+  .images-container1 {
+    margin-top: 5vw;
+    width: 100vw;
+  }
+
+  .philosophy1 {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transform: scale(1.2);
   }
 }

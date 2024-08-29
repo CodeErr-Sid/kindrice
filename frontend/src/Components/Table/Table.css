@@ -1,3 +1,4 @@
+/* General Styles (For screens wider than 1200px) */
 .table-container {
   padding: 2rem;
   text-align: center;
@@ -18,27 +19,19 @@
   margin: 0 auto;
 }
 
-.kind-rice-table th {
-  border: 2px solid #99cb65;
-  padding: 1rem;
-  font-size: 1.5vw;
-  text-align: center;
-}
+.kind-rice-table th,
 .kind-rice-table td {
   border: 2px solid #006633;
   padding: 1rem;
   font-size: 1.5vw;
   text-align: center;
 }
+
 .title-head tr th {
   padding: 4vw;
 }
-.aspect-header {
-  background-color: #006633;
-  color: white;
-  font-weight: bold;
-}
 
+.aspect-header,
 .kind-header,
 .normal-header {
   background-color: #006633;
@@ -49,11 +42,13 @@
 tbody {
   background-color: #ffffcc;
 }
+
 .color-unique {
   background-color: #99cb65;
   font-weight: 700;
   border: 2px solid #ffffcc !important;
 }
+
 .border-right {
   border-right: 2px solid #ffffcc !important;
 }
@@ -63,4 +58,70 @@ tbody {
 }
 .aspect-header {
   border-right: 2px solid #ffffcc !important;
+}
+/* Media Queries for screens between 800px and 1200px */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .table-title {
+    font-size: 4.5vw;
+    line-height: 5.5vw;
+  }
+
+  .kind-rice-table {
+    width: 80%;
+  }
+
+  .kind-rice-table th,
+  .kind-rice-table td {
+    font-size: 2vw;
+    padding: 0.8rem;
+  }
+}
+
+/* Media Queries for screens between 530px and 800px */
+@media screen and (min-width: 530px) and (max-width: 800px) {
+  .table-title {
+    font-size: 5.5vw;
+    line-height: 6.5vw;
+  }
+
+  .kind-rice-table {
+    width: 80%;
+  }
+
+  .kind-rice-table th,
+  .kind-rice-table td {
+    font-size: 2.5vw;
+    padding: 0.6rem;
+  }
+}
+
+/* Media Queries for screens smaller than 530px */
+@media screen and (max-width: 530px) {
+  .table-container {
+    padding: 1rem;
+  }
+
+  .table-title {
+    font-size: 6.5vw;
+    line-height: 7.5vw;
+  }
+
+  .kind-rice-table {
+    width: 90%;
+  }
+
+  .kind-rice-table th,
+  .kind-rice-table td {
+    font-size: 3.5vw;
+    padding: 0.4rem;
+  }
+
+  .kind-rice-table th,
+  .kind-rice-table td {
+    padding: 2vw;
+  }
+
+  .title-head tr th {
+    padding: 3vw;
+  }
 }
