@@ -46,17 +46,25 @@
   .hero-section {
     height: 42.3vw;
   }
+  .second-section img {
+    width: 100vw;
+    height: 80vw;
+  }
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    height: 42.3vw;
+    height: 52.3vw;
   }
 }
 
 @media (max-width: 480px) {
   .hero-section {
     height: 42.3vw;
+  }
+  .second-section img {
+    width: 100vw;
+    height: 20rem !important;
   }
 }
 
