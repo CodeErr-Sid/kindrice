@@ -38,20 +38,23 @@ export default function Footer() {
             </div>
         </div>
         <div className='footer__content_right'>
-        <div className='footer__logo'>
+        <div className='footer__logo k-logo'>
             <img src={assets.letterLogo} alt='Letter Logo'/>
             </div>
             <div className="footer-links">
                 <ul>
                 <li><a href='/'>Home</a></li>
-<li><a href='/shop'>SHOP</a></li>
-<li><a href='/story'>STORY</a></li>
-<li><a href='/blog'>BLOG</a></li>
-<li><a href='/contact'>CONTACT</a></li>
-<li><a href='/impact'>IMPACT</a></li>
-<li><a href='/return-policies'>RETURN & POLICIES</a></li>
-<li><a href='/certificates'>CERTIFICATES</a></li>
+     <li><a href='/shop'>SHOP</a></li>
+    <li><a href='/story'>STORY</a></li>
+     <li><a href='/blog'>BLOG</a></li>
+     <li><a href='/contact'>CONTACT</a></li>
+     <li><a href='/impact'>IMPACT</a></li>
+                      <li><a href='/return-policy'>RETURN & POLICIES</a></li>
+                       <li><a href='/lab-test'>CERTIFICATES</a></li>
                 </ul>
+            </div>
+            <div className="footer-text2">
+                <p>@2024 Rights Reserved</p>
             </div>
         </div>
         </div>
