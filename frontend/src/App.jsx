@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
+// import Home from './pages/Home/Home';
 import Story from './pages/Story/Story';
 import Shop from './pages/Shop/Shop';
 import Impact from './pages/Impact/Impact';
@@ -16,9 +16,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/home2' element={<Home2 />} />
+        {/* <Route path='/home2' element={<Home2 />} /> */}
         <Route path="/shop" element={<Shop />} />
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home2 />} />
         <Route path='/story' element={<Story />} />
         <Route path='/impact' element={<Impact />} />
         <Route path='/blog' element={<Blog />} />

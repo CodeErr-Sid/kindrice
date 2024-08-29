@@ -46,7 +46,9 @@
   margin-top: 4vw;
   margin-bottom: 15vw;
 }
-
+.founder-details {
+  color: #016533;
+}
 /* Media Queries for Responsive Design */
 
 /* For medium screens (max-width: 1024px) */

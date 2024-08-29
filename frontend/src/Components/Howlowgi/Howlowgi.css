@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   padding: 2vw 0;
-  width: 70vw; /* Set the width to 80vw */
+  width: 70vw;
   margin: 0 auto;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .howlowgi-title {
-  font-size: 2.8vw; /* Adjusted font size for desktop */
+  font-size: 2.8vw;
   margin-bottom: 2vw;
   font-weight: 700;
 }
@@ -22,29 +22,29 @@
 .howlowgi-content {
   display: flex;
   flex-direction: column;
-  gap: 2vw; /* Adjust spacing between elements */
+  gap: 2vw;
 }
 
 .howlowgi-paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 2vw; /* Adjust spacing between paragraphs */
+  gap: 2vw;
 }
 
 .howlowgi-first-para {
-  font-size: 1.8vw; /* Font size for desktop */
-  line-height: 2.4vw; /* Line height for desktop */
-  font-weight: 700; /* Optional: Make it bold */
+  font-size: 1.8vw;
+  line-height: 2.4vw;
+  font-weight: 700;
 }
 
 .howlowgi-second-para,
 .howlowgi-third-para {
-  font-size: 1.8vw; /* Font size for desktop */
-  line-height: 2.4vw; /* Line height for desktop */
+  font-size: 1.8vw;
+  line-height: 2.4vw;
 }
 
 .howlowgi-second-para {
-  margin-bottom: 2vw; /* Adjusted margin */
+  margin-bottom: 2vw;
 }
 
 .howlowgi-third-para span {
@@ -52,27 +52,44 @@
 }
 
 .howlowgi-list {
-  padding-left: 2vw; /* Adjust list indentation */
+  padding-left: 2vw;
   margin: 0;
 }
 
+.howlowgi-list {
+  list-style: none;
+  counter-reset: custom-counter;
+  padding-left: 0;
+}
+
 .howlowgi-list li {
-  list-style: decimal; /* Changed list style to decimal */
+  counter-increment: custom-counter;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.howlowgi-list li::before {
+  content: counter(custom-counter) ". ";
+  font-size: 1.8vw;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 /* Media Queries */
 
-/* For screens smaller than 1200px */
 @media (max-width: 1200px) {
   .howlowgi-title {
-    font-size: 2.4vw; /* Adjusted font size */
+    font-size: 2.4vw;
   }
 
   .howlowgi-first-para,
   .howlowgi-second-para,
   .howlowgi-third-para {
-    font-size: 2vw; /* Larger font size for tablet */
-    line-height: 2.5vw; /* Adjusted line height */
+    font-size: 2vw;
+    line-height: 2.5vw;
   }
 
   .howlowgi-second-para {
@@ -80,17 +97,16 @@
   }
 }
 
-/* For screens smaller than 992px */
 @media (max-width: 992px) {
   .howlowgi-title {
-    font-size: 4vw; /* Adjusted font size */
+    font-size: 4vw;
   }
 
   .howlowgi-first-para,
   .howlowgi-second-para,
   .howlowgi-third-para {
-    font-size: 2.2vw; /* Larger font size for tablets and small screens */
-    line-height: 2.7vw; /* Adjusted line height */
+    font-size: 2.2vw;
+    line-height: 2.7vw;
   }
 
   .howlowgi-second-para {
@@ -98,17 +114,16 @@
   }
 }
 
-/* For screens smaller than 768px */
 @media (max-width: 768px) {
   .howlowgi-title {
-    font-size: 4vw; /* Adjusted font size */
+    font-size: 4vw;
   }
 
   .howlowgi-first-para,
   .howlowgi-second-para,
   .howlowgi-third-para {
-    font-size: 2.4vw; /* Larger font size for mobile */
-    line-height: 3vw; /* Adjusted line height */
+    font-size: 2.4vw;
+    line-height: 3vw;
   }
 
   .howlowgi-second-para {
@@ -116,17 +131,16 @@
   }
 }
 
-/* For screens smaller than 576px */
 @media (max-width: 576px) {
   .howlowgi-title {
-    font-size: 4vw; /* Adjusted font size */
+    font-size: 4vw;
   }
 
   .howlowgi-first-para,
   .howlowgi-second-para,
   .howlowgi-third-para {
-    font-size: 2.6vw; /* Larger font size for mobile */
-    line-height: 3.2vw; /* Adjusted line height */
+    font-size: 2.6vw;
+    line-height: 3.2vw;
   }
 
   .howlowgi-second-para {

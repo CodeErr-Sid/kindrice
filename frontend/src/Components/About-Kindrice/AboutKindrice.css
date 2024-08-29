@@ -7,7 +7,7 @@
   height: 50.9vw; /* Adjust as needed */
 }
 
-.content-container {
+.content-container-about {
   position: relative;
   width: 100vw;
   height: 50.9vw; /* Ensure this matches the height of .about-kindrice */

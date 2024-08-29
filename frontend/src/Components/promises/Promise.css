@@ -1,6 +1,6 @@
 .promise-section {
   padding: 6vw 0;
-  width: 80vw;
+  width: 90vw;
   height: 70vh;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 18rem;
+  /* margin-top: 18rem; */
   z-index: 99;
 }
 
@@ -49,7 +49,7 @@
   line-height: 3vw;
   width: 60vw;
   font-weight: 500;
-  /* padding-top: 3.07vh; */
+  padding-top: 4.07vh;
   padding-right: 3rem;
   text-align: left;
   /* margin-top: 5rem; */
@@ -69,7 +69,8 @@
   text-align: center;
   justify-content: center;
   width: 70vw;
-  margin-top: -6vw;
+  margin-top: -4vw;
+  gap: 4vw;
 }
 
 .promise-image {
@@ -83,7 +84,7 @@
   height: 30vw;
   object-fit: cover;
   margin-bottom: 7rem;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   z-index: -1;
 }
 

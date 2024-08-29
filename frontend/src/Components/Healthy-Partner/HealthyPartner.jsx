@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets';
 export default function HealthyPartner() {
   return (
     <section className='healthy-section'>
-      <div className="content-container">
+      <div className="content-container2">
         <div className="heading-container">
           <h1 className='bold'>Health Partner.</h1>
           <h2 className='medium'>Incredibly Low-GI.</h2>

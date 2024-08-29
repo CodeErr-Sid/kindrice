@@ -33,7 +33,7 @@ export default function Blog() {
    <Navbar/>
    <ThreeSections/>
    <Blogcards/>
-   <Pagination/>
+   {/* <Pagination/> */}
    <Publication cards={cardsData} />
    <Footer/>
    </>

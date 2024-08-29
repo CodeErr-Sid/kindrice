@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
             <ul>
-            <li><Link to='/home2' className='link'>Home</Link></li>
+            <li><Link to='/' className='link'>Home</Link></li>
             <li><Link to='/shop' className='link' style={{ }}>Shop</Link></li>
               <li><Link to='/low-gi' className='link'>Low GI</Link></li>
               <li><Link to='/impact' className='link'>Impact</Link></li>
