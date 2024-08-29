@@ -8,14 +8,31 @@
 }
 
 .section1 {
-  width: 80%;
+  width: 90%;
   text-align: center;
   margin-bottom: 3vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-
-.hero-img img {
+.right-heading {
+  width: 25vw;
+}
+.right-heading h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 4.25vw;
+  font-weight: 700;
+  line-height: 5.81vw;
+  text-align: left;
+  color: #016533;
+}
+.hero-img {
   width: 60vw;
-  height: 33vw;
+}
+.hero-img img {
+  width: 50vw;
+  height: auto;
   object-fit: cover;
   display: block;
   margin: 0 auto;
@@ -24,13 +41,7 @@
 .section2,
 .section-3 {
   text-align: center;
-  margin-bottom: 4vw;
   padding: 2vw;
-}
-
-.section-3 {
-  width: 65.4vw;
-  height: 10.8vw;
 }
 
 .section2 h2 {

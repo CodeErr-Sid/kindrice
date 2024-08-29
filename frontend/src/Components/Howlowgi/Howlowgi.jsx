@@ -10,7 +10,7 @@ export default function Howlowgi() {
         <div className="howlowgi-content">
           <div className="howlowgi-paragraphs">
             <p className='howlowgi-first-para'>Our rice is low GI for two reasons</p>
-            <ol className='howlowgi-list' start={1}>
+            <ol className='howlowgi-list'>
               <li>
                 <p className='howlowgi-second-para'>
                 The<span> paddy variety, RNR,</span> naturally has a low glycemic index. 

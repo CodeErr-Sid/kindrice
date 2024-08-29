@@ -7,12 +7,12 @@ export default function ContactForm() {
     <section className='contact-form-section'>
       <div className="contact-form-container">
         <div className="contact-form-left">
-          <div className="contact-form-up">
+          {/* <div className="contact-form-up">
             <h2>Get in Touch with Starbelly</h2>
-          </div>
+          </div> */}
           <div className="contact-form-down">
             <div className="contact-form-info-left">
-              <button><span>Home</span> / Contact</button>
+              {/* <button><span>Home</span> / Contact</button> */}
               <div className="contactForm-img">
                 <img src={assets.communication} alt=''/>
               </div>

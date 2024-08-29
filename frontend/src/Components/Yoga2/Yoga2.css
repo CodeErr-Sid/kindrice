@@ -13,11 +13,11 @@
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 10vw;
+  gap: 13vw;
 }
 
 .yoga2-left-container {
-  width: 40%;
+  width: 50%;
 }
 .yoga2-right-container {
   width: 40%;
@@ -26,7 +26,8 @@
   width: 30vw;
   height: 30vw;
   object-fit: cover;
-  object-position: center;
+  object-position: right;
+  margin-right: 10vw;
 }
 .yoga2-right-container h2 {
   font-size: 5vw;
@@ -39,6 +40,7 @@
 .third-section {
   width: 80vw;
   height: auto;
+  margin: 0 auto;
 }
 .third-section img {
   margin: 0 auto;

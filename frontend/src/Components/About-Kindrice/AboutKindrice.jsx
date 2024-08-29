@@ -5,7 +5,7 @@ import './AboutKindrice.css'
 export default function AboutKindrice() {
   return (
     <section className='about-kindrice'>
-      <div className='content-container'>
+      <div className='content-container-about'>
         <div className="image-section">
           <img src={assets.paddy} alt=''/>
         </div>

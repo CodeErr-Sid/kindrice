@@ -1,136 +1,136 @@
-.healthy-rice-section {
+.labtest2-section {
   margin: 0;
   padding: 0 0 0 3rem;
-  width: 80vw;
+  width: 90vw;
   display: flex;
   align-items: center;
   justify-content: center;
-
   position: relative;
   color: #006633;
 }
 
-.healthy-rice-content {
+.labtest2-content {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.healthy-rice-heading {
-  text-align: left;
+.labtest2-heading {
+  text-align: right;
   display: flex;
-  align-items: left;
-  justify-content: left;
+  align-items: right;
+  justify-content: right;
   flex-direction: column;
-  margin-right: 24vw;
-  /* position: absolute;
-  right: 0;
-  padding-right: 5rem;
-  padding-bottom: 30vw; */
+  margin-right: -50vw;
 }
 
-.healthy-rice-heading h1 {
+.labtest2-heading h1 {
   font-size: 3.7vw;
   font-weight: 700;
   line-height: 4.85vw;
 }
-.healthy-rice-heading p {
+
+.labtest2-heading p {
   font-size: 500;
   font-size: 1.8vw;
   line-height: 2.78vw;
 }
 
-.heading-bold {
+.labtest2-bold {
   font-size: 4.7vw;
   line-height: 5.85vw;
   font-weight: 700;
 }
 
-.healthy-rice-details {
+.labtest2-details {
   font-size: 2vw;
   line-height: 3.45vw;
   width: 40vw;
-  font-weight: 500;
-  padding-top: 3.07vh;
-  padding-right: 3rem;
+  /* font-weight: 500;
+  padding-top: 3.07vh; */
+  /* padding-right: 3rem; */
+  /* text-align: center; */
 }
 
-.healthy-rice-details span {
+.labtest2-details span {
   font-weight: 700;
 }
 
-.healthy-rice-info-container {
+.labtest2-info-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
   justify-content: space-evenly;
+  margin-top: -3.5vw;
 }
 
-.healthy-rice-image {
+.labtest2-image {
   width: 100%;
   max-width: 40vw;
-  margin-top: 2rem;
+  /* margin-bottom: 3rem; */
   margin-right: 6rem;
 }
 
-.healthy-rice-image img {
-  width: 70%;
+.labtest2-image img {
+  width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.healthy-rice-details {
-  text-align: left;
-  margin-top: 5rem;
+.labtest2-details {
+  text-align: right;
+  /* margin-top: 5rem; */
   margin-left: 2rem;
 }
 
-.healthy-rice-details p {
+.labtest2-details p {
   font-size: 1.38vw;
   font-weight: 700;
 }
 
 /* Media Queries for smaller screens */
 @media screen and (max-width: 800px) {
-  .healthy-rice-section {
+  .labtest2-section {
     height: auto;
-    margin-top: 0;
-    margin-left: 16vw;
+    margin-top: 8vw;
+    padding: 5vw;
   }
 
-  .healthy-rice-heading {
+  .labtest2-heading {
     position: relative;
     text-align: center;
+    margin-right: -16vw;
   }
 
-  .healthy-rice-heading h1 {
+  .labtest2-heading h1 {
     font-size: 7vw;
     line-height: 8vw;
   }
-  .healthy-rice-heading p {
+
+  .labtest2-heading p {
     font-size: 3vw;
     line-height: 4vw;
   }
 
-  .heading-bold {
+  .labtest2-bold {
     font-size: 5vw;
   }
 
-  .healthy-rice-details {
+  .labtest2-details {
     font-size: 4vw;
     line-height: 5vw;
     width: 80vw;
   }
 
-  .healthy-rice-info-container {
+  .labtest2-info-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .healthy-rice-image {
+  .labtest2-image {
     width: 100%;
     max-width: 60vw;
     height: auto;
@@ -139,23 +139,33 @@
     padding: 3vw 0;
   }
 
-  .healthy-rice-details {
-    margin-left: 0;
+  .labtest2-image {
+    margin-left: 10vw;
+  }
+
+  .labtest2-details {
+    margin-left: 13vw;
     text-align: center;
     position: relative;
     order: 1;
     margin-top: 0;
-    margin-right: 21vw;
     width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
-  .healthy-rice-details h2 {
+  .labtest2-details h2 {
     font-size: 4vw;
     line-height: 5vw;
     width: 80vw;
   }
 
-  .healthy-rice-details p {
+  .labtest2-details p {
     font-size: 2vw;
+  }
+  .labtest2-image img {
+    margin-left: 8vw;
   }
 }

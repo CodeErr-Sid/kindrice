@@ -1,6 +1,6 @@
 .philosophy-section1 {
   width: 100%;
-  padding: 5vw 0; /* Adds padding for spacing */
+  padding: 0 0 5vw 0; /* Adds padding for spacing */
   display: flex;
   justify-content: center;
   align-items: center;
