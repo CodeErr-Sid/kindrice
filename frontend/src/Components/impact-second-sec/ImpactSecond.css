@@ -29,13 +29,13 @@
 }
 
 .ImpactSecond__content_up img {
-  width: 15vw; /* Adjusted image width */
-  height: auto; /* Maintain aspect ratio */
+  width: 15vw;
+  height: auto;
 }
 
 .ImpactSecond__content_up h1 {
   font-family: "Nunito", sans-serif;
-  font-size: 1.8vw; /* Adjusted font size */
+  font-size: 1.8vw;
   font-weight: 700;
   color: #006633;
 }
@@ -47,7 +47,7 @@
 }
 
 .ImpactSecond__content_down img {
-  width: 15vw; /* Adjusted image width */
+  width: 15vw;
   height: auto;
 }
 
@@ -58,8 +58,8 @@
 
 .ImpactSecond__content_right p {
   font-family: "Nunito", sans-serif;
-  font-size: 1.8vw; /* Adjusted font size */
-  line-height: 2.4vw; /* Adjusted line height */
+  font-size: 1.8vw;
+  line-height: 2.4vw;
   color: #006633;
   text-align: justify;
 }
@@ -68,8 +68,10 @@
   font-weight: 700;
 }
 
-/* Media Queries for Smaller Screens */
 @media (max-width: 768px) {
+  .ImpactSecond {
+    width: 85vw;
+  }
   .ImpactSecond__container {
     flex-direction: column;
     text-align: center;
@@ -79,30 +81,35 @@
   .ImpactSecond__content_right {
     flex: none;
     width: 100%;
-    margin-bottom: 4vw; /* Spacing between sections on small screens */
+    margin-bottom: 4vw;
   }
 
   .ImpactSecond__content_right {
-    width: 80vw !important; /* Set to 80vw on smaller screens */
+    width: 80vw !important;
   }
 
   .ImpactSecond__content_up img,
   .ImpactSecond__content_down img {
-    width: 40vw; /* Adjust image size for smaller screens */
+    width: 40vw;
   }
 
   .ImpactSecond__content_right p {
-    font-size: 3.6vw; /* Adjust font size for smaller screens */
-    line-height: 4.8vw; /* Adjust line height for smaller screens */
+    font-size: 3vw;
+    line-height: 4vw;
   }
 }
 
-/* Additional Media Queries if needed */
-
-/* Screens smaller than 576px */
 @media (max-width: 576px) {
   .ImpactSecond__content_right p {
-    font-size: 4vw; /* Adjust font size further for very small screens */
-    line-height: 5vw; /* Adjust line height further for very small screens */
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+  .ImpactSecond {
+    width: 90vw;
+    padding: 0;
+  }
+  .ImpactSecond__content_up img,
+  .ImpactSecond__content_down img {
+    width: 50vw;
   }
 }

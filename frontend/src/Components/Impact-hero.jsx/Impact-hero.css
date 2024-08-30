@@ -1,3 +1,4 @@
+/* Base Styles */
 .Impact-hero-section {
   width: 80vw;
   margin: 0 auto;
@@ -7,9 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 80vw; /* Limit max width */
+  max-width: 80vw;
   margin: 0 auto;
-  flex-direction: row; /* Ensure row layout by default */
 }
 
 .Impact-hero-image-left {
@@ -20,22 +20,20 @@
 
 .Impact-hero-image-left img {
   width: 39vw;
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 0.8vw; /* Adjusted border radius */
+  height: auto;
+  border-radius: 0.8vw;
   object-fit: cover;
-  object-position: center;
 }
 
 .Impact-hero-content-right {
   flex: 1;
-  padding: 4vw; /* Adjusted padding */
+  padding: 4vw;
   text-align: left;
   font-family: "Nunito", sans-serif;
   color: #333;
 }
 
 .Impact-hero-content-right h1 {
-  font-family: "Nunito", sans-serif;
   font-size: 3.5vw;
   font-weight: 500;
   line-height: 4.5vw;
@@ -46,16 +44,22 @@
   font-weight: 700;
 }
 
-/* Media Queries */
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .Impact-hero-section {
+    width: 90vw;
+  }
 
-/* Screens smaller than 1200px */
-@media (max-width: 1200px) {
+  .Impact-hero-image-left {
+    margin-bottom: 2vw;
+  }
+
   .Impact-hero-image-left img {
     width: 60vw;
   }
 
   .Impact-hero-content-right {
-    padding: 4vw;
+    padding: 2vw;
   }
 
   .Impact-hero-content-right h1 {
@@ -64,54 +68,66 @@
   }
 }
 
-/* Screens smaller than 992px */
-@media (max-width: 992px) {
-  .Impact-hero-image-left img {
-    width: 55vw;
-  }
-
-  .Impact-hero-content-right h1 {
-    font-size: 4vw;
-    line-height: 5vw;
-  }
-}
-
-/* Screens smaller than 768px */
 @media (max-width: 768px) {
-  .Impact-hero-image-left img {
-    width: 50vw;
+  .Impact-hero-section {
+    width: 95vw;
   }
+
   .Impact-hero-container {
     flex-direction: column;
+  }
+
+  .Impact-hero-image-left {
+    margin-bottom: 4vw;
+    z-index: -1;
+  }
+
+  .Impact-hero-image-left img {
+    width: 85vw;
+  }
+
+  .Impact-hero-content-right {
+    padding: 2vw 2vw 8rem 2vw;
+    margin: -5rem;
+  }
+
+  .Impact-hero-content-right h1 {
+    font-size: 5vw;
+    line-height: 6vw;
     text-align: center;
   }
+}
+
+@media (max-width: 480px) {
+  .Impact-hero-section {
+    width: 100vw;
+    padding: 0 2vw;
+  }
+
+  .Impact-hero-container {
+    flex-direction: column;
+  }
+
+  .Impact-hero-image-left {
+    padding-bottom: 5vw;
+    text-align: center;
+    z-index: -1;
+    margin: 0 auto;
+  }
+
+  .Impact-hero-image-left img {
+    width: 100vw;
+    transform: scale(1.7);
+    padding: 3rem 7vw 3rem 0;
+  }
+
+  .Impact-hero-content-right {
+    padding: 2vw 2vw 4rem 2vw;
+    margin: -2rem;
+  }
+
   .Impact-hero-content-right h1 {
     font-size: 6vw;
     line-height: 7vw;
-    text-align: center;
-  }
-}
-
-/* Screens smaller than 576px */
-@media (max-width: 576px) {
-  .Impact-hero-image-left img {
-    width: 60vw;
-  }
-
-  .Impact-hero-content-right h1 {
-    font-size: 6.5vw;
-    line-height: 7.5vw;
-  }
-}
-
-/* Screens smaller than 360px */
-@media (max-width: 360px) {
-  .Impact-hero-image-left img {
-    width: 70vw;
-  }
-
-  .Impact-hero-content-right h1 {
-    font-size: 7vw;
-    line-height: 8vw;
   }
 }
