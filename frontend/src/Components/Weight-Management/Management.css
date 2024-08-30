@@ -1,14 +1,14 @@
 .management-section {
   margin: 0;
-  padding: 5rem 0 0 0;
+  padding: 0;
   width: 100vw;
-  height: 70vh;
+  /* height: 70vh; */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   color: #006633;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .management-content {
@@ -75,19 +75,20 @@
   max-width: 40vw;
   margin-top: 2rem;
   margin-right: 6rem;
+  z-index: -1;
 }
 
 .management-image img {
   width: 100%;
   height: 40vw;
   object-fit: cover;
+  transform: scale(1.1);
 }
 
 .management-details p {
   font-size: 1.38vw;
   font-weight: 700;
 }
-
 /* Media Queries for smaller screens */
 @media screen and (max-width: 800px) {
   .management-section {
@@ -108,6 +109,74 @@
   .management-heading h1 {
     font-size: 7vw;
     line-height: 8vw;
+    width: 70vw;
+  }
+
+  .management-heading-bold {
+    font-size: 5vw;
+  }
+
+  .management-details {
+    width: 80vw;
+  }
+
+  .management-info-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .management-image {
+    width: 100%;
+    max-width: 60vw;
+    height: auto;
+    margin-top: 0;
+    order: -1;
+    margin: 3rem 0;
+  }
+  .management-image img {
+    height: 60vw;
+    margin-bottom: 2rem;
+    transform: scale(1);
+  }
+  .management-details {
+    margin-left: 0;
+    text-align: center;
+    position: relative;
+    order: 1;
+    margin-top: 0;
+  }
+
+  .management-details h2 {
+    font-size: 3.5vw;
+    line-height: 4.5vw;
+    width: 80vw;
+    z-index: 99;
+    margin-top: -19vw;
+  }
+}
+
+/* Media Queries for smaller screens */
+@media screen and (max-width: 530px) {
+  .management-section {
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .management-heading {
+    padding-left: 2rem;
+    position: relative;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: -10vw;
+    z-index: 99;
+  }
+
+  .management-heading h1 {
+    font-size: 9vw;
+    line-height: 10vw;
+    width: 70vw;
   }
 
   .management-heading-bold {
@@ -135,7 +204,8 @@
     margin: 3rem 0;
   }
   .management-image img {
-    height: 60vw;
+    height: 80vw;
+    transform: scale(1);
   }
   .management-details {
     margin-left: 0;
@@ -146,14 +216,10 @@
   }
 
   .management-details h2 {
-    font-size: 4vw;
-    line-height: 5vw;
+    font-size: 4.5vw;
+    line-height: 5.5vw;
     width: 80vw;
     z-index: 99;
     margin-top: -19vw;
-  }
-
-  .management-details p {
-    font-size: 2vw;
   }
 }

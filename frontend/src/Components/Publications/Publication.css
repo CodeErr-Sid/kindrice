@@ -161,3 +161,79 @@
     font-size: 3.5vw;
   }
 }
+/* Media Queries for Very Small Screens (Max-width: 480px) */
+@media (max-width: 480px) {
+  .publication {
+    padding: 3vw;
+    margin-top: 2vw;
+    text-align: center;
+  }
+
+  .publication-container {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+  }
+
+  .up-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-container {
+    width: 100%;
+  }
+
+  .left-container h1 {
+    font-size: 5vw;
+  }
+
+  .left-container p {
+    font-size: 4vw;
+  }
+
+  .right-container {
+    margin-top: 1.5vw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .previous-arrow,
+  .after-arrow {
+    width: 8vw;
+    height: 8vw;
+  }
+
+  .down-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 4vw;
+  }
+
+  .publication-card {
+    width: 90vw;
+    height: auto;
+    margin-bottom: 6vw;
+  }
+
+  .publication-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 1vw;
+  }
+
+  .info-content2 {
+    text-align: center;
+  }
+
+  .info-content2 p {
+    font-size: 4vw;
+    line-height: 5vw;
+    margin: 0;
+  }
+
+  .info-content2 .two {
+    font-size: 4vw;
+  }
+}

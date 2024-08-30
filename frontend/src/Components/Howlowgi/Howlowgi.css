@@ -1,3 +1,4 @@
+/* Default styles for larger screens (desktop) */
 .howlowgi-section {
   display: flex;
   justify-content: center;
@@ -43,23 +44,11 @@
   line-height: 2.4vw;
 }
 
-.howlowgi-second-para {
-  margin-bottom: 2vw;
-}
-
-.howlowgi-third-para span {
-  font-weight: 700;
-}
-
-.howlowgi-list {
-  padding-left: 2vw;
-  margin: 0;
-}
-
 .howlowgi-list {
   list-style: none;
   counter-reset: custom-counter;
   padding-left: 0;
+  margin: 0;
 }
 
 .howlowgi-list li {
@@ -78,72 +67,86 @@
   top: 0;
 }
 
-/* Media Queries */
+/* Styles for medium screens (tablets) */
+@media screen and (max-width: 1024px) {
+  .howlowgi-section {
+    padding: 3vw 0;
+    width: 80vw;
+  }
 
-@media (max-width: 1200px) {
   .howlowgi-title {
-    font-size: 2.4vw;
+    font-size: 3.5vw;
+    margin-bottom: 3vw;
   }
 
-  .howlowgi-first-para,
-  .howlowgi-second-para,
-  .howlowgi-third-para {
-    font-size: 2vw;
-    line-height: 2.5vw;
-  }
-
-  .howlowgi-second-para {
-    margin-bottom: 1.5vw;
-  }
-}
-
-@media (max-width: 992px) {
-  .howlowgi-title {
-    font-size: 4vw;
-  }
-
-  .howlowgi-first-para,
-  .howlowgi-second-para,
-  .howlowgi-third-para {
+  .howlowgi-first-para {
     font-size: 2.2vw;
-    line-height: 2.7vw;
-  }
-
-  .howlowgi-second-para {
-    margin-bottom: 1.5vw;
-  }
-}
-
-@media (max-width: 768px) {
-  .howlowgi-title {
-    font-size: 4vw;
-  }
-
-  .howlowgi-first-para,
-  .howlowgi-second-para,
-  .howlowgi-third-para {
-    font-size: 2.4vw;
     line-height: 3vw;
   }
 
-  .howlowgi-second-para {
-    margin-bottom: 1vw;
+  .howlowgi-second-para,
+  .howlowgi-third-para {
+    font-size: 2.2vw;
+    line-height: 3vw;
+  }
+
+  .howlowgi-list li::before {
+    font-size: 2.2vw;
   }
 }
 
-@media (max-width: 576px) {
-  .howlowgi-title {
-    font-size: 4vw;
+/* Styles for small screens (mobile) */
+@media screen and (max-width: 768px) {
+  .howlowgi-section {
+    padding: 4vw 0;
+    width: 80vw;
   }
 
-  .howlowgi-first-para,
+  .howlowgi-title {
+    font-size: 5vw;
+    margin-bottom: 3.5vw;
+  }
+
+  .howlowgi-first-para {
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+
   .howlowgi-second-para,
   .howlowgi-third-para {
-    font-size: 2.6vw;
-    line-height: 3.2vw;
+    font-size: 3vw;
+    line-height: 4vw;
   }
 
-  .howlowgi-second-para {
-    margin-bottom: 1vw;
+  .howlowgi-list li::before {
+    font-size: 3vw;
+  }
+}
+
+/* Styles for very small screens (mobile) */
+@media screen and (max-width: 480px) {
+  .howlowgi-section {
+    padding: 5vw 2vw;
+    width: 85vw;
+  }
+
+  .howlowgi-title {
+    font-size: 6vw;
+    margin-bottom: 4vw;
+  }
+
+  .howlowgi-first-para {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+
+  .howlowgi-second-para,
+  .howlowgi-third-para {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+
+  .howlowgi-list li::before {
+    font-size: 4vw;
   }
 }

@@ -10,7 +10,7 @@ export default function Whyitmatters() {
         <h1 className="whyitmatters-title">Why It Matters:</h1>
         <div className="whyitmatters-content">
           <div className="whyitmatters-paragraphs">
-            <img src={assets.sugarLevel} alt='' className="whyitmatters-image"/>
+            <img src={assets.sugarLevel} alt='' className="whyitmatters-image img-one"/>
             <p className='whyitmatters-first-para'><span>Blood sugar control:</span> Choosing low GI foods more often can help people with diabetes manage their blood sugar levels.</p>
           </div>
           <div className="whyitmatters-paragraphs">

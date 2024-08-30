@@ -38,32 +38,55 @@
   /* padding: 1vw 0; */
 }
 
-/* Media Queries */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .lowgi-hero-section {
+    padding: 5vw 0;
+  }
 
-/* For screens smaller than 1200px */
-@media (max-width: 1200px) {
   .lowgi-hero-title {
-    font-size: 5vw;
+    font-size: 3.5vw;
+  }
+
+  .lowgi-img-container img {
+    width: 60vw;
+    height: 22vw;
   }
 }
 
-/* For screens smaller than 992px */
-@media (max-width: 992px) {
-  .lowgi-hero-title {
-    font-size: 5.5vw;
+@media screen and (min-width: 530px) and (max-width: 800px) {
+  .lowgi-hero-section {
+    padding: 6vw 0;
   }
-}
 
-/* For screens smaller than 768px */
-@media (max-width: 768px) {
   .lowgi-hero-title {
     font-size: 6vw;
   }
+  .lowgi-img-container {
+    width: 100%;
+    z-index: -1;
+  }
+  .lowgi-img-container img {
+    width: 100%;
+    height: 80vw;
+    object-fit: cover;
+    transform: scale(1.2);
+  }
 }
 
-/* For screens smaller than 576px */
-@media (max-width: 576px) {
+@media screen and (max-width: 529px) {
   .lowgi-hero-title {
     font-size: 7vw;
+  }
+
+  .lowgi-img-container {
+    width: 100%;
+    z-index: -1;
+  }
+
+  .lowgi-img-container img {
+    width: 100%;
+    height: 80vw;
+    object-fit: cover;
+    transform: scale(1.3);
   }
 }

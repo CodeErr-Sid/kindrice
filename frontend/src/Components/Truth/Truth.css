@@ -1,3 +1,4 @@
+/* General Styles (For screens wider than 1200px) */
 .truth-section {
   padding: 1vw 0;
   display: flex;
@@ -13,7 +14,6 @@
   justify-content: center;
 }
 
-/* Upper Section: Image and Text */
 .truth-up-container {
   width: 100%;
   display: flex;
@@ -35,7 +35,6 @@
   color: #006633;
 }
 
-/* Lower Section: Text Paragraphs */
 .truth-down-container {
   width: 100%;
   text-align: center;
@@ -75,65 +74,88 @@
   color: #006633;
 }
 
+/* Hover Effect */
 .left-image-con img:hover {
   transform: scale(1.03); /* Slight zoom on hover */
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .truth-container {
-    width: 90vw; /* Increase container width on smaller screens */
-  }
-
+/* Media Queries for screens between 800px and 1200px */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
   .truth-up-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .right-content-container-sec {
-    padding-left: 0;
-  }
-
-  .right-content-container-sec h1 {
-    font-size: 5vw;
+    gap: 1.5vw;
   }
 
   .right-content-container-sec p {
-    font-size: 4vw;
+    font-size: 3vw;
+  }
+
+  .truth-up img {
+    width: 6vw;
+  }
+
+  .truth-up h1 {
+    font-size: 5vw;
+    line-height: 6vw;
   }
 
   .truth-down-container p {
-    font-size: 4vw;
-    width: 80vw;
-    margin: 0 auto;
-  }
-  .truth-up img {
-    width: 6vw; /* Adjusted to vw */
-    height: auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 3vw;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .truth-container {
-    width: 95vw; /* Maximize container width on very small screens */
-  }
-
-  .right-content-container-sec h1 {
-    font-size: 4.5vw;
+/* Media Queries for screens between 530px and 800px */
+@media screen and (min-width: 530px) and (max-width: 800px) {
+  .truth-up-container {
+    gap: 1vw;
   }
 
   .right-content-container-sec p {
     font-size: 3.5vw;
   }
 
-  .truth-down-container p {
-    font-size: 3vw;
-  }
   .truth-up img {
-    width: 7vw; /* Adjusted to vw */
-    height: auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 8vw;
+  }
+
+  .truth-up h1 {
+    font-size: 6vw;
+    line-height: 7vw;
+  }
+
+  .truth-down-container p {
+    font-size: 3.5vw;
+  }
+}
+
+/* Media Queries for screens smaller than 530px */
+@media screen and (max-width: 530px) {
+  .truth-section {
+    padding: 3vw 0;
+  }
+
+  .truth-container {
+    width: 80vw;
+  }
+
+  .truth-up-container {
+    gap: 0.5vw;
+    flex-direction: column;
+  }
+
+  .right-content-container-sec p {
+    font-size: 4.5vw;
+  }
+
+  .truth-up img {
+    width: 10vw;
+  }
+
+  .truth-up h1 {
+    font-size: 7vw;
+    line-height: 8vw;
+  }
+
+  .truth-down-container p {
+    font-size: 4.5vw;
   }
 }

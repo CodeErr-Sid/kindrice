@@ -28,9 +28,7 @@ export default function Herosection() {
           </div>
         </div>
       </div>
-      <div className='second-section'>
-        <img src={assets.Home2} alt='home2' />
-      </div>
+  
     </section>
   );
 }

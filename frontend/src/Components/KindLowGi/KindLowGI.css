@@ -1,7 +1,5 @@
+/* General Styles for Large Screens (width greater than 1200px) */
 .kind-lowgi-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 5vw;
 }
 
@@ -50,4 +48,118 @@
 
 .down-low-gi p:hover {
   color: #18721e;
+}
+
+/* Media Queries for screens between 800px and 1200px */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  .kind-lowgi-section {
+    padding: 4vw;
+  }
+
+  .kind-lowgi-container {
+    max-width: 90vw;
+  }
+
+  .kind-lowgi-left img {
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .kind-lowgi-right {
+    padding: 3vw;
+  }
+
+  .up-low-gi h2 {
+    font-size: 6vw;
+  }
+
+  .up-low-gi p {
+    font-size: 3vw;
+  }
+
+  .down-low-gi h2 {
+    font-size: 3vw;
+  }
+
+  .down-low-gi p {
+    font-size: 2vw;
+  }
+}
+
+/* Media Queries for screens between 530px and 800px */
+@media screen and (min-width: 530px) and (max-width: 800px) {
+  .kind-lowgi-section {
+    padding: 3vw;
+  }
+
+  .kind-lowgi-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .kind-lowgi-left img {
+    width: 50vw;
+    height: auto;
+  }
+
+  .kind-lowgi-right {
+    padding: 2vw;
+    text-align: center;
+  }
+
+  .up-low-gi h2 {
+    font-size: 7vw;
+  }
+
+  .up-low-gi p {
+    font-size: 3.5vw;
+  }
+
+  .down-low-gi h2 {
+    font-size: 3.5vw;
+  }
+
+  .down-low-gi p {
+    font-size: 2.5vw;
+  }
+}
+
+/* Media Queries for screens smaller than 530px */
+@media screen and (max-width: 530px) {
+  .kind-lowgi-section {
+    padding: 2vw;
+  }
+
+  .kind-lowgi-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .kind-lowgi-left img {
+    width: 70vw;
+    height: auto;
+  }
+
+  .kind-lowgi-right {
+    padding: 1.5vw;
+    text-align: center;
+  }
+
+  .up-low-gi h2 {
+    font-size: 8vw;
+  }
+
+  .up-low-gi p {
+    font-size: 4vw;
+  }
+
+  .down-low-gi h2 {
+    font-size: 4vw;
+  }
+
+  .down-low-gi p {
+    font-size: 3vw;
+  }
 }

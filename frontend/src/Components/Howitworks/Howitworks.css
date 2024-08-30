@@ -1,9 +1,10 @@
+/* Default styles for larger screens (desktop) */
 .howitworks-section {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2vw 5vw;
-  width: 80vw; /* Set the width to 80vw */
+  width: 80vw;
   margin: 0 auto;
 }
 
@@ -14,7 +15,7 @@
 }
 
 .how-container h1 {
-  font-size: 2.8vw; /* Font size for desktop */
+  font-size: 2.8vw;
   margin-bottom: 2vw;
   font-weight: 700;
 }
@@ -23,7 +24,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   position: relative;
 }
 
@@ -41,7 +42,7 @@
 }
 
 .first-container img {
-  width: 5vw; /* Adjusted size */
+  width: 5vw;
   height: auto;
   border-radius: 0.5vw;
   object-fit: cover;
@@ -50,11 +51,12 @@
 .first-para,
 .second-para,
 .third-para {
-  font-size: 1.8vw; /* Font size for desktop */
-  line-height: 2.4vw; /* Line height for desktop */
+  font-size: 1.8vw;
+  line-height: 2.4vw;
   margin: 1vw 0;
 }
 
+/* Highlighted text styles */
 .first-para span {
   font-weight: 700;
   color: #006633;
@@ -70,80 +72,94 @@
   font-weight: 700;
 }
 
-/* Media Queries */
+/* Styles for medium screens (tablets) */
+@media screen and (max-width: 1024px) {
+  .howitworks-section {
+    padding: 3vw 4vw;
+    width: 85vw;
+  }
 
-/* For screens smaller than 1200px */
-@media (max-width: 1200px) {
   .how-container h1 {
-    font-size: 2.4vw; /* Adjusted font size */
+    font-size: 3.5vw;
+    margin-bottom: 2.5vw;
+  }
+
+  .first-container img {
+    width: 7vw;
   }
 
   .first-para,
   .second-para,
   .third-para {
-    font-size: 2vw; /* Larger font size for tablet */
-    line-height: 2.7vw; /* Adjusted line height */
-    margin: 1vw 0;
-  }
-
-  .first-container img {
-    width: 6vw;
+    font-size: 2.2vw;
+    line-height: 3vw;
+    margin: 1.5vw 0;
   }
 }
 
-/* For screens smaller than 992px */
-@media (max-width: 992px) {
+/* Styles for small screens (mobile) */
+@media screen and (max-width: 768px) {
+  .howitworks-section {
+    padding: 4vw 3vw;
+    width: 85vw;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .how-container h1 {
-    font-size: 3.5vw; /* Adjusted font size */
+    font-size: 5vw;
+    margin-bottom: 3vw;
+  }
+
+  /* .how-it-works {
+    flex-direction: column;
+    align-items: flex-start;
+  } */
+
+  .first-container {
+    padding-right: 0;
+    margin-bottom: 2vw;
+    align-items: center;
+  }
+
+  .first-container img {
+    width: 13vw;
+    padding-right: 1vw;
+    margin-top: 1vw;
   }
 
   .first-para,
   .second-para,
   .third-para {
-    font-size: 2.2vw; /* Larger font size for tablets and small screens */
-    line-height: 2.8vw; /* Adjusted line height */
-    margin: 1vw 0;
-  }
-
-  .first-container img {
-    width: 6vw;
+    font-size: 3vw;
+    line-height: 4vw;
+    margin: 2vw 0;
   }
 }
 
-/* For screens smaller than 768px */
-@media (max-width: 768px) {
+/* Styles for very small screens (mobile) */
+@media screen and (max-width: 480px) {
+  .howitworks-section {
+    padding: 5vw 2vw;
+    width: 85vw;
+  }
+
   .how-container h1 {
-    font-size: 3.5vw; /* Adjusted font size */
+    font-size: 6vw;
+    margin-bottom: 4vw;
+  }
+
+  .first-container img {
+    width: 15vw;
+    padding-right: 1vw;
+    margin-top: 1vw;
   }
 
   .first-para,
   .second-para,
   .third-para {
-    font-size: 2.4vw; /* Larger font size for mobile */
-    line-height: 3vw; /* Adjusted line height */
-    margin: 1vw 0;
-  }
-
-  .first-container img {
-    width: 6vw;
-  }
-}
-
-/* For screens smaller than 576px */
-@media (max-width: 576px) {
-  .how-container h1 {
-    font-size: 3.5vw; /* Adjusted font size */
-  }
-
-  .first-para,
-  .second-para,
-  .third-para {
-    font-size: 2.6vw; /* Larger font size for mobile */
-    line-height: 3.2vw; /* Adjusted line height */
-    margin: 1vw 0;
-  }
-
-  .first-container img {
-    width: 6vw;
+    font-size: 4vw;
+    line-height: 5vw;
+    margin: 3vw 0;
   }
 }

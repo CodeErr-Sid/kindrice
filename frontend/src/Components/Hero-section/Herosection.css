@@ -44,23 +44,55 @@
 
 @media (max-width: 1030px) {
   .hero-section {
-    height: 42.3vw;
+    height: 62.3vw;
+  }
+
+  .content-overlay .btn,
+  .content-overlay p {
+    font-size: 3vw;
+    line-height: 4vw;
   }
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    height: 42.3vw;
+    height: 52.3vw;
+  }
+  .assets img {
+    height: 56vw;
+    object-fit: cover;
+  }
+  .content-overlay .btn,
+  .content-overlay p {
+    font-size: 3.5vw;
+    line-height: 4.5vw;
+  }
+  .content-overlay {
+    position: absolute;
+    top: 53%;
   }
 }
 
 @media (max-width: 480px) {
   .hero-section {
-    height: 42.3vw;
+    height: 52.3vw;
+    background-color: #006633;
   }
-}
-
-.second-section img {
-  width: 100%;
-  height: auto;
+  .assets {
+    width: 100vw;
+    height: auto;
+  }
+  .assets img {
+    height: 45vw;
+    object-fit: cover;
+  }
+  .content-overlay {
+    position: absolute;
+    top: 62%;
+  }
+  .content-overlay .btn {
+    color: #006633;
+    font-weight: 700;
+    margin-top: 0.5rem;
+  }
 }

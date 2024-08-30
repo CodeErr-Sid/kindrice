@@ -49,7 +49,7 @@ export default function Navbar() {
         <div className="overlay-content">
           <FaTimes className='close-icon' onClick={toggleMenu} /> {/* Close icon */}
           <ul>
-          <li><Link to='/home2' className='link' onClick={toggleMenu}>Home</Link></li>
+          <li><Link to='/' className='link' onClick={toggleMenu}>Home</Link></li>
             <li><Link to='/shop' className='link' onClick={toggleMenu}>Shop</Link></li>
             <li><Link to='/low-gi' className='link' onClick={toggleMenu}>Low GI</Link></li>
             <li><Link to='/impact' className='link' onClick={toggleMenu}>Impact</Link></li>

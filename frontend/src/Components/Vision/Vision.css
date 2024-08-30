@@ -1,3 +1,4 @@
+/* Base Styles */
 .vision-sec {
   width: 80vw;
   padding: 4vw 2vw;
@@ -98,32 +99,26 @@
   background-color: #016533;
   object-fit: cover;
 }
-@media (max-width: 768px) {
+
+/* Media Queries */
+@media (max-width: 1024px) {
   .vision-sec {
-    width: 80vw;
+    width: 90vw;
+    padding: 4vw 3vw;
   }
 
   .vision-container {
-    max-width: 80vw;
-    padding: 2vw;
-  }
-
-  .vision-up {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .logo-img img {
-    width: 15vw;
+    padding: 3vw;
   }
 
   .vision-text h2 {
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
 
   .vision-mid p {
     font-size: 2vw;
-    line-height: 2.8vw;
+    line-height: 2.6vw;
+    max-width: 90%;
   }
 
   .img-contents img {
@@ -132,31 +127,28 @@
   }
 
   .img-contents p {
-    font-size: 2vw;
-    line-height: 2.8vw;
+    font-size: 1.5vw;
+    line-height: 2.2vw;
+  }
+
+  .line {
+    width: 5vw;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .vision-sec {
-    width: 80vw;
-  }
-
-  .vision-container {
-    max-width: 80vw;
-  }
-
-  .logo-img img {
-    width: 20vw;
+    width: 95vw;
+    padding: 5vw 4vw;
   }
 
   .vision-text h2 {
-    font-size: 3vw;
+    font-size: 4.5vw;
   }
 
   .vision-mid p {
-    font-size: 2.5vw;
-    line-height: 3vw;
+    font-size: 3vw;
+    line-height: 4vw;
   }
 
   .img-contents img {
@@ -165,7 +157,69 @@
   }
 
   .img-contents p {
+    font-size: 1.8vw;
+    line-height: 2.5vw;
+  }
+
+  .line {
+    width: 6vw;
+  }
+  .logo-img img {
+    width: 14vw;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-sec {
+    width: 100vw;
+    padding: 6vw 3vw;
+  }
+
+  /* .vision-up {
+    flex-direction: column;
+    align-items: center;
+  } */
+
+  .logo-img img {
+    width: 25vw;
+    max-width: 100px;
+  }
+
+  .vision-text {
+    margin-left: 0;
+  }
+
+  .vision-text h2 {
+    font-size: 6vw;
+  }
+
+  .vision-mid {
+    width: 90vw;
+  }
+
+  .vision-mid p {
+    font-size: 4vw;
+    line-height: 5vw;
+  }
+
+  .vision-down {
+    gap: 4vw;
+  }
+  .img-contents {
+    gap: 3vw;
+  }
+  .img-contents img {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .img-contents p {
     font-size: 2.5vw;
     line-height: 3vw;
+  }
+
+  .line {
+    width: 8vw;
   }
 }

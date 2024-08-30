@@ -40,42 +40,50 @@
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .tagline {
-    width: 90vw;
-    padding: 6vw 2vw;
-  }
-
-  .tagline-contents {
-    max-width: 90vw;
+    width: 85vw;
+    padding: 3vw 2vw;
   }
 
   .tagline-title {
-    font-size: 5vw;
+    font-size: 2.5vw;
   }
 
   .tagline p {
-    font-size: 3.5vw;
-    line-height: 4vw;
+    font-size: 2vw;
+    line-height: 2.5vw;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .tagline {
-    width: 95vw;
+    width: 90vw;
     padding: 4vw 2vw;
   }
 
-  .tagline-contents {
-    max-width: 95vw;
-  }
-
   .tagline-title {
-    font-size: 4vw;
+    font-size: 2.5rem;
   }
 
   .tagline p {
     font-size: 3vw;
-    line-height: 4vw;
+    line-height: 4.2vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .tagline {
+    width: 95vw;
+    padding: 5vw 2vw;
+  }
+
+  .tagline-title {
+    font-size: 2.3rem;
+  }
+
+  .tagline p {
+    font-size: 1.2rem;
+    line-height: 2.2rem;
   }
 }
