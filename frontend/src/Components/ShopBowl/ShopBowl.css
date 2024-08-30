@@ -1,0 +1,18 @@
+.shopbowl-heading {
+    font-family: Nunito;
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 112.5px;
+    text-align: left;
+}
+
+.shop-bowl-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
+    margin: 10rem 0;
+    flex-wrap: wrap;
+}
+

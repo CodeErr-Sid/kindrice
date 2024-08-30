@@ -1,0 +1,46 @@
+.banner-outer-section {
+    width: 100%;
+    min-height: 12%;
+    background-color: #016533;
+    padding: 5rem 1rem;
+}
+
+.banner-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 96%;
+    margin: 0 auto;
+}
+
+.banner-name {
+    font-family: Nunito;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 52.5px;
+    text-align: left;
+    color: white;
+}
+
+.banner-address {
+    color: black;
+    padding: .2rem 2rem;
+    background-color: white;
+    border-radius: 12px;
+    font-family: Nunito;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 32.5px;
+    text-align: left;
+
+}
+
+@media screen and (0<= width <= 768px) {
+    .banner-container{
+        align-items: center;
+        justify-content: center;
+    }
+    .banner-name{
+        text-align: center;
+    }
+}
