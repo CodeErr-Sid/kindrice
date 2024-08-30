@@ -53,6 +53,8 @@
   .contact-left-container img {
     max-width: 90vw; /* Adjust image width for smaller screens */
     max-height: 50vw; /* Adjust max-height */
+    transform: scale(1.2);
+    z-index: -1;
   }
 
   .contact-right-container {

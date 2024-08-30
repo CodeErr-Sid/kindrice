@@ -12,7 +12,7 @@
 }
 
 .return-policy-left {
-  flex: 50vw;
+  flex: 50%;
 }
 
 .return-policy-left img {
@@ -21,7 +21,7 @@
 }
 
 .return-policy-right {
-  flex: 40vw;
+  flex: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,4 +35,56 @@
   line-height: 1.2;
   color: #016533;
   text-align: left;
+}
+
+/* For tablets and smaller screens (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .return-policy-container {
+    width: 95vw; /* Slightly adjust width for better fit */
+  }
+
+  .return-policy-left,
+  .return-policy-right {
+    flex: 1;
+  }
+
+  .return-policy-right h2 {
+    font-size: 3.5vw;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .return-policy-container {
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  .return-policy-left,
+  .return-policy-right {
+    flex: 1;
+    padding: 1.5vw;
+  }
+
+  .return-policy-right h2 {
+    font-size: 4vw;
+    text-align: center;
+  }
+}
+
+/* For small mobile screens (max-width: 550px) */
+@media screen and (max-width: 550px) {
+  .return-policy-left {
+    display: none;
+  }
+
+  .return-policy-right {
+    width: 100vw;
+    padding: 2vw;
+  }
+
+  .return-policy-right h2 {
+    font-size: 5vw; /* Larger font size for readability on small screens */
+    text-align: center;
+  }
 }
