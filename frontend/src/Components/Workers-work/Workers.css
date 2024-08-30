@@ -74,11 +74,10 @@
   }
 
   .workers-right p {
-    font-size: 2.5vw;
-    line-height: 3.3vw;
+    font-size: 2.2vw;
+    line-height: 3.2vw;
   }
 }
-
 /* Mobile Styles (already provided) */
 @media (max-width: 530px) {
   .workers-section {
@@ -95,12 +94,13 @@
   .workers-left {
     margin-right: 0;
     margin-bottom: 4vw;
-    max-width: 80vw;
+    max-width: 90vw;
   }
 
   .workers-left img {
-    width: 80vw;
-    height: 50vw;
+    width: 80vw; /* Reduced width to avoid taking up too much space */
+    height: auto; /* Ensure height scales proportionally */
+    max-height: 50vw; /* Maintain a reasonable height */
     object-fit: cover;
     object-position: center;
   }
@@ -115,8 +115,8 @@
   }
 
   .workers-right p {
-    font-size: 3vw;
-    line-height: 1.8;
+    font-size: 4vw; /* Increased font size for better readability */
+    line-height: 5vw;
     text-align: center; /* Center align text for better readability */
   }
 

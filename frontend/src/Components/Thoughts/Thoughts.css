@@ -1,12 +1,11 @@
-/* Thoughts.css */
-
+/* Base Styles */
 .his-thoughts {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5vw 5vw;
   width: 100vw;
-  height: 45.33vw;
+  height: auto;
   margin: 1rem 0;
 }
 
@@ -55,67 +54,61 @@
   color: #000;
 }
 
-/* Tablet Styles */
-@media (max-width: 1024px) and (min-width: 768px) {
+/* Media Queries */
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .section-content-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    gap: 4vw;
+  }
+  .left-sec {
+    margin-right: 0;
+    max-width: 100%;
+    margin-bottom: 3vw;
+  }
+
+  .left-sec img {
+    width: 100%;
+    height: 55vw;
+  }
+
   .right-sec h1 {
-    font-size: 2.5vw;
-    line-height: 1.4;
-    margin-bottom: 1.5vw;
-    max-width: 80vw;
+    font-size: 3.5vw;
+    margin-bottom: 4.5vw;
   }
 
   .right-sec p {
-    font-size: 2vw; /* Adjust font-size for tablet screens */
-    line-height: 2.5vw;
-    text-align: center; /* Center align text for better readability */
+    font-size: 2.5vw;
+    line-height: 3.5vw;
   }
 }
 
-/* Mobile Styles */
-@media (max-width: 630px) {
-  .his-thoughts {
-    flex-direction: column;
-    padding: 3vw 5vw;
-    height: auto;
-  }
-
+/* For screens smaller than 530px */
+@media (max-width: 530px) {
   .section-content-container {
+    width: 100%;
+    padding: 5vw;
     flex-direction: column;
-    align-items: center;
-  }
-
-  .left-sec {
-    margin-right: 0;
-    margin-bottom: 4vw;
-    max-width: 80vw;
+    text-align: center;
   }
 
   .left-sec img {
     width: 80vw;
-    height: 70vw;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .right-sec {
-    text-align: center;
-    max-width: 80vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    height: 50vw;
   }
 
   .right-sec h1 {
-    font-size: 4vw;
-    line-height: 1.3;
-    margin-bottom: 2vw;
-    max-width: 70vw;
+    font-size: 5vw;
+    margin-bottom: 3vw;
   }
 
   .right-sec p {
-    font-size: 3vw; /* Adjust font-size for smaller screens */
-    line-height: 1.8;
-    text-align: center; /* Center align text for better readability */
+    font-size: 4vw;
+    line-height: 5.5vw;
+    text-align: center;
   }
 }

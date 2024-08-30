@@ -1,5 +1,3 @@
-/* Moment.css */
-
 /* Default Styles */
 .moment-section {
   position: relative;
@@ -69,60 +67,50 @@
   text-align: center;
 }
 
-/* Tablet Styles */
-@media (max-width: 1024px) and (min-width: 768px) {
-  .moment-section {
-    height: 40vw;
-  }
+/* Media Queries */
 
-  .moment-overlay-text {
-    bottom: 4vw;
-    left: 4vw;
-    right: 4vw;
-    padding: 1.5vw;
-  }
-
-  .moment-overlay-text p {
-    font-size: 3vw;
-    line-height: 4vw;
-  }
-
-  .info-content {
-    width: 80vw;
-    padding: 2vw 0;
-  }
-
-  .info-content p {
-    font-size: 2vw;
-    line-height: 3.9vw;
-  }
-}
-
-/* Mobile Styles */
+/* For screens 768px and below */
 @media (max-width: 768px) {
   .moment-section {
     height: 40vw;
   }
 
-  .moment-overlay-text {
-    bottom: 4vw;
-    left: 4vw;
-    right: 4vw;
-    padding: 1.5vw;
-  }
-
   .moment-overlay-text p {
-    font-size: 3.2vw;
-    line-height: 4vw;
-  }
-
-  .info-content {
-    width: 80vw;
-    padding: 2vw 0;
+    font-size: 2.5vw;
+    line-height: 3.5vw;
   }
 
   .info-content p {
-    font-size: 3vw;
-    line-height: 4.9vw;
+    font-size: 2.2vw;
+    line-height: 3.2vw;
+  }
+}
+
+/* For screens 530px and below */
+@media (max-width: 530px) {
+  .moment-section {
+    height: 60vw;
+  }
+
+  .moment-overlay-text {
+    bottom: 3vw;
+    left: 3vw;
+    right: 3vw;
+    padding: 4vw;
+  }
+
+  .moment-overlay-text p {
+    font-size: 4vw;
+    line-height: 5.5vw;
+  }
+
+  .info-content {
+    width: 90vw;
+  }
+
+  .info-content p {
+    font-size: 3.5vw;
+    line-height: 5vw;
+    padding: 4vw 0;
   }
 }
