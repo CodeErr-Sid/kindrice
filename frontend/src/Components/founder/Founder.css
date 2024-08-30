@@ -2,7 +2,7 @@
 
 /* Default Styles (for larger screens) */
 .founder-sec {
-  margin: -15vw;
+  margin: 0;
   padding: 0;
   position: relative;
 }
@@ -26,103 +26,88 @@
 
 .founder-container .founder-details {
   font-weight: 700;
-  padding-top: 3vw;
+  padding-top: 1vw;
+  color: #016533;
 }
 
 .know {
-  width: 20.94vw;
-  height: 8.33vh;
-  padding: 0.73vh 3.48vw;
-  gap: 0.52vw;
-  border-radius: 0.63vw;
+  width: 20vw;
+  height: auto;
+  padding: 1vw 2vw;
+  border-radius: 0.5vw;
   cursor: pointer;
   background-color: #006633;
   font-family: "Nunito", sans-serif;
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-weight: 600;
-  line-height: 1.88vw;
+  line-height: 2vw;
   text-align: center;
   color: white;
-  margin-top: 4vw;
-  margin-bottom: 15vw;
+  margin-top: 2vw;
+  margin-bottom: 5vw;
 }
-.founder-details {
-  color: #016533;
-}
+
 /* Media Queries for Responsive Design */
 
-/* For medium screens (max-width: 1024px) */
+/* For tablets and medium screens (max-width: 1024px) */
 @media screen and (max-width: 1024px) {
   .founder-container {
-    width: 80vw;
-    padding: 2.5rem 0 0 0;
+    width: 70vw;
   }
 
   .founder-container p {
     font-size: 2.5vw;
-    line-height: 4.5vw;
-  }
-
-  .founder-container .founder-details {
-    padding-top: 3vw;
+    line-height: 4vw;
   }
 
   .know {
-    width: 26vw;
-    height: 8vh;
-    font-size: 2vw;
-    line-height: 2.5vw;
-    padding: 1vh 2vw;
+    width: 25vw;
+    height: auto;
+    font-size: 1.6vw;
+    line-height: 2.2vw;
+    padding: 1.2vw 2.5vw;
   }
 }
 
 /* For small screens (max-width: 780px) */
 @media screen and (max-width: 780px) {
   .founder-container {
-    width: 70vw;
-    margin-top: 8vw;
+    width: 85vw;
+    margin-top: 5vw;
   }
 
   .founder-container p {
-    font-size: 3vw;
+    font-size: 4vw;
     line-height: 5vw;
-  }
-
-  .founder-container .founder-details {
-    padding-top: 2.5vw;
   }
 
   .know {
     width: 30vw;
-    height: 7vh;
-    font-size: 2vw;
-    line-height: 3vw;
-    padding: 1.5vh 2.5vw;
+    height: auto;
+    font-size: 3.5vw;
+    line-height: 4.5vw;
+    padding: 1.5vw 3vw;
   }
 }
 
 /* For extra small screens (max-width: 480px) */
 @media screen and (max-width: 480px) {
   .founder-container {
-    width: 80vw;
+    width: 90vw;
+    margin-top: 2vw;
     padding: 1.5rem 0 0 0;
-    margin-top: 20vw;
   }
 
   .founder-container p {
     font-size: 4vw;
-    line-height: 6vw;
-  }
-
-  .founder-container .founder-details {
-    padding-top: 2vw;
+    line-height: 5vw;
   }
 
   .know {
-    width: 40vw;
-    height: 6vh;
-    font-size: 3vw;
+    width: 35vw;
+    height: auto;
+    font-size: 3.5vw;
     line-height: 4vw;
-    padding: 2vh 2vw;
+    padding: 2vw 3vw;
   }
 }

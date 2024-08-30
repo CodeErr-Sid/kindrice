@@ -1,5 +1,4 @@
-/* AboutHero.css */
-
+/* Base Styles */
 .about-us {
   position: relative;
   overflow: hidden;
@@ -22,11 +21,10 @@
   object-fit: cover;
   opacity: 1;
 }
-/* AboutHero.css */
 
 .about-section-section {
   width: 100vw;
-  height: 30.33vw;
+  height: 33.3vw; /* Increased height for larger image */
   position: relative;
   overflow: hidden;
 }
@@ -39,30 +37,78 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.2;
+  opacity: 0.3;
   z-index: -1;
 }
+
 .about-overlay-text {
   position: absolute;
-  top: 6vw;
+  top: 12vw;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-.about-overlay-text {
-  font-size: 4vw;
-  font-weight: 700;
-  line-height: 5.43vw;
   text-align: center;
   color: #006633;
-  margin-left: 9vw;
+  margin-left: 10vw;
   max-width: 80vw;
 }
+
+.about-overlay-text h1 {
+  font-size: 4vw;
+  font-weight: 700;
+  line-height: 5vw;
+}
+
 .border-bottom {
   width: 6vw;
   height: auto;
   border-bottom: 3px solid #006633;
-  padding-top: 5vw;
+  margin-top: 2vw;
+}
+
+@media (max-width: 768px) {
+  .about-section-section {
+    height: 40vw;
+  }
+
+  .about-overlay-text h1 {
+    font-size: 5vw;
+    line-height: 6vw;
+  }
+  .about-overlay-text {
+    top: 12vw;
+    left: 0;
+  }
+  .border-bottom {
+    width: 8vw;
+    margin-top: 3vw;
+  }
+}
+
+/* For screens smaller than 480px */
+@media (max-width: 480px) {
+  .about-section-section {
+    height: 50vw;
+  }
+
+  .about-overlay-text {
+    top: 16vw;
+    margin-left: 5vw;
+    max-width: 90vw;
+  }
+
+  .about-overlay-text h1 {
+    font-size: 5vw;
+    line-height: 6vw;
+  }
+
+  .border-bottom {
+    width: 10vw;
+    margin-top: 4vw;
+  }
+  .inner-container {
+    padding-bottom: 1.5rem;
+  }
 }
