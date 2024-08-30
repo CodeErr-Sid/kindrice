@@ -282,7 +282,8 @@
   }
 
   .footer-text p {
-    display: none;
+    font-size: 2vw;
+    background-color: #006633;
   }
   .footer-text2 p {
     display: block;
@@ -291,5 +292,17 @@
     max-width: 40vw;
     height: auto;
     margin: 2vw 0;
+  }
+  .footer__info .create-change {
+    display: none;
+  }
+  .social-media {
+    display: none;
+  }
+  .footer__content_right {
+    display: none;
+  }
+  .content-up {
+    margin-bottom: 0;
   }
 }
