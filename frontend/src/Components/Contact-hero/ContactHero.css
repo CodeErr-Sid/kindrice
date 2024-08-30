@@ -21,8 +21,10 @@
 }
 
 .contact-left-container img {
-  width: 40.78vw;
-  height: 45.3vw;
+  width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 40vw; /* Set max-width to prevent overflow */
+  max-height: 50vw; /* Adjust max-height to maintain aspect ratio */
   object-fit: cover;
 }
 
@@ -45,16 +47,17 @@
 @media (max-width: 768px) {
   .contact-container {
     flex-direction: column;
+    align-items: center;
   }
 
   .contact-left-container img {
-    width: 50.78vw;
-    height: 55.3vw;
-    object-fit: cover;
+    max-width: 90vw; /* Adjust image width for smaller screens */
+    max-height: 50vw; /* Adjust max-height */
   }
 
   .contact-right-container {
     padding: 4vw;
+    text-align: center;
   }
 
   .contact-right-container h1 {
@@ -65,12 +68,21 @@
 @media (max-width: 480px) {
   .contact-container {
     flex-direction: column;
+    align-items: center;
   }
 
   .contact-left-container img {
     border-radius: 1vw 1vw 0 0;
+    max-width: 100vw; /* Full width on very small screens */
+    max-height: 50vw; /* Adjust max-height to fit screen */
+    transform: scale(1.5);
+    z-index: -1;
+    margin-top: 3rem;
   }
-
+  .contact-right-container {
+    z-index: 98;
+    padding: 8vw 0;
+  }
   .contact-right-container h1 {
     font-size: 8vw;
   }

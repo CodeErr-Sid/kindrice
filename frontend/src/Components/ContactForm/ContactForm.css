@@ -261,27 +261,31 @@
   .contact-form-right {
     width: 80vw;
     margin-top: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
   .contact-form-right h1,
   .contact-form-right p {
     text-align: center;
-    font-size: 3vw;
-    line-height: 4.5vw;
+    font-size: 5vw;
+    line-height: 6vw;
   }
   .contact-form-right p {
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
   .contact-form-right input,
   .contact-form-right textarea {
-    font-size: 3vw;
+    font-size: 4vw;
   }
   .contact-form-right label {
-    font-size: 3vw;
+    font-size: 4vw;
   }
   .contact-form-right h2 {
-    font-size: 3.5vw;
+    font-size: 4.5vw;
   }
   .contact-form-right button[type="submit"] {
-    font-size: 3vw;
+    font-size: 4vw;
   }
 }
