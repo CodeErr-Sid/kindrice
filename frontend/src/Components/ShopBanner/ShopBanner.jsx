@@ -5,7 +5,7 @@ const ShopBanner = () => {
     <section className='banner-outer-section'>
         <div className="banner-container">
         <h1 className="banner-name">Online Shop</h1>
-        <button className="banner-address">Home/Product</button>
+        <button className="banner-address hidden md:block ">Home/Product</button>
         </div>
     </section>
   )

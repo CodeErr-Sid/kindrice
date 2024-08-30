@@ -67,9 +67,31 @@ import certificate6 from "./certificate6.jpeg";
 import checking from "./checking.svg";
 import yoga2 from "./yoga2.png";
 import Zoom from "./Zoom-green.png";
+import ShopBowl from "./shopbowl.svg"
 import bag from "./bag.png";
 
+import bgcircle from './bigcircle.svg'
+import profileImg from './profilecircle.svg'
+
+// proudct images 
+
+import LowGiRice from './lowgirice.png'
+import normalRice from './normalrice.png'
+
+import product1 from "./product-img-1.png"
+import product2 from "./product-img-2.png"
+import product3 from "./product-img-3.png"
+import product4 from "./product-img-4.png"
+import product5 from "./product-img-5.png"
+
+import w_profile from "./kishore.jpg"
+
 export const assets = {
+
+  w_profile,
+
+  bgcircle,
+  ShopBowl,
   logo,
   floor,
   grass1,
@@ -140,4 +162,14 @@ export const assets = {
   yoga2,
   Zoom,
   bag,
+
+  profileImg,
+  LowGiRice,
+  normalRice,
+  // product images
+  product1,
+  product2,
+  product3,
+  product4,
+  product5,
 };
