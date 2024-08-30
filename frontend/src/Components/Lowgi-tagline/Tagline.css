@@ -37,58 +37,18 @@
   margin-top: 8vw;
 }
 
-.tagline-container-down .tag-one {
-  font-size: 2vw;
-  font-weight: 700;
-  color: #006633;
-}
-
+.tagline-container-down .tag-one,
 .tagline-container-down .tag-two {
   font-size: 2vw;
-  cursor: pointer;
-  color: #006633;
   font-weight: 700;
-}
-/* Mobile Devices (up to 600px) */
-@media (max-width: 600px) {
-  .lowgi-tagline-section {
-    width: 90vw;
-    padding: 0 5vw;
-  }
-
-  .tagline-container {
-    padding: 4vw 2vw;
-  }
-
-  .tagline-container-up h1 {
-    font-size: 8vw;
-    line-height: 10vw;
-  }
-
-  .tagline-container-up p {
-    font-size: 4vw;
-    margin-bottom: 2vw;
-  }
-
-  .tagline-container-down {
-    margin-top: 10vw;
-  }
-
-  .tagline-container-down .tag-one,
-  .tagline-container-down .tag-two {
-    font-size: 4vw;
-  }
+  color: #006633;
+  cursor: pointer;
 }
 
-/* Tablet Devices (601px to 1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .lowgi-tagline-section {
-    width: 85vw;
-    padding: 0 4vw;
-  }
-
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
   .tagline-container {
-    padding: 3vw 3vw;
+    padding: 3vw 5vw;
   }
 
   .tagline-container-up h1 {
@@ -98,11 +58,36 @@
 
   .tagline-container-up p {
     font-size: 3vw;
-    margin-bottom: 1.5vw;
+    margin-bottom: 2vw;
   }
 
   .tagline-container-down {
-    margin-top: 9vw;
+    margin-top: 6vw;
+  }
+
+  .tagline-container-down .tag-one,
+  .tagline-container-down .tag-two {
+    font-size: 2.5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .tagline-container {
+    padding: 4vw 6vw;
+  }
+
+  .tagline-container-up h1 {
+    font-size: 7vw;
+    line-height: 9vw;
+  }
+
+  .tagline-container-up p {
+    font-size: 3.5vw;
+    margin-bottom: 2.5vw;
+  }
+
+  .tagline-container-down {
+    margin-top: 5vw;
   }
 
   .tagline-container-down .tag-one,
@@ -111,33 +96,37 @@
   }
 }
 
-/* Laptop Devices (1025px to 1440px) */
-@media (min-width: 1025px) {
-  .lowgi-tagline-section {
-    width: 80vw;
-    padding: 0 4vw;
+@media (max-width: 480px) {
+  .tagline-container {
+    padding: 5vw 0;
+    text-align: center;
   }
 
-  .tagline-container {
-    padding: 2vw 3vw;
+  .tagline-container-up {
+    width: 100%;
+    margin: 0 auto;
   }
 
   .tagline-container-up h1 {
-    font-size: 4vw;
-    line-height: 7vw;
+    font-size: 9vw;
+    line-height: 11vw;
+    margin: 0;
   }
 
   .tagline-container-up p {
-    font-size: 2vw;
-    margin-bottom: 1vw;
+    font-size: 5vw;
+    margin: 3vw 0;
   }
 
   .tagline-container-down {
-    margin-top: 8vw;
+    margin-top: 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .tagline-container-down .tag-one,
   .tagline-container-down .tag-two {
-    font-size: 3vw;
+    font-size: 4.5vw;
   }
 }
