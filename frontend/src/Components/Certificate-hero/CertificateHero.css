@@ -51,8 +51,21 @@
   }
   .certificate-right {
     width: 80vw;
+    z-index: 99;
+  }
+  .certificate-right .one {
+    font-size: 7vw;
+  }
+
+  .certificate-right .two {
+    font-size: 5vw;
   }
   .certificate-left {
-    width: 80vw;
+    width: 90vw;
+  }
+  .certificate-left img {
+    max-width: 100%;
+    transform: scale(1.2);
+    z-index: -1;
   }
 }
