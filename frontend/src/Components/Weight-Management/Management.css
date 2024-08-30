@@ -1,14 +1,14 @@
 .management-section {
   margin: 0;
-  padding: 5rem 0 0 0;
+  padding: 0;
   width: 100vw;
-  height: 70vh;
+  /* height: 70vh; */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   color: #006633;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .management-content {
@@ -75,12 +75,14 @@
   max-width: 40vw;
   margin-top: 2rem;
   margin-right: 6rem;
+  z-index: -1;
 }
 
 .management-image img {
   width: 100%;
   height: 40vw;
   object-fit: cover;
+  transform: scale(1.1);
 }
 
 .management-details p {
@@ -135,6 +137,7 @@
   .management-image img {
     height: 60vw;
     margin-bottom: 2rem;
+    transform: scale(1);
   }
   .management-details {
     margin-left: 0;
@@ -202,6 +205,7 @@
   }
   .management-image img {
     height: 80vw;
+    transform: scale(1);
   }
   .management-details {
     margin-left: 0;

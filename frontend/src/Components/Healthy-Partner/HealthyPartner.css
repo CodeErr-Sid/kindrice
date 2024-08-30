@@ -1,6 +1,6 @@
 .healthy-section {
-  margin: 0;
-  width: 90vw;
+  margin: 0 auto;
+  width: 95vw;
   display: flex;
   align-items: center;
   justify-content: center;

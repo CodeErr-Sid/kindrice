@@ -71,12 +71,14 @@
   max-width: 40vw;
   /* margin-bottom: 3rem; */
   margin-right: 6rem;
+  z-index: -1;
 }
 
 .labtest2-image img {
   width: 100%;
   height: auto;
   object-fit: cover;
+  transform: scale(1.5);
 }
 
 .labtest2-details {
@@ -164,7 +166,7 @@
   .labtest2-image img {
     width: 90vw;
     height: 50vw;
-
+    transform: scale(1);
     object-fit: cover;
     object-position: center;
   }
@@ -244,7 +246,7 @@
   .labtest2-image img {
     width: 90vw;
     height: 70vw;
-
+    transform: scale(1);
     object-fit: cover;
     object-position: center;
   }
