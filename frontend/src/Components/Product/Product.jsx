@@ -1,11 +1,30 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Accordion from "../Accordion/Accordion"
+import { AuthContext } from '../../context/AuthContext';
+import { useAsyncError, useNavigate } from 'react-router-dom';
 
 const Product = () => {
+
+    const { isLoggedIn, user } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const [product, setProduct] = useState(null)
+
+    const handleBuyNow = () => {
+        if (isLoggedIn) {
+            try {
+                console.log(product)
+            } catch (error) {
+
+            }
+        }
+        else {
+            navigate("/login")
+        }
+    }
 
     const productData = {
         "ingredients": {
@@ -181,9 +200,13 @@ const Product = () => {
                             min="1"
                             defaultValue="1"
                         />
-                        
+
                     </div>
-                    <button className="buy-now bg-[#016533] p-2 border-2 rounded-lg text-white text-xl">Buy Now</button>
+                    <button
+                        className="buy-now bg-[#016533] p-2 border-2 rounded-lg text-white text-xl"
+                        onClick={handleBuyNow}>
+                        Buy Now
+                    </button>
                 </div>
             </div>
             <div className="description-section mx-auto my-12 w-[87%]">
