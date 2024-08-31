@@ -16,7 +16,7 @@ export default function Footer() {
                 <ul>
                     <li>+91 98432 97474</li>
                     <li>contact@Kindrice.in</li>
-                    <li>CREATE CHANGE</li>
+                    <li className='create-change'>CREATE CHANGE</li>
                     <ul className='social-media'>
                         <li><a href='https://instagram.com' target='_blank' rel='noopener noreferrer'><FaInstagram /></a></li>
                         <li><a href='https://facebook.com' target='_blank' rel='noopener noreferrer'><FaFacebookF /></a></li>

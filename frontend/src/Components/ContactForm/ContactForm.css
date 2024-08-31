@@ -160,7 +160,7 @@
 .contact-form-right button[type="submit"]:hover {
   background-color: #038142;
 }
-
+/* For tablets and small screens (max-width: 1024px) */
 @media screen and (max-width: 1024px) {
   .contact-form-up h2 {
     font-size: 2vw;
@@ -168,13 +168,13 @@
   }
 
   .contact-form-right h1 {
-    font-size: 1.8vw;
-    line-height: 2.2vw;
+    font-size: 3.5vw; /* Adjusted from 4vw */
+    line-height: 4vw; /* Adjusted line-height to match font size */
   }
 
   .contact-form-right p {
-    font-size: 1.5vw;
-    line-height: 1.8vw;
+    font-size: 1.5vw; /* Adjusted from 1.7vw */
+    line-height: 1.8vw; /* Adjusted line-height */
   }
 
   .contact-form-right input,
@@ -201,6 +201,7 @@
   }
 }
 
+/* For smaller tablets and large mobile screens (max-width: 768px) */
 @media screen and (max-width: 768px) {
   .contact-form-up h2 {
     font-size: 2.5vw;
@@ -208,8 +209,8 @@
   }
 
   .contact-form-right h1 {
-    font-size: 2vw;
-    line-height: 2.5vw;
+    font-size: 3.5vw; /* Adjusted from 4vw */
+    line-height: 4vw; /* Adjusted line-height */
   }
 
   .contact-form-right p {
@@ -240,7 +241,11 @@
     font-size: 1.5vw;
   }
 }
-@media screen and (max-width: 650px) {
+
+@media screen and (max-width: 550px) {
+  .contact-form-section {
+    padding: 6vw 1vw 2vw 1vw;
+  }
   .contact-form-info-left {
     display: none;
   }
@@ -261,27 +266,31 @@
   .contact-form-right {
     width: 80vw;
     margin-top: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
   .contact-form-right h1,
   .contact-form-right p {
     text-align: center;
-    font-size: 3vw;
-    line-height: 4.5vw;
+    font-size: 5vw;
+    line-height: 6vw;
   }
   .contact-form-right p {
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
   .contact-form-right input,
   .contact-form-right textarea {
-    font-size: 3vw;
-  }
-  .contact-form-right label {
-    font-size: 3vw;
-  }
-  .contact-form-right h2 {
     font-size: 3.5vw;
   }
+  .contact-form-right label {
+    font-size: 4vw;
+  }
+  .contact-form-right h2 {
+    font-size: 4vw;
+  }
   .contact-form-right button[type="submit"] {
-    font-size: 3vw;
+    font-size: 4vw;
   }
 }
