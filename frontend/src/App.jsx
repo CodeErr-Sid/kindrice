@@ -12,13 +12,14 @@ import Certificates from './pages/Certificates/Certificates';
 import Home2 from './pages/Home2/Home2';
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import { assets } from './assets/assets';
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 
 
 
 function App() {
   return (
     <Router>
-      
+      <ScrollToTop/>
       <Routes>
         {/* <Route path='/home2' element={<Home2 />} /> */}
         <Route path="/shop" element={<Shop />} />
