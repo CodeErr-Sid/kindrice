@@ -181,7 +181,7 @@ const Product = () => {
                             min="1"
                             defaultValue="1"
                         />
-
+                        
                     </div>
                     <button className="buy-now bg-[#016533] p-2 border-2 rounded-lg text-white text-xl">Buy Now</button>
                 </div>
