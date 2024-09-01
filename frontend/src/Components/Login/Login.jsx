@@ -44,11 +44,11 @@ const Login = () => {
                         <div className="flex items-center xl:p-10">
                             {showLogin ? (
                                 <form
-                                    className="flex flex-col w-full h-full pb-6 text-center bg-white rounded-3xl"
+                                    className="flex flex-col mx-auto my-0 w-full sm:w-1/2 h-full pb-6 text-center bg-white rounded-3xl"
                                     onSubmit={handleSignIn}
                                 >
-                                    <span className="mb-3 w-1/4 self-center">
-                                        <img src={assets.logo} alt="" />
+                                    <span className="mb-3 w-1/2 self-center">
+                                        <img src={assets.logo} className='object-contain' alt="" />
                                     </span>
                                     <p className="mb-5 text-grey-700">Enter your email and password</p>
                                     <button
