@@ -15,6 +15,7 @@ import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import { assets } from './assets/assets';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import LogoutButton from './Components/Login/Logout';
+import Checkout from './pages/Checkout/Checkout';
 
 
 
@@ -24,6 +25,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         {/* <Route path='/home2' element={<Home2 />} /> */}
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/logout" element={<LogoutButton />} />
