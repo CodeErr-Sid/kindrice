@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Story from './pages/Story/Story';
 import Shop from './pages/Shop/Shop';
 import Impact from './pages/Impact/Impact';
+import Login from './Components/Login/Login';
 import Blog from './pages/Blog/Blog';
 import Lowgi from './pages/Lowgi/Lowgi';
 import Contact from './pages/Contact/Contact';
@@ -12,16 +13,20 @@ import Certificates from './pages/Certificates/Certificates';
 import Home2 from './pages/Home2/Home2';
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import { assets } from './assets/assets';
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
+import LogoutButton from './Components/Login/Logout';
 
 
 
 function App() {
   return (
     <Router>
-      
+      <ScrollToTop />
       <Routes>
         {/* <Route path='/home2' element={<Home2 />} /> */}
+        <Route path="/login" element={<Login />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/logout" element={<LogoutButton />} />
         <Route path='/' element={<Home2 />} />
         <Route path='/story' element={<Story />} />
         <Route path='/impact' element={<Impact />} />

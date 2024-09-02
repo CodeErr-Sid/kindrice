@@ -13,6 +13,38 @@ export default function Navbar() {
 
   return (
     <section className='navbar-section'>
+      <div className="navbar-dummy-section">
+      <div className="navbar-container">
+        {/* Hamburger Icon */}
+        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+          <FaBars />
+        </div>
+
+        <div className='navbar-logo'>
+          <img src={assets.logo} alt='brand-logo' />
+        </div>
+
+        <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
+          <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+            <ul>
+            <li><Link to='/' className='link'>Home</Link></li>
+            <li><Link to='/shop' className='link' style={{ }}>Shop</Link></li>
+              <li><Link to='/low-gi' className='link'>Low GI</Link></li>
+              <li><Link to='/impact' className='link'>Impact</Link></li>
+              <li><Link to='/blog' className='link'>Blog</Link></li>
+              <li><Link to='/story' className='link'>Story</Link></li>
+              <li><Link to='/contact' className='link'>Contact</Link></li>
+              <li><Link to='/lab-test' className='link'>Lab Test</Link></li>
+            </ul>
+           
+          </div>
+          <div className='navbar-icons'>
+            <FaUser className='icon user' />
+            <FaShoppingCart className='icon cart' />
+          </div>
+        </div>
+      </div>
+      </div>
       <div className="navbar-container">
         {/* Hamburger Icon */}
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
