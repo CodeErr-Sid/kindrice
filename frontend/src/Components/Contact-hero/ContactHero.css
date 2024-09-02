@@ -1,7 +1,7 @@
 /* Base Styles */
 .contact-hero-section {
   width: 100vw;
-  padding: 0 5vw;
+  /* padding: 0 5vw; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,9 +11,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 90vw;
+  max-width: 100vw;
   overflow: hidden;
-  gap: 2vw;
+  /* gap: 2vw; */
 }
 
 .contact-left-container {
@@ -21,10 +21,9 @@
 }
 
 .contact-left-container img {
-  width: 100%; /* Make image responsive */
-  height: auto; /* Maintain aspect ratio */
-  max-width: 40vw; /* Set max-width to prevent overflow */
-  max-height: 50vw; /* Adjust max-height to maintain aspect ratio */
+  width: 100%;
+  height: auto;
+  max-height: 50vw;
   object-fit: cover;
 }
 
