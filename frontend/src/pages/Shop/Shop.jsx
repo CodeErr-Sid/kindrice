@@ -10,9 +10,9 @@ const Shop = () => {
   return (
     <>
       <Navbar />
-      <ShopBanner />
+      <ShopBanner title="Online Shop" address="Home/Shop" />
       <section className="relative">
-      <img className='absolute z-[-1] right-0 top-40' src={assets.bgcircle} alt="" />
+      <img className='absolute z-[-1] right-0 top-40 flex' src={assets.bgcircle} alt="" />
         <ShopBowl />
         <Product />
       </section>

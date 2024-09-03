@@ -231,7 +231,7 @@
   .content-up {
     flex-direction: column;
     align-items: center;
-    gap: 2vw;
+    /* gap: 2vw; */
   }
 
   .footer__content_left,
