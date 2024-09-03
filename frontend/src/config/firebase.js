@@ -30,6 +30,7 @@ provider.setCustomParameters({
 const auth = getAuth();
 const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
+
 const registerWithEmailPassword = async (name, email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -42,6 +43,8 @@ const registerWithEmailPassword = async (name, email, password) => {
 
         console.log('User registered with name:', user.displayName);
 
+        return user;
+
     } catch (error) {
         // Handle Errors here.
         console.error('Registration Error:', error.message);
@@ -52,11 +55,12 @@ const registerWithEmailPassword = async (name, email, password) => {
 const loginWithEmailPassword = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        // User logged in
-        console.log('User logged in:', userCredential);
+        // User logged in successfully
+        return userCredential.user;
     } catch (error) {
-        // Handle Errors here.
+        // Handle errors here
         console.error('Login Error:', error.message);
+        return null; // Return null to indicate the login failed
     }
 };
 
@@ -64,6 +68,7 @@ const logout = async () => {
     try {
         await signOut(auth);
         console.log('User signed out successfully');
+        window.location.href="/"
     } catch (error) {
         console.error('Error signing out:', error.message);
     }

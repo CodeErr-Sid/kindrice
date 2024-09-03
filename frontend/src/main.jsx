@@ -3,11 +3,17 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { AuthContextProvider } from './context/AuthContext.jsx'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthContextProvider>
-      <App />
+      <Router>
+        <App />
+      </Router>
+      <ToastContainer />
     </AuthContextProvider>
   </StrictMode>,
 )

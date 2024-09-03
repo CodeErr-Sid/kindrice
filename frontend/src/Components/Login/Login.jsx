@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { auth, signInWithGooglePopup, registerWithEmailPassword, loginWithEmailPassword } from "../../config/firebase"
 import { assets } from '../../assets/assets';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { registerUser } from '../../api/userapi';
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { url } = useContext(AuthContext)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,19 +22,53 @@ const Login = () => {
 
     const logGoogleUser = async () => {
         const response = await signInWithGooglePopup();
-        console.log(response);
+        const isNewUser = response._tokenResponse.isNewUser;
+        const user = response.user;
+        if (isNewUser) {
+            if (user) {
+                await registerUser(user.uid, user.email, user.name, url);
+                const redirectTo = location.state?.from || '/';
+                navigate(redirectTo);
+            } else {
+                toast.error("Registration failed", error)
+            }
+        } else {
+            if (user) {
+                const redirectTo = location.state?.from || '/';
+                navigate(redirectTo);
+            } else {
+                // Show an error toast if login fails
+                toast.error('Login failed. Please check your email and password.');
+            }
+        }
     }
-
 
     const handleSignIn = async (e) => {
         e.preventDefault();
-        await loginWithEmailPassword(email, password);
+        const user = await loginWithEmailPassword(email, password);
+
+        if (user) {
+            const redirectTo = location.state?.from || '/';
+            navigate(redirectTo);
+        } else {
+            // Show an error toast if login fails
+            toast.error('Login failed. Please check your email and password.');
+        }
     };
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-        // Handle signup logic here
-        await registerWithEmailPassword(name, email, password)
+
+        const user = await registerWithEmailPassword(name, email, password);
+
+        console.log(user.uid, user.email, user.name, url)
+        if (user) {
+            await registerUser(user.uid, user.email, user.name, url)
+        } else {
+            toast.error("Registration failed", error)
+        }
+
+        toggleForm();
     };
 
     const toggleForm = () => {
