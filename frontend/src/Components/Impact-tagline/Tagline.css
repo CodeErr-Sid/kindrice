@@ -43,7 +43,7 @@
 @media (max-width: 1024px) {
   .tagline {
     width: 85vw;
-    padding: 3vw 2vw;
+    padding: 3rem 2vw;
   }
 
   .tagline-title {
@@ -59,7 +59,7 @@
 @media (max-width: 768px) {
   .tagline {
     width: 90vw;
-    padding: 4vw 2vw;
+    padding: 4rem 2vw;
   }
 
   .tagline-title {
@@ -75,7 +75,7 @@
 @media (max-width: 480px) {
   .tagline {
     width: 95vw;
-    padding: 5vw 2vw;
+    padding: 5rem 2vw;
   }
 
   .tagline-title {
