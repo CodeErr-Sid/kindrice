@@ -72,6 +72,7 @@
 @media (max-width: 768px) {
   .Impact-hero-section {
     width: 95vw;
+    padding: 2rem 0;
   }
 
   .Impact-hero-container {
@@ -102,7 +103,7 @@
 @media (max-width: 480px) {
   .Impact-hero-section {
     width: 100vw;
-    padding: 0 2vw;
+    padding: 2rem 2vw;
   }
 
   .Impact-hero-container {

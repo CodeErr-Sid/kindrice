@@ -65,6 +65,9 @@
     width: 90%;
     gap: 4vw;
   }
+  .his-thoughts {
+    padding: 5vw;
+  }
   .left-sec {
     margin-right: 0;
     max-width: 100%;

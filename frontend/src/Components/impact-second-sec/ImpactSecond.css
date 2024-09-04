@@ -71,6 +71,7 @@
 @media (max-width: 768px) {
   .ImpactSecond {
     width: 85vw;
+    padding: 2rem 4vw;
   }
   .ImpactSecond__container {
     flex-direction: column;
@@ -106,7 +107,7 @@
   }
   .ImpactSecond {
     width: 90vw;
-    padding: 0;
+    padding: 1.5rem 4vw;
   }
   .ImpactSecond__content_up img,
   .ImpactSecond__content_down img {
