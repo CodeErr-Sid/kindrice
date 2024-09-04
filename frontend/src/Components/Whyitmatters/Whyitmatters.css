@@ -3,13 +3,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2vw 5vw;
-  width: 80vw;
+  padding: 5rem 5vw;
+  width: 100%;
   margin: 0 auto;
+  background-color: #f9f9f9;
+  height: 50%;
 }
 
 .whyitmatters-container {
-  width: 100%;
+  width: 80vw;
   text-align: left;
   color: #006633;
 }

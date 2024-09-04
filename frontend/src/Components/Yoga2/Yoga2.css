@@ -11,9 +11,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
-  gap: 13vw;
+  gap: 8vw;
+  padding: 4rem 0;
 }
 
 .yoga2-left-container {
@@ -25,7 +26,7 @@
 }
 
 .yoga2-left-container img {
-  width: 30vw;
+  width: 40vw;
   height: 30vw;
   object-fit: cover;
   object-position: right;
@@ -33,16 +34,21 @@
 }
 
 .yoga2-right-container h2 {
-  font-size: 5vw;
+  font-size: 4.72vw;
   font-weight: 700;
   color: #016533;
   text-align: center;
   line-height: 6vw;
-  width: 30vw;
+  width: 35vw;
+}
+.third-container {
+  background-color: #f9f9f9;
+  padding: 2vw;
+  /* box-shadow: 0px -10px 0px #f9f9f9, 0px 10px 0px #f9f9f9; */
 }
 
 .third-section {
-  width: 80vw;
+  width: 70vw;
   height: auto;
   margin: 0 auto;
 }
@@ -50,19 +56,20 @@
 .third-section img {
   margin: 0 auto;
   padding-right: 2vw;
-  width: 70vw;
+  width: 100%;
   height: auto;
   object-fit: cover;
   object-position: center;
 }
 
-@media screen and (768px < width < 1024px) {
+@media screen and (768px < width < 1030px) {
   .yoga2-left-container {
     width: 45%;
     margin-bottom: 2rem;
   }
   .yoga2-container {
     gap: 4vw;
+    padding: 2rem 0;
   }
   .yoga2-right-container {
     width: 45%;
@@ -119,6 +126,7 @@
   }
   .yoga2-container {
     gap: 2vw;
+    padding: 2rem 0;
   }
   .yoga2-section {
     padding: 0;
@@ -142,5 +150,8 @@
 
   .third-section img {
     width: 100vw;
+  }
+  .yoga2-container {
+    padding: 2rem 0;
   }
 }

@@ -1,6 +1,6 @@
 .management-section {
   margin: 0;
-  padding: 0;
+  padding: 4vw 0 2vw 0;
   width: 100vw;
   /* height: 70vh; */
   display: flex;
@@ -28,10 +28,12 @@
 }
 
 .management-heading h1 {
-  font-size: 3.7vw;
+  /* font-size: 3.7vw; */
   font-weight: 700;
-  line-height: 4.85vw;
+  /* line-height: 4.85vw; */
   z-index: 99;
+  font-size: 4.7vw;
+  line-height: 5.85vw;
 }
 
 .management-heading p {
@@ -94,7 +96,7 @@
   .management-section {
     height: auto;
     margin: 0;
-    padding: 0;
+    padding: 2rem 0;
   }
 
   .management-heading {

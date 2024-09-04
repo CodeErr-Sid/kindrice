@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4vw;
+  padding: 5rem 0;
   gap: 1vw;
   color: #006633;
   width: 80vw;
@@ -16,7 +16,7 @@
 }
 
 .lowglycemic-content-left img {
-  width: 30vw;
+  width: 25vw;
   height: auto;
   object-fit: cover;
   object-position: center;
@@ -46,7 +46,7 @@
   }
 
   .lowglycemic-content-left img {
-    width: 35vw;
+    width: 30vw;
   }
 
   .lowglycemic-section__content-right p {
@@ -70,7 +70,7 @@
   }
 
   .lowglycemic-content-left img {
-    width: 50vw;
+    width: 40vw;
     margin: 0 auto;
   }
 

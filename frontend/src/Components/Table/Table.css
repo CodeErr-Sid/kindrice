@@ -3,12 +3,13 @@
   padding: 2rem;
   text-align: center;
   font-family: "Nunito", "sans serif";
+  background-color: #f9f9f9;
 }
 
 .table-title {
-  font-size: 3.7vw;
+  font-size: 4.7vw;
   font-weight: 700;
-  line-height: 4.85vw;
+  line-height: 5.85vw;
   color: #006633;
   margin-bottom: 1.5rem;
 }

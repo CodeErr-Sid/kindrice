@@ -1,6 +1,6 @@
 /* Base Styles */
 .Impact-hero-section {
-  width: 80vw;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -13,20 +13,21 @@
 }
 
 .Impact-hero-image-left {
-  flex: 1;
+  flex: 40%;
   display: flex;
   justify-content: center;
 }
 
 .Impact-hero-image-left img {
-  width: 39vw;
+  width: 100%;
   height: auto;
   border-radius: 0.8vw;
   object-fit: cover;
+  margin-top: 4vw;
 }
 
 .Impact-hero-content-right {
-  flex: 1;
+  flex: 40%;
   padding: 4vw;
   text-align: left;
   font-family: "Nunito", sans-serif;

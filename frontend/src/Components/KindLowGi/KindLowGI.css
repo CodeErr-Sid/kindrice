@@ -1,6 +1,7 @@
 /* General Styles for Large Screens (width greater than 1200px) */
 .kind-lowgi-section {
   padding: 5vw;
+  background-color: #f9f9f9;
 }
 
 .kind-lowgi-container {

@@ -1,7 +1,7 @@
 /* General Styles */
 .ImpactSecond {
-  width: 80vw;
-  padding: 3vw 4vw; /* Padding for spacing */
+  width: 100%;
+  padding: 4rem 4vw; /* Padding for spacing */
   margin: 0 auto;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .ImpactSecond__content_left {
-  width: 30vw;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@
 }
 
 .ImpactSecond__content_up img {
-  width: 15vw;
+  width: 20vw;
   height: auto;
 }
 
@@ -47,12 +47,12 @@
 }
 
 .ImpactSecond__content_down img {
-  width: 15vw;
+  width: 20vw;
   height: auto;
 }
 
 .ImpactSecond__content_right {
-  width: 50vw;
+  width: 40vw;
   padding-left: 4vw;
 }
 

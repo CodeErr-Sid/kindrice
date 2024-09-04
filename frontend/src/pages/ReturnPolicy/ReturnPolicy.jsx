@@ -9,7 +9,7 @@ export default function ReturnPolicy() {
   return (
     <>
     <Navbar/>
-    <ReturnPolicyHero />
+    {/* <ReturnPolicyHero /> */}
     <PolicySection2/>
     <Footer/>
     </>

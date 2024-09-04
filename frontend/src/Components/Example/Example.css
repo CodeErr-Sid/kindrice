@@ -1,15 +1,21 @@
 /* Default styles for larger screens (desktop) */
 .example-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 2vw;
+  padding: 5vw 0;
   gap: 1vw;
   color: #006633;
-  width: 80vw;
+  width: 100%;
   margin: 0 auto;
+  background-color: #f9f9f9;
 }
-
+.example-section-container {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .example-content-left {
   flex: 1;
   max-width: 40vw;

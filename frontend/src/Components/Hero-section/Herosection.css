@@ -43,9 +43,9 @@
 }
 
 @media (max-width: 1030px) {
-  .hero-section {
+  /* .hero-section {
     height: 62.3vw;
-  }
+  } */
 
   .content-overlay .btn,
   .content-overlay p {

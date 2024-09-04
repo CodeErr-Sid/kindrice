@@ -5,7 +5,8 @@ import { assets } from '../../assets/assets'
 
 export default function Example() {
   return (
-  <div className="example-section">
+   <div className="example-section">
+  <div className="example-section-container">
     <div className="example-content-left">
        <img src={assets.cars} alt=''/>
     </div>
@@ -21,6 +22,7 @@ export default function Example() {
     <p className='small-screen'>
         Some foods, like normal rice and candy, give us  energy really fast (high Gl). It's like putting fast fuel into the car,so it goes zoom!
        </p>
+  </div>
   </div>
   )
 }
