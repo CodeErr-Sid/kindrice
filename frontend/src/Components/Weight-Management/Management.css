@@ -100,7 +100,7 @@
   }
 
   .management-heading {
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
     position: relative;
     text-align: center;
     margin-top: 0;
@@ -163,11 +163,11 @@
   .management-section {
     height: auto;
     margin: 0;
-    padding: 0;
+    padding: 2rem 5vw;
   }
 
   .management-heading {
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
     position: relative;
     text-align: center;
     margin-top: 0;

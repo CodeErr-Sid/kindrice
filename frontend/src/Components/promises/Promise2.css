@@ -6,7 +6,6 @@
   justify-content: center;
   position: relative;
   color: #006633;
-  background-color: #f9f9f9;
   padding: 2vw 0;
 }
 
@@ -183,7 +182,7 @@
 @media screen and (max-width: 530px) {
   .promise2-section {
     height: auto;
-    padding: 6vw 0 3vw 0;
+    padding: 2rem 5vw;
     margin: 0 auto;
   }
   .promise2-content-container {

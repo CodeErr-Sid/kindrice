@@ -3,7 +3,7 @@
   padding: 2rem;
   text-align: center;
   font-family: "Nunito", "sans serif";
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
 }
 
 .table-title {
@@ -99,7 +99,7 @@ tbody {
 /* Media Queries for screens smaller than 530px */
 @media screen and (max-width: 530px) {
   .table-container {
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
 
   .table-title {
