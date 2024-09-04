@@ -102,7 +102,7 @@ export default function Navbar() {
                 onClick={handleLogout}
               >Logout</button>}
             </div>
-            <FaUser className='icon user' />
+            <FaUser className='icon user user2' />
             <FaShoppingCart className='icon cart' />
           </div>
         </div>

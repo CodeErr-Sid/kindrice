@@ -8,7 +8,7 @@
   height: auto;
 }
 
-.navbar-dummy-section{
+.navbar-dummy-section {
   padding: 10.5rem 0 1vw 0;
 }
 
@@ -156,7 +156,9 @@
 .overlay-active {
   display: none;
 }
-
+.user2 {
+  display: none;
+}
 @media screen and (max-width: 1029px) {
   .navbar-icons {
     font-size: 2vw;
@@ -182,7 +184,7 @@
     display: none;
   }
 
-  .navbar-dummy-section{
+  .navbar-dummy-section {
     padding: 5.5rem 0 1vw 0;
   }
 
