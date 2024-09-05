@@ -1,31 +1,39 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Accordion from "../Accordion/Accordion"
 import { AuthContext } from '../../context/AuthContext';
-import { useAsyncError, useNavigate } from 'react-router-dom';
-import FullTransparency from '../FullTransparency/FullTransparency';
+import { useNavigate } from 'react-router-dom';
+import { addToCart } from '../../api/cartapi';
 
-const Product = () => {
+const Product = ({ productId }) => {
 
-    const { isLoggedIn, user } = useContext(AuthContext);
-    const navigate = useNavigate()
-    const [product, setProduct] = useState(null)
+    const { isLoggedIn, idToken } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [quantity, setQuantity] = useState(1);
+    const [weight, setWeight] = useState(1);
 
     const handleBuyNow = () => {
         if (isLoggedIn) {
-            try {
-                console.log(product)
-            } catch (error) {
-
-            }
+            console.log("yes you can buy this product")
         }
         else {
-            navigate("/login")
+            navigate("/")
         }
     }
+
+    const handleAddToCart = async () => {
+
+            if (isLoggedIn) {
+                const data = await addToCart(productId, quantity, weight, idToken);
+                console.log(data);
+            } else {
+                navigate("/login")
+            }
+    }
+
 
     const productData = {
         "ingredients": {
@@ -194,7 +202,10 @@ const Product = () => {
                         </div>
                     </div>
                     <div className="atcf flex gap-5">
-                        <button className="addToCart flex-[3] bg-[#F4D34F8F] font-black rounded-lg p-2">Add To Cart</button>
+                        <button
+                            className="addToCart flex-[3] bg-[#F4D34F8F] font-black rounded-lg p-2"
+                            onClick={handleAddToCart}
+                        >Add To Cart</button>
                         <input
                             type="number"
                             className="favorite flex-[2] border-[#F9D46B] border-2 rounded-lg p-2 text-center"
@@ -211,8 +222,13 @@ const Product = () => {
                 </div>
             </div>
             <div className="description-section mx-auto my-12 w-[87%]">
-                <h4 className='font-bold text-2xl mb-4'>Description</h4>
-                <p className='text-xl w-full md:w-[33%]'>The glycemic index (GI) measures how quickly a carbohydrate-containing food raises blood glucose levels. Foods with a low GI cause a slower, more gradual increase in blood sugar.</p>
+                <h4 className='font-bold text-2xl mb-4'>This Kind low-GI rice is completely natural. </h4>
+                <p className='text-xl w-full md:w-[50%]'>We pick only the finest 'RNR' variety (native to Telangana). Then, we slowly process it using our signature method, in extremely small batches, to perfection!</p>
+            </div>
+            <div className='flex flex-col md:w-[87%] mx-auto items-center md:items-start'>
+                <h1 className='font-bold text-2xl mb-4'>What’s Inside</h1>
+             <img src={assets.ShopBowl} alt='' className='w-[40%] md:w-[15%] h-auto my-4'/>
+
             </div>
             <div className="ikn-switch-section w-[87%] my-12 mx-auto">
                 <div className="btn-groups font-bold flex flex-row gap-2">
@@ -247,7 +263,7 @@ const Product = () => {
                     </ul>
                 </div>
             </div>
-            <div className="review-section w-[87%] my-12 mx-auto">
+            {/* <div className="review-section w-[87%] my-12 mx-auto">
                 <h2 className="font-bold text-3xl my-4">Reviews</h2>
                 <div className="reviews-container flex flex-col gap-7">
                     <div className="review flex flex-col gap-2">
@@ -285,7 +301,7 @@ const Product = () => {
                         <p>Reviewed in Chennai 26 July 2024</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
            
             {/* <div className='faq-section w-[87%] my-12 mx-auto bg-[#016533] text-white rounded-2xl p-4'>
                 <h1 className='text-center font-bold text-2xl'>Got any Questions</h1>

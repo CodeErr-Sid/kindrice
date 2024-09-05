@@ -1,6 +1,7 @@
 // AuthContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import { auth } from '../config/firebase';
+import { getCart } from '../api/cartapi';
 import axios from 'axios';
 
 // Create the context
@@ -12,8 +13,8 @@ export const AuthContextProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     const [idToken, setIdToken] = useState("");
-
-
+    const [cart, setCart] = useState([]);
+    
     // Function to register a user
 
     useEffect(() => {
@@ -32,9 +33,23 @@ export const AuthContextProvider = ({ children }) => {
         return () => unsubscribe(); // Clean up subscription on unmount
     }, []);
 
+    useEffect(() => {
+        const getCartItems = async () => {
+           if(isLoggedIn){
+               const data = await getCart(idToken);
+               setCart(data.items);
+            }
+            else{
+                setCart([])
+            }
+        }
+
+        getCartItems();
+    },[idToken])
+
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, url, idToken }}>
+        <AuthContext.Provider value={{ isLoggedIn, user, url, idToken, cart }}>
             {children}
         </AuthContext.Provider>
     );

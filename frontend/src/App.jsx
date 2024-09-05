@@ -16,6 +16,7 @@ import { assets } from './assets/assets';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import Auth from './pages/Auth/Auth';
 import Checkout from './pages/Checkout/Checkout';
+import Cart from './pages/Cart/Cart';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Auth />} />
         <Route path="/shop" element={<Shop />} />
         <Route path='/' element={<Home2 />} />
@@ -40,7 +42,7 @@ function App() {
         <FloatingWhatsApp
           phoneNumber="+91 98432 97474"
           allowClickAway
-          chatMessage="Hi there, How can we help you"
+          chatMessage="Hi there, How can we help you?"
           statusMessage="CEO of Kindrice"
           accountName="Kishore Jeyachandran"
           avatar={assets.w_profile}

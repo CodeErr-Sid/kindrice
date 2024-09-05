@@ -24,6 +24,7 @@ const Login = () => {
         const response = await signInWithGooglePopup();
         const isNewUser = response._tokenResponse.isNewUser;
         const user = response.user;
+        console.log(response)
         if (isNewUser) {
             if (user) {
                 await registerUser(user.uid, user.email, user.name, url);
