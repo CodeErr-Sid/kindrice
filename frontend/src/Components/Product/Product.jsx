@@ -1,30 +1,39 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Accordion from "../Accordion/Accordion"
 import { AuthContext } from '../../context/AuthContext';
-import { useAsyncError, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { addToCart } from '../../api/cartapi';
 
-const Product = () => {
+const Product = ({ productId }) => {
 
-    const { isLoggedIn, user } = useContext(AuthContext);
-    const navigate = useNavigate()
-    const [product, setProduct] = useState(null)
+    const { isLoggedIn, idToken } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [quantity, setQuantity] = useState(1);
+    const [weight, setWeight] = useState(1);
 
     const handleBuyNow = () => {
         if (isLoggedIn) {
-            try {
-                console.log(product)
-            } catch (error) {
-
-            }
+            console.log("yes you can buy this product")
         }
         else {
-            navigate("/login")
+            navigate("/")
         }
     }
+
+    const handleAddToCart = async () => {
+
+            if (isLoggedIn) {
+                const data = await addToCart(productId, quantity, weight, idToken);
+                console.log(data);
+            } else {
+                navigate("/login")
+            }
+    }
+
 
     const productData = {
         "ingredients": {
@@ -193,7 +202,10 @@ const Product = () => {
                         </div>
                     </div>
                     <div className="atcf flex gap-5">
-                        <button className="addToCart flex-[3] bg-[#F4D34F8F] font-black rounded-lg p-2">Add To Cart</button>
+                        <button
+                            className="addToCart flex-[3] bg-[#F4D34F8F] font-black rounded-lg p-2"
+                            onClick={handleAddToCart}
+                        >Add To Cart</button>
                         <input
                             type="number"
                             className="favorite flex-[2] border-[#F9D46B] border-2 rounded-lg p-2 text-center"

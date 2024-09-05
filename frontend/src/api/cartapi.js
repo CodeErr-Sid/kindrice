@@ -2,8 +2,11 @@
 import axios from 'axios';
 
 // Create an Axios instance with default configuration
+
+const url = import.meta.env.VITE_BACKEND_URL;
+
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL,
+    baseURL: url,
     headers: {
         'Content-Type': 'application/json',
     },
@@ -62,7 +65,18 @@ const removeFromCart = async (productId, token) => {
     }
 };
 
-export { addToCart, getCart, removeFromCart };
+
+const getProductById = async (id) => {
+    try {
+        const response = await axios.get(`${url}/api/product/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching product:', error.response ? error.response.data : error.message);
+        throw error;
+    }
+};
+
+export { addToCart, getCart, removeFromCart, getProductById };
 
 
 

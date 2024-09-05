@@ -9,11 +9,10 @@ import { logout } from "../../config/firebase"
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, cart } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
-
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -102,7 +101,10 @@ export default function Navbar() {
                 onClick={handleLogout}
               >Logout</button>}
             </div>
-            <FaShoppingCart className='icon cart' />
+            <div className="cart-icon-container relative">
+              <FaShoppingCart className='icon cart' onClick={() => navigate("/checkout")} />
+              <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={navigate("/checkout")}>{cart.reduce((sum, item) => sum + item.quantity, 0)}</div>
+            </div>
           </div>
         </div>
       </div>

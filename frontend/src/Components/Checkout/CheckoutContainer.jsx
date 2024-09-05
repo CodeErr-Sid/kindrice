@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 const CheckoutContainer = () => {
+
+  const { cart } = useContext(AuthContext);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -46,9 +50,14 @@ const CheckoutContainer = () => {
               </div>
               <span className="text-gray-700">$12</span>
             </li>
-            <li className="flex justify-between items-center p-4 border border-gray-200 rounded-md bg-white shadow-sm">
+            <li className="flex justify-between flex-col items-center p-4 border border-gray-200 rounded-md bg-white shadow-sm">
               <div>
-                <h6 className="text-base font-medium">Second product</h6>
+                <h6 className="text-base font-medium">Shipping + Delivery</h6>
+                <p className="text-sm text-gray-600">Brief description</p>
+              </div>
+              <span className="text-gray-700">$8</span>
+              <div>
+                <h6 className="text-base font-medium">Shipping + Delivery</h6>
                 <p className="text-sm text-gray-600">Brief description</p>
               </div>
               <span className="text-gray-700">$8</span>
