@@ -1,12 +1,14 @@
 .labtest2-section {
   margin: 0;
-  padding: 0 0 0 3rem;
-  width: 90vw;
+  padding: 4vw 2vw 5.5rem 3rem;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   color: #006633;
+  /* background-color: #f9f9f9; */
+  z-index: 1; /* Updated to a positive value */
 }
 
 .labtest2-content {
@@ -14,43 +16,40 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  z-index: 2; /* Ensure content is on top */
+  width: 90%;
 }
 
 .labtest2-heading {
   text-align: right;
   display: flex;
-  align-items: right;
-  justify-content: right;
+  align-items: flex-end;
+  justify-content: flex-end;
   flex-direction: column;
-  margin-right: -50vw;
+  margin-right: -40vw;
+  z-index: 3; /* Ensure heading is on top */
 }
 
 .labtest2-heading h1 {
-  font-size: 3.7vw;
+  /* font-size: 3.7vw; */
   font-weight: 700;
-  line-height: 4.85vw;
+  /* line-height: 4.85vw; */
+  font-size: 4.7vw;
+  line-height: 5.85vw;
 }
 
 .labtest2-heading p {
   font-size: 500;
-  font-size: 1.8vw;
-  line-height: 2.78vw;
+  /* font-size: 1.8vw;
+  line-height: 2.78vw; */
+  font-size: 4.7vw;
+  line-height: 5.85vw;
 }
-
-/* .labtest2-bold {
-  font-size: 5.7vw;
-  line-height: 6.85vw;
-  font-weight: 700;
-} */
-
 .labtest2-details {
   font-size: 2vw;
   line-height: 3.45vw;
-  width: 40vw;
-  /* font-weight: 500;
-  padding-top: 3.07vh; */
-  /* padding-right: 3rem; */
-  /* text-align: center; */
+  width: 42vw;
+  z-index: 6;
 }
 
 .labtest2-details span {
@@ -64,14 +63,14 @@
   text-align: center;
   justify-content: space-evenly;
   margin-top: -3.5vw;
+  z-index: 2; /* Ensure info container is on top */
 }
 
 .labtest2-image {
   width: 100%;
   max-width: 40vw;
-  /* margin-bottom: 3rem; */
   margin-right: 6rem;
-  z-index: -1;
+  z-index: 1; /* Lower z-index to ensure it's below other content */
 }
 
 .labtest2-image img {
@@ -83,13 +82,20 @@
 
 .labtest2-details {
   text-align: right;
-  /* margin-top: 5rem; */
-  margin-left: 2rem;
+  margin-top: 10rem;
+  z-index: 3; /* Ensure details are on top */
 }
 
 .labtest2-details p {
   font-size: 1.38vw;
   font-weight: 700;
+  cursor: pointer; /* Make sure the cursor changes on hover */
+}
+
+.labtest2-details p i {
+  z-index: 4; /* Highest z-index to ensure clickability */
+  position: relative; /* Ensures it respects z-index and is on top */
+  pointer-events: auto; /* Ensure pointer events are enabled */
 }
 
 /* Media Queries for smaller screens */
@@ -97,13 +103,14 @@
   .labtest2-section {
     height: auto;
     margin-top: 8vw;
-    padding: 5vw;
+    padding: 2rem 5vw;
   }
 
   .labtest2-heading {
     position: relative;
     text-align: center;
-    margin-right: -9vw;
+    /* margin-right: -9vw; */
+    margin: 0 auto;
   }
 
   .labtest2-heading h1 {
@@ -146,18 +153,19 @@
     text-align: center;
     position: relative;
     order: 1;
-    margin-top: 0;
-    width: 80vw;
+    margin: 0 auto;
+    width: 70vw;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    /* padding-left: 3rem; */
   }
 
   .labtest2-details h2 {
     font-size: 2.8vw;
     line-height: 3.5vw;
-    width: 80vw;
+    width: 70vw;
   }
 
   .labtest2-details p {
@@ -186,7 +194,7 @@
   .labtest2-heading {
     position: relative;
     text-align: center;
-    margin-right: -9vw;
+    margin: 0 auto;
   }
 
   .labtest2-heading h1 {

@@ -37,9 +37,9 @@ export default function Navbar() {
 
   return (
     <section className='navbar-section'>
-      <div className="navbar-dummy-section">
+      {/* <div className="navbar-dummy-section">
         <div className="navbar-container">
-          {/* Hamburger Icon */}
+       
           <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <FaBars />
           </div>
@@ -68,7 +68,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="navbar-container">
         {/* Hamburger Icon */}
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -101,6 +101,7 @@ export default function Navbar() {
                 onClick={handleLogout}
               >Logout</button>}
             </div>
+            <FaUser className='icon user user2' />
             <div className="cart-icon-container relative">
               <FaShoppingCart className='icon cart' onClick={() => navigate("/checkout")} />
               <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={navigate("/checkout")}>{cart.reduce((sum, item) => sum + item.quantity, 0)}</div>

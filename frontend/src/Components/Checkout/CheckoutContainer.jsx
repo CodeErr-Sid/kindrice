@@ -31,16 +31,50 @@ const CheckoutContainer = () => {
       [id]: type === 'checkbox' ? checked : value
     }));
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // Handle form submission logic here
   };
+
+   // State for product details
+   const [productDetails, setProductDetails] = useState({
+    pricePerKg: 12, // Example price per kg
+    quantity: 1, // Default quantity
+    weight: 1, // Default weight (in kg)
+  });
+
+  // State for additional costs
+  const [shipping, setShipping] = useState(5); // Example shipping cost
+  const [taxRate, setTaxRate] = useState(0.08); // Example tax rate (8%)
+
+  // State for calculated total price
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  // Function to update product details dynamically
+  const handleProductChange = (e) => {
+    const { id, value } = e.target;
+    setProductDetails((prevDetails) => ({
+      ...prevDetails,
+      [id]: parseFloat(value),
+    }));
+  };
+
+  // Calculate total price whenever product details, shipping, or tax change
+  useEffect(() => {
+    const { pricePerKg, quantity, weight } = productDetails;
+    const productPrice = pricePerKg * quantity * weight;
+    const taxAmount = productPrice * taxRate;
+    const calculatedTotal = productPrice + shipping + taxAmount;
+    setTotalPrice(calculatedTotal.toFixed(2)); // Keep 2 decimal places
+  }, [productDetails, shipping, taxRate]);
+
 
   return (
     <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-        <div className="md:w-1/3 lg:w-1/4 p-4 bg-gray-50 rounded-lg shadow-md">
+      <div className="flex flex-col-reverse md:flex-row-reverse space-y-4 md:space-y-0 md:space-x-4">
+        <div className="md:w-1/ lg:w-1/3 p-4 bg-gray-50 rounded-lg shadow-md">
           <h4 className="text-xl font-semibold mb-4">Your Cart</h4>
           <ul className="space-y-4">
             <li className="flex justify-between items-center p-4 border border-gray-200 rounded-md bg-white shadow-sm">
@@ -224,101 +258,33 @@ const CheckoutContainer = () => {
             <div className="flex items-center mb-4">
               <input
                 type="checkbox"
-                className="form-checkbox text-green-600"
+                className="form-checkbox h-4 w-4 text-green-600"
                 id="sameAddress"
                 checked={formData.sameAddress}
                 onChange={handleChange}
               />
-              <label htmlFor="sameAddress" className="ml-2 text-sm">Same as shipping address</label>
+              <label htmlFor="sameAddress" className="ml-2 text-sm">Shipping address is the same as my billing address</label>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex flex-col md:flex-row md:space-x-4">
-                <div className="md:w-1/2 mb-4">
-                  <label htmlFor="paymentMethod" className="block text-sm font-medium mb-1">Payment Method</label>
-                  <select
-                    className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
-                    id="paymentMethod"
-                    value={formData.paymentMethod}
-                    onChange={handleChange}
-                  >
-                    <option value="credit">Credit Card</option>
-                    <option value="paypal">PayPal</option>
-                  </select>
-                </div>
-              </div>
-
-              {formData.paymentMethod === 'credit' && (
-                <div className="space-y-4">
-                  <div className="mb-4">
-                    <label htmlFor="ccName" className="block text-sm font-medium mb-1">Name on Card</label>
-                    <input
-                      type="text"
-                      className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
-                      id="ccName"
-                      value={formData.ccName}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <label htmlFor="ccNumber" className="block text-sm font-medium mb-1">Card Number</label>
-                    <input
-                      type="text"
-                      className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
-                      id="ccNumber"
-                      value={formData.ccNumber}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-
-                  <div className="flex flex-col md:flex-row md:space-x-4">
-                    <div className="md:w-1/2 mb-4">
-                      <label htmlFor="ccExpiration" className="block text-sm font-medium mb-1">Expiration Date</label>
-                      <input
-                        type="text"
-                        className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
-                        id="ccExpiration"
-                        value={formData.ccExpiration}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="md:w-1/2 mb-4">
-                      <label htmlFor="ccCvv" className="block text-sm font-medium mb-1">CVV</label>
-                      <input
-                        type="text"
-                        className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
-                        id="ccCvv"
-                        value={formData.ccCvv}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex items-center mb-4">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-green-600"
-                  id="saveInfo"
-                  checked={formData.saveInfo}
-                  onChange={handleChange}
-                />
-                <label htmlFor="saveInfo" className="ml-2 text-sm">Save this information for next time</label>
-              </div>
-
-              <button
-                type="submit"
-                className="bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-800"
-              >
-                Confirm Order
-              </button>
+            <div className="flex items-center mb-4">
+              <input
+                type="checkbox"
+                className="form-checkbox h-4 w-4 text-green-600"
+                id="saveInfo"
+                checked={formData.saveInfo}
+                onChange={handleChange}
+              />
+              <label htmlFor="saveInfo" className="ml-2 text-sm">Save this information for next time</label>
             </div>
+
+
+
+            <button
+              type="submit"
+              className="mt-6 bg-green-700 text-white w-full py-2 px-4 rounded-md hover:bg-green-800"
+            >
+              Continue to checkout
+            </button>
           </form>
         </div>
       </div>

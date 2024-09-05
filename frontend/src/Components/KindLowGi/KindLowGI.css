@@ -1,18 +1,24 @@
 /* General Styles for Large Screens (width greater than 1200px) */
 .kind-lowgi-section {
   padding: 5vw;
+  /* background-color: #f9f9f9; */
+  width: 100%;
 }
 
 .kind-lowgi-container {
   display: flex;
-  max-width: 80vw;
+  max-width: 100vw;
   overflow: hidden;
   color: #006633;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .kind-lowgi-left img {
-  width: 30vw;
-  height: 30vw;
+  width: 35vw;
+  height: 40vw;
   object-fit: cover;
 }
 

@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2vw;
+  padding: 5vw 2vw;
   gap: 1vw;
   color: #006633;
   width: 80vw;
@@ -104,7 +104,7 @@
   }
 
   .example-content-left img {
-    width: 70vw;
+    width: 50vw;
     margin: 0 auto;
   }
 

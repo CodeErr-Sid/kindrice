@@ -5,6 +5,7 @@
   position: relative;
   width: 100vw;
   height: 50.9vw; /* Adjust as needed */
+  margin-top: 3rem;
 }
 
 .content-container-about {

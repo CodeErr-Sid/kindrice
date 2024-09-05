@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5vw 5vw;
+  padding: 6rem 5vw 5vw 5vw;
   width: 100vw;
   height: auto;
   margin: 1rem 0;
@@ -64,6 +64,9 @@
     max-width: 1200px;
     width: 90%;
     gap: 4vw;
+  }
+  .his-thoughts {
+    padding: 5vw;
   }
   .left-sec {
     margin-right: 0;

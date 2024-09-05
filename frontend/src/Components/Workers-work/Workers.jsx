@@ -20,7 +20,7 @@ export default function Workers() {
         <div className="workers-right order-2">
           <p>We also did our best to <span>procure from our farmers.</span> Instead of working with middlemen, we buy directly from farmers, <span>ensuring they receive fair compensation.</span> This helps support their livelihoods and strengthens our community.</p>
         </div>
-        <div className="workers-left order-1">
+        <div className="workers-left order-1 ">
           <img src={assets.farmers} alt='Worker'/>
         </div>
       </div>

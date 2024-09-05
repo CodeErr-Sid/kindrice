@@ -1,8 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HealthyPartner.css';
 import { assets } from '../../assets/assets';
 
 export default function HealthyPartner() {
+  const navigate = useNavigate();
+
+  const handleLabReportClick = () => {
+    console.log('Lab report link clicked');
+    navigate('/lab-test');
+  };
+
   return (
     <section className='healthy-section'>
       <div className="content-container2">
@@ -13,7 +21,11 @@ export default function HealthyPartner() {
         <div className="consultation-container">
           <div className="info">
             <h2>Manages <span>blood sugar</span> level effectively.</h2>
-            <p><i>Click for Lab report</i></p>
+            <p>
+              <i onClick={handleLabReportClick} style={{ cursor: 'pointer', zIndex: 1 }}>
+                Click for Lab report
+              </i>
+            </p>
           </div>
           <div className="patient-image">
             <img src={assets.patient} alt='Patient' />

@@ -1,6 +1,6 @@
 /* General Styles (For screens wider than 1200px) */
 .truth-section {
-  padding: 1vw 0;
+  padding: 6vw 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,9 +68,11 @@
 }
 
 .truth-up h1 {
-  font-size: 3.7vw;
+  /* font-size: 3.7vw; */
   font-weight: 700;
-  line-height: 4.85vw;
+  /* line-height: 4.85vw; */
+  font-size: 4.7vw;
+  line-height: 5.85vw;
   color: #006633;
 }
 

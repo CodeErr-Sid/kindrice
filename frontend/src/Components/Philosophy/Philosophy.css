@@ -1,7 +1,7 @@
 /* General Styles (For screens wider than 1200px) */
 .philosophy-section1 {
   width: 100%;
-  padding: 0 0 5vw 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,13 +19,15 @@
 }
 
 .philosophy-section1 h1 {
-  font-size: 3.7vw;
+  /* font-size: 3.7vw; */
   font-weight: 700;
-  line-height: 4.85vw;
+  /* line-height: 4.85vw; */
   z-index: 99;
   color: #006633;
   margin-top: 8vw;
   margin-bottom: -9vw;
+  font-size: 4.7vw;
+  line-height: 5.85vw;
 }
 
 .philosophy1 {
@@ -38,8 +40,8 @@
   .philosophy-section1 h1 {
     font-size: 4vw;
     line-height: 5vw;
-    margin-top: 7vw;
-    margin-bottom: -8vw;
+    margin-top: 4vw;
+    margin-bottom: -6vw;
   }
 
   .images-container1 {

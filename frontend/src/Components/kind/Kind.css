@@ -91,7 +91,9 @@
     font-size: 12vw;
     line-height: 14vw;
   }
-
+  .yoga-section {
+    padding: 2rem 0;
+  }
   .yoga-header p {
     font-size: 5.5vw;
     line-height: 6.5vw;

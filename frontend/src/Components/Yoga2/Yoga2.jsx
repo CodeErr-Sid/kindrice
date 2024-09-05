@@ -13,8 +13,10 @@ export default function Yoga2() {
             <h2>Healthy Rice for Healthy Lifestyle</h2>
         </div>
     </div>
+    <div className="third-container">
     <div className="third-section">
         <img src={assets.Home3} alt=''/>
+        </div>
         </div>
    </section>
   )

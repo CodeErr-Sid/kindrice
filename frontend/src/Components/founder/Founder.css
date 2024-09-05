@@ -2,7 +2,7 @@
 
 /* Default Styles (for larger screens) */
 .founder-sec {
-  margin: 0;
+  margin-top: -8rem;
   padding: 0;
   position: relative;
 }
@@ -59,7 +59,9 @@
     font-size: 2.5vw;
     line-height: 4vw;
   }
-
+  .founder-sec {
+    margin: 0;
+  }
   .know {
     width: 25vw;
     height: auto;
@@ -75,17 +77,19 @@
     width: 85vw;
     margin-top: 5vw;
   }
-
+  .founder-sec {
+    margin: 0;
+  }
   .founder-container p {
-    font-size: 4vw;
-    line-height: 5vw;
+    font-size: 3vw;
+    line-height: 4vw;
   }
 
   .know {
     width: 30vw;
     height: auto;
-    font-size: 3.5vw;
-    line-height: 4.5vw;
+    font-size: 2.5vw;
+    line-height: 3.5vw;
     padding: 1.5vw 3vw;
   }
 }
@@ -94,10 +98,12 @@
 @media screen and (max-width: 480px) {
   .founder-container {
     width: 90vw;
-    margin-top: 2vw;
+    margin-top: 6vw;
     padding: 1.5rem 0 0 0;
   }
-
+  .founder-sec {
+    margin: 0;
+  }
   .founder-container p {
     font-size: 4vw;
     line-height: 5vw;

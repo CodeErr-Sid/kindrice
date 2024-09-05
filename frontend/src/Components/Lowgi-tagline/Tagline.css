@@ -34,7 +34,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 8vw;
+  margin-top: 15vw;
 }
 
 .tagline-container-down .tag-one,
@@ -73,7 +73,7 @@
 
 @media (max-width: 768px) {
   .tagline-container {
-    padding: 4vw 6vw;
+    padding: 4rem 6vw;
   }
 
   .tagline-container-up h1 {
@@ -87,7 +87,7 @@
   }
 
   .tagline-container-down {
-    margin-top: 5vw;
+    margin-top: 15vw;
   }
 
   .tagline-container-down .tag-one,
@@ -119,7 +119,7 @@
   }
 
   .tagline-container-down {
-    margin-top: 4vw;
+    margin-top: 15vw;
     display: flex;
     flex-direction: column;
     align-items: center;
