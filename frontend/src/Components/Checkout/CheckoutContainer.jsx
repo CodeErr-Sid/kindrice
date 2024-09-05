@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 const CheckoutContainer = () => {
@@ -31,15 +31,15 @@ const CheckoutContainer = () => {
       [id]: type === 'checkbox' ? checked : value
     }));
   };
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
   };
 
-   // State for product details
-   const [productDetails, setProductDetails] = useState({
+  // State for product details
+  const [productDetails, setProductDetails] = useState({
     pricePerKg: 12, // Example price per kg
     quantity: 1, // Default quantity
     weight: 1, // Default weight (in kg)
