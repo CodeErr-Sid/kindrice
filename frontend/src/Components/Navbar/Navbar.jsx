@@ -38,9 +38,9 @@ export default function Navbar() {
 
   return (
     <section className='navbar-section'>
-      <div className="navbar-dummy-section">
+      {/* <div className="navbar-dummy-section">
         <div className="navbar-container">
-          {/* Hamburger Icon */}
+       
           <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <FaBars />
           </div>
@@ -69,7 +69,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="navbar-container">
         {/* Hamburger Icon */}
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>

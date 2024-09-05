@@ -13,8 +13,8 @@
   justify-content: center;
   /* max-width: 1200px; */
   margin: 0 auto;
-  gap: 8vw;
-  padding: 4rem 0;
+  gap: 2vw;
+  padding: 5.5rem 0;
 }
 
 .yoga2-left-container {
@@ -26,19 +26,19 @@
 }
 
 .yoga2-left-container img {
-  width: 40vw;
-  height: 30vw;
+  width: 45w;
+  height: 40vw;
   object-fit: cover;
   object-position: right;
-  margin-right: 10vw;
+  /* margin-right: 10vw; */
 }
 
 .yoga2-right-container h2 {
-  font-size: 4.72vw;
+  font-size: 5.72vw;
   font-weight: 700;
   color: #016533;
   text-align: center;
-  line-height: 6vw;
+  line-height: 7vw;
   width: 35vw;
 }
 .third-container {
@@ -48,7 +48,7 @@
 }
 
 .third-section {
-  width: 70vw;
+  width: 80vw;
   height: auto;
   margin: 0 auto;
 }
