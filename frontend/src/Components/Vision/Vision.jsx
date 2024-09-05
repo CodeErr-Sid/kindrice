@@ -18,7 +18,7 @@ export default function Vision() {
         </div>
     </div>
     <div className="vision-mid">
-        <p>To be the earth's leading rice brand, celebrated for our unwavering obsession to quality, sustainability, and community.</p>
+        <p>To be the world’s leading rice brand, celebrated for our unwavering dedication to quality, sustainability, and community.</p>
     </div>
     <div className="vision-down">
         <div className="img-contents">

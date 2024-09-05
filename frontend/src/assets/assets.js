@@ -91,6 +91,7 @@ import product4 from "./product-img-4.png";
 import product5 from "./product-img-5.png";
 
 import w_profile from "./kishore.jpg";
+import kishore2 from "./kishore2.jpg";
 
 export const assets = {
   w_profile,
@@ -183,4 +184,5 @@ export const assets = {
   img3,
   img4,
   img5,
+  kishore2,
 };

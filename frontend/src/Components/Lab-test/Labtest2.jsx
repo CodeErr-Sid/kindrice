@@ -14,8 +14,9 @@ export default function Labtest2() {
     <section className='labtest2-section'>
       <div className="labtest2-content">
         <div className="labtest2-heading">
-          <h1 className='labtest2-bold'>Safety is our DNA</h1>
-          <h2 className='medium'>Passed 210 Lab Tests.</h2>
+          <h1 className='labtest2-bold'>Safety is in our DNA, 
+          </h1>
+          <h2 className='medium'>proven by 210 tests</h2>
         </div>
         <div className="labtest2-info-container">
           <div className="labtest2-image">

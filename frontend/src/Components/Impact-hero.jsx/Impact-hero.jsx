@@ -11,7 +11,7 @@ export default function Impacthero() {
         <img src={assets.earth} alt=''/>
     </div>
         <div className='Impact-hero-content-right'>
-      <h1>  How does <br/> Kind Rice <br/> <span>Impact the World.</span></h1>
+      <h1>  How does <br/> Kind Rice <br/> <span>Impact the World?</span></h1>
         </div>
     </div>
    </section>

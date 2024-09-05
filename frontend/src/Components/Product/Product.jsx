@@ -228,7 +228,7 @@ const Product = ({ productId }) => {
             <div className='flex flex-col md:w-[87%] mx-auto items-center md:items-start'>
                 <h1 className='font-bold text-2xl mb-4'>What’s Inside</h1>
              <img src={assets.ShopBowl} alt='' className='w-[40%] md:w-[15%] h-auto my-4'/>
-
+                 <p className='text-xl w-full mt-4'>Ingredients - 100 percent natural low-gi rice</p>
             </div>
             <div className="ikn-switch-section w-[87%] my-12 mx-auto">
                 <div className="btn-groups font-bold flex flex-row gap-2">

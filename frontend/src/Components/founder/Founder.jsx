@@ -13,10 +13,12 @@ export default function Founder() {
     <section className='founder-sec'>
         <div className='founder-container'>
             <p className='tagline2'>Join us on this heartfelt journey. Choose Kind Rice and be a part of something revolutionary.</p>
-            <p className='founder-details'>
-              Kishore, Founder, Kind Rice.
+            <p className='founder-details text-center'>
+              Kishore
+              <br/>
+              Founder of Kind Rice
             </p>
-            <button className='know' onClick={handleClick}>To Know More</button>
+            {/* <button className='know' onClick={handleClick}>To Know More</button> */}
         </div>
     </section>
   );

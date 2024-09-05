@@ -6,12 +6,12 @@ export default function AboutHero() {
   return (
     <section className='about-us'>
         <div className='inner-container'>
-            <img src={assets.plants} alt=''/>
+            <img src={assets.kishore2} alt=''/>
         </div>
         <div className="about-section-section">
             <img src={assets.man} alt=''/>
             <div className="about-overlay-text">
-            <h1>IT ALL STARTED WITH DREAM TO NUTURE OUR PLANET</h1>
+            <h1>IT ALL STARTED WITH A DREAM TO NURTURE OUR PLANET</h1>
             <p className='border-bottom'></p>
             </div>
         </div>

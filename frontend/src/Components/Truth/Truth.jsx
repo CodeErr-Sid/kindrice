@@ -19,9 +19,7 @@ export default function Truth() {
             </div>
             <div className="truth-down-container">
   <p className='truth-para-one'>
-    If you are a <span>fitness enthusiast, health-conscious,</span> or a <span>diabetic person</span> who loves regular rice, 
-    our <span>Kind-Low GI rice</span> is <span>tested</span> to be a <span>healthy and safe option</span> than normal white rice. 
-    However, <span>please note</span> that our rice is not intended to treat diabetes.
+  If you're a <span>fitness enthusiast,</span> health-conscious individual, or <span>diabetic person</span> who loves regular rice but needs a <span>healthier option,</span> our Kind-Low GI rice is a tested and safer alternative to white rice. However, please note that it is not intended to <span>treat diabetes.</span>
   </p>
 </div>
 

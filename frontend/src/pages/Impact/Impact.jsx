@@ -9,13 +9,12 @@ import Tagline from '../../Components/Impact-tagline/Tagline'
 import Footer from '../../Components/Footer/Footer'
 
 export default function Impact() {
-    const paragraphHtml1 = `Kind Rice proudly sources its cotton bags from Carefactory, where <span>people with mental illness meticulously craft each bag.</span> <br/> <br/>By choosing Kind Rice, you <span>support meaningful employment and a supportive community.</span>`;
+    const paragraphHtml1 = `Kind Rice proudly sources its cotton bags from Carefactory, where <span>people living with mental health challenges</span> meticulously craft each bag.
+<br/> <br/>By choosing Kind Rice, you support meaningful employment and a supportive community.`;
 
-    const paragraphHtml2 = `We do our best to <span>procure paddy directly from farmers.</span> Nowadays, most paddy is purchased from brokers, where middlemen gain more profit and farmers are not paid fairly.
-<br/><br/>
-By <span>procuring directly from farmers,</span> we ensure they <span>receive a fair price</span> and <span>support their livelihood<span/>  how to add span this in props.
+    const paragraphHtml2 = `We buy paddy <span>directly from farmers,</span> bypassing brokers to ensure <span>fair prices</span> for farmers and support their livelihoods, rather than letting middlemen profit at their expense.
     `;
-    const paragraphHtml3 = `Nowadays, rice packaged in plastic bags. We want to change this to<span>protect our planet.</span> <br/><br/> We will <span>pack all our rice in cotton bags using only food-grade ink.</span> Our packaging will be completely plastic-free.`
+    const paragraphHtml3 = `We package our rice in <span>cotton bags printed with food-grade ink</span> and then place these bags in sturdy carton boxes. To ensure environmental responsibility, we use water-activated paper tapes instead of plastic transparent tapes for sealing.`;
   return (
     <>
     <Navbar/>
