@@ -67,27 +67,32 @@ import certificate6 from "./certificate6.jpeg";
 import checking from "./checking.svg";
 import yoga2 from "./yoga2.png";
 import Zoom from "./Zoom-green.png";
-import ShopBowl from "./shopbowl.svg"
+import ShopBowl from "./shopbowl.svg";
 import bag from "./bag.png";
+import test from "./test.jpg";
+import fssai from "./fssai.png";
+import img2 from "./img2.png";
+import img3 from "./img3.png";
+import img4 from "./img4.png";
+import img5 from "./img5.png";
 
-import bgcircle from './bigcircle.svg'
-import profileImg from './profilecircle.svg'
+import bgcircle from "./bigcircle.svg";
+import profileImg from "./profilecircle.svg";
 
-// proudct images 
+// proudct images
 
-import LowGiRice from './lowgirice.png'
-import normalRice from './normalrice.png'
+import LowGiRice from "./lowgirice.png";
+import normalRice from "./normalrice.png";
 
-import product1 from "./product-img-1.png"
-import product2 from "./product-img-2.png"
-import product3 from "./product-img-3.png"
-import product4 from "./product-img-4.png"
-import product5 from "./product-img-5.png"
+import product1 from "./product-img-1.png";
+import product2 from "./product-img-2.png";
+import product3 from "./product-img-3.png";
+import product4 from "./product-img-4.png";
+import product5 from "./product-img-5.png";
 
-import w_profile from "./kishore.jpg"
+import w_profile from "./kishore.jpg";
 
 export const assets = {
-
   w_profile,
 
   bgcircle,
@@ -172,4 +177,10 @@ export const assets = {
   product3,
   product4,
   product5,
+  test,
+  fssai,
+  img2,
+  img3,
+  img4,
+  img5,
 };

@@ -6,6 +6,7 @@ import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Accordion from "../Accordion/Accordion"
 import { AuthContext } from '../../context/AuthContext';
 import { useAsyncError, useNavigate } from 'react-router-dom';
+import FullTransparency from '../FullTransparency/FullTransparency';
 
 const Product = () => {
 
@@ -285,7 +286,8 @@ const Product = () => {
                     </div>
                 </div>
             </div>
-            <div className='faq-section w-[87%] my-12 mx-auto bg-[#016533] text-white rounded-2xl p-4'>
+           
+            {/* <div className='faq-section w-[87%] my-12 mx-auto bg-[#016533] text-white rounded-2xl p-4'>
                 <h1 className='text-center font-bold text-2xl'>Got any Questions</h1>
                 <p className='text-center underline italic'>Let's dive in!</p>
                 <div className="faq-inner-container bg-inherit text-black  rounded-2xl">
@@ -347,7 +349,7 @@ const Product = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     )
 }

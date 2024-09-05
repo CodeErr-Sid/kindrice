@@ -6,7 +6,7 @@ const ShopBowl = () => {
   return (
     <section>
         <div className="shop-bowl-container">
-            <img className='shopbowl-img' src={assets.ShopBowl} alt="" />
+            {/* <img className='shopbowl-img' src={assets.ShopBowl} alt="" /> */}
             <h1 className='shopbowl-heading'>Shop</h1>
         </div>
     </section>
