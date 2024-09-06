@@ -44,10 +44,10 @@ export default function CertificatesImages() {
 
       {/* Overlay Popup */}
       {selectedImage && (
-        <div className="image-overlay">
-          <div className="overlay-content">
+        <div className="image-overlay2">
+          <div className="overlay-content2">
             <img src={selectedImage} alt="Certificate" />
-            <span className="close-icon" onClick={handleCloseClick}>✕</span>
+            <span className="close-icon2" onClick={handleCloseClick}>✕</span>
           </div>
         </div>
       )}

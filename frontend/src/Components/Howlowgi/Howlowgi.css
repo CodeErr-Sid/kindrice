@@ -29,7 +29,7 @@
 .howlowgi-paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 2vw;
+  /* gap: 2vw; */
 }
 
 .howlowgi-first-para {
@@ -121,13 +121,17 @@
   .howlowgi-list li::before {
     font-size: 3vw;
   }
+
+  .howlowgi-list li {
+    padding-left: 0;
+  }
 }
 
 /* Styles for very small screens (mobile) */
 @media screen and (max-width: 480px) {
   .howlowgi-section {
-    padding: 5vw 2vw;
-    width: 85vw;
+    padding: 5vw 0vw;
+    width: 80vw;
   }
 
   .howlowgi-title {
@@ -148,5 +152,9 @@
 
   .howlowgi-list li::before {
     font-size: 4vw;
+  }
+  .howlowgi-content {
+    width: 80%;
+    margin: 0 auto;
   }
 }

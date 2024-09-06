@@ -31,7 +31,7 @@
 }
 
 /* Overlay Popup Style */
-.image-overlay {
+.image-overlay2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -44,7 +44,7 @@
   z-index: 1000;
 }
 
-.overlay-content {
+.overlay-content2 {
   position: relative;
   background-color: #fff;
   padding: 0;
@@ -53,15 +53,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 3rem 0;
 }
 
-.overlay-content img {
+.overlay-content2 img {
   width: 50%;
-  height: 40%;
+  height: 50%;
   box-shadow: 0px 5px 10px 0px #050505;
 }
 
-.close-icon {
+.close-icon2 {
   position: absolute;
   top: 1vw;
   left: 1vw;
@@ -74,15 +75,18 @@
   font-weight: 700;
 }
 @media screen and (max-width: 768px) {
-  .overlay-content {
-    height: 90vh;
-    width: 80vw;
+  .overlay-content2 {
+    max-width: 85%;
+    max-height: 100%;
+    padding: 5rem 0;
   }
-  .overlay-content img {
-    width: 70%;
-    height: auto;
+  .overlay-content2 img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
   }
-  .close-icon {
+  .close-icon2 {
     font-size: 4vw;
+    left: 2vw;
   }
 }
