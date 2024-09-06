@@ -102,8 +102,8 @@ export default function Navbar() {
               >Logout</button>}
             </div>
             <FaUser className='icon user user2' />
-            <div className="cart-icon-container  md:relative">
-              <FaShoppingCart className='icon cart' onClick={() => navigate("/checkout")} />
+            <div className="cart-icon-container relative">
+              <FaShoppingCart className='icon cart' onClick={() => navigate("/cart")} />
               <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={() => navigate("/checkout")}>{cart.reduce((sum, item) => sum + item.quantity, 0)}</div>
             </div>
           </div>
