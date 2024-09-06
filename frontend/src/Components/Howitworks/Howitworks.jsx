@@ -7,7 +7,7 @@ export default function Howitworks() {
    <div className="howitworks-section">
     
     <div className="how-container">
-        <h1>How it works:</h1>
+        <h1>How it works?</h1>
         <div className="how-it-works">
         <div className="first-container">
             <img src={assets.selected} alt=''/>

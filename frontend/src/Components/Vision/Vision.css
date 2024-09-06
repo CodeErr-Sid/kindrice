@@ -76,7 +76,7 @@
   margin-bottom: 1vw;
   width: 9vw;
   height: 9vw;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 

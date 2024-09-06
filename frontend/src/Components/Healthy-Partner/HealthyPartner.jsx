@@ -15,12 +15,13 @@ export default function HealthyPartner() {
     <section className='healthy-section'>
       <div className="content-container2">
         <div className="heading-container">
-          <h1 className='bold'>Health Partner.</h1>
-          <h2 className='medium'>Incredibly Low-GI.</h2>
+          {/* <h1 className='bold'>Health Partner.</h1> */}
+          <h2 className='medium'>Incredibly Low-GI
+          </h2>
         </div>
         <div className="consultation-container">
           <div className="info">
-            <h2>Manages <span>blood sugar</span> level effectively.</h2>
+            <h2>Low-GI raises <span>blood sugar</span> levels more gradually. This can help manage <span>blood glucose</span> levels and provide steady energy.</h2>
             <p>
               <i onClick={handleLabReportClick} style={{ cursor: 'pointer', zIndex: 1 }}>
                 Click for Lab report

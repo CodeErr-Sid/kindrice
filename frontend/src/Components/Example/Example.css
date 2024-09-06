@@ -51,7 +51,9 @@
 .small-screen {
   display: none; /* Hidden by default on larger screens */
 }
-
+.important-highlight {
+  font-weight: 700;
+}
 /* Styles for medium screens (tablets) */
 @media screen and (max-width: 1024px) {
   .example-section {

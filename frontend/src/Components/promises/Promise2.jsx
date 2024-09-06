@@ -8,16 +8,19 @@ export default function Promise2() {
       <section className='promise2-section'>
         <div className="promise2-content-container">
           <div className="promise2-heading-container">
-            <h1 className='promise2-bold'>Our Promise.</h1>
-            <h2 className='promise2-medium'>Designed for Your Wellness.</h2>
-            <p>A superhero protecting you and the planet.</p>
+            <h1 className='promise2-bold'>Committed to Your Wellness
+            </h1>
+          
+            <p>A superhero protecting you and our planet
+            </p>
           </div>
           <div className="promise2-consultation-container">
           <div className="promise2-patient-image">
               <img src={assets.environment} alt='Patient' />
             </div>
             <div className="promise2-info">
-            <h2>Kind Rice is the <span>first low-GI rice to be packaged in a food-grade cotton bag</span>, free from harmful microplastics.</h2>
+            <h2>Kind Rice, <span>comes in cotton bags</span> printed in food-grade inks, <span>free from PVC and microplastics.</span>
+            </h2>
             </div>
           
           </div>

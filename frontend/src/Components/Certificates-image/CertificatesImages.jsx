@@ -1,30 +1,56 @@
-import React from 'react'
-import { assets } from '../../assets/assets'
-import './CertificatesImages.css'
+import React, { useState } from 'react';
+import { assets } from '../../assets/assets';
+import './CertificatesImages.css';
 
 export default function CertificatesImages() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleButtonClick = (imageSrc) => {
+    setSelectedImage(imageSrc); // Set the selected image for the overlay
+  };
+
+  const handleCloseClick = () => {
+    setSelectedImage(null); // Close the overlay by resetting the selected image
+  };
+
   return (
-    <section className="certificates">
-        <div className="certificates-container">
-            <div className="certificates-image">
-                <img src={assets.certificate1} alt=''/>
-            </div>
-            <div className="certificates-image">
-            <img src={assets.certificate2} alt=''/>
-            </div>
-            <div className="certificates-image">
-            <img src={assets.certificate3} alt=''/>
-            </div>
-            <div className="certificates-image">
-            <img src={assets.certificate4} alt=''/>
-            </div>
-            <div className="certificates-image">
-            <img src={assets.certificate5} alt=''/>
-            </div>
-            <div className="certificates-image">
-            <img src={assets.certificate6} alt=''/>
-            </div>
+    <>
+      <section className="certificates">
+    
+        <div className="certificates-container items-center justify-center  md:items-start md:justify-start md:pl-8">
+        <h1 className='text-3xl md:text-5xl font-bold m-4'>Our Transparency</h1>
+        <div className="button-container flex flex-row flex-wrap w-[80%] md:w-[80vw] text-center md:text-left items-center justify-center md:items-start md:justify-start">
+          <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate1)}>
+            Certificate 1
+          </button>
+          <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate2)}>
+            Certificate 2
+          </button>
+          <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate3)}>
+            Certificate 3
+          </button>
+          <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate4)}>
+            Certificate 4
+          </button>
+          <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate5)}>
+            Certificate 5
+          </button>
+          <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate6)}>
+            Certificate 6
+          </button>
+          </div>
         </div>
-    </section>
-  )
+      </section>
+
+      {/* Overlay Popup */}
+      {selectedImage && (
+        <div className="image-overlay">
+          <div className="overlay-content">
+            <img src={selectedImage} alt="Certificate" />
+            <span className="close-icon" onClick={handleCloseClick}>✕</span>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }

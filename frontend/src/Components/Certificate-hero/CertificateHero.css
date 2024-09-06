@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   width: 90vw;
+  margin-top: -3rem;
 }
 
 .certificate-left {

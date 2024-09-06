@@ -9,8 +9,8 @@ const Table = () => {
         <thead className='title-head'>
           <tr>
             <th className="aspect-header">Aspect</th>
-            <th className="kind-header">Kind Low-GI rice <br />(55 or below)</th>
-            <th className="normal-header">Normal rice <br />(70 and above)</th>
+            <th className="kind-header">Our Low-GI rice{/*<br />(55 or below)*/}</th>
+            <th className="normal-header">Normal rice {/*<br />(70 and above)*/}</th>
           </tr>
         </thead>
         <tbody>

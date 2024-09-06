@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 5rem 0;
-  width: 70vw;
+  width: 80vw;
   margin: 0 auto;
 }
 
@@ -45,21 +45,21 @@
 }
 
 .howlowgi-list {
-  list-style: none;
-  counter-reset: custom-counter;
+  list-style-type: disc;
+  /* counter-reset: custom-counter; */
   padding-left: 0;
   margin: 0;
 }
 
 .howlowgi-list li {
-  counter-increment: custom-counter;
+  /* counter-increment: custom-counter; */
   margin-bottom: 10px;
   position: relative;
-  padding-left: 25px;
+  padding-left: 10px;
 }
 
 .howlowgi-list li::before {
-  content: counter(custom-counter) ". ";
+  /* content: counter(custom-counter) ". "; */
   font-size: 1.8vw;
   font-weight: bold;
   position: absolute;

@@ -49,17 +49,18 @@
 .patient-image {
   width: 100%;
   max-width: 60vw;
-  margin-top: 2rem; /* Space between info and image */
+  margin-top: 6rem; /* Space between info and image */
 }
 
 .patient-image img {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Ensure the image covers the container without distortion */
+  object-fit: cover;
+  margin-top: 4rem;
 }
 .info {
   text-align: left;
-  margin-top: 12rem;
+  margin-top: 14rem;
   margin-left: 6vw;
   z-index: 1;
 }
