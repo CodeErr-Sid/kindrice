@@ -10,6 +10,7 @@ export const AuthContext = createContext();
 // Create the provider component
 export const AuthContextProvider = ({ children }) => {
     const url = import.meta.env.VITE_BACKEND_URL;
+    const currency = "₹"
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     const [idToken, setIdToken] = useState("");
@@ -49,7 +50,7 @@ export const AuthContextProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, url, idToken, cart }}>
+        <AuthContext.Provider value={{ isLoggedIn, user, url, idToken, cart, currency }}>
             {children}
         </AuthContext.Provider>
     );
