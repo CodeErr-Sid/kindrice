@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faHeart, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Accordion from "../Accordion/Accordion"
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -194,31 +194,24 @@ const Product = ({ productId }) => {
                     </div>
                     <h5 className="price text-3xl font-extrabold text-[#016533]">$549.99</h5>
                     <div className="quantity-section">
-                        <p>quantity</p>
-                        <div className="quantity-btn-seciton flex flex-row gap-5">
-                            <button className='bg-[#e3dede] p-2 rounded-sm'>1 KG</button>
-                            <button className='bg-[#e3dede] p-2 rounded-sm'>3 KG</button>
-                            <button className='bg-[#e3dede] p-2 rounded-sm'>5 KG</button>
-                        </div>
-                    </div>
-                    <div className="atcf flex gap-5">
-                        <button
-                            className="addToCart flex-[3] bg-[#F4D34F8F] font-black rounded-lg p-2"
-                            onClick={handleAddToCart}
-                        >Add To Cart</button>
-                        <input
-                            type="number"
-                            className="favorite flex-[2] border-[#F9D46B] border-2 rounded-lg p-2 text-center"
-                            min="1"
-                            defaultValue="1"
-                        />
+  <div className="quantity-button-group flex flex-col gap-2 md:w-4/6">
 
-                    </div>
-                    <button
-                        className="buy-now bg-[#016533] p-2 border-2 rounded-lg text-white text-xl"
-                        onClick={handleBuyNow}>
-                        Buy Now
-                    </button>
+    <div className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2">
+      <span className="text-[#016533] font-bold">1 KG</span>
+      <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
+    </div>
+    
+    <div className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2">
+      <span className="text-[#016533] font-bold">QUANTITY - 1 BAG</span>
+      <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
+    </div>
+   
+    <button className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2">
+      ADD TO CART
+    </button>
+  </div>
+</div>
+
                 </div>
             </div>
             <div className="description-section mx-auto my-12 w-[87%]">
