@@ -258,7 +258,7 @@
     font-size: 5vw;
     font-weight: 600;
     line-height: 6vw;
-    text-align: center;
+    text-align: left;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,7 +273,7 @@
   }
 
   .contact-form-right p {
-    text-align: center;
+    text-align: left;
     font-size: 5vw;
     line-height: 6vw;
   }
@@ -283,6 +283,7 @@
     line-height: 8vw;
     width: 90vw;
     margin-bottom: 3vw;
+    text-align: left;
   }
   .contact-form-right input,
   .contact-form-right textarea {
@@ -292,7 +293,7 @@
     font-size: 5vw;
   }
   .contact-form-right h2 {
-    font-size: 5.5vw;
+    font-size: 5vw;
   }
   .contact-form-right button[type="submit"] {
     font-size: 5vw;
