@@ -15,14 +15,14 @@
 
 .content-overlay {
   position: absolute;
-  top: 50%;
-  left: 10%;
+  top: 60%;
+  left: 15%;
   transform: translateY(-50%);
   color: white;
   font-family: "Nunito", sans-serif;
   font-size: 5.21vw;
   font-weight: 400;
-  line-height: 7.1vw;
+  line-height: 6.1vw;
   text-align: center;
   margin: 0 auto;
 }
@@ -32,7 +32,7 @@
   line-height: 2.84vw;
 }
 .content-overlay h1 span {
-  color: rgb(1, 52, 1);
+  font-size: 6.21vw;
 }
 .content-overlay .btn {
   display: block;

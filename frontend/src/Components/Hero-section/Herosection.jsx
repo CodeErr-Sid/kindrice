@@ -19,7 +19,7 @@ export default function Herosection() {
             <img src={assets.outdoor} alt='' />
           </div>
           <div className="content-overlay">
-            <h1>A <span>low-GI</span> Rice
+            <h1><span>A low-GI Rice</span>
                 <br />
                 So Clean. So Tasty. So Healthy.
             </h1>
