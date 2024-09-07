@@ -132,26 +132,34 @@
     padding: 0;
   }
 }
+/* Small mobile screens */
+@media (max-width: 530px) {
+  .yoga2-left-container,
+  .yoga2-right-container {
+    width: 80%; /* Allow images and text to take up more space */
+  }
 
-@media (max-width: 480px) {
+  .yoga2-container {
+    flex-direction: column; /* Stack items vertically */
+    /* gap: 3vw; */
+    padding: 2rem 0;
+  }
   .yoga2-left-container img {
-    width: 60vw;
-    height: 50vw;
+    width: 100%; /* Make images scale based on screen size */
+    height: auto;
+    padding-right: 2rem;
   }
 
   .yoga2-right-container h2 {
-    font-size: 6vw;
-    line-height: 7vw;
-  }
-
-  .third-section {
-    width: 90vw;
+    font-size: 7vw;
+    line-height: 8vw;
   }
 
   .third-section img {
     width: 100vw;
   }
+
   .yoga2-container {
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 }

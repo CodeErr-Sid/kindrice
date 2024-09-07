@@ -132,7 +132,7 @@
 /* Media Queries for screens smaller than 530px */
 @media screen and (max-width: 530px) {
   .truth-section {
-    padding: 3vw 0;
+    padding: 2rem 5vw;
   }
 
   .truth-container {

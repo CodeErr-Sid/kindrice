@@ -93,6 +93,6 @@
   .content-overlay .btn {
     color: #006633;
     font-weight: 700;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
   }
 }
