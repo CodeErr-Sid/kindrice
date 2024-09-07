@@ -267,7 +267,6 @@
   }
 }
 
-/* Media Queries for smaller screens */
 @media screen and (max-width: 375px) {
   .labtest2-section {
     height: auto;
@@ -314,7 +313,6 @@
   }
 
   .labtest2-details {
-    /* margin-left: 13vw; */
     text-align: center;
     position: relative;
     order: 1;
