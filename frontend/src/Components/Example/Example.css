@@ -130,16 +130,16 @@
   }
 
   .example-content-left img {
-    width: 80%;
+    width: 90%;
   }
 
   .example-section__content-right h2 {
-    font-size: 5vw;
+    font-size: 7vw;
   }
 
   .example-section__content-right p {
-    font-size: 4vw;
-    line-height: 4.5vw;
+    font-size: 5vw;
+    line-height: 6vw;
   }
 
   .small-screen {

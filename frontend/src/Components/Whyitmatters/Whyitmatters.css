@@ -124,7 +124,7 @@
   }
 
   .whyitmatters-title {
-    font-size: 6vw;
+    font-size: 7vw;
     margin-bottom: 4.5vw;
   }
 
@@ -139,11 +139,11 @@
 
   .whyitmatters-first-para,
   .whyitmatters-second-para {
-    font-size: 4vw;
-    line-height: 5vw;
+    font-size: 5vw;
+    line-height: 6vw;
   }
   .img-one {
-    width: 12vw;
-    height: 12vw;
+    width: 13vw;
+    height: 13vw;
   }
 }

@@ -146,12 +146,12 @@
   }
 
   .how-container h1 {
-    font-size: 6vw;
+    font-size: 7vw;
     margin-bottom: 4vw;
   }
 
   .first-container img {
-    width: 15vw;
+    width: 25vw;
     padding-right: 1vw;
     margin-top: 1vw;
   }
@@ -159,8 +159,8 @@
   .first-para,
   .second-para,
   .third-para {
-    font-size: 4vw;
-    line-height: 5vw;
+    font-size: 5vw;
+    line-height: 6vw;
     margin: 3vw 0;
   }
 }
