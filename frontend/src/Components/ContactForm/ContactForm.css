@@ -160,6 +160,7 @@
 .contact-form-right button[type="submit"]:hover {
   background-color: #038142;
 }
+
 /* For tablets and small screens (max-width: 1024px) */
 @media screen and (max-width: 1024px) {
   .contact-form-up h2 {
@@ -168,13 +169,13 @@
   }
 
   .contact-form-right h1 {
-    font-size: 3.5vw; /* Adjusted from 4vw */
-    line-height: 4vw; /* Adjusted line-height to match font size */
+    font-size: 3.5vw;
+    line-height: 4vw;
   }
 
   .contact-form-right p {
-    font-size: 1.5vw; /* Adjusted from 1.7vw */
-    line-height: 1.8vw; /* Adjusted line-height */
+    font-size: 1.5vw;
+    line-height: 1.8vw;
   }
 
   .contact-form-right input,
@@ -209,8 +210,8 @@
   }
 
   .contact-form-right h1 {
-    font-size: 3.5vw; /* Adjusted from 4vw */
-    line-height: 4vw; /* Adjusted line-height */
+    font-size: 3.5vw;
+    line-height: 4vw;
   }
 
   .contact-form-right p {
@@ -254,43 +255,46 @@
   }
   .contact-form-up h2 {
     font-family: "Nunito", sans-serif;
-    font-size: 3.5vw;
+    font-size: 5vw;
     font-weight: 600;
-    line-height: 4vw;
+    line-height: 6vw;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 10vw;
   }
   .contact-form-right {
-    width: 80vw;
+    width: 90vw;
     margin-top: 5vw;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
   }
-  .contact-form-right h1,
+
   .contact-form-right p {
     text-align: center;
     font-size: 5vw;
     line-height: 6vw;
   }
-  .contact-form-right p {
-    font-size: 3.5vw;
+  .contact-form-right h1 {
+    text-align: center;
+    font-size: 7vw;
+    line-height: 8vw;
+    width: 90vw;
+    margin-bottom: 3vw;
   }
   .contact-form-right input,
   .contact-form-right textarea {
-    font-size: 3.5vw;
+    font-size: 5vw;
   }
   .contact-form-right label {
-    font-size: 4vw;
+    font-size: 5vw;
   }
   .contact-form-right h2 {
-    font-size: 4vw;
+    font-size: 5.5vw;
   }
   .contact-form-right button[type="submit"] {
-    font-size: 4vw;
+    font-size: 5vw;
   }
 }
