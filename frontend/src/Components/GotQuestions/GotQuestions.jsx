@@ -29,7 +29,7 @@ export default function GotQuestions() {
     <section className="w-full p-0 my-12">
       <div className="container flex items-center justify-center mx-auto mt-28 flex-col gap-2">
         <h1 className="text-center text-4xl md:text-5xl font-bold">Got Questions?</h1>
-        <p className='text-center text-2xl md:text-2xl text-customGreen font-kalam'>We hear you</p>
+        <p className='text-center text-2xl md:text-2xl text-customGreen'>We hear you</p>
         
         <div className='border-2 border-black w-[90%] md:w-[90%] mt-12'>
           {/* Question 1 */}
@@ -92,7 +92,7 @@ export default function GotQuestions() {
       {/* Verified Reviews */}
       <div className="container flex items-center justify-center mx-auto mt-28 flex-col gap-2">
         <h1 className="text-center text-4xl md:text-5xl font-bold">Verified Reviews</h1>
-        <p className='text-center text-2xl md:text-2xl text-customGreen font-kalam'>From Real People</p>
+        <p className='text-center text-2xl md:text-2xl text-customGreen'>From Real People</p>
         <div className='w-[90%] m-8'>
           <div className='flex flex-col'>
             <div className='flex flex-row gap-4 items-center'>

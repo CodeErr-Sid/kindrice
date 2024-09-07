@@ -187,68 +187,80 @@
   .healthyrice2-section {
     height: auto;
     padding: 2rem 5vw;
+
     margin: 0 auto;
   }
-
+  .healthyrice2-content-container {
+    padding: 0;
+  }
   .healthyrice2-heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 1rem;
-    margin: 0 auto;
+    position: relative;
     text-align: center !important;
+    margin: 0 auto;
+    padding-left: 0 !important;
   }
 
   .healthyrice2-heading-container h1 {
-    font-size: 8vw;
-    line-height: 9.5vw;
+    font-size: 9vw;
+    line-height: 10vw;
   }
 
   .healthyrice2-medium {
     font-size: 5.5vw;
-    line-height: 6.5vw;
+    text-align: center;
   }
 
+  .healthyrice2-bold {
+    text-align: center;
+  }
   .healthyrice2-heading-container p {
-    font-size: 4.5vw;
-    line-height: 5.5vw;
+    font-size: 5vw;
+    line-height: 6vw;
     width: 80vw;
     text-align: center;
-    margin-top: 2vw;
   }
-
   .healthyrice2-consultation-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    /* gap: 1rem; */
+    gap: 0;
   }
 
   .healthyrice2-patient-image {
-    width: 80vw;
+    width: 100%;
     margin-top: 0;
     order: -1;
+    max-width: 80vw;
+    transform: scale(1);
   }
 
   .healthyrice2-info {
     margin-top: 2rem;
     margin-left: 0;
     text-align: center;
+    position: relative;
     order: 1;
-    width: 85vw;
   }
 
   .healthyrice2-info h2 {
-    font-size: 4.5vw;
-    line-height: 6vw;
-    width: 86vw;
-    margin-bottom: 0;
+    font-size: 5.5vw;
+    line-height: 6.5vw;
+    width: 90vw;
+    padding-top: 0;
   }
 
   .healthyrice2-info p {
-    font-size: 3vw;
+    font-size: 3.8vw;
   }
 
   .healthyrice2-patient-image img {
-    width: 61vw;
-    height: auto;
+    width: 70vw;
+    height: 60vw;
+    margin: 0 auto;
     object-fit: cover;
     object-position: center;
   }

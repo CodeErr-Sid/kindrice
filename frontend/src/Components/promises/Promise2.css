@@ -184,11 +184,9 @@
     padding: 2rem 5vw;
     margin: 0 auto;
   }
-
   .promise2-content-container {
     padding: 0;
   }
-
   .promise2-heading-container {
     display: flex;
     align-items: center;
@@ -201,26 +199,24 @@
   }
 
   .promise2-heading-container h1 {
-    font-size: 8vw; /* Reduce size slightly to avoid zoomed-out look */
-    line-height: 9vw;
+    font-size: 9vw;
+    line-height: 10vw;
   }
 
   .promise2-medium {
-    font-size: 5vw;
+    font-size: 5.5vw;
     text-align: center;
   }
 
   .promise2-bold {
     text-align: center;
   }
-
   .promise2-heading-container p {
-    font-size: 4.5vw; /* Reduce font size */
-    line-height: 5.5vw;
-    width: 70vw; /* Adjust width to ensure it fits well */
+    font-size: 5vw;
+    line-height: 6vw;
+    width: 80vw;
     text-align: center;
   }
-
   .promise2-consultation-container {
     flex-direction: column;
     align-items: center;
@@ -229,9 +225,10 @@
   }
 
   .promise2-patient-image {
-    width: 80vw; /* Scale to avoid zoom-out */
+    width: 100%;
     margin-top: 0;
     order: -1;
+    max-width: 90vw;
     transform: scale(1);
   }
 
@@ -244,9 +241,9 @@
   }
 
   .promise2-info h2 {
-    font-size: 4.5vw; /* Adjust font size */
-    line-height: 6vw;
-    width: 90vw; /* Make sure text spans appropriately */
+    font-size: 5.5vw;
+    line-height: 6.5vw;
+    width: 90vw;
     padding-top: 0;
   }
 
@@ -255,8 +252,9 @@
   }
 
   .promise2-patient-image img {
-    width: 65vw;
-    height: auto;
+    width: 70vw;
+    height: 52vw;
+    margin: 0 auto;
     object-fit: cover;
     object-position: center;
   }

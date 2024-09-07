@@ -226,7 +226,7 @@ const Product = ({ productId }) => {
 
                 </div>
             </div>
-            <div className="description-section mx-auto my-12 w-[87%]">
+            {/* <div className="description-section mx-auto my-12 w-[87%]">
                 <h4 className='font-bold text-2xl mb-4'>This Kind low-GI rice is completely natural. </h4>
                 <p className='text-xl w-full md:w-[50%]'>We pick only the finest 'RNR' variety (native to Telangana). Then, we slowly process it using our signature method, in extremely small batches, to perfection!</p>
             </div>
@@ -234,7 +234,7 @@ const Product = ({ productId }) => {
                 <h1 className='font-bold text-2xl mb-4'>What’s Inside</h1>
              <img src={assets.ShopBowl} alt='' className='w-[40%] md:w-[15%] h-auto my-4'/>
                  <p className='text-xl w-[80%] mt-4'>Ingredients - 100 percent natural low-gi rice</p>
-            </div>
+            </div> */}
             <div className="ikn-switch-section w-[87%] my-12 mx-auto">
                 <div className="btn-groups font-bold flex flex-row gap-2">
                     <button

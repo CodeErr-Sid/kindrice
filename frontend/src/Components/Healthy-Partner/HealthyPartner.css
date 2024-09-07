@@ -204,17 +204,21 @@ i {
   }
 
   .heading-container h1 {
-    font-size: 7.5vw; /* Adjust font size to fit the width better */
-    line-height: 8.5vw;
+    font-size: 9vw;
+    line-height: 10vw;
   }
 
   .medium {
-    font-size: 6.5vw; /* Reduce the font size slightly to fit better */
+    font-size: 7vw;
     text-align: center;
   }
 
   .size {
-    font-size: 8vw !important; /* Ensure this covers the width nicely */
+    font-size: 10vw !important;
+  }
+
+  .bold {
+    text-align: center;
   }
 
   .consultation-container {
@@ -225,33 +229,33 @@ i {
 
   .patient-image {
     width: 100%;
-    max-width: 75vw; /* Adjust max-width to fit screen width better */
-    margin-top: 0;
+    max-width: 80vw; /* Adjust max-width for smaller screens */
+    margin-top: 0; /* Remove top margin */
     order: -1; /* Move image to the top */
   }
 
   .info {
-    margin-top: 0; /* Space between image and info */
-    margin-left: 0;
-    text-align: center;
+    margin-top: -1rem; /* Add space between image and info */
+    margin-left: 0; /* Remove left margin */
+    text-align: center; /* Center-align text */
     position: relative;
     order: 1;
   }
 
   .info h2 {
-    font-size: 4.5vw; /* Slightly smaller font size */
-    line-height: 5.5vw;
-    width: 85vw; /* Adjust width to fit more content */
+    font-size: 5.5vw;
+    line-height: 6.45vw;
+    width: 80vw;
     padding-top: 0;
   }
 
   .info p {
-    font-size: 2.8vw; /* Adjust font size for better readability */
+    font-size: 3.8vw;
   }
 
   .patient-image img {
-    width: 85vw; /* Ensure the image covers a significant part of the screen */
-    height: 55vw;
+    width: 90vw;
+    height: 70vw;
     margin: 0 auto;
     object-fit: cover;
     object-position: center;

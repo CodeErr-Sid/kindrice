@@ -110,8 +110,8 @@
 
 @media (max-width: 576px) {
   .ImpactSecond__content_right p {
-    font-size: 5vw; /* Increase font size for better readability */
-    line-height: 6vw; /* Adjust line height accordingly */
+    font-size: 5.5vw; /* Increase font size for better readability */
+    line-height: 6.5vw; /* Adjust line height accordingly */
   }
   .ImpactSecond {
     padding: 1.5rem 2vw; /* Adjust padding for smaller screens */
@@ -122,7 +122,7 @@
   }
   .ImpactSecond__content_up h1 {
     font-family: "Nunito", sans-serif;
-    font-size: 4.5vw !important;
+    font-size: 5.5vw !important;
     font-weight: 700;
     color: #006633;
   }
