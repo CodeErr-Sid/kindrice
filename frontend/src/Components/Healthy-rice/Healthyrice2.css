@@ -290,9 +290,9 @@
     text-align: center;
   }
   .healthyrice2-heading-container p {
-    font-size: 3.5vw;
-    line-height: 4.5vw;
-    width: 60vw;
+    font-size: 5vw;
+    line-height: 6vw;
+    width: 80vw;
     text-align: center;
   }
   .healthyrice2-consultation-container {
@@ -306,7 +306,7 @@
     width: 100%;
     margin-top: 0;
     order: -1;
-    max-width: 90vw;
+    max-width: 80vw;
     transform: scale(1);
   }
 
@@ -319,14 +319,14 @@
   }
 
   .healthyrice2-info h2 {
-    font-size: 4.8vw;
-    line-height: 6vw;
-    width: 80vw;
+    font-size: 5.5vw;
+    line-height: 6.5vw;
+    width: 90vw;
     padding-top: 0;
   }
 
   .healthyrice2-info p {
-    font-size: 2.8vw;
+    font-size: 3.8vw;
   }
 
   .healthyrice2-patient-image img {

@@ -136,7 +136,7 @@
   }
 
   .truth-container {
-    width: 80vw;
+    width: 90vw;
   }
 
   .truth-up-container {
@@ -145,7 +145,7 @@
   }
 
   .right-content-container-sec p {
-    font-size: 4.5vw;
+    font-size: 5.5vw;
   }
 
   .truth-up img {
@@ -153,11 +153,11 @@
   }
 
   .truth-up h1 {
-    font-size: 7vw;
-    line-height: 8vw;
+    font-size: 8vw;
+    line-height: 9vw;
   }
 
   .truth-down-container p {
-    font-size: 4.5vw;
+    font-size: 5.5vw;
   }
 }

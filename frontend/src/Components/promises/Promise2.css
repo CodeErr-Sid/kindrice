@@ -297,9 +297,9 @@
     text-align: center;
   }
   .promise2-heading-container p {
-    font-size: 3.5vw;
-    line-height: 4.5vw;
-    width: 60vw;
+    font-size: 5vw;
+    line-height: 6vw;
+    width: 80vw;
     text-align: center;
   }
   .promise2-consultation-container {
@@ -326,9 +326,9 @@
   }
 
   .promise2-info h2 {
-    font-size: 4.8vw;
-    line-height: 6vw;
-    width: 80vw;
+    font-size: 5.5vw;
+    line-height: 6.5vw;
+    width: 90vw;
     padding-top: 0;
   }
 
@@ -338,7 +338,7 @@
 
   .promise2-patient-image img {
     width: 70vw;
-    height: 60vw;
+    height: 52vw;
     margin: 0 auto;
     object-fit: cover;
     object-position: center;

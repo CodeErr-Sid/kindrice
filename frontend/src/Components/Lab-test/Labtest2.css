@@ -266,34 +266,34 @@
     width: 100%; /* Ensure full width coverage */
   }
 }
-
+/* Media Queries for screens up to 375px */
 @media screen and (max-width: 375px) {
   .labtest2-section {
     height: auto;
     margin-top: 8vw;
     padding: 5vw;
+    width: 100vw; /* Ensure full width coverage */
   }
 
   .labtest2-heading {
-    position: relative;
     text-align: center;
     margin: 0 auto;
   }
 
   .labtest2-heading h1 {
-    font-size: 8vw;
-    line-height: 9vw;
+    font-size: 9vw; /* Increased font size for better visibility */
+    line-height: 10vw;
   }
 
-  .labtest2-heading p {
-    font-size: 3.5w;
-    line-height: 4.5vw;
+  .labtest2-heading h2 {
+    font-size: 6vw; /* Increased font size for better visibility */
+    line-height: 7vw;
   }
 
   .labtest2-details {
-    font-size: 3.5vw;
-    line-height: 4.5vw;
-    width: 80vw;
+    font-size: 4vw; /* Larger font size for readability */
+    line-height: 5vw;
+    width: 90vw; /* Increased width for better coverage */
   }
 
   .labtest2-info-container {
@@ -304,7 +304,7 @@
 
   .labtest2-image {
     width: 100%;
-    max-width: 60vw;
+    max-width: 80vw; /* Increased max-width for better coverage */
     height: auto;
     margin-top: 0;
     order: -1;
@@ -314,10 +314,8 @@
 
   .labtest2-details {
     text-align: center;
-    position: relative;
-    order: 1;
     margin-top: 0;
-    width: 80vw;
+    width: 90vw; /* Increased width to cover more of the screen */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -325,22 +323,24 @@
   }
 
   .labtest2-details h2 {
-    font-size: 4.5vw;
-    line-height: 5.5vw;
-    width: 80vw;
+    font-size: 5.5vw; /* Increased font size */
+    line-height: 6.5vw;
+    width: 90vw; /* Adjusted width for better coverage */
   }
 
   .labtest2-details p {
-    font-size: 3vw;
+    font-size: 4vw; /* Larger font size for readability */
   }
+
   .labtest2-image img {
-    width: 90vw;
-    height: 70vw;
-    transform: scale(1);
+    width: 100vw; /* Full width to cover the screen */
+    height: auto;
     object-fit: cover;
     object-position: center;
   }
+
   .labtest2-content {
     margin: 0 auto;
+    width: 100%; /* Ensure full width coverage */
   }
 }

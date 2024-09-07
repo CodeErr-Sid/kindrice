@@ -246,7 +246,7 @@
   .management-heading h1 {
     font-size: 9vw;
     line-height: 10vw;
-    width: 70vw;
+    width: 80vw;
   }
 
   .management-heading-bold {
@@ -256,7 +256,7 @@
   .management-details {
     font-size: 3vw;
     line-height: 4vw;
-    width: 80vw;
+    width: 90vw;
   }
 
   .management-info-container {
@@ -286,9 +286,9 @@
   }
 
   .management-details h2 {
-    font-size: 4.5vw;
-    line-height: 5.5vw;
-    width: 80vw;
+    font-size: 5.5vw;
+    line-height: 6.5vw;
+    width: 90vw;
     z-index: 99;
     margin-top: -19vw;
   }

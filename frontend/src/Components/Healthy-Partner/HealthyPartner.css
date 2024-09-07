@@ -1,3 +1,4 @@
+/* Base Styles */
 .healthy-section {
   margin: 0 auto;
   width: 95vw;
@@ -27,11 +28,13 @@
   padding-left: 5rem;
   padding-bottom: 30vw;
 }
+
 .heading-container h1 {
   font-size: 7vw; /* 94px converted */
   font-weight: 700;
   line-height: 6.85vw;
 }
+
 .medium {
   font-size: 4.7vw;
   line-height: 5.85vw;
@@ -58,12 +61,14 @@
   object-fit: cover;
   margin-top: 4rem;
 }
+
 .info {
   text-align: left;
   margin-top: 14rem;
   margin-left: 6vw;
   z-index: 1;
 }
+
 .info h2 {
   font-size: 2vw;
   line-height: 3.45vw;
@@ -71,30 +76,34 @@
   font-weight: 500;
   padding-top: 2.07vh;
 }
+
 .info h2 span {
   font-weight: 700;
 }
+
 .info p {
   font-size: 1.38vw;
   font-weight: 700;
 }
+
 i {
   pointer-events: auto; /* Ensure pointer events are enabled */
 }
+
 .size {
   font-size: 5.7vw;
 }
+
+/* Media Queries for smaller screens */
 @media screen and (max-width: 1030px) {
   .info {
     margin-left: 7.5vw;
   }
 }
-/* Media Queries for smaller screens */
+
 @media screen and (max-width: 800px) {
   .healthy-section {
     height: auto; /* Allow height to adjust based on content */
-    /* padding: 20vw 0; */
-    /* margin-left: 10vw; */
     margin: 0 auto;
     width: 90vw;
     padding-top: 2rem;
@@ -121,9 +130,11 @@ i {
     line-height: 6vw;
     text-align: center;
   }
+
   .bold {
     text-align: center;
   }
+
   .consultation-container {
     flex-direction: column; /* Stack elements vertically */
     align-items: center;
@@ -155,6 +166,7 @@ i {
   .info p {
     font-size: 2.5vw;
   }
+
   .patient-image img {
     width: 90vw;
     height: 50vw;
@@ -162,9 +174,11 @@ i {
     object-fit: cover;
     object-position: center;
   }
+
   .consultation-container {
     gap: 0;
   }
+
   .size {
     font-size: 6.7vw;
   }
@@ -252,7 +266,7 @@ i {
   .healthy-section {
     height: auto;
     margin: 0 auto;
-    width: 90vw;
+    width: 100vw; /* Ensure it covers the full width */
     padding-top: 2rem;
   }
 
@@ -276,12 +290,15 @@ i {
     font-size: 7vw;
     text-align: center;
   }
+
   .size {
     font-size: 10vw !important;
   }
+
   .bold {
     text-align: center;
   }
+
   .consultation-container {
     flex-direction: column;
     align-items: center;
@@ -313,6 +330,7 @@ i {
   .info p {
     font-size: 3.8vw;
   }
+
   .patient-image img {
     width: 90vw;
     height: 70vw;
@@ -320,6 +338,7 @@ i {
     object-fit: cover;
     object-position: center;
   }
+
   .consultation-container {
     gap: 0;
   }
