@@ -9,31 +9,35 @@ import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../../api/cartapi';
 
 const Product = ({ productId }) => {
-
     const { isLoggedIn, idToken } = useContext(AuthContext);
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
-
+  
     const handleBuyNow = () => {
-        if (isLoggedIn) {
-            console.log("yes you can buy this product")
-        }
-        else {
-            navigate("/")
-        }
-    }
-
+      if (isLoggedIn) {
+        console.log("Yes, you can buy this product");
+      } else {
+        navigate("/");
+      }
+    };
+  
     const handleAddToCart = async () => {
-
-            if (isLoggedIn) {
-                const data = await addToCart(productId, quantity, weight, idToken);
-                console.log(data);
-            } else {
-                navigate("/login")
-            }
-    }
-
+      if (isLoggedIn) {
+        const data = await addToCart(productId, quantity, weight, idToken);
+        console.log(data);
+      } else {
+        navigate("/login");
+      }
+    };
+  
+    const handleWeightChange = (newWeight) => {
+      setWeight(newWeight);
+    };
+  
+    const handleQuantityChange = (newQuantity) => {
+      setQuantity(newQuantity);
+    };
 
     const productData = {
         "ingredients": {
@@ -194,23 +198,31 @@ const Product = ({ productId }) => {
                     </div>
                     <h5 className="price text-3xl font-extrabold text-[#016533]">$549.99</h5>
                     <div className="quantity-section">
-  <div className="quantity-button-group flex flex-col gap-2 md:w-4/6">
+      <div className="quantity-button-group flex flex-col gap-2 md:w-4/6">
+        <div
+          className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2 cursor-pointer"
+          onClick={() => handleWeightChange(weight === 1 ? 2 : 1)}
+        >
+          <span className="text-[#016533] font-bold">{weight} KG</span>
+          <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
+        </div>
 
-    <div className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2">
-      <span className="text-[#016533] font-bold">1 KG</span>
-      <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
+        <div
+          className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2 cursor-pointer"
+          onClick={() => handleQuantityChange(quantity === 1 ? 2 : 1)}
+        >
+          <span className="text-[#016533] font-bold">QUANTITY - {quantity} BAG</span>
+          <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
+        </div>
+
+        <button
+          className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+          onClick={handleAddToCart}
+        >
+          ADD TO CART
+        </button>
+      </div>
     </div>
-    
-    <div className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2">
-      <span className="text-[#016533] font-bold">QUANTITY - 1 BAG</span>
-      <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
-    </div>
-   
-    <button className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2">
-      ADD TO CART
-    </button>
-  </div>
-</div>
 
                 </div>
             </div>
