@@ -92,6 +92,9 @@
 
 /* For screens smaller than 530px */
 @media (max-width: 530px) {
+  .his-thoughts {
+    padding: 0vw;
+  }
   .section-content-container {
     width: 100%;
     padding: 5vw;
@@ -105,13 +108,13 @@
   }
 
   .right-sec h1 {
-    font-size: 5vw;
+    font-size: 7vw;
     margin-bottom: 3vw;
   }
 
   .right-sec p {
-    font-size: 4vw;
-    line-height: 5.5vw;
+    font-size: 5vw;
+    line-height: 6vw;
     text-align: center;
   }
 }

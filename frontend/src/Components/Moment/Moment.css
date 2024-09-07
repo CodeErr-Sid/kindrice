@@ -89,7 +89,7 @@
 /* For screens 530px and below */
 @media (max-width: 530px) {
   .moment-section {
-    height: 60vw;
+    height: 70vw;
   }
 
   .moment-overlay-text {
@@ -100,8 +100,8 @@
   }
 
   .moment-overlay-text p {
-    font-size: 4vw;
-    line-height: 5.5vw;
+    font-size: 5vw;
+    line-height: 6vw;
   }
 
   .info-content {
@@ -109,8 +109,8 @@
   }
 
   .info-content p {
-    font-size: 3.5vw;
-    line-height: 5vw;
+    font-size: 5vw;
+    line-height: 6vw;
     padding: 4vw 0;
   }
 }

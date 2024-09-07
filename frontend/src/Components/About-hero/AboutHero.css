@@ -95,13 +95,13 @@
 
   .about-overlay-text {
     top: 16vw;
-    margin-left: 5vw;
+    margin-left: 0;
     max-width: 90vw;
   }
 
   .about-overlay-text h1 {
-    font-size: 5vw;
-    line-height: 6vw;
+    font-size: 6.5vw;
+    line-height: 7.5vw;
   }
 
   .border-bottom {
