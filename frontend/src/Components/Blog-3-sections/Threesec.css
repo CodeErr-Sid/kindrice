@@ -1,0 +1,14 @@
+.custom-green {
+  color: #016533;
+}
+.hero-img {
+  z-index: -1;
+}
+.right-heading {
+  z-index: 1;
+}
+@media screen and (max-width: 768px) {
+  .hero-img img {
+    transform: scale(1.5);
+  }
+}

@@ -156,7 +156,7 @@ const Product = ({ productId }) => {
     };
 
 
-    const [selectedImage, setSelectedImage] = useState(assets.product1);
+    const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
 
     const handleButtonClick = (section) => {
@@ -174,17 +174,17 @@ const Product = ({ productId }) => {
             <div className="product-section">
                 <div className="product-image-container">
                     <div className="p-img-group">
-                        <img src={assets.product1} alt="" onClick={() => selectImage(assets.product1)} />
-                        <img src={assets.product2} alt="" onClick={() => selectImage(assets.product2)} />
-                        <img src={assets.product3} alt="" onClick={() => selectImage(assets.product3)} />
-                        <img src={assets.product4} alt="" onClick={() => selectImage(assets.product4)} />
-                        <img src={assets.product5} alt="" onClick={() => selectImage(assets.product5)} />
+                        <img src={assets.rice1} alt="" onClick={() => selectImage(assets.rice1)} />
+                        <img src={assets.rice2} alt="" onClick={() => selectImage(assets.rice2)} />
+                        <img src={assets.rice3} alt="" onClick={() => selectImage(assets.rice3)} />
+                        <img src={assets.rice4} alt="" onClick={() => selectImage(assets.rice4)} />
+                        <img src={assets.rice5} alt="" onClick={() => selectImage(assets.rice5)} />
                     </div>
                     <div className="p-img">
                         <img src={selectedImage} alt="Selected Product" />
                     </div>
                 </div>
-                <div className="product-content flex flex-col justify-between">
+                <div className="product-content flex flex-col justify-center gap-10">
                     <h4 className="product-name text-4xl font-extrabold">Kind Low-Gi Rice</h4>
                     <div className="rating flex flex-row gap-3 items-center">
                         <div className="star-icons">
