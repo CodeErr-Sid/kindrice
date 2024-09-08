@@ -18,7 +18,7 @@ export default function CertificatesImages() {
       <section className="certificates">
     
         <div className="certificates-container items-center justify-center  md:items-start md:justify-start md:pl-8">
-        <h1 className='text-3xl md:text-4xl font-bold m-4 w-[70%]'>Explore the lab tests for our Low-GI Rice below and see exactly what you're eating.</h1>
+        <h1 className='text-xl md:text-4xl font-bold m-4 md:w-[70%]'>Explore the lab tests for our Low-GI Rice below and see exactly what you're eating.</h1>
         <div className="button-container flex flex-row flex-wrap w-[80%] md:w-[80vw] text-center md:text-left items-center justify-center md:items-start md:justify-start">
           <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate1)}>
             Certificate 1

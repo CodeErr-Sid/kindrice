@@ -19,7 +19,7 @@ export default function ThreeSections() {
       {/* Section 2: Latest Publications */}
       <div className="section2 mb-12 flex items-center justify-center flex-col">
         <h2 className="text-3xl font-bold mb-4 custom-green">Latest Publications</h2>
-        <p className=" text-xl md:text-2xl w-[80%] text-center">
+        <p className=" text-xl md:text-2xl md:w-[80%] text-center">
           Welcome to the <span className="font-bold custom-green">Kind Rice Blog!</span> Dive into the world of premium rice varieties, where we share expert tips on health, nutrition, delicious recipes, sustainable farming practices, and inspiring farmer stories.
         </p>
       </div>
