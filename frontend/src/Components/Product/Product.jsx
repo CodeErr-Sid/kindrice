@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../../api/cartapi';
 
 const Product = ({ productId }) => {
-    const { isLoggedIn, idToken } = useContext(AuthContext);
+
+    const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
@@ -23,21 +24,16 @@ const Product = ({ productId }) => {
     };
   
     const handleAddToCart = async () => {
-      if (isLoggedIn) {
-        const data = await addToCart(productId, quantity, weight, idToken);
-        console.log(data);
-      } else {
-        navigate("/login");
-      }
-    };
-  
-    const handleWeightChange = (newWeight) => {
-      setWeight(newWeight);
-    };
-  
-    const handleQuantityChange = (newQuantity) => {
-      setQuantity(newQuantity);
-    };
+
+            if (isLoggedIn) {
+                const data = await addToCart(productId, quantity, weight, idToken);
+                console.log(data);
+                await getCartItems()
+            } else {
+                navigate("/login")
+            }
+    }
+
 
     const productData = {
         "ingredients": {
