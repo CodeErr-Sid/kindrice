@@ -9,10 +9,12 @@ import Howlowgi from '../../Components/Howlowgi/Howlowgi'
 import Whyitmatters from '../../Components/Whyitmatters/Whyitmatters'
 import VerifiedCertificate from '../../Components/Verified-Cerificate/VerifiedCertificate'
 import Tagline from '../../Components/Lowgi-tagline/Tagline'
+import Preloader from '../../Components/Preloader/Preloader'
 
 export default function Lowgi() {
   return (
     <>
+    <Preloader/>
     <Navbar/>
     <LowgiHero/>
     <Example/>

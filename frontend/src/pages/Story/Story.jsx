@@ -8,11 +8,13 @@ import Moment from '../../Components/Moment/Moment'
 import Workers from '../../Components/Workers-work/Workers'
 import AboutKindrice from '../../Components/About-Kindrice/AboutKindrice'
 import Founder from '../../Components/founder/Founder'
+import Preloader from '../../Components/Preloader/Preloader'
 
 
 export default function Story() {
   return (
     <>
+    <Preloader/>
    <Navbar/>
    <AboutHero/>
    <Thoughts/>

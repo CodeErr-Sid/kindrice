@@ -7,6 +7,7 @@ import { assets } from '../../assets/assets'
 import Vision from '../../Components/Vision/Vision'
 import Tagline from '../../Components/Impact-tagline/Tagline'
 import Footer from '../../Components/Footer/Footer'
+import Preloader from '../../Components/Preloader/Preloader'
 
 export default function Impact() {
     const paragraphHtml1 = `Kind Rice proudly sources its cotton bags from Carefactory, where <span>people living with mental health challenges</span> meticulously craft each bag.
@@ -17,6 +18,7 @@ export default function Impact() {
     const paragraphHtml3 = `We package our rice in <span>cotton bags printed with food-grade ink</span> and then place these bags in sturdy carton boxes. To ensure environmental responsibility, we use water-activated paper tapes instead of plastic transparent tapes for sealing.`;
   return (
     <>
+    <Preloader/>
     <Navbar/>
     <Impacthero/>
     <ImpactSecond

@@ -6,6 +6,7 @@ import Blogcards from '../../Components/Blog-Cards/Blogcards'
 import Pagination from '../../Components/Pagination/Pagination'
 import Publication from '../../Components/Publications/Publication'
 import { assets } from '../../assets/assets'
+import Preloader from '../../Components/Preloader/Preloader'
 
 
 
@@ -30,6 +31,7 @@ const cardsData = [
 export default function Blog() {
   return (
    <>
+   <Preloader/>
    <Navbar/>
    <ThreeSections/>
    <Blogcards/>

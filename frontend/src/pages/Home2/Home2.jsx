@@ -17,11 +17,13 @@ import Footer from '../../Components/Footer/Footer'
 import Labtest2 from '../../Components/Lab-test/Labtest2'
 import Healthyrice2 from '../../Components/Healthy-rice/Healthyrice2'
 import Promise2 from '../../Components/promises/Promise2'
+import Preloader from '../../Components/Preloader/Preloader'
 
 
 export default function Home2() {
   return (
     <>
+    {/* <Preloader/> */}
     <Navbar/>
     <Herosection/>
     <Yoga2/>
