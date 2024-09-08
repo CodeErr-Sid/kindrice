@@ -219,3 +219,72 @@
     height: 70px;
   }
 }
+
+/* Navbar.css */
+
+:root {
+  --orange: #ea8710;
+}
+
+.sb-preloader {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 99999999999999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease-in-out;
+}
+
+.sb-preloader .sb-preloader-bg {
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  position: absolute;
+  background-color: var(--orange);
+  height: 2000px;
+  width: 2000px;
+  transform: scale(2);
+  transition: 0.6s ease-in-out;
+}
+
+.sb-preloader.sb-hidden {
+  pointer-events: none;
+  transition-delay: 0.2s;
+}
+
+.sb-preloader.sb-hidden .sb-preloader-bg {
+  transform: scale(0);
+  transition-delay: 0.2s;
+}
+.fill {
+  display: flex;
+  align-items: center;
+}
+
+.three-dot-container {
+  color: yellow;
+  position: relative;
+}
+
+.three-dot-container .three-dot {
+  transform: rotate(90deg);
+}
+
+.icon-container {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  /* background-color: #fdcf09; Yellow background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensure image does not overflow */
+  cursor: pointer;
+}
+
+.icon-container img {
+  width: 25px; /* Make image fit within the container */
+  height: 25px; /* Make image fit within the container */
+  object-fit: cover; /* Ensure image maintains aspect ratio */
+}

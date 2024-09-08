@@ -24,7 +24,7 @@ export default function ThreeSections() {
         </p>
       </div>
   
-      {/* Content Sections */}
+{/*     
       <div className="my-12">
         <h1 className="text-3xl font-bold custom-green mb-4">Who can eat Kind Rice?</h1>
         <p className="text-xl">
@@ -59,7 +59,7 @@ export default function ThreeSections() {
           <br />
           This is my story of how Kind Rice supports my family’s livelihood.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

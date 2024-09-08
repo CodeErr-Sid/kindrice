@@ -97,6 +97,21 @@ import rice2 from "./rice2.jpg";
 import rice3 from "./rice3.jpg";
 import rice4 from "./rice4.jpg";
 import rice5 from "./rice5.jpg";
+import cover1 from "./blog-cover1.jpg";
+import cover2 from "./blog-cover2.jpg";
+import cover3 from "./blog-cover3.jpg";
+import whyrice1 from "./whyrice1.jpg";
+import whyrice2 from "./whyrice2.jpg";
+import whyrice3 from "./whyrice3.jpg";
+import whyrice4 from "./whyrice4.jpg";
+import cook1 from "./cook1.jpeg";
+import cook2 from "./cook2.webp";
+import cook3 from "./cook3.jpg";
+import cook4 from "./cook4.jpg";
+import krice1 from "./krice1.webp";
+import krice2 from "./krice2.webp";
+import krice3 from "./krice3.jpg";
+import krice4 from "./krice4.jpg";
 
 export const assets = {
   w_profile,
@@ -195,4 +210,19 @@ export const assets = {
   rice3,
   rice4,
   rice5,
+  cover1,
+  cover2,
+  cover3,
+  whyrice1,
+  whyrice2,
+  whyrice3,
+  whyrice4,
+  cook1,
+  cook2,
+  cook3,
+  cook4,
+  krice1,
+  krice2,
+  krice3,
+  krice4,
 };

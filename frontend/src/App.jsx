@@ -17,6 +17,9 @@ import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import Auth from './pages/Auth/Auth';
 import Checkout from './pages/Checkout/Checkout';
 import Cart from './pages/Cart/Cart';
+import BlogArticlePage from './pages/BlogArticlePage/BlogArticlePage';
+import Preloader from './Components/Preloader/Preloader';
+
 
 function App() {
   const location = useLocation();
@@ -24,6 +27,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <Preloader/>
       <Routes>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cart" element={<Cart />} />
@@ -37,6 +41,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path="/return-policy" element={<ReturnPolicy />} />
         <Route path="/lab-test" element={<Certificates />} />
+        <Route path="/blog-article" element={<BlogArticlePage />} />
       </Routes>
       {location.pathname !== '/login' && (
         <FloatingWhatsApp
