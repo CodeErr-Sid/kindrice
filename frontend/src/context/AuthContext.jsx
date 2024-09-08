@@ -34,23 +34,23 @@ export const AuthContextProvider = ({ children }) => {
         return () => unsubscribe(); // Clean up subscription on unmount
     }, []);
 
-    useEffect(() => {
-        const getCartItems = async () => {
-           if(isLoggedIn){
-               const data = await getCart(idToken);
-               setCart(data.items);
-            }
-            else{
-                setCart([])
-            }
-        }
+    const getCartItems = async () => {
+        if(isLoggedIn){
+            const data = await getCart(idToken);
+            setCart(data.items);
+         }
+         else{
+             setCart([])
+         }
+     }
 
+    useEffect(() => {
         getCartItems();
     },[idToken])
 
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, url, idToken, cart, currency }}>
+        <AuthContext.Provider value={{ isLoggedIn, user, url, idToken, cart, currency, getCartItems }}>
             {children}
         </AuthContext.Provider>
     );

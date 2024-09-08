@@ -10,7 +10,7 @@ import { addToCart } from '../../api/cartapi';
 
 const Product = ({ productId }) => {
 
-    const { isLoggedIn, idToken } = useContext(AuthContext);
+    const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
@@ -29,6 +29,7 @@ const Product = ({ productId }) => {
             if (isLoggedIn) {
                 const data = await addToCart(productId, quantity, weight, idToken);
                 console.log(data);
+                await getCartItems()
             } else {
                 navigate("/login")
             }
