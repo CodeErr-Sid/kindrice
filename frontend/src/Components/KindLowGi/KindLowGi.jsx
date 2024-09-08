@@ -14,7 +14,7 @@ export default function KindLowGi() {
     <section className="kind-lowgi-section">
       <div className="kind-lowgi-container">
         <div className="kind-lowgi-left">
-          <img src={assets.bag} alt="Kind Low GI Rice" />
+          <img src={assets.rice5} alt="Kind Low GI Rice" />
         </div>
         <div className="kind-lowgi-right">
           <div className="up-low-gi">

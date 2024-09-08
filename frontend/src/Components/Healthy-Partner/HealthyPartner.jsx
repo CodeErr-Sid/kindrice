@@ -16,7 +16,7 @@ export default function HealthyPartner() {
       <div className="content-container2">
         <div className="heading-container">
           {/* <h1 className='bold'>Health Partner.</h1> */}
-          <h2 className='medium'>Incredibly Low-GI
+          <h2 className='medium size' >Incredibly Low-GI
           </h2>
         </div>
         <div className="consultation-container">

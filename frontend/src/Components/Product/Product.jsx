@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faHeart, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Accordion from "../Accordion/Accordion"
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -14,16 +14,15 @@ const Product = ({ productId }) => {
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
-
+  
     const handleBuyNow = () => {
-        if (isLoggedIn) {
-            console.log("yes you can buy this product")
-        }
-        else {
-            navigate("/")
-        }
-    }
-
+      if (isLoggedIn) {
+        console.log("Yes, you can buy this product");
+      } else {
+        navigate("/");
+      }
+    };
+  
     const handleAddToCart = async () => {
 
             if (isLoggedIn) {
@@ -153,7 +152,7 @@ const Product = ({ productId }) => {
     };
 
 
-    const [selectedImage, setSelectedImage] = useState(assets.product1);
+    const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
 
     const handleButtonClick = (section) => {
@@ -171,17 +170,17 @@ const Product = ({ productId }) => {
             <div className="product-section">
                 <div className="product-image-container">
                     <div className="p-img-group">
-                        <img src={assets.product1} alt="" onClick={() => selectImage(assets.product1)} />
-                        <img src={assets.product2} alt="" onClick={() => selectImage(assets.product2)} />
-                        <img src={assets.product3} alt="" onClick={() => selectImage(assets.product3)} />
-                        <img src={assets.product4} alt="" onClick={() => selectImage(assets.product4)} />
-                        <img src={assets.product5} alt="" onClick={() => selectImage(assets.product5)} />
+                        <img src={assets.rice1} alt="" onClick={() => selectImage(assets.rice1)} />
+                        <img src={assets.rice2} alt="" onClick={() => selectImage(assets.rice2)} />
+                        <img src={assets.rice3} alt="" onClick={() => selectImage(assets.rice3)} />
+                        <img src={assets.rice4} alt="" onClick={() => selectImage(assets.rice4)} />
+                        <img src={assets.rice5} alt="" onClick={() => selectImage(assets.rice5)} />
                     </div>
                     <div className="p-img">
                         <img src={selectedImage} alt="Selected Product" />
                     </div>
                 </div>
-                <div className="product-content flex flex-col justify-between">
+                <div className="product-content flex flex-col justify-center gap-10">
                     <h4 className="product-name text-4xl font-extrabold">Kind Low-Gi Rice</h4>
                     <div className="rating flex flex-row gap-3 items-center">
                         <div className="star-icons">
@@ -195,34 +194,35 @@ const Product = ({ productId }) => {
                     </div>
                     <h5 className="price text-3xl font-extrabold text-[#016533]">$549.99</h5>
                     <div className="quantity-section">
-                        <p>quantity</p>
-                        <div className="quantity-btn-seciton flex flex-row gap-5">
-                            <button className='bg-[#e3dede] p-2 rounded-sm'>1 KG</button>
-                            <button className='bg-[#e3dede] p-2 rounded-sm'>3 KG</button>
-                            <button className='bg-[#e3dede] p-2 rounded-sm'>5 KG</button>
-                        </div>
-                    </div>
-                    <div className="atcf flex gap-5">
-                        <button
-                            className="addToCart flex-[3] bg-[#F4D34F8F] font-black rounded-lg p-2"
-                            onClick={handleAddToCart}
-                        >Add To Cart</button>
-                        <input
-                            type="number"
-                            className="favorite flex-[2] border-[#F9D46B] border-2 rounded-lg p-2 text-center"
-                            min="1"
-                            defaultValue="1"
-                        />
+      <div className="quantity-button-group flex flex-col gap-2 md:w-4/6">
+        <div
+          className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2 cursor-pointer"
+          onClick={() => handleWeightChange(weight === 1 ? 2 : 1)}
+        >
+          <span className="text-[#016533] font-bold">{weight} KG</span>
+          <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
+        </div>
 
-                    </div>
-                    <button
-                        className="buy-now bg-[#016533] p-2 border-2 rounded-lg text-white text-xl"
-                        onClick={handleBuyNow}>
-                        Buy Now
-                    </button>
+        <div
+          className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2 cursor-pointer"
+          onClick={() => handleQuantityChange(quantity === 1 ? 2 : 1)}
+        >
+          <span className="text-[#016533] font-bold">QUANTITY - {quantity} BAG</span>
+          <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
+        </div>
+
+        <button
+          className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+          onClick={handleAddToCart}
+        >
+          ADD TO CART
+        </button>
+      </div>
+    </div>
+
                 </div>
             </div>
-            <div className="description-section mx-auto my-12 w-[87%]">
+            {/* <div className="description-section mx-auto my-12 w-[87%]">
                 <h4 className='font-bold text-2xl mb-4'>This Kind low-GI rice is completely natural. </h4>
                 <p className='text-xl w-full md:w-[50%]'>We pick only the finest 'RNR' variety (native to Telangana). Then, we slowly process it using our signature method, in extremely small batches, to perfection!</p>
             </div>
@@ -230,7 +230,7 @@ const Product = ({ productId }) => {
                 <h1 className='font-bold text-2xl mb-4'>What’s Inside</h1>
              <img src={assets.ShopBowl} alt='' className='w-[40%] md:w-[15%] h-auto my-4'/>
                  <p className='text-xl w-[80%] mt-4'>Ingredients - 100 percent natural low-gi rice</p>
-            </div>
+            </div> */}
             <div className="ikn-switch-section w-[87%] my-12 mx-auto">
                 <div className="btn-groups font-bold flex flex-row gap-2">
                     <button

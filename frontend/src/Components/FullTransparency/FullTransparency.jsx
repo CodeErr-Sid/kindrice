@@ -8,7 +8,7 @@ export default function FullTransparency() {
       {/* Main title section */}
       <div className="flex flex-col items-center justify-center w-[80vw] mx-auto text-center gap-3">
         <h1 className="text-4xl md:text-5xl font-bold">Full Transparency</h1>
-        <p className="font-kalam text-green-800 text-2xl md:text-2xl">Nothing to Hide</p>
+        <p className=" text-green-800 text-2xl md:text-2xl">Nothing to Hide</p>
       </div>
 
       {/* Icons section */}
@@ -54,7 +54,7 @@ export default function FullTransparency() {
 </div>
 
       {/* Click prompt */}
-      <p className="text-center text-2xl md:text-3xl  font-kalam">
+      <p className="text-center text-2xl md:text-3xl ">
         Click on icons to get certificates
       </p>
     </section>

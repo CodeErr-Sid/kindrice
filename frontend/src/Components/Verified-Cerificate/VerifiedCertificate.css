@@ -163,15 +163,15 @@
   }
 
   .verification-left-section .verified-first-para {
-    font-size: 4vw;
+    font-size: 5vw;
   }
 
   .verification-left-section .verified-first-para span {
-    font-size: 6vw;
+    font-size: 7vw;
   }
 
   .verification-left-section .verified-second-para {
-    font-size: 3.5vw;
-    line-height: 4vw;
+    font-size: 5vw;
+    line-height: 6vw;
   }
 }

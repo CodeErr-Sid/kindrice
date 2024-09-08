@@ -132,11 +132,11 @@
 /* Media Queries for screens smaller than 530px */
 @media screen and (max-width: 530px) {
   .truth-section {
-    padding: 3vw 0;
+    padding: 2rem 5vw;
   }
 
   .truth-container {
-    width: 80vw;
+    width: 90vw;
   }
 
   .truth-up-container {
@@ -145,7 +145,7 @@
   }
 
   .right-content-container-sec p {
-    font-size: 4.5vw;
+    font-size: 5.5vw;
   }
 
   .truth-up img {
@@ -153,11 +153,11 @@
   }
 
   .truth-up h1 {
-    font-size: 7vw;
-    line-height: 8vw;
+    font-size: 9vw;
+    line-height: 10vw;
   }
 
   .truth-down-container p {
-    font-size: 4.5vw;
+    font-size: 5.5vw;
   }
 }

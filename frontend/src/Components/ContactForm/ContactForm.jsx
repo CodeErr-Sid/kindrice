@@ -18,7 +18,8 @@ export default function ContactForm() {
               </div>
             </div> */}
             <div className="contact-form-right">
-              <h1>Let’s level up your<br/> brand, together</h1>
+              <h1>Grow with Us - Let's Discuss How We Can Help
+              </h1>
               <p>You can reach us anytime via <a href="mailto:Kindrice@gmail.com" className='mail'>Kindrice@gmail.com</a></p>
               <form>
                 <label htmlFor="Name">Name</label>

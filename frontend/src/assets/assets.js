@@ -92,6 +92,11 @@ import product5 from "./product-img-5.png";
 
 import w_profile from "./kishore.jpg";
 import kishore2 from "./kishore2.jpg";
+import rice1 from "./rice1.jpg";
+import rice2 from "./rice2.jpg";
+import rice3 from "./rice3.jpg";
+import rice4 from "./rice4.jpg";
+import rice5 from "./rice5.jpg";
 
 export const assets = {
   w_profile,
@@ -185,4 +190,9 @@ export const assets = {
   img4,
   img5,
   kishore2,
+  rice1,
+  rice2,
+  rice3,
+  rice4,
+  rice5,
 };
