@@ -18,7 +18,7 @@ export default function Impact() {
     const paragraphHtml3 = `We package our rice in <span>cotton bags printed with food-grade ink</span> and then place these bags in sturdy carton boxes. To ensure environmental responsibility, we use water-activated paper tapes instead of plastic transparent tapes for sealing.`;
   return (
     <>
-    <Preloader/>
+    {/* <Preloader/> */}
     <Navbar/>
     <Impacthero/>
     <ImpactSecond

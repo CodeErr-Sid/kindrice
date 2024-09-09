@@ -2,13 +2,11 @@
   margin: 0;
   padding: 4vw 0 2vw 0;
   width: 100vw;
-  /* height: 70vh; */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   color: #006633;
-  /* margin-top: 2rem; */
 }
 
 .management-content {
@@ -24,14 +22,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* margin-top: 16rem; */
 }
 
 .management-heading h1 {
-  /* font-size: 3.7vw; */
   font-weight: 700;
-  /* line-height: 4.85vw; */
-  z-index: 99;
   font-size: 4.7vw;
   line-height: 5.85vw;
 }
@@ -91,6 +85,7 @@
   font-size: 1.38vw;
   font-weight: 700;
 }
+
 /* Media Queries for smaller screens */
 @media screen and (max-width: 800px) {
   .management-section {
@@ -100,7 +95,6 @@
   }
 
   .management-heading {
-    /* padding-left: 2rem; */
     position: relative;
     text-align: center;
     margin-top: 0;
@@ -136,11 +130,13 @@
     order: -1;
     margin: 3rem 0;
   }
+
   .management-image img {
     height: 60vw;
     margin-bottom: 2rem;
     transform: scale(1);
   }
+
   .management-details {
     margin-left: 0;
     text-align: center;
@@ -150,29 +146,22 @@
   }
 
   .management-details h2 {
-    font-size: 4.5vw;
-    line-height: 6vw;
+    font-size: 3.5vw;
+    line-height: 5vw;
     width: 81vw;
     z-index: 99;
     margin-top: -19vw;
   }
 }
 
-/* Media Queries for smaller screens */
-@media (max-width: 376px) and (max-width: 530px) {
+/* Media Queries for extra small screens */
+@media screen and (max-width: 530px) {
   .management-section {
-    height: auto;
-    margin: 0;
     padding: 2rem 5vw;
   }
 
   .management-heading {
-    /* padding-left: 2rem; */
-    position: relative;
-    text-align: center;
-    margin-top: 0;
     margin-bottom: -10vw;
-    z-index: 99;
   }
 
   .management-heading h1 {
@@ -205,10 +194,12 @@
     order: -1;
     margin: 1.5rem 0;
   }
+
   .management-image img {
     height: 80vw;
     transform: scale(1);
   }
+
   .management-details {
     margin-left: 0;
     text-align: center;
@@ -226,21 +217,14 @@
   }
 }
 
-/* Media Queries for smaller screens */
+/* Media Queries for small screens */
 @media screen and (max-width: 375px) {
   .management-section {
-    height: auto;
-    margin: 0;
     padding: 2rem 5vw;
   }
 
   .management-heading {
-    /* padding-left: 2rem; */
-    position: relative;
-    text-align: center;
-    margin-top: 0;
     margin-bottom: -10vw;
-    z-index: 99;
   }
 
   .management-heading h1 {
@@ -273,10 +257,12 @@
     order: -1;
     margin: 1.5rem 0;
   }
+
   .management-image img {
     height: 80vw;
     transform: scale(1);
   }
+
   .management-details {
     margin-left: 0;
     text-align: center;

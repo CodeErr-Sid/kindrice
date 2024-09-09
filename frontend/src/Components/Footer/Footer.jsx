@@ -19,10 +19,10 @@ export default function Footer() {
                     <li className='create-change'>CREATE CHANGE</li>
                     <ul className='social-media'>
                         <li><a href='https://instagram.com' target='_blank' rel='noopener noreferrer'><FaInstagram /></a></li>
-                        <li><a href='https://facebook.com' target='_blank' rel='noopener noreferrer'><FaFacebookF /></a></li>
-                        <li><a href='https://twitter.com' target='_blank' rel='noopener noreferrer'><FaTwitter /></a></li>
+                        {/* <li><a href='https://facebook.com' target='_blank' rel='noopener noreferrer'><FaFacebookF /></a></li> */}
+                        {/* <li><a href='https://twitter.com' target='_blank' rel='noopener noreferrer'><FaTwitter /></a></li> */}
                         <li><a href='https://linkedin.com' target='_blank' rel='noopener noreferrer'><FaLinkedinIn /></a></li>
-                        <li><a href='https://youtube.com' target='_blank' rel='noopener noreferrer'><FaYoutube /></a></li>
+                        {/* <li><a href='https://youtube.com' target='_blank' rel='noopener noreferrer'><FaYoutube /></a></li> */}
                     </ul>
                 </ul>
       
@@ -44,13 +44,13 @@ export default function Footer() {
             <div className="footer-links">
                 <ul>
                 <li><a href='/'>Home</a></li>
-     <li><a href='/shop'>SHOP</a></li>
-    <li><a href='/story'>STORY</a></li>
-     <li><a href='/blog'>BLOG</a></li>
-     <li><a href='/contact'>CONTACT</a></li>
-     <li><a href='/impact'>IMPACT</a></li>
-                      <li><a href='/return-policy'>RETURN & POLICIES</a></li>
-                       <li><a href='/lab-test'>CERTIFICATES</a></li>
+     <li><a href='/shop'>Shop</a></li>
+    <li><a href='/story'>Story</a></li>
+     {/* <li><a href='/blog'>BLOG</a></li> */}
+     <li><a href='/contact'>Contact</a></li>
+     {/* <li><a href='/impact'>IMPACT</a></li> */}
+                      <li><a href='/return-policy'>Return & Policies</a></li>
+                       <li><a href='/lab-test'>Certificates</a></li>
                 </ul>
             </div>
             <div className="footer-text2">

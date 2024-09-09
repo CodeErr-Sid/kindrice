@@ -8,7 +8,7 @@ import Preloader from '../../Components/Preloader/Preloader'
 export default function Certificates() {
   return (
     <>
-    <Preloader/>
+    {/* <Preloader/> */}
     <Navbar/>
     <CertificateHero/>
     <CertificatesImages/>

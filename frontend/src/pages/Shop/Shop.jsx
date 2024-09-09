@@ -8,6 +8,7 @@ import { assets } from '../../assets/assets'
 import FullTransparency from '../../Components/FullTransparency/FullTransparency'
 import GotQuestions from '../../Components/GotQuestions/GotQuestions'
 import Preloader from '../../Components/Preloader/Preloader'
+import KindLoader from '../../Components/KindLoader/KindLoader'
 
 
 const Shop = () => {
@@ -16,7 +17,7 @@ const Shop = () => {
 
   return (
     <>
-    <Preloader/>
+    {/* <Preloader/> */}
       <Navbar />
       {/* <ShopBanner title="Online Shop" address="Home/Shop" /> */}
         {/* <img className='absolute z-[-1] right-0 top-40 flex' src={assets.bgcircle} alt="" /> */}

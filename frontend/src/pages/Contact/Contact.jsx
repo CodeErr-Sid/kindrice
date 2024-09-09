@@ -8,7 +8,7 @@ import Preloader from '../../Components/Preloader/Preloader'
 export default function Contact() {
   return (
    <>
-   <Preloader/>
+   {/* <Preloader/> */}
    <Navbar/>
    <ContactHero/>
     <ContactForm/>

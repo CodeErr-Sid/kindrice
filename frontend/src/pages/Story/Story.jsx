@@ -14,7 +14,7 @@ import Preloader from '../../Components/Preloader/Preloader'
 export default function Story() {
   return (
     <>
-    <Preloader/>
+    {/* <Preloader/> */}
    <Navbar/>
    <AboutHero/>
    <Thoughts/>

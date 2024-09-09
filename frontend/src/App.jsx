@@ -18,6 +18,7 @@ import Auth from './pages/Auth/Auth';
 import Checkout from './pages/Checkout/Checkout';
 import Cart from './pages/Cart/Cart';
 import BlogArticlePage from './pages/BlogArticlePage/BlogArticlePage';
+import ScrollTop from './Components/ScrollTop/ScrollTop';
 // import KindLoader from './Components/KindLoader/KindLoader';
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/lab-test" element={<Certificates />} />
         <Route path="/blog-article" element={<BlogArticlePage />} />
       </Routes>
+      <ScrollTop/>
       {location.pathname !== '/login' && (
         <FloatingWhatsApp
           phoneNumber="+91 98432 97474"

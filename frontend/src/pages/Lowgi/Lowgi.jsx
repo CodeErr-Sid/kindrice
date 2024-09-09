@@ -14,7 +14,7 @@ import Preloader from '../../Components/Preloader/Preloader'
 export default function Lowgi() {
   return (
     <>
-    <Preloader/>
+    {/* <Preloader/> */}
     <Navbar/>
     <LowgiHero/>
     <Example/>

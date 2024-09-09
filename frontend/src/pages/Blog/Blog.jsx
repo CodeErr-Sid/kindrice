@@ -31,7 +31,7 @@ const cardsData = [
 export default function Blog() {
   return (
    <>
-   <Preloader/>
+   {/* <Preloader/> */}
    <Navbar/>
    <ThreeSections/>
    <Blogcards/>

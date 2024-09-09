@@ -27,7 +27,7 @@ export default function ContactForm() {
                 <label htmlFor="Email">Email</label>
                 <input type="email" id="Email" name="Email" placeholder='Enter Your Email'/>
                 <label htmlFor='help'>How can we help?</label>
-                <textarea placeholder="Tell us a little about the project..."></textarea>
+                <textarea placeholder=""></textarea>
                 <h2>*All personal information will be kept confidential.</h2>
                 <button type="submit">Get Started</button>
               </form>
