@@ -31,7 +31,7 @@
 
 .text-section-overlay {
   position: absolute;
-  top: 0vw;
+  top: -10vw;
   left: 0;
   width: 100vw;
   height: 100%;
@@ -138,7 +138,7 @@
   } */
 
   .text-section-overlay {
-    top: 0;
+    top: 5vw;
     padding: 2vw 0;
   }
 
@@ -158,7 +158,7 @@
     max-width: 35%;
   }
   .image-section img {
-    height: 49vh;
+    height: 44vh;
   }
   .text-section-overlay {
     flex-direction: column;
