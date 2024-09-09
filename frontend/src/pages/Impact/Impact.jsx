@@ -6,8 +6,8 @@ import Impacthero from '../../Components/Impact-hero.jsx/Impact-hero'
 import { assets } from '../../assets/assets'
 import Vision from '../../Components/Vision/Vision'
 import Tagline from '../../Components/Impact-tagline/Tagline'
-import Footer from '../../Components/Footer/Footer'
 import Preloader from '../../Components/Preloader/Preloader'
+import Footer2 from '../../Components/Footer2/Footer'
 
 export default function Impact() {
     const paragraphHtml1 = `Kind Rice proudly sources its cotton bags from Carefactory, where <span>people living with mental health challenges</span> meticulously craft each bag.
@@ -41,7 +41,7 @@ export default function Impact() {
     />
     <Vision/>
     <Tagline/>
-    <Footer/>
+    <Footer2/>
     </>
   )
 }

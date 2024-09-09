@@ -1,6 +1,8 @@
 .articleimages img {
   aspect-ratio: 1/1;
 }
+.text-size {
+}
 @media screen and (min-width: 1030px) {
   .articleimages img {
     width: 30vw;

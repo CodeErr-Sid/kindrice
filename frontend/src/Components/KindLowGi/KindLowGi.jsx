@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { assets } from '../../assets/assets';
 import './KindLowGI.css';
 
-export default function KindLowGi() {
+export default function KindLowGi({ imageSrc, title, description, price,style }) {
   const navigate = useNavigate();
 
   const handleBuyNowClick = () => {
@@ -11,18 +10,18 @@ export default function KindLowGi() {
   };
 
   return (
-    <section className="kind-lowgi-section">
+    <section className="kind-lowgi-section" style={style}>
       <div className="kind-lowgi-container">
         <div className="kind-lowgi-left">
-          <img src={assets.rice5} alt="Kind Low GI Rice" />
+          <img src={imageSrc} alt={title} />
         </div>
         <div className="kind-lowgi-right">
           <div className="up-low-gi">
-            <h2>Kind Low GI Rice</h2>
-            <p>So Clean, So Tasty, So Healthy</p>
+            <h2>{title}</h2>
+            <p>{description}</p>
           </div>
           <div className="down-low-gi">
-            <h2>From ₹210</h2>
+            <h2>{price}</h2>
             <p onClick={handleBuyNowClick} style={{ cursor: 'pointer' }}>Buy Now</p>
           </div>
         </div>

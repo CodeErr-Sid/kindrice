@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import ReturnPolicyHero from '../../Components/Return-policy-Hero/ReturnPolicyHero'
 import PolicySection2 from '../../Components/Policy-second-sec/PolicySection2'
-import Footer from '../../Components/Footer/Footer'
+import Footer2 from '../../Components/Footer2/Footer'
 
 
 export default function ReturnPolicy() {
@@ -11,7 +11,7 @@ export default function ReturnPolicy() {
     <Navbar/>
     {/* <ReturnPolicyHero /> */}
     <PolicySection2/>
-    <Footer/>
+    <Footer2/>
     </>
   )
 }

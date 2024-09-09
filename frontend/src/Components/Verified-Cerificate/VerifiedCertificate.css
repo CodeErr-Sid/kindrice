@@ -136,6 +136,7 @@
   .verification-left-section .verified-second-para {
     font-size: 2.5vw;
     line-height: 3vw;
+    font-weight: 400;
   }
 }
 
@@ -159,15 +160,16 @@
     height: auto;
     object-fit: cover;
     transform: scale(1.5);
-    padding: 4rem 0 3rem 0;
+    padding: 5.5rem 0 3rem 0;
   }
-
+  .verification-left-section {
+  }
   .verification-left-section .verified-first-para {
     font-size: 5vw;
   }
 
   .verification-left-section .verified-first-para span {
-    font-size: 7vw;
+    font-size: 6vw;
   }
 
   .verification-left-section .verified-second-para {

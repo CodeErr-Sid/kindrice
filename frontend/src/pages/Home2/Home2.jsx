@@ -10,11 +10,13 @@ import Truth from '../../Components/Truth/Truth';
 import Table from '../../Components/Table/Table';
 import Kind from '../../Components/kind/Kind';
 import KindLowGi from '../../Components/KindLowGi/KindLowGi';
-import Footer from '../../Components/Footer/Footer';
 import Labtest2 from '../../Components/Lab-test/Labtest2';
 import Healthyrice2 from '../../Components/Healthy-rice/Healthyrice2';
 import Promise2 from '../../Components/promises/Promise2';
 import KindLoader from '../../Components/KindLoader/KindLoader';
+import Footer2 from '../../Components/Footer2/Footer';
+import { assets } from '../../assets/assets';
+
 
 export default function Home2() {
   return (
@@ -32,8 +34,13 @@ export default function Home2() {
       <Truth />
       <Table />
       <Kind />
-      <KindLowGi />
-      <Footer />
+      <KindLowGi
+        imageSrc={assets.rice5}
+        title="Kind Low GI Rice"
+        description="So Clean, So Tasty, So Healthy"
+        price="From ₹210"
+      />
+      <Footer2/>
     </>
   );
 }

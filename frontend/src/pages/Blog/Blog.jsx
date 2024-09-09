@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
-import Footer from '../../Components/Footer/Footer'
 import ThreeSections from '../../Components/Blog-3-sections/ThreeSections'
 import Blogcards from '../../Components/Blog-Cards/Blogcards'
 import Pagination from '../../Components/Pagination/Pagination'
 import Publication from '../../Components/Publications/Publication'
 import { assets } from '../../assets/assets'
 import Preloader from '../../Components/Preloader/Preloader'
+import Footer2 from '../../Components/Footer2/Footer'
 
 
 
@@ -37,7 +37,7 @@ export default function Blog() {
    <Blogcards/>
    {/* <Pagination/> */}
    <Publication cards={cardsData} />
-   <Footer/>
+   <Footer2/>
    </>
   )
 }

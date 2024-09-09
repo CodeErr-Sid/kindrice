@@ -97,7 +97,8 @@
 
 .second img {
   background-color: #016533;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 0.5vw;
 }
 
 /* Media Queries */

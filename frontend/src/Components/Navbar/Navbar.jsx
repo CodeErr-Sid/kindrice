@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { assets } from '../../assets/assets';
-import './Navbar.css'; // Ensure the path is correct
-import { FaUser, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa'; // Import icons
-import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
+import './Navbar.css';
+import { FaUser, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { logout } from "../../config/firebase";
-import Menuactive from './Menuactive'; // Import Menuactive component
+import Menuactive from './Menuactive';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,15 +14,12 @@ export default function Navbar() {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const currentPath = location.pathname;
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleLogout = () => setShowLogout(!showLogout);
 
   const handleLogout = async () => {
-    // Logout functionalities
     await logout();
     toggleLogout();
   }
@@ -38,7 +35,6 @@ export default function Navbar() {
   return (
     <section className='navbar-section'>
       <div className="navbar-container">
-        {/* Hamburger Icon */}
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <FaBars />
         </div>
@@ -50,7 +46,7 @@ export default function Navbar() {
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
             <ul>
-              <li><Link to='/' className='link'>Home</Link></li>
+              {currentPath !== '/' && <li><Link to='/' className='link'>Home</Link></li>}
               <li><Link to='/shop' className='link'>Shop</Link></li>
               <li><Link to='/low-gi' className='link'>Low GI</Link></li>
               <li><Link to='/impact' className='link'>Impact</Link></li>
@@ -71,26 +67,28 @@ export default function Navbar() {
             <FaUser className='icon user user2' />
             <div className="cart-icon-container relative">
               <FaShoppingCart className='icon cart' onClick={() => navigate("/cart")} />
-              <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={() => navigate("/cart")}>{cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0}</div>
+              <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={() => navigate("/cart")}>
+                {cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0}
+              </div>
             </div>
           </div>
         </div>
 
         <div className={`overlay ${isMenuOpen ? 'active' : ''}`}>
-        <div className="overlay-content">
-          <FaTimes className='close-icon' onClick={toggleMenu} /> {/* Close icon */}
-          <ul>
-            <li><Link to='/' className='link' onClick={toggleMenu}>Home</Link></li>
-            <li><Link to='/shop' className='link' onClick={toggleMenu}>Shop</Link></li>
-            <li><Link to='/low-gi' className='link' onClick={toggleMenu}>Low GI</Link></li>
-            <li><Link to='/impact' className='link' onClick={toggleMenu}>Impact</Link></li>
-            <li><Link to='/blog' className='link' onClick={toggleMenu}>Blog</Link></li>
-            <li><Link to='/story' className='link' onClick={toggleMenu}>Story</Link></li>
-            <li><Link to='/contact' className='link' onClick={toggleMenu}>Contact</Link></li>
-            <li><Link to='/lab-test' className='link' onClick={toggleMenu}>Lab Test</Link></li>
-          </ul>
+          <div className="overlay-content">
+            <FaTimes className='close-icon' onClick={toggleMenu} />
+            <ul>
+              {currentPath !== '/home2' && <li><Link to='/' className='link' onClick={toggleMenu}>Home</Link></li>}
+              <li><Link to='/shop' className='link' onClick={toggleMenu}>Shop</Link></li>
+              <li><Link to='/low-gi' className='link' onClick={toggleMenu}>Low GI</Link></li>
+              <li><Link to='/impact' className='link' onClick={toggleMenu}>Impact</Link></li>
+              <li><Link to='/blog' className='link' onClick={toggleMenu}>Blog</Link></li>
+              <li><Link to='/story' className='link' onClick={toggleMenu}>Story</Link></li>
+              <li><Link to='/contact' className='link' onClick={toggleMenu}>Contact</Link></li>
+              <li><Link to='/lab-test' className='link' onClick={toggleMenu}>Lab Test</Link></li>
+            </ul>
+          </div>
         </div>
-      </div>
       </div>
 
       {/* Fullscreen Menu Overlay */}

@@ -6,7 +6,7 @@ export default function AboutHero() {
   return (
     <section className='about-us'>
         <div className='inner-container'>
-            <img src={assets.kishore2} alt=''/>
+            <img src={assets.plants} alt=''/>
         </div>
         <div className="about-section-section">
             <img src={assets.man} alt=''/>

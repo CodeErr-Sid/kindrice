@@ -19,6 +19,7 @@ import Checkout from './pages/Checkout/Checkout';
 import Cart from './pages/Cart/Cart';
 import BlogArticlePage from './pages/BlogArticlePage/BlogArticlePage';
 import ScrollTop from './Components/ScrollTop/ScrollTop';
+import Preloader from './Components/Preloader/Preloader';
 // import KindLoader from './Components/KindLoader/KindLoader';
 
 
@@ -29,7 +30,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      
+      {/* <Preloader/> */}
       <Routes>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cart" element={<Cart />} />
@@ -51,7 +52,7 @@ function App() {
           phoneNumber="+91 98432 97474"
           allowClickAway
           chatMessage="Hi there, How can we help you?"
-          statusMessage="CEO of Kindrice"
+          statusMessage="Chief Rice Officer"
           accountName="Kishore Jeyachandran"
           avatar={assets.w_profile}
         />

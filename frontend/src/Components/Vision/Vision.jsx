@@ -30,7 +30,7 @@ export default function Vision() {
             <p>SUPPORTING <br/>UNITED NATIONS</p>
         </div>
         <div className="img-contents">
-            <img src={assets.community} alt="community"/>
+            <img src={assets.empower2} alt="community"/>
             <p>EMPOWERING <br/>COMMUNITIES</p>
         </div>
     </div>

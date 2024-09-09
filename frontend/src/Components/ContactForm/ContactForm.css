@@ -200,46 +200,50 @@
   .contact-form-info-left button {
     font-size: 1.2vw;
   }
+  .contact-form-right {
+    width: 80vw;
+  }
 }
 
 /* For smaller tablets and large mobile screens (max-width: 768px) */
 @media screen and (max-width: 768px) {
   .contact-form-up h2 {
-    font-size: 2.5vw;
-    line-height: 3vw;
+    font-size: 5.5vw;
+    line-height: 6.5vw;
   }
 
   .contact-form-right h1 {
-    font-size: 3.5vw;
-    line-height: 4vw;
+    font-size: 5.5vw;
+    line-height: 6.5vw;
+    width: 70vw;
   }
 
   .contact-form-right p {
-    font-size: 1.8vw;
-    line-height: 2vw;
+    font-size: 2.5vw;
+    line-height: 3.5vw;
   }
 
   .contact-form-right input,
   .contact-form-right textarea {
-    font-size: 1.8vw;
-    padding: 1vw;
+    font-size: 2vw;
+    padding: 2.5vw;
   }
 
   .contact-form-right label {
-    font-size: 1.8vw;
+    font-size: 2.5vw;
   }
 
   .contact-form-right h2 {
-    font-size: 2vw;
+    font-size: 2.5vw;
   }
 
   .contact-form-right button[type="submit"] {
-    font-size: 1.8vw;
+    font-size: 2vw;
     padding: 1.5vw 2.5vw;
   }
 
   .contact-form-info-left button {
-    font-size: 1.5vw;
+    font-size: 2.5vw;
   }
 }
 
@@ -274,8 +278,9 @@
 
   .contact-form-right p {
     text-align: left;
-    font-size: 5vw;
-    line-height: 6vw;
+    font-size: 4vw;
+    line-height: 5vw;
+    margin-bottom: 5vw;
   }
   .contact-form-right h1 {
     text-align: center;
@@ -287,15 +292,17 @@
   }
   .contact-form-right input,
   .contact-form-right textarea {
-    font-size: 5vw;
+    font-size: 3.5vw;
   }
   .contact-form-right label {
-    font-size: 5vw;
+    font-size: 4vw;
   }
   .contact-form-right h2 {
-    font-size: 5vw;
+    font-size: 4vw;
+    margin: 3vw 0;
   }
   .contact-form-right button[type="submit"] {
-    font-size: 5vw;
+    font-size: 4vw;
+    margin-bottom: 3rem;
   }
 }

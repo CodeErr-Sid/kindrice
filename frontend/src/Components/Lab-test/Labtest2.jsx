@@ -16,7 +16,7 @@ export default function Labtest2() {
         <div className="labtest2-heading">
           <h1 className='labtest2-bold'>Safety is in our DNA, 
           </h1>
-          <h2 className='medium'>proven by 210 tests</h2>
+          <h2 className='medium'>Proven by 210 tests</h2>
         </div>
         <div className="labtest2-info-container">
           <div className="labtest2-image">

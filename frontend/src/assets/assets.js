@@ -75,6 +75,7 @@ import img2 from "./img2.png";
 import img3 from "./img3.png";
 import img4 from "./img4.png";
 import img5 from "./img5.png";
+import empower2 from "./empower2.png";
 
 import bgcircle from "./bigcircle.svg";
 import profileImg from "./profilecircle.svg";
@@ -121,6 +122,12 @@ import diet from "./diet.avif";
 import glycemic from "./glycemic.webp";
 import faviconlogo from "./favicon-logo.jpg";
 import cover4Story from "./cover4-story.jpg";
+import cartimg from "./cart-icon.png";
+import impact1 from "./impact1.png";
+import impact2 from "./impact2.png";
+import kindl from "./kind-logo.png";
+import lowgi1 from "./lowgi1.jpg";
+import meter from "./meter.jpg";
 
 export const assets = {
   w_profile,
@@ -243,4 +250,5 @@ export const assets = {
   glycemic,
   faviconlogo,
   cover4Story,
+  empower2,
 };

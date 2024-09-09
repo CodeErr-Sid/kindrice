@@ -24,29 +24,15 @@ export default function BlogArticle() {
 
       {/* Article Content */}
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-6 custom-green">{title || 'Blog Article Title'}</h1>
+        <h1 className="text-[2.50rem] font-bold mb-6 custom-green">{title || 'Blog Article Title'}</h1>
         {/* Render the Paragraphs */}
         {paragraphs?.map((paragraph, index) => (
-          <p key={index} className="text-xl mb-4">
+          <p key={index} className="text-xl my-8">
             {paragraph}
           </p>
         ))}
-
-        {/* Render the Ordered List */}
-        <ol className="list-decimal ml-5 text-xl">
-          {orderedList?.map((item, index) => (
-            <li key={index} className="font-bold mb-2">
-              {item.title}
-              <p className="mb-4 font-normal">
-                {item.content}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </div>
-
-      {/* Images in a Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 articleimages">
+           
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 articleimages my-10">
         {images?.map((image, index) => (
           <img 
             key={index}
@@ -59,6 +45,22 @@ export default function BlogArticle() {
           />
         ))}
       </div>
+
+        {/* Render the Ordered List */}
+        <ol className="list-decimal ml-5 text-xl my-8">
+          {orderedList?.map((item, index) => (
+            <li key={index} className="font-bold my-8">
+              {item.title}
+              <p className="mb-4 font-normal mt-4">
+                {item.content}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      {/* Images in a Row */}
+     
     </section>
   );
 }

@@ -54,7 +54,7 @@ export default function Blogcards() {
                 <h2>Most Popular</h2>
               </div>
               <div className="card-content-container">
-                <p>Who can eat Kind Rice?</p>
+                <h3>Who can eat Kind Rice?</h3>
                 <p>Diabetics - Families - Individuals
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default function Blogcards() {
                   <img src={assets.cover2} alt='' />
                 </div>
                 <div className="card-content-container">
-                  <p>Why Kind Rice is the safest choice?</p>
+                  <h3>Why Kind Rice is the safest choice?</h3>
                   <p>Gluten-Free - No Pesticides - 210 Lab tests </p>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function Blogcards() {
                 <img src={assets.cover3} alt='15-minute Low GI Fried Rice' />
               </div>
               <div className="card-content-container">
-                <p>How to Cook Kind Rice for the Perfect Meal ?</p>
+                <h3>How to Cook Kind Rice for the Perfect Meal ?</h3>
                 <p>Preparation - Cooking Instructions - Serving Tips</p>
               </div>
             </Link>
@@ -180,7 +180,7 @@ export default function Blogcards() {
                   <h2>Most Popular</h2>
                 </div>
                 <div className="card-content-container">
-                  <p>Farmer’s Story : Maarnadu</p>
+                  <h3>Farmer’s Story : Maarnadu</h3>
                   <p>Farmer's Journey - Agricultural Heritage - Sustainable Farming
                   </p>
                 </div>

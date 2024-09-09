@@ -1,8 +1,8 @@
 import React from 'react'
 import CartContainer from '../../Components/CartContainer/CartContainer'
 import Navbar from '../../Components/Navbar/Navbar'
-import Footer from '../../Components/Footer/Footer'
 import ShopBanner from '../../Components/ShopBanner/ShopBanner'
+import Footer2 from '../../Components/Footer2/Footer'
 
 const Cart = () => {
   return (
@@ -10,7 +10,7 @@ const Cart = () => {
     <Navbar/>
     <ShopBanner title="Cart" address="Home/Cart" />
     <CartContainer/>
-    <Footer/>
+    <Footer2/>
     </>
   )
 }

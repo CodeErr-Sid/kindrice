@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
-import Footer from '../../Components/Footer/Footer'
 import ShopBanner from '../../Components/ShopBanner/ShopBanner'
 import ShopBowl from '../../Components/ShopBowl/ShopBowl'
 import Product from '../../Components/Product/Product'
@@ -9,6 +8,7 @@ import FullTransparency from '../../Components/FullTransparency/FullTransparency
 import GotQuestions from '../../Components/GotQuestions/GotQuestions'
 import Preloader from '../../Components/Preloader/Preloader'
 import KindLoader from '../../Components/KindLoader/KindLoader'
+import Footer2 from '../../Components/Footer2/Footer'
 
 
 const Shop = () => {
@@ -26,7 +26,7 @@ const Shop = () => {
         <FullTransparency/>
         <GotQuestions/>
   
-      <Footer />
+      <Footer2 />
     </>
   )
 }

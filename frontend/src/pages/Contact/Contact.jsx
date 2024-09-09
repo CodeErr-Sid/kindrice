@@ -2,8 +2,8 @@ import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import ContactHero from '../../Components/Contact-hero/ContactHero'
 import ContactForm from '../../Components/ContactForm/ContactForm'
-import Footer from '../../Components/Footer/Footer'
 import Preloader from '../../Components/Preloader/Preloader'
+import Footer2 from '../../Components/Footer2/Footer'
 
 export default function Contact() {
   return (
@@ -12,7 +12,7 @@ export default function Contact() {
    <Navbar/>
    <ContactHero/>
     <ContactForm/>
-    <Footer/>
+    <Footer2/>
    </>
   )
 }

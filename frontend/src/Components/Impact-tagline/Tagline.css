@@ -1,7 +1,7 @@
 /* General styles for the tagline section */
 .tagline {
   width: 80vw;
-  padding: 6.5rem 2vw;
+  padding: 7rem 2vw 10rem 2vw;
   text-align: center;
   margin: 0 auto;
 }
@@ -59,7 +59,7 @@
 @media (max-width: 768px) {
   .tagline {
     width: 90vw;
-    padding: 4rem 2vw;
+    padding: 4rem 2vw 7rem 2vw;
   }
 
   .tagline-title {
@@ -75,7 +75,7 @@
 @media (max-width: 480px) {
   .tagline {
     width: 95vw;
-    padding: 5rem 2vw;
+    padding: 5rem 2vw 8rem 2vw;
   }
 
   .tagline-title {

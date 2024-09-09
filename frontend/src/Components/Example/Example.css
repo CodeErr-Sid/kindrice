@@ -33,7 +33,9 @@
   font-size: 2.8vw;
   margin-bottom: 1vw;
 }
-
+.example-section__content-right h2 span {
+  font-weight: 700;
+}
 .example-section__content-right p {
   font-size: 1.8vw;
   line-height: 2.5vw;
@@ -105,6 +107,7 @@
     font-size: 4vw;
     text-align: center;
     order: 1 !important;
+    margin: 3vw 0;
   }
 
   .example-section__content-right p {

@@ -38,7 +38,7 @@
 .medium {
   font-size: 4.7vw;
   line-height: 5.85vw;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .consultation-container {
@@ -64,7 +64,7 @@
 
 .info {
   text-align: left;
-  margin-top: 14rem;
+  margin-top: 11rem;
   margin-left: 6vw;
   z-index: 1;
 }
@@ -84,6 +84,7 @@
 .info p {
   font-size: 1.38vw;
   font-weight: 700;
+  margin-top: 2vw;
 }
 
 i {
@@ -91,13 +92,14 @@ i {
 }
 
 .size {
-  font-size: 5.7vw;
+  font-size: 4.7vw;
 }
 
 /* Media Queries for smaller screens */
 @media screen and (max-width: 1030px) {
   .info {
     margin-left: 7.5vw;
+    margin-top: 8rem;
   }
 }
 
@@ -180,7 +182,7 @@ i {
   }
 
   .size {
-    font-size: 6.7vw;
+    font-size: 4.5vw;
   }
 }
 
@@ -209,12 +211,13 @@ i {
   }
 
   .medium {
-    font-size: 7vw;
+    font-size: 10vw;
     text-align: center;
   }
 
   .size {
-    font-size: 10vw !important;
+    font-size: 8vw !important;
+    margin-top: 2vw;
   }
 
   .bold {
@@ -296,7 +299,8 @@ i {
   }
 
   .size {
-    font-size: 10vw !important;
+    font-size: 7vw !important;
+    margin-top: 2vw;
   }
 
   .bold {
@@ -327,7 +331,7 @@ i {
   .info h2 {
     font-size: 5.5vw;
     line-height: 6.45vw;
-    width: 80vw;
+    width: 90vw;
     padding-top: 0;
   }
 
