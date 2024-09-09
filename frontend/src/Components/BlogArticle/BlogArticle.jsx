@@ -1,10 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import './BlogArticle.css';
+import React from 'react';
 
 export default function BlogArticle() {
   const location = useLocation();
   const { coverImage, title, paragraphs, images, orderedList } = location.state || {};
-  console.log(coverImage);
+  
+  const getImageSrc = (src) => src || 'https://via.placeholder.com/300';
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
@@ -15,6 +17,8 @@ export default function BlogArticle() {
           alt="Blog Cover"
           className="w-full h-auto rounded-lg shadow-md object-cover"
           loading='lazy'
+          srcSet={`${getImageSrc(coverImage)} 1200w, ${getImageSrc(coverImage)} 600w`}
+          sizes="(max-width: 600px) 100vw, 50vw"
         />
       </div>
 
@@ -46,10 +50,12 @@ export default function BlogArticle() {
         {images?.map((image, index) => (
           <img 
             key={index}
-            src={image || 'https://via.placeholder.com/300'}
+            src={getImageSrc(image)}
             alt={`Article Image ${index + 1}`}
             className="w-full h-auto rounded-lg shadow-md object-cover"
             loading='lazy'
+            srcSet={`${getImageSrc(image)} 800w, ${getImageSrc(image)} 400w`}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         ))}
       </div>

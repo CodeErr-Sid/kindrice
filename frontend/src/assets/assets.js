@@ -119,6 +119,8 @@ import farmer3 from "./farmer3.jpg";
 import farmer4 from "./farmer4.webp";
 import diet from "./diet.avif";
 import glycemic from "./glycemic.webp";
+import faviconlogo from "./favicon-logo.jpg";
+import cover4Story from "./cover4-story.jpg";
 
 export const assets = {
   w_profile,
@@ -239,4 +241,6 @@ export const assets = {
   farmer4,
   diet,
   glycemic,
+  faviconlogo,
+  cover4Story,
 };
