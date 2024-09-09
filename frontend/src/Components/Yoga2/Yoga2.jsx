@@ -15,7 +15,7 @@ export default function Yoga2() {
     </div>
     <div className="third-container">
     <div className="third-section">
-        <img src={assets.Home3} alt=''/>
+        <img src={assets.meter} alt=''/>
         </div>
         </div>
    </section>

@@ -91,7 +91,7 @@ const Login = () => {
                                     onSubmit={handleSignIn}
                                 >
                                     <span className="mb-3 w-1/2 self-center">
-                                        <img src={assets.logo} className='object-contain' alt="" />
+                                        <img src={assets.kindl} className='object-contain' alt="" />
                                     </span>
                                     <p className="mb-5 text-grey-700">Enter your email and password</p>
                                     <button
@@ -165,7 +165,7 @@ const Login = () => {
                                     onSubmit={handleSignUp}
                                 >
                                     <span className="mb-5 w-1/4 self-center">
-                                        <img src={assets.logo} alt="" />
+                                        <img src={assets.kindl} alt="" />
                                     </span>
                                     <p className="mb-4 text-grey-700">Enter your email and password</p>
                                     <button

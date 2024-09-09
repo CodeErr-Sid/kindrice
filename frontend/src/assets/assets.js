@@ -251,4 +251,10 @@ export const assets = {
   faviconlogo,
   cover4Story,
   empower2,
+  cartimg,
+  impact1,
+  impact2,
+  lowgi1,
+  meter,
+  kindl,
 };

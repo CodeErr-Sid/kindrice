@@ -11,7 +11,7 @@ export default function Workers() {
           <img src={assets.Workers} alt='Worker'/>
         </div>
         <div className="workers-right">
-          <p>But we didn't stop there. To address the plastic issue, we chose to package our rice in <span>eco-friendly cotton bagsfree from harmful chemicals.</span>  These bags are crafted with care by people living with mental health challenges, providing them with meaningful employment and a sense of purpose.</p>
+          <p>But we didn't stop there. To address the plastic issue, we chose to package our rice in <span>eco-friendly cotton bags free from harmful chemicals.</span>  These bags are crafted with care by people living with mental health challenges, providing them with meaningful employment and a sense of purpose.</p>
         </div>
       </div>
     </div>

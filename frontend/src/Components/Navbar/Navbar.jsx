@@ -40,7 +40,7 @@ export default function Navbar() {
         </div>
 
         <div className='navbar-logo'>
-          <img src={assets.logo} alt='brand-logo' />
+          <img src={assets.kindl} alt='brand-logo' />
         </div>
 
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
@@ -78,6 +78,7 @@ export default function Navbar() {
           <div className="overlay-content">
             <FaTimes className='close-icon' onClick={toggleMenu} />
             <ul>
+              <img src={assets.kindl} alt='' className='w-20 h-auto mb-6'  />
               {currentPath !== '/home2' && <li><Link to='/' className='link' onClick={toggleMenu}>Home</Link></li>}
               <li><Link to='/shop' className='link' onClick={toggleMenu}>Shop</Link></li>
               <li><Link to='/low-gi' className='link' onClick={toggleMenu}>Low GI</Link></li>

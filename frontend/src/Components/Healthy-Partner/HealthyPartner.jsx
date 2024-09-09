@@ -15,7 +15,7 @@ export default function HealthyPartner() {
     <section className='healthy-section'>
       <div className="content-container2">
         <div className="heading-container">
-          <h1 className='bold'>Health Partner.</h1>
+          <h1 className='bold'>Health Partner</h1>
           <h2 className='medium size' >Incredibly Low-GI
           </h2>
         </div>

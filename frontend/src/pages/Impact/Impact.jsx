@@ -11,7 +11,7 @@ import Footer2 from '../../Components/Footer2/Footer'
 
 export default function Impact() {
     const paragraphHtml1 = `Kind Rice proudly sources its cotton bags from Carefactory, where <span>people living with mental health challenges</span> meticulously craft each bag.
-<br/> <br/>By choosing Kind Rice, you support meaningful employment and a supportive community.`;
+<br/> <br/> By choosing Kind Rice, you support them  with a meaningful employment and create a supportive community.`;
 
     const paragraphHtml2 = `We buy paddy <span>directly from farmers,</span> bypassing brokers to ensure <span>fair prices</span> for farmers and support their livelihoods, rather than letting middlemen profit at their expense.
     `;

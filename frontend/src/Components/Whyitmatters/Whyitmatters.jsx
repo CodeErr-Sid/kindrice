@@ -11,7 +11,7 @@ export default function Whyitmatters() {
         <div className="whyitmatters-content">
           <div className="whyitmatters-paragraphs">
             <img src={assets.sugarLevel} alt='' className="whyitmatters-image img-one"/>
-            <p className='whyitmatters-first-para'><span>Manages blood glucose level</span> Choosing Low-GI foods more often can help people with diabetes manage their blood sugar levels.</p>
+            <p className='whyitmatters-first-para'><span>Manages blood glucose level:</span> Choosing Low-GI foods more often can help people with diabetes manage their blood sugar levels.</p>
           </div>
           <div className="whyitmatters-paragraphs">
             <img src={assets.weight} alt='' className="whyitmatters-image img-one"/>

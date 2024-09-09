@@ -8,7 +8,7 @@ export default function Vision() {
   <div className="vision-container">
     <div className="vision-up">
         <div className="logo-img">
-            <img src={assets.logo} alt="logo"/>
+            <img src={assets.kindl} alt="logo"/>
         </div>
         <div className='line'>
 

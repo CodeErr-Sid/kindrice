@@ -6,7 +6,7 @@ export default function Example() {
   return (
     <div className="example-section">
       <div className="example-content-left">
-        <img src={assets.cars} alt='' />
+        <img src={assets.lowgi1} alt='' />
       </div>
       <div className="example-section__content-right">
         <h2><span>What is Low-GI?</span></h2>

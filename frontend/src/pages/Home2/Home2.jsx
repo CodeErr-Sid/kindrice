@@ -36,7 +36,7 @@ export default function Home2() {
       <Kind />
       <KindLowGi
         imageSrc={assets.rice5}
-        title="Kind Low GI Rice"
+        title="Kind Low-GI Rice"
         description="So Clean, So Tasty, So Healthy"
         price="From ₹210"
       />

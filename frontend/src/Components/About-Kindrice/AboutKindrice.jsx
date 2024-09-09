@@ -11,7 +11,7 @@ export default function AboutKindrice() {
         </div>
         <div className="text-section-overlay">
           <div className="left">
-            <img src={assets.logo} alt=''/>
+            <img src={assets.kindl} alt=''/>
           </div>
           <div className="right">
           <p>Kind Rice is more than just rice— <span>it's a commitment to health, sustainability, and community.</span> Every bag of Kind Rice supports the people, uplifts farmers, nurtures the planet, and provides you with nutritious, delicious rice.</p>

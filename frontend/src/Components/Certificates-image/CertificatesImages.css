@@ -76,6 +76,12 @@
   border-radius: 50%;
   font-weight: 700;
 }
+.para-lab {
+  display: block;
+}
+.para-lab2 {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .overlay-content2 {
     max-width: 85%;
@@ -90,5 +96,11 @@
   .close-icon2 {
     font-size: 4vw;
     left: 2vw;
+  }
+  .para-lab {
+    display: none;
+  }
+  .para-lab2 {
+    display: block;
   }
 }
