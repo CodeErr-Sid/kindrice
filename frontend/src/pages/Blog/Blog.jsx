@@ -13,18 +13,18 @@ import Preloader from '../../Components/Preloader/Preloader'
 const cardsData = [
   {
     image: assets.friedrice,
-    title: '15-minute Low GI Fried Rice',
-    details: 'Serves 6 • Cook 10 Min • Prep 5 Min',
+    title: ' Creative and Delicious Recipes Using Kind Rice',
+    details: '',
   },
   {
-    image: assets.chickenCurry,
-    title: 'Chicken Curry with Low GI Rice',
-    details: 'Serves 6 • Cook 15 Min • Prep 5 Min',
+    image: assets.glycemic,
+    title: ' Understanding Glycemic Index: What It Means for Your Health',
+    details: '',
   },
   {
-    image: assets.riceSalad,
-    title: 'Curried Chicken and Rice Salad',
-    details: 'Serves 6 • Cook 10 Min',
+    image: assets.diet,
+    title: 'The Benefits of Low-GI Foods: Why Kind Rice Should Be Part of Your Diet',
+    details: '',
   },
 ];
 

@@ -1,10 +1,10 @@
 import { useLocation } from 'react-router-dom';
-import './BlogArticle.css'
+import './BlogArticle.css';
+
 export default function BlogArticle() {
   const location = useLocation();
-  const { coverImage, title, paragraphs, images } = location.state || {};
+  const { coverImage, title, paragraphs, images, orderedList } = location.state || {};
   console.log(coverImage);
-  
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
@@ -20,9 +20,24 @@ export default function BlogArticle() {
       {/* Article Content */}
       <div className="mb-12">
         <h1 className="text-4xl font-bold mb-6 custom-green">{title || 'Blog Article Title'}</h1>
+        {/* Render the Paragraphs */}
         {paragraphs?.map((paragraph, index) => (
-          <p key={index} className="text-xl mb-4">{paragraph}</p>
+          <p key={index} className="text-xl mb-4">
+            {paragraph}
+          </p>
         ))}
+
+        {/* Render the Ordered List */}
+        <ol className="list-decimal ml-5 text-xl">
+          {orderedList?.map((item, index) => (
+            <li key={index} className="font-bold mb-2">
+              {item.title}
+              <p className="mb-4 font-normal">
+                {item.content}
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
 
       {/* Images in a Row */}

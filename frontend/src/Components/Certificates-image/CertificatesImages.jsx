@@ -18,7 +18,9 @@ export default function CertificatesImages() {
       <section className="certificates">
     
         <div className="certificates-container items-center justify-center  md:items-start md:justify-start md:pl-8">
-        <h1 className='text-xl md:text-4xl font-bold m-4 md:w-[70%]'>Explore the lab tests for our Low-GI Rice below and see exactly what you're eating.</h1>
+        <h1 className='text-2xl md:text-4xl font-bold my-4 w-[90%] md:w-[70%]'>Transparency and Scientific Validation You Can Rely On
+        </h1>
+        <p className='text-xl my-2 w-[90%] md:w-[70%]'>At Kind Rice, we believe in being open about what goes into our products. Our Low-GI rice has been carefully tested by trusted labs to ensure it helps keep blood sugar levels steady. We're proud to share these lab results with you, so you can see the care and science behind our rice. This openness shows that our rice not only tastes good but also delivers the health benefits. With our certified Low-GI rice, you're choosing a healthier, well-informed option.</p>
         <div className="button-container flex flex-row flex-wrap w-[80%] md:w-[80vw] text-center md:text-left items-center justify-center md:items-start md:justify-start">
           <button className="certificate-button" onClick={() => handleButtonClick(assets.certificate1)}>
             Certificate 1

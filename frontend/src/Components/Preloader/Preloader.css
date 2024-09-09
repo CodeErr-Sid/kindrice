@@ -23,7 +23,7 @@ preloader
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
   border-radius: 50%;
   position: absolute;
-  background-color: #016533 !important;
+  background-color: #ffffff !important;
   height: 2000px;
   width: 2000px;
   /* top: 20%; */
@@ -32,10 +32,10 @@ preloader
 }
 
 .sb-preloader-number {
-  color: #99cb65 !important;
+  color: #016533 !important;
 }
 .sb-percentage {
-  color: #99cb65 !important;
+  color: #016533 !important;
 }
 
 .sb-preloader .sb-preloader-body {
@@ -61,13 +61,13 @@ preloader
   margin: 0 auto;
   border-radius: 2px;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #99cb65;
 }
 
 .sb-preloader .sb-preloader-body .sb-loading-bar .sb-bar {
   width: 100%;
   height: 0;
-  background-color: #99cb65;
+  background-color: #016533;
 }
 
 .sb-preloader.sb-hidden {

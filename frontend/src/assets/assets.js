@@ -112,6 +112,13 @@ import krice1 from "./krice1.webp";
 import krice2 from "./krice2.webp";
 import krice3 from "./krice3.jpg";
 import krice4 from "./krice4.jpg";
+import farmercover from "./farmers-story.jpg";
+import farmer1 from "./farmer1.jpg";
+import farmer2 from "./farmer2.jpg";
+import farmer3 from "./farmer3.jpg";
+import farmer4 from "./farmer4.webp";
+import diet from "./diet.avif";
+import glycemic from "./glycemic.webp";
 
 export const assets = {
   w_profile,
@@ -225,4 +232,11 @@ export const assets = {
   krice2,
   krice3,
   krice4,
+  farmercover,
+  farmer1,
+  farmer2,
+  farmer3,
+  farmer4,
+  diet,
+  glycemic,
 };

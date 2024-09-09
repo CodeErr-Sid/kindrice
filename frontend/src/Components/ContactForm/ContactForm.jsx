@@ -18,9 +18,9 @@ export default function ContactForm() {
               </div>
             </div> */}
             <div className="contact-form-right">
-              <h1>Grow with Us - Let's Discuss How We Can Help
+              <h1>Got a Question? Let's Chat!
               </h1>
-              <p>You can reach us anytime via <a href="mailto:Kindrice@gmail.com" className='mail'>Kindrice@gmail.com</a></p>
+              <p>Curious about our products or need more details? Don’t hesitate to contact us here <a href="mailto:Kindrice@gmail.com" className='mail'>kindrice@gmail.com </a>we’d love to help!</p>
               <form>
                 <label htmlFor="Name">Name</label>
                 <input type="text" id="Name" name="Name" placeholder='Enter Your Name'/>

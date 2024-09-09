@@ -15,9 +15,30 @@ export default function Blogcards() {
     coverImage: assets.cover1,
     title: 'Who can eat Kind Rice?',
     paragraphs: [
-      'Kind Rice is a nutritious option for anyone looking to improve their diet. Its lower glycemic index makes it ideal for those managing diabetes or aiming to control blood sugar levels. Additionally, its high fiber content supports weight management and healthy digestion, making it a great choice for those looking to maintain or lose weight.',
-      'Vegetarians and vegans will find Kind Rice to be a valuable addition to their diet, offering essential nutrients without animal products. It is also gluten-free, making it suitable for people with celiac disease or gluten intolerance. Its versatility allows it to fit into a variety of recipes, from stir-fries to salads',
-      'Families seeking a healthier grain for their meals will benefit from Kind Rice’s mild flavor and satisfying texture. It is a kid-friendly option that can be easily incorporated into daily meals, promoting overall health and wellness for all ages.'
+"Kind Rice isn’t just for individuals managing diabetes — it’s a nutritious option for the entire family. Thanks to its low glycemic index (GI), this rice gradually releases energy into the bloodstream, making it a fantastic choice for anyone looking to maintain steady energy levels throughout the day.",
+    ],
+    orderedList: [
+      {
+        title: 'Ideal for Diabetics and Those Managing Blood Sugar',
+        content: 'With its low-GI properties, Kind Rice helps prevent rapid spikes in blood sugar, which is especially beneficial for diabetics or those at risk of developing diabetes. By incorporating this rice into your diet, you can enjoy meals without worrying about sudden blood sugar fluctuations.',
+      },
+      {
+        title: 'Suitable for Children',
+        content: 'Growing children need balanced nutrition, and Kind Rice offers a healthy source of complex carbohydrates. Its slow-release energy ensures that kids stay energized and focused, whether for school or play. When paired with vegetables and lean proteins, Kind Rice can become an essential part of a balanced diet that supports their growth and development.',
+      },
+      {
+        title: 'A Great Option for Adults and Active Individuals',
+        content: 'For adults and those with active lifestyles, Kind Rice is an excellent choice to fuel daily activities. It provides sustained energy, which can enhance productivity and focus throughout the day. Whether you’re working, exercising, or managing a busy household, consuming 100 to 150 grams of this rice daily, along with a well-rounded meal, can help maintain optimal energy levels.',
+      },
+      {
+        title: 'Perfect for Seniors',
+        content: 'Older adults often face challenges with digestion or maintaining stable energy levels. Kind Rice is easy to digest and gentle on the stomach while providing long-lasting energy without overwhelming the system. This makes it a great option for seniors looking to keep their nutrition in check without compromising taste or health.',
+      },
+      {
+        title: 'A Daily Portion for Health',
+        content: "Consuming about 100g to 150g of Kind Rice daily, paired with vegetables, lean proteins, and without added sugars, can support your overall well-being. It’s an excellent way to ensure you're nourishing your body with a healthy, low-GI carbohydrate that helps you stay productive, energized, and satisfied throughout the day.",
+
+      },
     ],
     images: [
       assets.krice1,
@@ -34,7 +55,8 @@ export default function Blogcards() {
               </div>
               <div className="card-content-container">
                 <p>Who can eat Kind Rice?</p>
-                <p>Serves 6 • Cook 10 min</p>
+                <p>Diabetics - Families - Individuals
+                </p>
               </div>
             </Link>
             <Link
@@ -43,10 +65,32 @@ export default function Blogcards() {
     coverImage: assets.cover2,
     title: 'Why Kind Rice is the safest choice?',
     paragraphs: [
-      'Kind Rice stands out as a safe dietary choice for many reasons. Its low glycemic index makes it particularly suitable for individuals with diabetes or those aiming to manage blood sugar levels more effectively. By maintaining stable blood sugar levels, Kind Rice helps reduce the risk of glucose spikes and supports overall metabolic health. Additionally, its high fiber content aids in weight management and promotes healthy digestion, making it a prudent choice for those focused on maintaining a balanced diet and achieving their wellness goals..',
-      'For those with dietary restrictions, Kind Rice offers a versatile and safe alternative. It is an excellent option for vegetarians and vegans, providing essential nutrients without relying on animal products. Moreover, Kind Rice is naturally gluten-free, making it a reliable choice for individuals with celiac disease or gluten intolerance. Its adaptability in various recipes, from stir-fries to salads, ensures that it can be easily incorporated into different meal plans without compromising on nutritional value or taste.',
-      'Families looking for a wholesome grain that appeals to all ages will find Kind Rice to be a particularly safe and satisfying option. Its mild flavor and pleasing texture make it a kid-friendly choice that can be seamlessly integrated into everyday meals. By choosing Kind Rice, families can enjoy a nutritious grain that supports overall health and well-being, making it an ideal choice for creating balanced and health-conscious meals for everyone.'
-    ],
+      "Kind Rice stands out as one of the safest options for your family’s meals, and here’s why:",
+          ],
+          orderedList: [
+            {
+              title: 'Free from GMOs',
+              content: 'Kind Rice is completely non-GMO, meaning it hasn’t been genetically modified in any way. You can enjoy it knowing that it’s naturally grown, preserving its original nutritional value without any genetic alterations that could potentially affect your health.',
+            },
+            {
+              title: 'Gluten-Free for Better Digestibility',
+              content: 'For those with gluten sensitivities or celiac disease, Kind Rice is an excellent choice. It’s 100% gluten-free, making it safe for individuals who need to avoid gluten, while also being easy on the digestive system for everyone else.',
+            },
+          
+            {
+              title: 'No Pesticides or Harmful Chemica',
+              content: 'We take great care in ensuring that Kind Rice is grown without the use of harmful pesticides or chemicals. This means you can trust that it’s free from the residues often found in conventionally grown crops, making it a cleaner, healthier option for you and your loved ones.',
+            },
+            {
+              title: 'Rigorously Tested for Quality',
+              content: "Each batch of Kind Rice undergoes a thorough cooking test before it reaches your kitchen. This quality control process ensures that only the best grains, in terms of both texture and taste, are packaged and delivered to you. We prioritize both safety and quality in every step of production.",
+      
+            },
+            {
+              title: '5. A Pure and Natural Choice',
+              content: 'With no artificial additives or chemicals involved, Kind Rice is as close to nature as it gets. You can confidently serve it to your family, knowing that it’s pure, safe, and packed with natural goodness.',
+            },
+          ],
     images: [
       assets.whyrice1,
       assets.whyrice2,
@@ -58,11 +102,11 @@ export default function Blogcards() {
             >
               <div className="card-one">
                 <div className="card-one-image">
-                  <img src={assets.cover2} alt='Curried chicken and rice salad' />
+                  <img src={assets.cover2} alt='' />
                 </div>
                 <div className="card-content-container">
                   <p>Why Kind Rice is the safest choice?</p>
-                  <p>Serves 6 • Cook 10 min</p>
+                  <p>Gluten-Free - No Pesticides - 210 Lab tests </p>
                 </div>
               </div>
             </Link>
@@ -74,12 +118,25 @@ export default function Blogcards() {
   to="/blog-article"
   state={{
     coverImage: assets.cover3,
-    title: 'How to Cook Kind Rice?',
+    title: 'How to Cook Kind Rice for the Perfect Meal ?',
     paragraphs: [
-      'Cooking Kind Rice is straightforward and ensures a nutritious addition to your meals. Start by rinsing the Kind Rice under cold water to remove excess starch and any impurities. This step helps in achieving a better texture and prevents the rice from becoming overly sticky. In a medium pot, add the rinsed rice and water in a ratio of 1 cup of rice to 2 cups of water. Bring the mixture to a boil over high heat.',
-      'Once boiling, reduce the heat to low, cover the pot, and let it simmer for about 15-20 minutes. Avoid lifting the lid or stirring the rice during this time, as it can affect the cooking process. After the rice has absorbed all the water and is tender, remove the pot from heat and let it sit, covered, for an additional 5 minutes. Fluff the rice with a fork before serving to separate the grains and enhance its texture.',
-      'Kind Rice can be served as a base for a variety of dishes. It pairs well with vegetables, proteins, and sauces, making it versatile for different cuisines. You can use it in stir-fries, grain bowls, or as a side dish to complement your favorite meals. Its mild flavor and nutritious profile make it a great addition to any diet, and experimenting with different herbs and spices can add a unique twist to your dishes.'
-    ],
+      "",
+          ],
+          orderedList: [
+            {
+              title: 'Soak for Enhanced Texture',
+              content: 'Begin by thoroughly rinsing the rice under clean drinking water to remove any surface starch. Then, transfer the rice to a bowl and submerge it in fresh water. Allow it to soak for 30 to 40 minutes. This soaking step helps the rice grains absorb water, ensuring a softer and fluffier texture once cooked.',
+            },
+            {
+              title: 'Cook to Perfection',
+              content: 'After soaking, drain the water completely. In a pan, add fresh water in proportion to the rice (usually 1½ to 2 cups of water for every cup of rice). Bring the water to a gentle boil on medium heat. Once boiling, reduce the heat to low and let the rice simmer uncovered for 20 to 25 minutes. Stir occasionally to prevent sticking, and check the texture toward the end of the cooking time. You’re aiming for grains that are tender but not mushy.',
+            },
+          
+            {
+              title: 'Serve and Enjoy',
+              content: 'Once the rice is fully cooked, drain any excess water if needed. Let the rice sit for a few minutes to settle before fluffing it gently with a fork. Now, your Kind Rice is ready to be served — clean, healthy, and delicious. Perfect as a side dish or the base for your favorite meals',
+            },
+          ],
     images: [
       assets.cook1,
       assets.cook2,
@@ -93,37 +150,39 @@ export default function Blogcards() {
                 <img src={assets.cover3} alt='15-minute Low GI Fried Rice' />
               </div>
               <div className="card-content-container">
-                <p>How to Cook Kind Rice?</p>
-                <p>Serves 6 • Cook 10 min • Prep 5 min</p>
+                <p>How to Cook Kind Rice for the Perfect Meal ?</p>
+                <p>Preparation - Cooking Instructions - Serving Tips</p>
               </div>
             </Link>
             <Link
   to="/blog-article"
   state={{
-    coverImage: assets.chickenCurry,
-    title: 'Why Kind Rice is the safest choice?',
+    coverImage: assets.farmercover,
+    title: 'Farmer’s Story : Maarnadu',
     paragraphs: [
-      'Kind Rice stands out as a safe dietary choice for many reasons. Its low glycemic index makes it particularly suitable for individuals with diabetes or those aiming to manage blood sugar levels more effectively. By maintaining stable blood sugar levels, Kind Rice helps reduce the risk of glucose spikes and supports overall metabolic health. Additionally, its high fiber content aids in weight management and promotes healthy digestion, making it a prudent choice for those focused on maintaining a balanced diet and achieving their wellness goals..',
-      'For those with dietary restrictions, Kind Rice offers a versatile and safe alternative. It is an excellent option for vegetarians and vegans, providing essential nutrients without relying on animal products. Moreover, Kind Rice is naturally gluten-free, making it a reliable choice for individuals with celiac disease or gluten intolerance. Its adaptability in various recipes, from stir-fries to salads, ensures that it can be easily incorporated into different meal plans without compromising on nutritional value or taste.',
-      'Families looking for a wholesome grain that appeals to all ages will find Kind Rice to be a particularly safe and satisfying option. Its mild flavor and pleasing texture make it a kid-friendly choice that can be seamlessly integrated into everyday meals. By choosing Kind Rice, families can enjoy a nutritious grain that supports overall health and well-being, making it an ideal choice for creating balanced and health-conscious meals for everyone.'
-    ],
+      "My name is Maarnadu, and I live with my family in the village of Arasakulam, where we farm and grow the RNR variety of paddy. Every four months, we work tirelessly in the fields, facing long days and difficult conditions. While many farmers in our village sell their harvest to local brokers, my family and I travel 20 kilometers to the Kind Rice Mill in Madurai.",
+      "The journey isn’t easy, but it’s worth it. At Kind Rice, they’re transparent with weighing our paddy, ensuring we get an honest and fair price for our hard work. The mill is always clean and well-maintained, and the staff treat us with respect. I value this experience not just for the income, but for the fairness and integrity they show us.",
+      "This is my story of how Kind Rice supports my family’s livelihood.",
+          ],
+        
     images: [
-      assets.whyrice1,
-      assets.whyrice2,
-      assets.whyrice3,
-    assets.whyrice4,
+      assets.farmer1,
+      assets.farmer2,
+      assets.farmer3,
+    assets.farmer4,
     ]
   }}
               className='blogcards-card-right-down'
             >
               <div className="card-one2">
                 <div className="card-one-image">
-                  <img src={assets.chickenCurry} alt='Chicken Curry with Low GI Rice' />
+                  <img src={assets.farmercover} alt='' />
                   <h2>Most Popular</h2>
                 </div>
                 <div className="card-content-container">
-                  <p>Chicken Curry with Low GI Rice</p>
-                  <p>Serves 6 • Cook 15 min • Prep 5 min</p>
+                  <p>Farmer’s Story : Maarnadu</p>
+                  <p>Farmer's Journey - Agricultural Heritage - Sustainable Farming
+                  </p>
                 </div>
               </div>
             </Link>

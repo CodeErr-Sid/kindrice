@@ -8,8 +8,8 @@ export default function Publication({ cards }) {
       <div className="publication-container">
         <div className="up-container">
           <div className="left-container">
-            <h1>Most Popular Publications</h1>
-            <p>Explore a variety of recipes</p>
+            <h1>Upcoming Publications</h1>
+            <p></p>
           </div>
           {/* <div className="right-container">
             <div className="previous-arrow">

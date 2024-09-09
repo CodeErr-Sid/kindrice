@@ -80,14 +80,14 @@ const KindLoader = () => {
         <div className="mil-preloader">
         <div className="mil-preloader-animation">
           <div className="mil-pos-abs mil-animation-1">
-            <p className="mil-h3 mil-bla mil-thin" id="color-mil-txt">Culinary</p>
-            <p className="mil-h3 mil-maroon" id="color-mil-txt" style={{ color: '#99cb65' }}>Exquisite</p>
-            <p className="mil-h3 mil-black mil-thin" id="color-mil-txt">Meticulous</p>
+            <p className="mil-h3 mil-bla mil-thin" id="color-mil-txt">Nutritious</p>
+            <p className="mil-h3 mil-maroon" id="color-mil-txt" style={{ color: '#016533' }}>Wholesome</p>
+            <p className="mil-h3 mil-black mil-thin" id="color-mil-txt">Tender</p>
           </div>
           <div className="mil-pos-abs mil-animation-2">
             <div className="mil-reveal-frame">
               <p className="mil-reveal-box"></p>
-              <p className="mil-h3 mil-maroon mil-thin" style={{ color: '#99cb65', fontSize: '2rem' }}>Kindrice</p>
+              <p className="mil-h3 mil-maroon mil-thin" style={{ color: '#016533', fontSize: '2rem' }}>Kindrice.co.in</p>
             </div>
           </div>
         </div>

@@ -18,11 +18,14 @@ import Labtest2 from '../../Components/Lab-test/Labtest2'
 import Healthyrice2 from '../../Components/Healthy-rice/Healthyrice2'
 import Promise2 from '../../Components/promises/Promise2'
 import Preloader from '../../Components/Preloader/Preloader'
+import KindLoader from '../../Components/KindLoader/KindLoader'
+
 
 
 export default function Home2() {
   return (
     <>
+    <KindLoader/>
     {/* <Preloader/> */}
     <Navbar/>
     <Herosection/>

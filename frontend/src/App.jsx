@@ -18,7 +18,7 @@ import Auth from './pages/Auth/Auth';
 import Checkout from './pages/Checkout/Checkout';
 import Cart from './pages/Cart/Cart';
 import BlogArticlePage from './pages/BlogArticlePage/BlogArticlePage';
-import KindLoader from './Components/KindLoader/KindLoader';
+// import KindLoader from './Components/KindLoader/KindLoader';
 
 
 
@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <KindLoader/>
+      
       <Routes>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cart" element={<Cart />} />
