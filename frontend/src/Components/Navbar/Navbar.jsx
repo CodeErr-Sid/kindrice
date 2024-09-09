@@ -75,10 +75,26 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+
+        <div className={`overlay ${isMenuOpen ? 'active' : ''}`}>
+        <div className="overlay-content">
+          <FaTimes className='close-icon' onClick={toggleMenu} /> {/* Close icon */}
+          <ul>
+            <li><Link to='/' className='link' onClick={toggleMenu}>Home</Link></li>
+            <li><Link to='/shop' className='link' onClick={toggleMenu}>Shop</Link></li>
+            <li><Link to='/low-gi' className='link' onClick={toggleMenu}>Low GI</Link></li>
+            <li><Link to='/impact' className='link' onClick={toggleMenu}>Impact</Link></li>
+            <li><Link to='/blog' className='link' onClick={toggleMenu}>Blog</Link></li>
+            <li><Link to='/story' className='link' onClick={toggleMenu}>Story</Link></li>
+            <li><Link to='/contact' className='link' onClick={toggleMenu}>Contact</Link></li>
+            <li><Link to='/lab-test' className='link' onClick={toggleMenu}>Lab Test</Link></li>
+          </ul>
+        </div>
+      </div>
       </div>
 
       {/* Fullscreen Menu Overlay */}
-      <Menuactive show={isMenuOpen} />
+      {/* <Menuactive show={isMenuOpen} /> */}
     </section>
   );
 }

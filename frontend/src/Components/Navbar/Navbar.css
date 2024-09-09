@@ -210,7 +210,7 @@
   }
 
   .overlay {
-    display: block;
+    display: flex;
   }
 
   .navbar-logo img {
