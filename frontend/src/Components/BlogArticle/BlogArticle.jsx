@@ -14,6 +14,7 @@ export default function BlogArticle() {
           src={coverImage || 'https://via.placeholder.com/1200x600'} 
           alt="Blog Cover"
           className="w-full h-auto rounded-lg shadow-md object-cover"
+          loading='lazy'
         />
       </div>
 
@@ -48,6 +49,7 @@ export default function BlogArticle() {
             src={image || 'https://via.placeholder.com/300'}
             alt={`Article Image ${index + 1}`}
             className="w-full h-auto rounded-lg shadow-md object-cover"
+            loading='lazy'
           />
         ))}
       </div>
