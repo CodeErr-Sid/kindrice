@@ -33,7 +33,7 @@ export default function HomeHero() {
 
       {/* Mobile View */}
       <div className="relative w-full h-screen bg-cover bg-bottom block md:hidden bg-no-repeat" style={{ backgroundImage: `url(${assets.mobileHero})` }}>
-        <div className='absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6 py-10 mt-[-20rem]'>
+        <div className='absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6 py-10 mt-[-22rem]'>
           {/* Text Section */}
           <h1 className='text-4xl font-bold mb-4'>
             A Low-GI Rice
