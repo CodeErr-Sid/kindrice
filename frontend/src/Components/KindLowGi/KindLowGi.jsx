@@ -26,7 +26,7 @@ export default function KindLowGi({ imageSrc, title, description, price, style }
             {/* Wrapping Link around the button */}
             <Link to="/shop">
               <button className="bg-green-800 text-white font-bold py-2 pl-4 pr-2 rounded-full inline-flex items-center my-4 mx-auto" onClick={handleBuyNowClick}>
-                <span className="mr-2 text-2xl">SHOP NOW</span>
+                <span className="mr-2 text-lg">SHOP NOW</span>
                 <div className="bg-white rounded-full p-1">
                   <div className="bg-white rounded-full p-1.5 ml-auto">
                     <ArrowRight className="w-6 h-6 text-green-800" strokeWidth={4} />
