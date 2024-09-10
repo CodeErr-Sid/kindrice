@@ -11,7 +11,8 @@ export default function Labtest2() {
   };
 
   return (
-    <section className='labtest2-section'>
+    <section>
+    <div className='labtest2-section hidden md:block'>
       <div className="labtest2-content">
         <div className="labtest2-heading">
           <h1 className='labtest2-bold'>Safety is in our DNA, 
@@ -36,6 +37,30 @@ export default function Labtest2() {
           </div>
         </div>
       </div>
+    </div>
+    <div className='labtest2-section block md:hidden'>
+      <div className="labtest2-content">
+        <div className="labtest2-heading">
+          <h1 className='labtest2-bold'>Safety is in our DNA, 
+          </h1>
+          <h2 className='medium'>Proven by 210 tests</h2>
+          <div className="labtest2-details">
+           
+            <p>
+              <i onClick={handleLabReportClick} style={{ cursor: 'pointer', zIndex: 99 }}>
+                Click for Lab report
+              </i>
+            </p>
+          </div>
+        </div>
+        <div className="labtest2-info-container">
+          <div className="labtest2-image">
+            <img src={assets.lab} alt='Lab' />
+          </div>
+         
+        </div>
+      </div>
+    </div>
     </section>
   );
 }

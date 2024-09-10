@@ -79,7 +79,7 @@ export default function Navbar() {
             <FaTimes className='close-icon' onClick={toggleMenu} />
             <ul>
               <img src={assets.kindl} alt='' className='w-20 h-auto mb-6'  />
-              {currentPath !== '/home2' && <li><Link to='/' className='link' onClick={toggleMenu}>Home</Link></li>}
+              {currentPath !== '/' && <li><Link to='/' className='link' onClick={toggleMenu}>Home</Link></li>}
               <li><Link to='/shop' className='link' onClick={toggleMenu}>Shop</Link></li>
               <li><Link to='/low-gi' className='link' onClick={toggleMenu}>Low GI</Link></li>
               <li><Link to='/impact' className='link' onClick={toggleMenu}>Impact</Link></li>

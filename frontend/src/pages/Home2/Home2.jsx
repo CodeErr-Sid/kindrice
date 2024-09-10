@@ -16,6 +16,7 @@ import Promise2 from '../../Components/promises/Promise2';
 import KindLoader from '../../Components/KindLoader/KindLoader';
 import Footer2 from '../../Components/Footer2/Footer';
 import { assets } from '../../assets/assets';
+import HomeHero from '../../Components/HomeHero/HomeHero';
 
 
 export default function Home2() {
@@ -23,17 +24,17 @@ export default function Home2() {
     <>
     <KindLoader/>
       <Navbar />
-      <Herosection />
+      <HomeHero />
       <Yoga2 />
       <HealthyPartner />
       <Labtest2 />
       <Healthyrice2 />
-      <Promise2 />
-      <Management />
+      {/* <Promise2 /> */}
+      {/* <Management /> */}
       <Philosophy />
       <Truth />
       <Table />
-      <Kind />
+      {/* <Kind /> */}
       <KindLowGi
         imageSrc={assets.rice5}
         title="Kind Low-GI Rice"

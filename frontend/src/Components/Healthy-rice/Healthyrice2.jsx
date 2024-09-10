@@ -11,7 +11,8 @@ export default function Healthyrice2() {
   };
 
   return (
-    <section className='healthyrice2-section'>
+    <section>
+    <div className='healthyrice2-section hidden md:block'>
       <div className="healthyrice2-content-container">
         <div className="healthyrice2-heading-container">
           <h1 className='healthyrice2-bold'>Sooo Healthy,</h1>
@@ -32,6 +33,27 @@ export default function Healthyrice2() {
           </div>
         </div>
       </div>
+    </div>
+    <div className='healthyrice2-section block md:hidden'>
+      <div className="healthyrice2-content-container">
+        <div className="healthyrice2-heading-container">
+          <h1 className='healthyrice2-bold'>Sooo Healthy,</h1>
+          <h2 className='healthyrice2-medium'>6.5 grams protein
+          </h2>
+          <p className='mt-2'>It’s Here: the healthiest rice we’ve ever offered
+          </p>
+          <div className="healthyrice2-info">
+            <p onClick={handleLabReportClick} style={{cursor:'pointer'}}><i>Click for Lab report</i></p>
+          </div>
+        </div>
+        <div className="healthyrice2-consultation-container">
+          
+          <div className="healthyrice2-patient-image">
+            <img src={assets.rice} alt='Patient' />
+          </div>
+        </div>
+      </div>
+    </div>
     </section>
   );
 }

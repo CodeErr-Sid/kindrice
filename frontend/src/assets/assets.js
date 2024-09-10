@@ -127,7 +127,9 @@ import impact1 from "./impact1.png";
 import impact2 from "./impact2.png";
 import kindl from "./kind-logo.png";
 import lowgi1 from "./lowgi1.jpg";
-import meter from "./meter.jpg";
+import meter from "./meter2.jpg";
+import mobileHero from "./hero-mobile.jpg";
+import desktopHero from "./hero-desktop.jpg";
 
 export const assets = {
   w_profile,
@@ -257,4 +259,6 @@ export const assets = {
   lowgi1,
   meter,
   kindl,
+  mobileHero,
+  desktopHero,
 };
