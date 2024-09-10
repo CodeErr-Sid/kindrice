@@ -249,6 +249,7 @@
 
   .labtest2-details p {
     font-size: 4vw; /* Larger font size for readability */
+    margin-top: 1rem;
   }
 
   .labtest2-image img {

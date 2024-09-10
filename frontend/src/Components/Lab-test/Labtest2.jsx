@@ -46,7 +46,7 @@ export default function Labtest2() {
           <h2 className='medium'>Proven by 210 tests</h2>
           <div className="labtest2-details">
            
-            <p>
+            <p className='mt-2'>
               <i onClick={handleLabReportClick} style={{ cursor: 'pointer', zIndex: 99 }}>
                 Click for Lab report
               </i>
