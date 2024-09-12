@@ -11,7 +11,7 @@ export default function HomeHero() {
   return (
     <section>
       {/* Desktop View */}
-      <div className="relative w-full h-screen bg-cover bg-center hidden md:block" style={{ backgroundImage: `url(${assets.desktopHero})` }}>
+      <div className="relative w-full h-screen bg-cover bg-top hidden md:block" style={{ backgroundImage: `url(${assets.desktopHero})` }}>
         <div className='absolute inset-0 flex flex-col justify-center items-left text-white px-8 lg:px-24'>
           {/* Text Section */}
           <h1 className='text-5xl lg:text-6xl font-bold  mb-4'>
