@@ -41,9 +41,11 @@ export default function HomeHero() {
           <h2 className='text-2xl mb-4'>
             So Clean. So Tasty. So Healthy.
           </h2>
+          <Link to='/shop'>
           <button className='bg-green-700 text-xl text-white py-2 px-8 rounded-full hover:bg-green-600 transition-all'>
             Shop now
           </button>
+          </Link>
           <p className='text-xl font-bold mt-2'>
             From ₹159
           </p>
