@@ -36,7 +36,7 @@ export default function Home2() {
       <Table />
       {/* <Kind /> */}
       <KindLowGi
-        imageSrc={assets.rice5}
+        imageSrc={assets.cta}
         title="Kind Low-GI Rice"
         description="So Clean, So Tasty, So Healthy"
         price="From ₹210"

@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Labtest2.css';
 import { assets } from '../../assets/assets';
 
-export default function Labtest2() {
-  const navigate = useNavigate();
 
-  const handleLabReportClick = () => {
-    navigate('/lab-test');
+export default function Labtest2() {
+  // const navigate = useNavigate();
+
+  // const handleLabReportClick = () => {
+  //   navigate('/lab-test');
+  // };
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleButtonClick = (imageSrc) => {
+    setSelectedImage(imageSrc); // Set the selected image for the overlay
+  };
+
+  const handleCloseClick = () => {
+    setSelectedImage(null); // Close the overlay by resetting the selected image
   };
 
   return (
@@ -30,7 +40,7 @@ export default function Labtest2() {
               ensuring the <span>finest quality</span> for your family.
             </h2>
             <p>
-              <i onClick={handleLabReportClick} style={{ cursor: 'pointer', zIndex: 99 }}>
+              <i onClick={() => handleButtonClick(assets.chemicalfree1)} style={{ cursor: 'pointer', zIndex: 99 }}>
                 Click for Lab report
               </i>
             </p>
@@ -47,7 +57,7 @@ export default function Labtest2() {
           <div className="labtest2-details">
            
             <p className='mt-2'>
-              <i onClick={handleLabReportClick} style={{ cursor: 'pointer', zIndex: 99 }}>
+              <i onClick={() => handleButtonClick(assets.chemicalfree1)} style={{ cursor: 'pointer', zIndex: 99 }}>
                 Click for Lab report
               </i>
             </p>
@@ -61,6 +71,16 @@ export default function Labtest2() {
         </div>
       </div>
     </div>
+  
+      {selectedImage && (
+        <div className="image-overlay2">
+          <div className="overlay-content2">
+            <img src={selectedImage} alt="Certificate" />
+            <span className="close-icon2" onClick={handleCloseClick}>✕</span>
+          </div>
+        </div>
+      )}
     </section>
+
   );
 }

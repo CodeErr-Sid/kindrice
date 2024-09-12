@@ -76,6 +76,8 @@ import img3 from "./img3.png";
 import img4 from "./img4.png";
 import img5 from "./img5.png";
 import empower2 from "./empower2.png";
+import chemicalFree from "./chemical-free.pdf";
+import chemicalfree1 from "./chemicalfree.jpg";
 
 import bgcircle from "./bigcircle.svg";
 import profileImg from "./profilecircle.svg";
@@ -130,6 +132,7 @@ import lowgi1 from "./lowgi1.jpg";
 import meter from "./meter2.jpg";
 import mobileHero from "./hero-mobile.jpg";
 import desktopHero from "./hero-desktop.jpg";
+import cta from "./DG_05771.jpg";
 
 export const assets = {
   w_profile,
@@ -261,4 +264,7 @@ export const assets = {
   kindl,
   mobileHero,
   desktopHero,
+  cta,
+  chemicalFree,
+  chemicalfree1,
 };

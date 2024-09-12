@@ -15,7 +15,7 @@ export default function KindLowGi({ imageSrc, title, description, price, style }
     <section className="kind-lowgi-section" style={style}>
       <div className="kind-lowgi-container">
         <div className="kind-lowgi-left">
-          <img src={imageSrc} alt={title} />
+          <img src={imageSrc} alt={title} className='rounded-3xl' />
         </div>
         <div className="kind-lowgi-right">
           <div className="up-low-gi">

@@ -16,7 +16,7 @@
   position: relative;
   height: 100vh;
   color: rgb(0, 0, 0);
-  font-family: "Montserrat", sans-serif; /* Apply Montserrat font */
+  font-family: "Nunito", sans-serif;
 }
 
 .mil-preloader .mil-preloader-animation .mil-pos-abs {

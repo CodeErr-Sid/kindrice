@@ -102,7 +102,7 @@ footer {
   width: 35px;
   height: 35px;
   background-color: #333;
-  color: #fff;
+  color: #fff !important;
   text-align: center;
   line-height: 35px;
   border-radius: 50%;

@@ -5,6 +5,8 @@ import "./Footer.css";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 
 const Footer2 = () => {
@@ -22,8 +24,8 @@ const Footer2 = () => {
           <div className="logo">
             <img src={assets.letterLogo} alt="Logo" />
           </div>
-          <p>contact@Kindrice.in</p>
-          <p className="ph-no">+91 98432 97474</p>
+          {/* <p>contact@Kindrice.in</p>
+          <p className="ph-no">+91 98432 97474</p> */}
           <ul>
             {/* <li>
               <Link to="/">
@@ -35,11 +37,7 @@ const Footer2 = () => {
                 <i className="fas fa-caret-right"></i> Story
               </Link>
             </li>
-            {/* <li>
-              <Link to="/contact">
-                <i className="fas fa-caret-right"></i> Contact Us
-              </Link>
-            </li> */}
+           
             <li>
               <Link to="/low-gi">
                 <i className="fas fa-caret-right"></i> Low-Gi Rice
@@ -50,11 +48,11 @@ const Footer2 = () => {
                 <i className="fas fa-caret-right"></i> Blog
               </Link>
             </li> */}
-            {/* <li>
+            <li>
               <Link to="/Impact">
                 <i className="fas fa-caret-right"></i> Impact
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link to="/lab-test">
                 <i className="fas fa-caret-right"></i> Lab-Reports
@@ -63,6 +61,11 @@ const Footer2 = () => {
             <li>
               <Link to="/return-policy">
                 <i className="fas fa-caret-right"></i> Return Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact">
+                <i className="fas fa-caret-right"></i> Contact Us
               </Link>
             </li>
           </ul>
@@ -84,7 +87,7 @@ const Footer2 = () => {
               <i className="fab fa-facebook-f"></i>
             </a>
             <a href="#" target="_blank" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
             </a>
             <a href="#" target="_blank" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
@@ -100,6 +103,7 @@ const Footer2 = () => {
                 type="email"
                 placeholder="Your Email"
                 aria-label="Email for newsletter"
+                style={{color:'black'}}
               />
               <button type="submit">Subscribe</button>
             </form>

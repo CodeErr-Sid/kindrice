@@ -14,7 +14,7 @@ export default function HomeHero() {
       <div className="relative w-full h-screen bg-cover bg-center hidden md:block" style={{ backgroundImage: `url(${assets.desktopHero})` }}>
         <div className='absolute inset-0 flex flex-col justify-center items-left text-white px-8 lg:px-24'>
           {/* Text Section */}
-          <h1 className='text-5xl lg:text-6xl font-bold text-green-700 mb-4'>
+          <h1 className='text-5xl lg:text-6xl font-bold  mb-4'>
             A Low-GI Rice
           </h1>
           <h2 className='text-lg lg:text-4xl mb-6'>
