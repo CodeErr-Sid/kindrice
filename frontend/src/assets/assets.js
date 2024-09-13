@@ -78,6 +78,7 @@ import img5 from "./img5.png";
 import empower2 from "./empower2.png";
 import chemicalFree from "./chemical-free.pdf";
 import chemicalfree1 from "./chemicalfree.jpg";
+import Certificate7 from "./Nutrition.jpg";
 
 import bgcircle from "./bigcircle.svg";
 import profileImg from "./profilecircle.svg";
@@ -209,7 +210,7 @@ export const assets = {
   yoga2,
   Zoom,
   bag,
-
+  Certificate7,
   profileImg,
   LowGiRice,
   normalRice,

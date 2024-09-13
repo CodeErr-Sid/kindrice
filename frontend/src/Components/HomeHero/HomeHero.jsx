@@ -21,11 +21,11 @@ export default function HomeHero() {
             So Clean. So Tasty. So Healthy.
           </h2>
           <Link to='/shop'>
-          <button className='bg-green-700 text-xl text-white py-2 px-8 rounded-full hover:bg-green-600 transition-all w-[25vw]'>
+          <button className='bg-green-700 text-2xl text-white py-2 px-8 rounded-full hover:bg-green-600 transition-all w-[25vw]'>
             Shop now
           </button>
           </Link>
-          <p className='text-lg lg:text-xl font-semibold mt-6 px-2 '>
+          <p className='text-lg lg:text-3xl font-semibold mt-6 px-2 '>
             From ₹159
           </p>
         </div>

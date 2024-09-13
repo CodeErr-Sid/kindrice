@@ -26,8 +26,8 @@ export default function GotQuestions() {
   });
 
   return (
-    <section className="w-full p-0 my-12">
-      <div className="container flex items-center justify-center mx-auto mt-28 flex-col gap-2">
+    <section className="w-full p-0 mt-12 mb-24">
+      <div className="container flex items-center justify-center mx-auto mt-28 flex-col gap-2 ">
         <h1 className="text-center text-4xl md:text-5xl font-bold">Got Questions?</h1>
         <p className='text-center text-2xl md:text-2xl text-customGreen'>We hear you</p>
         
@@ -90,7 +90,7 @@ export default function GotQuestions() {
       {/* </div> */}
 
       {/* Verified Reviews */}
-      <div className="container flex items-center justify-center mx-auto mt-28 flex-col gap-2">
+      {/* <div className="container flex items-center justify-center mx-auto mt-28 flex-col gap-2">
         <h1 className="text-center text-4xl md:text-5xl font-bold">Verified Reviews</h1>
         <p className='text-center text-2xl md:text-2xl text-customGreen'>From Real People</p>
         <div className='w-[90%] m-8'>
@@ -126,7 +126,7 @@ export default function GotQuestions() {
         <div className='text-center text-customGreen text-2xl md:text-3xl my-28 font-bold w-[80%] md:w-[90%]'>
           <h1>By choosing kind rice, you're caring for your health, supporting farmers, empowering communities, and protecting the planet.</h1>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

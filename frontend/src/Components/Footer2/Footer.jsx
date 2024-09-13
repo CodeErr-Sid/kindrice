@@ -43,11 +43,11 @@ const Footer2 = () => {
                 <i className="fas fa-caret-right"></i> Low-Gi Rice
               </Link>
             </li>
-            {/* <li>
+            <li>
               <Link to="/Blog">
                 <i className="fas fa-caret-right"></i> Blog
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link to="/Impact">
                 <i className="fas fa-caret-right"></i> Impact
@@ -110,12 +110,12 @@ const Footer2 = () => {
           </div>
         </div>
       </div>
-      {/* <div className="footer-bottom">
-        <p>&copy; 2024 Kind Rice. All rights reserved.</p>
+      <div className="footer-bottom">
+        <p>&copy; 2024 R.K. Brothers Agro Foods Pvt. Ltd All rights reserved.</p>
         <a href="#" className="back-to-top" aria-label="Back to top">
           <i className="fas fa-chevron-up"></i>
         </a>
-      </div> */}
+      </div>
     </footer>
   );
 };

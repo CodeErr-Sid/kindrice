@@ -6,8 +6,9 @@ footer {
   font-family: Arial, sans-serif;
 }
 .logo {
-  width: 5vw;
-  height: 5vw;
+  width: 8vw;
+  height: 8vw;
+  margin-bottom: 2rem;
 }
 .place {
   width: 19rem;
@@ -211,8 +212,8 @@ footer {
   }
 
   .logo {
-    width: 20vw;
-    height: 20vw;
+    width: 8vw;
+    height: 8vw;
   }
 
   .logo img {
@@ -277,6 +278,8 @@ footer {
   .logo {
     width: 20vw;
     height: 20vw;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
   }
   .logo img {
     width: 100%;

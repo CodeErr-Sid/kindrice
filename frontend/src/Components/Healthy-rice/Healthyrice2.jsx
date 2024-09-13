@@ -31,7 +31,7 @@ export default function Healthyrice2() {
             <h2>
             Kind rice offers the <span>protein equivalent of an egg</span> in every 100 gram serving.
             </h2>
-            <p  onClick={() => handleButtonClick(assets.certificate3)} style={{cursor:'pointer'}}><i>Click for Lab report</i></p>
+            <p  onClick={() => handleButtonClick(assets.Certificate7)} style={{cursor:'pointer'}}><i>Click for Lab report</i></p>
           </div>
           <div className="healthyrice2-patient-image">
             <img src={assets.rice} alt='Patient' />

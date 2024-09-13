@@ -11,6 +11,7 @@ import KindLoader from '../../Components/KindLoader/KindLoader'
 import Footer2 from '../../Components/Footer2/Footer'
 
 
+
 const Shop = () => {
 
   const productId = import.meta.env.VITE_LOWGIRICE_PRODUCT_ID;
@@ -21,7 +22,7 @@ const Shop = () => {
       <Navbar />
       {/* <ShopBanner title="Online Shop" address="Home/Shop" /> */}
         {/* <img className='absolute z-[-1] right-0 top-40 flex' src={assets.bgcircle} alt="" /> */}
-        <ShopBowl />
+        <ShopBowl title='Shop'/>
         <Product productId={productId}/>
         <FullTransparency/>
         <GotQuestions/>

@@ -17,7 +17,7 @@ export default function Tagline() {
           <p>So Clean. So Tastly. So Healthy.</p>
         </div>
         <div className="tagline-container-down">
-          <p className='tag-one'>From ₹210</p>
+          <p className='tag-one'>From ₹159</p>
           <p className='tag-two' onClick={handleBuyClick} style={{ cursor: 'pointer' }}>
             Buy &gt;
           </p>

@@ -22,7 +22,7 @@ import HomeHero from '../../Components/HomeHero/HomeHero';
 export default function Home2() {
   return (
     <>
-    <KindLoader/>
+
       <Navbar />
       <HomeHero />
       <Yoga2 />
@@ -39,7 +39,7 @@ export default function Home2() {
         imageSrc={assets.cta}
         title="Kind Low-GI Rice"
         description="So Clean, So Tasty, So Healthy"
-        price="From ₹210"
+        price="From ₹159"
       />
       <Footer2/>
     </>
