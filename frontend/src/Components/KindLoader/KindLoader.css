@@ -37,7 +37,7 @@
 .mil-preloader .mil-preloader-animation .mil-pos-abs p {
   opacity: 0;
   margin-right: 15px;
-  font-family: "Montserrat", sans-serif; /* Apply Montserrat font */
+  font-family: "Nunito", sans-serif;
 }
 
 @media screen and (max-width: 992px) {
