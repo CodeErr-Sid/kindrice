@@ -9,6 +9,7 @@ import AboutKindrice from '../../Components/About-Kindrice/AboutKindrice'
 import Founder from '../../Components/founder/Founder'
 import Preloader from '../../Components/Preloader/Preloader'
 import Footer2 from '../../Components/Footer2/Footer'
+import ShopBowl from '../../Components/ShopBowl/ShopBowl'
 
 
 export default function Story() {
@@ -16,6 +17,7 @@ export default function Story() {
     <>
     {/* <Preloader/> */}
    <Navbar/>
+   <ShopBowl title='Story'/>
    <AboutHero/>
    <Thoughts/>
    <Moment/>

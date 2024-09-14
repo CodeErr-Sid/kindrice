@@ -76,6 +76,9 @@ import img3 from "./img3.png";
 import img4 from "./img4.png";
 import img5 from "./img5.png";
 import empower2 from "./empower2.png";
+import chemicalFree from "./chemical-free.pdf";
+import chemicalfree1 from "./chemicalfree.jpg";
+import Certificate7 from "./Nutrition.jpg";
 
 import bgcircle from "./bigcircle.svg";
 import profileImg from "./profilecircle.svg";
@@ -127,7 +130,10 @@ import impact1 from "./impact1.png";
 import impact2 from "./impact2.png";
 import kindl from "./kind-logo.png";
 import lowgi1 from "./lowgi1.jpg";
-import meter from "./meter.jpg";
+import meter from "./meter2.jpg";
+import mobileHero from "./hero-mobile.jpg";
+import desktopHero from "./hero-desktop.jpg";
+import cta from "./DG_05771.jpg";
 
 export const assets = {
   w_profile,
@@ -204,7 +210,7 @@ export const assets = {
   yoga2,
   Zoom,
   bag,
-
+  Certificate7,
   profileImg,
   LowGiRice,
   normalRice,
@@ -257,4 +263,9 @@ export const assets = {
   lowgi1,
   meter,
   kindl,
+  mobileHero,
+  desktopHero,
+  cta,
+  chemicalFree,
+  chemicalfree1,
 };

@@ -11,7 +11,7 @@ export default function Truth() {
                 <div className="right-content-container-sec">
                     
         <div className="truth-up">
-                    <img src={assets.Zoom} alt="left image"/>
+                    {/* <img src={assets.Zoom} alt="left image"/> */}
                     <h1>The Truth</h1>
                     </div>
                     <p>Transparency is our priority</p>

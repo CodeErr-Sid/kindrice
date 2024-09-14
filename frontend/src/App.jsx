@@ -20,7 +20,7 @@ import Cart from './pages/Cart/Cart';
 import BlogArticlePage from './pages/BlogArticlePage/BlogArticlePage';
 import ScrollTop from './Components/ScrollTop/ScrollTop';
 import Preloader from './Components/Preloader/Preloader';
-// import KindLoader from './Components/KindLoader/KindLoader';
+import KindLoader from './Components/KindLoader/KindLoader';
 
 
 
@@ -29,7 +29,9 @@ function App() {
 
   return (
     <>
+
       <ScrollToTop />
+      <KindLoader/>
       {/* <Preloader/> */}
       <Routes>
         <Route path="/checkout" element={<Checkout />} />

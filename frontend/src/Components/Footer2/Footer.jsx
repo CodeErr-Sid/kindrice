@@ -5,6 +5,8 @@ import "./Footer.css";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 
 const Footer2 = () => {
@@ -22,8 +24,51 @@ const Footer2 = () => {
           <div className="logo">
             <img src={assets.letterLogo} alt="Logo" />
           </div>
-          <p>contact@Kindrice.in</p>
-          <p className="ph-no">+91 98432 97474</p>
+          {/* <p>contact@Kindrice.in</p>
+          <p className="ph-no">+91 98432 97474</p> */}
+          <ul>
+            {/* <li>
+              <Link to="/">
+                <i className="fas fa-caret-right"></i> Home
+              </Link>
+            </li> */}
+            <li>
+              <Link to="/story">
+                <i className="fas fa-caret-right"></i> Story
+              </Link>
+            </li>
+           
+            <li>
+              <Link to="/low-gi">
+                <i className="fas fa-caret-right"></i> Low-Gi Rice
+              </Link>
+            </li>
+            <li>
+              <Link to="/Blog">
+                <i className="fas fa-caret-right"></i> Blog
+              </Link>
+            </li>
+            <li>
+              <Link to="/Impact">
+                <i className="fas fa-caret-right"></i> Impact
+              </Link>
+            </li>
+            <li>
+              <Link to="/lab-test">
+                <i className="fas fa-caret-right"></i> Lab-Reports
+              </Link>
+            </li>
+            <li>
+              <Link to="/return-policy">
+                <i className="fas fa-caret-right"></i> Return Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact">
+                <i className="fas fa-caret-right"></i> Contact Us
+              </Link>
+            </li>
+          </ul>
         </div>
      
         <div className="footer-section footer-content-left2">
@@ -42,7 +87,7 @@ const Footer2 = () => {
               <i className="fab fa-facebook-f"></i>
             </a>
             <a href="#" target="_blank" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
             </a>
             <a href="#" target="_blank" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
@@ -58,18 +103,19 @@ const Footer2 = () => {
                 type="email"
                 placeholder="Your Email"
                 aria-label="Email for newsletter"
+                style={{color:'black'}}
               />
               <button type="submit">Subscribe</button>
             </form>
           </div>
         </div>
       </div>
-      {/* <div className="footer-bottom">
-        <p>&copy; 2024 Kind Rice. All rights reserved.</p>
+      <div className="footer-bottom">
+        <p>&copy; 2024 R.K. Brothers Agro Foods Pvt. Ltd All rights reserved.</p>
         <a href="#" className="back-to-top" aria-label="Back to top">
           <i className="fas fa-chevron-up"></i>
         </a>
-      </div> */}
+      </div>
     </footer>
   );
 };

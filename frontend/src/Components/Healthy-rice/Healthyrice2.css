@@ -220,7 +220,7 @@
   .healthyrice2-heading-container p {
     font-size: 5vw;
     line-height: 6vw;
-    width: 80vw;
+    width: 70vw;
     text-align: center;
   }
   .healthyrice2-consultation-container {
@@ -255,6 +255,7 @@
 
   .healthyrice2-info p {
     font-size: 3.8vw;
+    margin-top: -1rem;
   }
 
   .healthyrice2-patient-image img {
@@ -339,6 +340,7 @@
 
   .healthyrice2-info p {
     font-size: 3.8vw;
+    margin-top: -1rem;
   }
 
   .healthyrice2-patient-image img {

@@ -43,7 +43,7 @@ const Product = ({ productId }) => {
             ]
         },
         "keyFeatures": {
-            "title": "Key Features",
+            "title": "Product details",
             "content": [
                 "Paddy Variety: Indian-RNR",
                 "Processing Method: Boiled",
@@ -55,20 +55,32 @@ const Product = ({ productId }) => {
                 "Recommended For: White rice, variety rice, thali, meals",
                 "Taste Notes: Earthy",
                 "Texture: Soft and tender",
-                "Cooked Rice Color: White"
+                "Cooked Rice Color: White",
+                "Processed at: R.K. Brothers Agro Foods Private Limited, 66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu 625001."
             ]
         },
-        "nutritions": {
-            "title": "Nutritional Benefits",
-            "content": [
-                "Rich in protein, essential for muscle repair and growth.",
-                "High in fiber, promoting digestive health and satiety.",
-                "Packed with essential vitamins and minerals for overall well-being.",
-                "Aids in detoxification and the elimination of toxins.",
-                "Provides a feeling of fullness and satisfaction."
-            ]
-        }
-    }
+        nutritions: {
+            title: "Nutritional Benefits",
+            description: "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.",
+            content: [
+              "no chemicals",
+              "no nasties",
+              "no adulterant",
+              "no added flavours",
+              "no artificial sweeteners"
+            ],
+            title2: "Nutritional Benefits",
+            facts: {
+              Protein: "6.5",
+              Fat: "1.1",
+              "Crude Fiber": "0.4",
+              Carbohydrate: "81.3",
+              Energy: "361.5",
+              Moisture: "10.5",
+              "Total Ash": "0.56"
+            }
+          }}
+
     const [accordions, setAccordion] = useState([
         {
             key: 1,
@@ -245,24 +257,30 @@ const Product = ({ productId }) => {
                             }`}
                         onClick={() => handleButtonClick('keyFeatures')}
                     >
-                        Key Features
+                        Product details
                     </button>
                     <button
-                        className={`p-2 w-full lg:w-[15%]  rounded-lg text-xl ${currentContent.title === 'Nutritional Benefits' ? 'bg-[#016533] text-[#F2E098]' : 'bg-[#F2E098] text-black'
-                            }`}
-                        onClick={() => handleButtonClick('nutritions')}
-                    >
-                        Nutritions
-                    </button>
-                </div>
-                <div className="ikn-content">
-                    <h2 className="font-bold text-3xl my-4">{currentContent.title}</h2>
-                    <ul className='list-disc ml-4'>
-                        {currentContent.content.map((item, index) => (
-                            <li key={index}>{item}</li>
-                        ))}
-                    </ul>
-                </div>
+          className={`p-2 w-full lg:w-[15%] rounded-lg text-xl ${currentContent.title === 'Nutritional Benefits' ? 'bg-[#016533] text-[#F2E098]' : 'bg-[#F2E098] text-black'}`}
+          onClick={() => handleButtonClick('nutritions')}
+        >
+          Nutritions
+        </button>
+      </div>
+
+      <div className="ikn-content">
+        <h2 className="font-bold text-3xl my-4">{currentContent.title}</h2>
+        <p className="text-xl my-4 lg:w-2/3">{currentContent.description}</p>
+        
+        {/* Benefits List */}
+        <ul className="list-disc ml-4  text-xl mb-4">
+          {currentContent.content.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        
+        {/* Nutritional Facts */}
+       
+      </div>
             </div>
             {/* <div className="review-section w-[87%] my-12 mx-auto">
                 <h2 className="font-bold text-3xl my-4">Reviews</h2>
