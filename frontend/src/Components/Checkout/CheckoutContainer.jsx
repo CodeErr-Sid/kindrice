@@ -1,25 +1,26 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
+import {
+  CitySelect,
+  CountrySelect,
+  StateSelect,
+  LanguageSelect,
+} from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
 import { AuthContext } from '../../context/AuthContext';
 
 const CheckoutContainer = () => {
-
   const { cart } = useContext(AuthContext);
-
+  const [countryid, setCountryid] = useState(0);
+  const [stateid, setstateid] = useState(0);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    username: '',
     email: '',
     address: '',
-    address2: '',
+    phoneno: '',
     country: 'Choose...',
     state: 'Choose...',
     zip: '',
-    paymentMethod: 'credit',
-    ccName: '',
-    ccNumber: '',
-    ccExpiration: '',
-    ccCvv: '',
     sameAddress: false,
     saveInfo: false
   });
@@ -32,44 +33,24 @@ const CheckoutContainer = () => {
     }));
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    // Extract and log the required billing details
+    const billingDetails = {
+      billing_customer_name: formData.firstName,
+      billing_last_name: formData.lastName,
+      billing_address: formData.address,
+      billing_city: formData.state,
+      billing_pincode: formData.zip,
+      billing_state: formData.state,
+      billing_country: formData.country,
+      billing_email: formData.email,
+      billing_phone: formData.phoneno // Replace with actual phone number from input if needed
+    };
+
+    console.log(billingDetails);
   };
-
-  // State for product details
-  const [productDetails, setProductDetails] = useState({
-    pricePerKg: 12, // Example price per kg
-    quantity: 1, // Default quantity
-    weight: 1, // Default weight (in kg)
-  });
-
-  // State for additional costs
-  const [shipping, setShipping] = useState(5); // Example shipping cost
-  const [taxRate, setTaxRate] = useState(0.08); // Example tax rate (8%)
-
-  // State for calculated total price
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  // Function to update product details dynamically
-  const handleProductChange = (e) => {
-    const { id, value } = e.target;
-    setProductDetails((prevDetails) => ({
-      ...prevDetails,
-      [id]: parseFloat(value),
-    }));
-  };
-
-  // Calculate total price whenever product details, shipping, or tax change
-  useEffect(() => {
-    const { pricePerKg, quantity, weight } = productDetails;
-    const productPrice = pricePerKg * quantity * weight;
-    const taxAmount = productPrice * taxRate;
-    const calculatedTotal = productPrice + shipping + taxAmount;
-    setTotalPrice(calculatedTotal.toFixed(2)); // Keep 2 decimal places
-  }, [productDetails, shipping, taxRate]);
-
 
   return (
     <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg">
@@ -164,23 +145,7 @@ const CheckoutContainer = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="username" className="block text-sm font-medium mb-1">Username</label>
-              <div className="flex">
-                <span className="bg-gray-200 text-gray-600 px-3 py-2 border rounded-l-md">@</span>
-                <input
-                  type="text"
-                  className="form-input w-full border rounded-r-md px-3 py-2 border-gray-300"
-                  id="username"
-                  placeholder="Username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium mb-1">Email <span className="text-gray-600">(Optional)</span></label>
+              <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
               <input
                 type="email"
                 className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -205,13 +170,13 @@ const CheckoutContainer = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="address2" className="block text-sm font-medium mb-1">Address 2 <span className="text-gray-600">(Optional)</span></label>
+              <label htmlFor="phoneno" className="block text-sm font-medium mb-1">Phone no</label>
               <input
                 type="text"
                 className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
-                id="address2"
-                placeholder="Apartment or suite"
-                value={formData.address2}
+                id="phoneno"
+                placeholder="+91-000-000-0000"
+                value={formData.phoneno}
                 onChange={handleChange}
               />
             </div>
@@ -255,33 +220,66 @@ const CheckoutContainer = () => {
               </div>
             </div>
 
+            <div className="flex flex-col md:flex-row md:space-x-4">
+              <div className="md:w-1/3 mb-4">
+                <label htmlFor="country" className="block text-sm font-medium mb-1">Country</label>
+                <CountrySelect
+                  onChange={(e) => setCountryid(e.id)}
+                  value={formData.country}
+                  placeHolder="Select Country"
+                  className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
+                />
+              </div>
+
+              <div className="md:w-1/3 mb-4">
+                <label htmlFor="state" className="block text-sm font-medium mb-1">State</label>
+                <StateSelect
+                  countryid={countryid}
+                  onChange={(e) => setstateid(e.id)}
+                  placeHolder="Select State"
+                  className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
+                />
+              </div>
+
+              <div className="md:w-1/3 mb-4">
+                <label htmlFor="city" className="block text-sm font-medium mb-1">City</label>
+                <CitySelect
+                  countryid={countryid}
+                  stateid={stateid}
+                  onChange={(e) => console.log(e)}
+                  placeHolder="Select City"
+                  className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
+                />
+              </div>
+            </div>
+
+
             <div className="flex items-center mb-4">
               <input
                 type="checkbox"
-                className="form-checkbox h-4 w-4 text-green-600"
+                className="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded"
                 id="sameAddress"
                 checked={formData.sameAddress}
                 onChange={handleChange}
               />
-              <label htmlFor="sameAddress" className="ml-2 text-sm">Shipping address is the same as my billing address</label>
+              <label htmlFor="sameAddress" className="ml-2 block text-sm text-gray-900">Shipping address is the same as my billing address</label>
             </div>
 
             <div className="flex items-center mb-4">
               <input
                 type="checkbox"
-                className="form-checkbox h-4 w-4 text-green-600"
+                className="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded"
                 id="saveInfo"
                 checked={formData.saveInfo}
                 onChange={handleChange}
               />
-              <label htmlFor="saveInfo" className="ml-2 text-sm">Save this information for next time</label>
+              <label htmlFor="saveInfo" className="ml-2 block text-sm text-gray-900">Save this information for next time</label>
             </div>
-
 
 
             <button
               type="submit"
-              className="mt-6 bg-green-700 text-white w-full py-2 px-4 rounded-md hover:bg-green-800"
+              className="w-full bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-800"
             >
               Continue to checkout
             </button>
