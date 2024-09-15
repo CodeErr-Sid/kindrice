@@ -24,7 +24,6 @@ const allowedOrigins = [
   process.env.FRONTEND_URL
 ];
 
-console.log(process.env.FRONTEND_URL)
 
 // CORS Options
 const corsOptions = {
