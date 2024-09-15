@@ -4,8 +4,26 @@ const productSchema = new mongoose.Schema({
   productName: { type: String, required: true },
   description: { type: String, required: true },
   weightPrice: [{
-    weight: { type: String, required: true },  
-    price: { type: Number, required: true } 
+    weight: {
+      value: { type: Number, required: true },  // Numeric weight value
+      unit: { type: String, required: true }    // Unit of measurement (e.g., kg)
+    },
+    price: { type: Number, required: true },
+    totalPrice: { type: Number, required: true },
+    dimensions: { // Dimensions vary by weight category
+      length: {
+        type: Number,
+        required: true  // Length of the package
+      },
+      breadth: {
+        type: Number,
+        required: true  // Breadth of the package
+      },
+      height: {
+        type: Number,
+        required: true  // Height of the package
+      }
+    }
   }],
   category: { type: String, required: true },
   images: {
@@ -20,6 +38,22 @@ const productSchema = new mongoose.Schema({
     default: 0  // Default to 0 if not provided
   },
   stock: { type: Number },  // Optional field
+  sku: {
+    type: String,
+    required: true  // SKU (Stock Keeping Unit) for inventory management
+  },
+  hsnCode: {
+    type: String,
+    required: true
+  },
+  taxPercentage: {
+    type: Number,
+    required: true  // Tax percentage based on the HSN code
+  },
+  isActive: {
+    type: Boolean,
+    default: true  // For managing active/inactive status of product
+  }
 }, { timestamps: true });
 
 const Product = mongoose.model('Product', productSchema);

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-const Dropdown = ({ options, onSelect }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+const Dropdown = ({ options = [], onSelect }) => {
+  const [selectedOption, setSelectedOption] = useState(options[0] || 1);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option) => {
