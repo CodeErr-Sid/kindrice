@@ -1,15 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Footer.css";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+import { AuthContext } from "../../context/AuthContext";
+import { toast } from 'react-toastify';
+import { subscribeToEmail } from "../../api/userapi";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
 const Footer2 = () => {
+
+  const { url } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    const data = await subscribeToEmail(email, url);
+
+    if (data.success) {
+      toast.success(data.message);
+      setEmail("");
+    } else {
+      toast.error(data.message);
+    }
+  }
 
   return (
     <footer>
@@ -37,7 +55,7 @@ const Footer2 = () => {
                 <i className="fas fa-caret-right"></i> Story
               </Link>
             </li>
-           
+
             <li>
               <Link to="/low-gi">
                 <i className="fas fa-caret-right"></i> Low-Gi Rice
@@ -70,15 +88,15 @@ const Footer2 = () => {
             </li>
           </ul>
         </div>
-     
+
         <div className="footer-section footer-content-left2">
-        <div className="place">
+          <div className="place">
             <img src={assets.place} alt="" />
             <h2>PROUDLY MADE IN MADURAI</h2>
-      
+
           </div>
 
-          
+
         </div>
         <div className="footer-section babyfoot">
           <h3>Connect With Us</h3>
@@ -87,7 +105,7 @@ const Footer2 = () => {
               <i className="fab fa-facebook-f"></i>
             </a>
             <a href="#" target="_blank" aria-label="Twitter">
-            <i className="fab fa-twitter"></i>
+              <i className="fa-brands fa-x-twitter"></i>
             </a>
             <a href="#" target="_blank" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
@@ -98,12 +116,16 @@ const Footer2 = () => {
           </div>
           <div className="newsletter">
             <h4>Subscribe to Our Newsletter</h4>
-            <form>
+            <form onSubmit={handleSubmit}>
               <input
+                name="email"
                 type="email"
                 placeholder="Your Email"
                 aria-label="Email for newsletter"
-                style={{color:'black'}}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{ color: 'black' }}
+                required
               />
               <button type="submit">Subscribe</button>
             </form>

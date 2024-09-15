@@ -7,31 +7,47 @@ import Accordion from "../Accordion/Accordion"
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../../api/cartapi';
+import Dropdown from '../Dropdown/Dropdown';
+import QuantitySelector from '../Dropdown/QuantitySelector';
 
 const Product = ({ productId }) => {
+
+    const weightPriceData = [
+        { weight: 1, price: 159 },   // 1kg inclusive of taxes
+        { weight: 5, price: 579 },   // 5kg inclusive of taxes
+        { weight: 10, price: 1029 }  // 10kg inclusive of taxes
+    ];
 
     const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
-  
+    const [price, setPrice] = useState(0);
+
+    useEffect(() => {
+        const selectedWeightData = weightPriceData.find(item => item.weight === weight);
+        if (selectedWeightData) {
+            setPrice(selectedWeightData.price * quantity);
+        }
+    }, [weight, quantity]);
+
     const handleBuyNow = () => {
-      if (isLoggedIn) {
-        console.log("Yes, you can buy this product");
-      } else {
-        navigate("/");
-      }
+        if (isLoggedIn) {
+            console.log("Yes, you can buy this product");
+        } else {
+            navigate("/");
+        }
     };
-  
+
     const handleAddToCart = async () => {
 
-            if (isLoggedIn) {
-                const data = await addToCart(productId, quantity, weight, idToken);
-                console.log(data);
-                await getCartItems()
-            } else {
-                navigate("/login")
-            }
+        if (isLoggedIn) {
+            const data = await addToCart(productId, quantity, weight, idToken);
+            console.log(data);
+            await getCartItems()
+        } else {
+            navigate("/login")
+        }
     }
 
 
@@ -59,27 +75,29 @@ const Product = ({ productId }) => {
                 "Processed at: R.K. Brothers Agro Foods Private Limited, 66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu 625001."
             ]
         },
-        nutritions: {
-            title: "Nutritional Benefits",
-            description: "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.",
-            content: [
-              "no chemicals",
-              "no nasties",
-              "no adulterant",
-              "no added flavours",
-              "no artificial sweeteners"
+        "nutritions": {
+            "title": "Nutritional Benefits",
+            "description": "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.",
+            "content": [
+                "no chemicals",
+                "no nasties",
+                "no adulterant",
+                "no added flavours",
+                "no artificial sweeteners"
             ],
-            title2: "Nutritional Benefits",
-            facts: {
-              Protein: "6.5",
-              Fat: "1.1",
-              "Crude Fiber": "0.4",
-              Carbohydrate: "81.3",
-              Energy: "361.5",
-              Moisture: "10.5",
-              "Total Ash": "0.56"
+            "facts": {
+                "title": "Nutritional Facts",
+                "Protein": "6.5",
+                "Fat": "1.1",
+                "Crude Fiber": "0.4",
+                "Carbohydrate": "81.3",
+                "Energy": "361.5",
+                "Moisture": "10.5",
+                "Total Ash": "0.56"
             }
-          }}
+        }
+    }
+
 
     const [accordions, setAccordion] = useState([
         {
@@ -163,6 +181,20 @@ const Product = ({ productId }) => {
         setAccordion(updatedAccordions);
     };
 
+    const weightOptions = [1, 5, 10];
+
+
+
+
+    const handleWeightChange = (selectedWeight) => {
+        console.log(`Selected weight: ${selectedWeight} KG`);
+        setWeight(selectedWeight);
+    };
+
+    const handleQuantityChange = (selectedQuantity) => {
+        setQuantity(selectedQuantity)
+    }
+
 
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
@@ -192,45 +224,37 @@ const Product = ({ productId }) => {
                         <img src={selectedImage} alt="Selected Product" />
                     </div>
                 </div>
-                <div className="product-content flex flex-col justify-center gap-10">
-                    <h4 className="product-name text-4xl font-extrabold">Kind Low-Gi Rice</h4>
+                <div className="product-content flex flex-col justify-between gap-10">
+                    <h4 className="product-name text-4xl font-extrabold">Kind Low-Gi Rice <br />Pack of {weight}Kg</h4>
                     <div className="rating flex flex-row gap-3 items-center">
-                        <div className="star-icons">
+                        {/* <div className="star-icons">
                             <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B", fontSize: "20px" }} />
                             <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B", fontSize: "20px" }} />
                             <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B", fontSize: "20px" }} />
                             <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B", fontSize: "20px" }} />
                             <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B", fontSize: "20px" }} />
                         </div>
-                        <div className="rating-number text-xl">4,345</div>
+                        <div className="rating-number text-xl">4,345</div> */}
                     </div>
-                    <h5 className="price text-3xl font-extrabold text-[#016533]">$549.99</h5>
+                    <h5 className="price text-5xl font-extrabold text-[#016533]">{'\u20B9'} {price}</h5>
                     <div className="quantity-section">
-      <div className="quantity-button-group flex flex-col gap-2 md:w-4/6">
-        <div
-          className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2 cursor-pointer"
-          onClick={() => handleWeightChange(weight === 1 ? 2 : 1)}
-        >
-          <span className="text-[#016533] font-bold">{weight} KG</span>
-          <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
-        </div>
-
-        <div
-          className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2 cursor-pointer"
-          onClick={() => handleQuantityChange(quantity === 1 ? 2 : 1)}
-        >
-          <span className="text-[#016533] font-bold">QUANTITY - {quantity} BAG</span>
-          <FontAwesomeIcon icon={faCaretDown} style={{ color: "#016533" }} />
-        </div>
-
-        <button
-          className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
-          onClick={handleAddToCart}
-        >
-          ADD TO CART
-        </button>
-      </div>
-    </div>
+                        <div className="quantity-button-group flex flex-col gap-2 md:w-4/6">
+                            <Dropdown options={weightOptions} onSelect={handleWeightChange} />
+                            <QuantitySelector onQuantityChange={handleQuantityChange} />
+                            <button
+                                className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+                                onClick={handleAddToCart}
+                            >
+                                ADD TO CART
+                            </button>
+                            <button
+                                className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+                                onClick={handleBuyNow}
+                            >
+                                BUY NOW
+                            </button>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -253,34 +277,59 @@ const Product = ({ productId }) => {
                         Ingredients
                     </button>
                     <button
-                        className={`p-2 w-full lg:w-[15%]  rounded-lg text-xl ${currentContent.title === 'Key Features' ? 'bg-[#016533] text-[#F2E098]' : 'bg-[#F2E098] text-black'
+                        className={`p-2 w-full lg:w-[15%]  rounded-lg text-xl ${currentContent.title === 'Product details' ? 'bg-[#016533] text-[#F2E098]' : 'bg-[#F2E098] text-black'
                             }`}
                         onClick={() => handleButtonClick('keyFeatures')}
                     >
                         Product details
                     </button>
                     <button
-          className={`p-2 w-full lg:w-[15%] rounded-lg text-xl ${currentContent.title === 'Nutritional Benefits' ? 'bg-[#016533] text-[#F2E098]' : 'bg-[#F2E098] text-black'}`}
-          onClick={() => handleButtonClick('nutritions')}
-        >
-          Nutritions
-        </button>
-      </div>
+                        className={`p-2 w-full lg:w-[15%] rounded-lg text-xl ${currentContent.title === 'Nutritional Benefits' ? 'bg-[#016533] text-[#F2E098]' : 'bg-[#F2E098] text-black'}`}
+                        onClick={() => handleButtonClick('nutritions')}
+                    >
+                        Nutritions
+                    </button>
+                </div>
 
-      <div className="ikn-content">
-        <h2 className="font-bold text-3xl my-4">{currentContent.title}</h2>
-        <p className="text-xl my-4 lg:w-2/3">{currentContent.description}</p>
-        
-        {/* Benefits List */}
-        <ul className="list-disc ml-4  text-xl mb-4">
-          {currentContent.content.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-        
-        {/* Nutritional Facts */}
-       
-      </div>
+                <div className="ikn-content">
+                    <h2 className="font-bold text-3xl my-4">{currentContent.title}</h2>
+                    <p className="text-xl my-4 lg:w-2/3">{currentContent.description}</p>
+
+                    {/* Benefits List */}
+                    <ul className="list-disc ml-4 text-xl mb-4">
+                        {currentContent.content.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </ul>
+
+                    {currentContent.facts && (
+                        <div className="w-1/3">
+                            <h2 className="font-bold text-3xl my-4">{currentContent.facts.title}</h2>
+                            <ul className="list-disc ml-4 text-xl mb-4">
+                                {Object.entries(currentContent.facts).map(([key, value], index) => {
+                                    if (key === 'title') return null;
+
+                                    // Calculate the length of the longest string (key + value)
+                                    let longestLength = Math.max(key.length + value.length, 10); // Minimum of 10 dots
+
+                                    // Generate dots based on the longest length
+                                    let dots = '.'.repeat(longestLength - key.length - value.length + 10);
+
+                                    return (
+                                        <li key={index} className="flex">
+                                            <span>{key}</span>
+                                            <span>{dots}</span>
+                                            <span>{value}</span>
+                                        </li>
+                                    );
+                                })}
+
+                            </ul>
+                        </div>
+                    )}
+
+
+                </div>
             </div>
             {/* <div className="review-section w-[87%] my-12 mx-auto">
                 <h2 className="font-bold text-3xl my-4">Reviews</h2>
@@ -321,7 +370,7 @@ const Product = ({ productId }) => {
                     </div>
                 </div>
             </div> */}
-           
+
             {/* <div className='faq-section w-[87%] my-12 mx-auto bg-[#016533] text-white rounded-2xl p-4'>
                 <h1 className='text-center font-bold text-2xl'>Got any Questions</h1>
                 <p className='text-center underline italic'>Let's dive in!</p>

@@ -32,4 +32,22 @@ const registerUser = async (firebaseUID, email, name, url) => {
     }
 };
 
-export { registerUser }
+const subscribeToEmail = async (email, url) => {
+    try {
+        const response = await fetch(url + '/api/user/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        const data = response.json();
+
+        return data;
+    } catch (error) {
+        return 'Error occurred while subscribing.' + error
+    }
+}
+
+export { registerUser, subscribeToEmail }

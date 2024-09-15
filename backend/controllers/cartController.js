@@ -15,16 +15,25 @@ const addToCart = async (req, res) => {
         const user = await User.findById(userId);
         if (!user) return res.status(404).json({ message: 'User not found' });
 
-        // Check if the product is already in the cart
-        const existingItemIndex = user.cart.items.findIndex(item => item.productId.toString() === productId);
+        // Ensure productId is treated as a string for comparison
+        const stringProductId = productId.toString();
+        const stringWeight = weight.toString();
+
+        // Check if the product with the same productId and weight is already in the cart
+        const existingItemIndex = user.cart.items.findIndex(item => 
+            item.productId.toString() === stringProductId && item.weight.toString() === stringWeight
+        );
 
         if (existingItemIndex > -1) {
-            // Update existing item
-            user.cart.items[existingItemIndex].quantity = quantity;
-            user.cart.items[existingItemIndex].weight = weight;
+            // If the product with the same weight is found, increase the quantity
+            user.cart.items[existingItemIndex].quantity += quantity;
         } else {
-            // Add new item
-            user.cart.items.push({ productId, quantity, weight });
+            // Add new item if it doesn't exist
+            user.cart.items.push({
+                productId: stringProductId,
+                quantity,
+                weight: stringWeight
+            });
         }
 
         await user.save();
@@ -33,6 +42,9 @@ const addToCart = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+
+
 
 // Get user's cart
 const getCart = async (req, res) => {
