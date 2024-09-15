@@ -54,7 +54,7 @@ const Product = ({ productId }) => {
 
     const handleBuyNow = () => {
         if (isLoggedIn) {
-            console.log("Yes, you can buy this product");
+            // buy now logic
         } else {
             navigate("/login");
         }
@@ -63,7 +63,6 @@ const Product = ({ productId }) => {
     const handleAddToCart = async () => {
         if (isLoggedIn) {
             const data = await addToCart(productId, quantity, weight, idToken);
-            console.log(data);
             await getCartItems();
         } else {
             navigate("/login");
@@ -71,7 +70,6 @@ const Product = ({ productId }) => {
     };
 
     const handleWeightChange = (selectedWeight) => {
-        console.log(`Selected weight: ${selectedWeight} KG`);
         setWeight(selectedWeight);
     };
 

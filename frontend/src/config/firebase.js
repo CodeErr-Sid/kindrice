@@ -35,13 +35,10 @@ const registerWithEmailPassword = async (name, email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         // User registered
-        console.log('User registered:', userCredential.user);
 
         const user = userCredential.user;
 
         await updateProfile(user, { displayName: name });
-
-        console.log('User registered with name:', user.displayName);
 
         return user;
 
@@ -67,7 +64,6 @@ const loginWithEmailPassword = async (email, password) => {
 const logout = async () => {
     try {
         await signOut(auth);
-        console.log('User signed out successfully');
         window.location.href="/"
     } catch (error) {
         console.error('Error signing out:', error.message);
