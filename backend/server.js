@@ -69,6 +69,10 @@ app.use("/api/product", productRouter);
 // Connect to the database
 connectDB();
 
+app.get("/", (req, res) => {
+  res.send("API Working");
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`)
