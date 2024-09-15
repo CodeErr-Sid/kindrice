@@ -1,13 +1,15 @@
 import express from "express";
 import cors from "cors";
-import connectDB from "./config/db.js";
+import connectDB from "./config/db.js"
 import cartRouter from "./routes/cartroutes.js"; // Import cartRouter
 import cookieParser from "cookie-parser";
+
 import dotenv from "dotenv";
 import userRouter from "./routes/userroutes.js";
 import productRouter from "./routes/productroutes.js";
 
 dotenv.config();
+
 
 // App configuration
 const app = express();
@@ -19,8 +21,9 @@ app.use(cookieParser());
 
 // Define allowed origins
 const allowedOrigins = [
-  process.env.FRONTEND_URL,           // Frontend URL from env (production)
+  process.env.FRONTEND_URL
 ];
+
 
 // CORS Options
 const corsOptions = {
@@ -30,12 +33,15 @@ const corsOptions = {
       callback(null, true);
     } else {
       console.error(`Blocked by CORS: ${origin}`);
-      callback(new Error(`CORS policy does not allow access from origin: ${origin}`));
+      callback(new Error(`Not allowed by CORS: ${origin}`));
     }
   },
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
+// CORS Middleware
+app.use(cors(corsOptions));
 
 // Custom Middleware for Additional CORS Headers
 app.use((req, res, next) => {
@@ -55,23 +61,20 @@ app.use((req, res, next) => {
   next();
 });
 
-// CORS Middleware (after setting additional headers)
-app.use(cors(corsOptions));
 
-// Routes
 app.use("/api/cart", cartRouter);
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
 
+
 // Connect to the database
 connectDB();
 
-// Health check route
 app.get("/", (req, res) => {
   res.send("API Working");
 });
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server started on http://localhost:${port}`);
+  console.log(`Server started on http://localhost:${port}`)
 });
