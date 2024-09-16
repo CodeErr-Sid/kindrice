@@ -52,13 +52,20 @@ const getCart = async (token) => {
 };
 
 // Remove item from cart
-const removeFromCart = async (productId, token) => {
+const removeFromCart = async (productId, token, weight) => {
     setAuthToken(token); // Set the token for the request
     try {
         const response = await axiosInstance.delete('/api/cart/remove', {
-            productId
+            data: {
+                productId: productId,
+                weight: weight
+            }
         });
-        return response.data; // This will be the updated cart
+
+        console.log(productId, token, weight)
+        if (response.success) {
+            return response;
+        }
     } catch (error) {
         console.error('Error removing from cart:', error.response?.data || error.message);
         throw error; // Rethrow or handle the error as needed

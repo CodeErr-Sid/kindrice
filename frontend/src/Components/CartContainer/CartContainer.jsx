@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { removeFromCart } from '../../api/cartapi';
+import { toast } from 'react-toastify';
 
 const CartContainer = () => {
   const navigate = useNavigate();
-  const { cart, currency } = useContext(AuthContext);
+  const { cart, currency, isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
 
   // Initialize quantities state based on cart items
   const [quantities, setQuantities] = useState([]);
@@ -30,6 +32,16 @@ const CartContainer = () => {
     }
     return selectedWeightPrice.totalPrice; // Return the totalPrice for the selected weight
   };
+
+  const handleRemoveFromCart = async (product, weight) => {
+    if (isLoggedIn) {
+      const message = await removeFromCart(product, idToken, weight);
+      await getCartItems();
+      toast.success(message);
+    } else {
+      navigate("/login")
+    }
+  }
 
   // Calculate total price for each item based on quantity and weight
   const calculateTotalPrice = (product, selectedWeight, quantity) => {
@@ -135,10 +147,34 @@ const CartContainer = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="w-full flex-1 md:max-w-md">
+                    <div className="w-full flex-1 flex flex-col gap-2 md:max-w-md">
                       <a href="#" className="text-base font-medium text-gray-900 hover:underline dark:text-white">
                         {item.productId.description} | {item.weight}Kg
                       </a>
+                      <button
+                        type="button"
+                        className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500"
+                        onClick={() => handleRemoveFromCart(item.productId._id, item.weight)}
+                      >
+                        <svg
+                          className="me-1.5 h-5 w-5"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18 17.94 6M18 18 6.06 6"
+                          />
+                        </svg>
+                        Remove
+                      </button>
                     </div>
                   </div>
                 </div>

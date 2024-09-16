@@ -23,7 +23,8 @@ app.use(cookieParser());
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   'http://localhost:5173', // For local development
-  'https://kindrice-chi.vercel.app' // Your production frontend URL
+  'https://kindrice-chi.vercel.app', // Your production frontend URL
+  'https://www.kindrice.co'
 ];
 
 
