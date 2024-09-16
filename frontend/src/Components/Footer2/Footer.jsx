@@ -82,6 +82,11 @@ const Footer2 = () => {
               </Link>
             </li>
             <li>
+              <a href="/privacy_policy.html">
+                <i className="fas fa-caret-right"></i> Privacy Policy
+              </a>
+            </li>
+            <li>
               <Link to="/contact">
                 <i className="fas fa-caret-right"></i> Contact Us
               </Link>

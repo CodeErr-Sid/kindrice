@@ -23,6 +23,7 @@
 .contact-form-up {
   max-width: 20vw;
 }
+
 .contact-form-up h2 {
   font-family: "Nunito", sans-serif;
   font-size: 2.5vw;
@@ -58,9 +59,11 @@
   cursor: pointer;
   margin-top: 4vw;
 }
+
 .contact-form-info-left button span {
   color: #969696;
 }
+
 .contact-form-info-left button:hover {
   background-color: #06783f;
 }
@@ -99,7 +102,9 @@
   margin-bottom: 2vw;
   color: #000000;
 }
-.mail {
+
+.mail,
+.phone {
   font-weight: 600;
   color: #06783f;
 }
@@ -200,6 +205,7 @@
   .contact-form-info-left button {
     font-size: 1.2vw;
   }
+
   .contact-form-right {
     width: 80vw;
   }
@@ -251,12 +257,15 @@
   .contact-form-section {
     padding: 6vw 1vw 2vw 1vw;
   }
+
   .contact-form-info-left {
     display: none;
   }
+
   .contact-form-up {
     max-width: 70vw;
   }
+
   .contact-form-up h2 {
     font-family: "Nunito", sans-serif;
     font-size: 5vw;
@@ -267,6 +276,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .contact-form-right {
     width: 90vw;
     margin-top: 5vw;
@@ -282,6 +292,7 @@
     line-height: 5vw;
     margin-bottom: 5vw;
   }
+
   .contact-form-right h1 {
     text-align: center;
     font-size: 7vw;
@@ -290,17 +301,21 @@
     margin-bottom: 3vw;
     text-align: left;
   }
+
   .contact-form-right input,
   .contact-form-right textarea {
     font-size: 3.5vw;
   }
+
   .contact-form-right label {
     font-size: 4vw;
   }
+
   .contact-form-right h2 {
     font-size: 4vw;
     margin: 3vw 0;
   }
+
   .contact-form-right button[type="submit"] {
     font-size: 4vw;
     margin-bottom: 3rem;
