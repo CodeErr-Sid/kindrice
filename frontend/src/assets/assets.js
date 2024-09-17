@@ -129,7 +129,7 @@ import cartimg from "./cart-icon.png";
 import impact1 from "./impact1.png";
 import impact2 from "./impact2.png";
 import kindl from "./kind-logo.png";
-import lowgi1 from "./lowgi1.jpg";
+import lowgi1 from "./lowgi1.png";
 import meter from "./meter2.png";
 import mobileHero from "./hero-mobile.jpg";
 import desktopHero from "./hero-desktop.jpg";
