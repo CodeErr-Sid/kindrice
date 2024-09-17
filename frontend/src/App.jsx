@@ -21,6 +21,7 @@ import BlogArticlePage from './pages/BlogArticlePage/BlogArticlePage';
 import ScrollTop from './Components/ScrollTop/ScrollTop';
 import Preloader from './Components/Preloader/Preloader';
 import KindLoader from './Components/KindLoader/KindLoader';
+import TermsAndConditions from './pages/Terms-and-Conditions/TermsAndConditions';
 
 
 
@@ -31,12 +32,13 @@ function App() {
     <>
 
       <ScrollToTop />
-      <KindLoader/>
+      <KindLoader />
       {/* <Preloader/> */}
       <Routes>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Auth />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/shop" element={<Shop />} />
         <Route path='/' element={<Home2 />} />
         <Route path='/story' element={<Story />} />
@@ -48,7 +50,7 @@ function App() {
         <Route path="/lab-test" element={<Certificates />} />
         <Route path="/blog-article" element={<BlogArticlePage />} />
       </Routes>
-      <ScrollTop/>
+      <ScrollTop />
       {location.pathname !== '/login' && (
         <FloatingWhatsApp
           phoneNumber="+91 98432 97474"

@@ -26,12 +26,12 @@ export default function PolicySection2() {
             <ul>
               <p>Process:</p>
               <li>
-                To initiate a return, please contact our customer service team at [Insert Contact Information] within 14 days of receiving your order.
+                To initiate a return, please contact our customer service team at <b>hellokindrice@gmail.com</b> within 14 days of receiving your order.
               </li>
               <li>Once your return request is approved, we will provide you with a return address and instructions.</li>
             </ul>
             <ul>
-              <p>Shipping:</p>
+              <p className='shipping-heading'>Shipping:</p>
               <li>
                 You will be responsible for paying for your own shipping costs for returning your item.
               </li>
@@ -53,7 +53,7 @@ export default function PolicySection2() {
             <ul>
               <p>Processing Time: </p>
               <li>
-                Refunds are typically processed within [Insert Time Frame] days of receiving the returned item.
+                Refunds are typically processed within 1 week of receiving the returned item.
               </li>
               <li>The time it takes for the refund to appear in your account may vary depending on your card issuer’s policies..</li>
             </ul>
@@ -69,7 +69,7 @@ export default function PolicySection2() {
             <ul>
               <p>Eligibility:</p>
               <li>
-                We only replace items if they are defective or damaged. If you need to exchange an item for the same product, please contact us at [Insert Contact Information].
+                We only replace items if they are defective or damaged. If you need to exchange an item for the same product, please contact us at <b>hellokindrice@gmail.com</b>.
               </li>
             </ul>
             <ul>

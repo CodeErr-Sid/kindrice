@@ -25,7 +25,7 @@ export default function ContactForm() {
               </p>
               <p>
                 <strong>Email us:</strong>
-                <a href="mailto:Kindrice@gmail.com" className="mail">Kindrice@gmail.com</a>
+                <a href="mailto:hellokindrice@gmail.com" className="mail">hellokindrice@gmail.com</a>
               </p>
               <p>
                 <strong>Phone us:</strong>

@@ -48,6 +48,14 @@
   color: #016533;
 }
 
+.details.t-c ul{
+  list-style-type: none!important;
+}
+
+.details.t-c ol li{
+  margin-bottom: 2rem;
+}
+
 .details ol li {
   font-family: "Nunito", sans-serif;
   font-size: 1.8vw;
@@ -74,6 +82,10 @@
   list-style-type: disc;
   margin-left: 2vw;
   margin-bottom: 2vw;
+}
+
+.details ul p.shipping-heading{
+  font-weight: 800!important;
 }
 
 .details ul p {

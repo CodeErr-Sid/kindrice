@@ -10,7 +10,7 @@ export default function ReturnPolicyHero() {
          <img src={assets.returnPolicy} alt=''/>
         </div>
         <div className="return-policy-right">
-            <h2>Return Policy</h2>
+            <h2>Shipping & Returns Policy</h2>
         </div>
     </div>
    </section>

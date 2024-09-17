@@ -78,13 +78,18 @@ const Footer2 = () => {
             </li>
             <li>
               <Link to="/return-policy">
-                <i className="fas fa-caret-right"></i> Return Policy
+                <i className="fas fa-caret-right"></i> Shipping & Returns Policy
               </Link>
             </li>
             <li>
               <a href="/privacy_policy.html">
                 <i className="fas fa-caret-right"></i> Privacy Policy
               </a>
+            </li>
+            <li>
+              <Link to="/terms-and-conditions">
+                <i className="fas fa-caret-right"></i> Terms & Conditions
+              </Link>
             </li>
             <li>
               <Link to="/contact">
