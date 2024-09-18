@@ -184,7 +184,25 @@ const CartContainer = () => {
 
           <div className="mt-6 lg:mt-0 lg:w-full">
             <div className="border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-              <p className="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
+              <p className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700">Order summary</p>
+              <dl className="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                <dt className="text-base font-bold text-gray-900 dark:text-white">Actual Price</dt>
+                <dd className="text-base font-bold text-gray-900 dark:text-white">
+                  {currency + totalCartPrice}
+                </dd>
+              </dl>
+              <dl className="flex justify-between pt-4">
+                <dt className="text-base font-bold text-gray-900 dark:text-white">Tax (included)</dt>
+                <dd className="text-base font-bold text-gray-900 dark:text-white">
+                  5%
+                </dd>
+              </dl>
+              <dl className="flex justify-between pt-4">
+                <dt className="text-base font-bold text-gray-900 dark:text-white">Discount</dt>
+                <dd className="text-base font-bold text-gray-900 dark:text-white">
+                  0%
+                </dd>
+              </dl>
               <dl className="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                 <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
                 <dd className="text-base font-bold text-gray-900 dark:text-white">
