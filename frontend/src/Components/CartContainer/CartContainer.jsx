@@ -51,7 +51,7 @@ const CartContainer = () => {
 
   // Calculate and update the total cart price whenever quantities or cart items change
   useEffect(() => {
-    const total = cart.reduce((total, item, index) => {
+    const total = cart?.reduce((total, item, index) => {
       return total + calculateTotalPrice(item.productId, item.weight, quantities[index] || 0);
     }, 0);
 
@@ -99,7 +99,7 @@ const CartContainer = () => {
         <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
             <div className="space-y-6">
-              {cart && cart.length !== 0 && cart.map((item, index) => (
+              {cart ? cart.length !== 0 && cart.map((item, index) => (
                 <div key={index} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
                   <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                     <a href="#" className="shrink-0">
@@ -178,7 +178,7 @@ const CartContainer = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              )) : <h1 className='text-2xl'>Cart is Empty</h1>}
             </div>
           </div>
 
