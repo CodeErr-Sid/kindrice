@@ -134,6 +134,7 @@ import meter from "./meter2.png";
 import mobileHero from "./hero-mobile.jpg";
 import desktopHero from "./hero-desktop.jpg";
 import cta from "./DG_05771.jpg";
+import maarnadu from "./maarnadu.jpg";
 
 export const assets = {
   w_profile,
@@ -268,4 +269,5 @@ export const assets = {
   cta,
   chemicalFree,
   chemicalfree1,
+  maarnadu,
 };
