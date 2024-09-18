@@ -22,6 +22,7 @@ import ScrollTop from './Components/ScrollTop/ScrollTop';
 import Preloader from './Components/Preloader/Preloader';
 import KindLoader from './Components/KindLoader/KindLoader';
 import TermsAndConditions from './pages/Terms-and-Conditions/TermsAndConditions';
+import MagicCheckout from './pages/MagicCheckout/MagicCheckout';
 
 
 
@@ -36,6 +37,7 @@ function App() {
       {/* <Preloader/> */}
       <Routes>
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/magic-checkout" element={<MagicCheckout />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Auth />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
