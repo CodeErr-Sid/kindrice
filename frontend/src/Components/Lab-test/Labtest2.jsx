@@ -67,7 +67,7 @@ export default function Labtest2() {
       </div>
 {/* PDF Overlay */}
 {showPdf && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[1000]">
     <div className="relative bg-white rounded-lg shadow-lg p-4 w-11/12 md:w-3/4 lg:w-3/4 h-3/4 lg:h-full">
       <iframe
         src={assets.chemicalFree}

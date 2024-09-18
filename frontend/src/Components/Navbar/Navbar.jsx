@@ -16,24 +16,34 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Check if viewport width is greater than 768px
+      if (window.innerWidth <= 768) return;
+
       const currentScrollPos = window.pageYOffset;
+      const dummySection = document.querySelector('.dummy-section');
 
-      // Check scroll direction
-      if (currentScrollPos > scrollPosition) {
-        // Scrolling down - hide the navbar
-        setIsVisible(false);
-      } else {
-        // Scrolling up - show the navbar
-        setIsVisible(true);
+      // Get the bottom position of the .dummy-section
+      const dummySectionBottom = dummySection?.getBoundingClientRect().bottom;
+
+      // If the .dummy-section is completely off the viewport
+      if (dummySectionBottom <= 0) {
+        // Check scroll direction
+        if (currentScrollPos > scrollPosition) {
+          // Scrolling down - hide the navbar
+          setIsVisible(false);
+        } else {
+          // Scrolling up - show the navbar
+          setIsVisible(true);
+        }
+
+        setScrollPosition(currentScrollPos);
       }
-
-      setScrollPosition(currentScrollPos);
     };
 
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll); // Cleanup the listener on unmount
+      window.removeEventListener('scroll', handleScroll); // Cleanup on unmount
     };
   }, [scrollPosition]);
 
