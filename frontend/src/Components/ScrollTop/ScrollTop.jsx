@@ -32,7 +32,7 @@ export default function ScrollTop() {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="w-12 h-12 text-2xl bg-green-700 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors duration-300"
+          className="w-12 h-12 text-3xl bg-green-700 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors duration-300"
         >
           &#8679; {/* Upward arrow symbol */}
         </button>
