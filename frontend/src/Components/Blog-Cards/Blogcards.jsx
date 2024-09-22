@@ -157,7 +157,7 @@ export default function Blogcards() {
             <Link
   to="/blog-article"
   state={{
-    coverImage: assets.cover4Story,
+    coverImage: assets.maarnadu,
     title: 'Farmer’s Story : Maarnadu',
     paragraphs: [
       "My name is Maarnadu, and I live with my family in the village of Arasakulam, where we farm and grow the RNR variety of paddy. Every four months, we work tirelessly in the fields, facing long days and difficult conditions. While many farmers in our village sell their harvest to local brokers, my family and I travel 20 kilometers to the Kind Rice Mill in Madurai.",
@@ -176,7 +176,12 @@ export default function Blogcards() {
             >
               <div className="card-one2">
                 <div className="card-one-image">
-                  <img src={assets.cover4Story} alt='' />
+                <img 
+  src={assets.maarnadu} 
+  alt='' 
+  style={{ objectFit: 'cover', objectPosition: 'top' }} 
+/>
+
                   <h2>Most Popular</h2>
                 </div>
                 <div className="card-content-container">

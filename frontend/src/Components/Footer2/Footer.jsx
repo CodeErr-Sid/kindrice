@@ -120,8 +120,11 @@ const Footer2 = () => {
             <a href="#" target="_blank" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://www.instagram.com/braaishack/" target="_blank" aria-label="Instagram">
+            <a href="#" target="_blank" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
+            </a>
+            <a href="#" target="_blank" aria-label="Instagram">
+              <i className="fab fa-youtube"></i>
             </a>
           </div>
           <div className="newsletter">
@@ -143,10 +146,10 @@ const Footer2 = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 R.K. Brothers Agro Foods Pvt. Ltd All rights reserved.</p>
-        <a href="#" className="back-to-top" aria-label="Back to top">
+        <p className="text-xs md:text-sm ">&copy; 2024 R.K. Brothers Agro Foods Pvt. Ltd All rights reserved.</p>
+        {/* <a href="#" className="back-to-top" aria-label="Back to top">
           <i className="fas fa-chevron-up"></i>
-        </a>
+        </a> */}
       </div>
     </footer>
   );

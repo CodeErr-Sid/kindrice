@@ -13,9 +13,9 @@ import QuantitySelector from '../Dropdown/QuantitySelector';
 const Product = ({ productId }) => {
 
     const productData = {
-        "ingredients": { "title": "Ingredients", "content": ["100% low-GI rice"] },
+        "ingredients": { "title": "Ingredients", "content": ["100% Natural low-GI rice"] },
         "keyFeatures": { "title": "Product details", "content": ["Paddy Variety: Indian-RNR", "Processing Method: Boiled", "Age: 6-12 months", "Cooking Time: 15-20 minutes", "Grain Size: Medium and short", "Best Cooking Methods: Open pan, cooker", "Location: India", "Recommended For: White rice, variety rice, thali, meals", "Taste Notes: Earthy", "Texture: Soft and tender", "Cooked Rice Color: White", "Processed at: R.K. Brothers Agro Foods Private Limited, 66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu 625001."] },
-        "nutritions": { "title": "Nutritional Benefits", "description": "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.", "content": ["no chemicals", "no nasties", "no adulterant", "no added flavours", "no artificial sweeteners"], "facts": { "title": "Nutritional Facts", "Protein": "6.5", "Fat": "1.1", "Crude Fiber": "0.4", "Carbohydrate": "81.3", "Energy": "361.5", "Moisture": "10.5", "Total Ash": "0.56" } }
+        "nutrition": { "title": "Nutritional Benefits", "description": "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.", "content": ["no chemicals", "no nasties", "no adulterant", "no added flavours", "no artificial sweeteners"], "facts": { "title": "Nutritional Facts", "Protein": "6.5", "Fat": "1.1", "Crude Fiber": "0.4", "Carbohydrate": "81.3", "Energy": "361.5", "Moisture": "10.5", "Total Ash": "0.56" } }
     };
 
     const [product, setProduct] = useState({});
@@ -177,9 +177,9 @@ const Product = ({ productId }) => {
                     </button>
                     <button
                         className={`p-2 w-full lg:w-[15%] rounded-lg text-xl ${currentContent.title === 'Nutritional Benefits' ? 'bg-[#016533] text-[#F2E098]' : 'bg-[#F2E098] text-black'}`}
-                        onClick={() => handleButtonClick('nutritions')}
+                        onClick={() => handleButtonClick('nutrition')}
                     >
-                        Nutritions
+                        Nutrition
                     </button>
                 </div>
 
