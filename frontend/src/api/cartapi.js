@@ -62,7 +62,6 @@ const removeFromCart = async (productId, token, weight) => {
             }
         });
 
-        console.log(productId, token, weight)
         if (response.success) {
             return response;
         }
