@@ -4,6 +4,7 @@ import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faHeart, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Accordion from "../Accordion/Accordion"
+import MagicCheckoutButton from '../MagicCheckoutButton/MagicCheckoutButton';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { addToCart, getProductById } from '../../api/cartapi';
@@ -21,6 +22,7 @@ const Product = ({ productId }) => {
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
+    const [weightCategory, setWeightCategory] = useState("");
     const [price, setPrice] = useState(0);
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
@@ -37,6 +39,7 @@ const Product = ({ productId }) => {
                 setProduct(productData.data);
                 setSelectedImage(productData.data.images[0] || assets.rice1);
                 setWeight(productData.data.weightPrice[0].weight.value);
+                setWeightCategory(productData.data.weightPrice[0]._id);
             } else {
                 setProduct({});
             }
@@ -71,6 +74,17 @@ const Product = ({ productId }) => {
 
     const handleWeightChange = (selectedWeight) => {
         setWeight(selectedWeight);
+
+        // Find the corresponding weight category based on the selected weight
+        const selectedCategory = product.weightPrice.find(
+            (item) => item.weight.value === selectedWeight
+        );
+
+        if (selectedCategory) {
+            setWeightCategory(selectedCategory._id); // Set the corresponding weight category ID
+        } else {
+            console.error('Weight category not found for the selected weight.');
+        }
     };
 
     const handleQuantityChange = (selectedQuantity) => {
@@ -138,12 +152,7 @@ const Product = ({ productId }) => {
                                 >
                                     ADD TO CART
                                 </button>
-                                <button
-                                    className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
-                                    onClick={handleBuyNow}
-                                >
-                                    BUY NOW
-                                </button>
+                                <MagicCheckoutButton productId={product._id} weightCategory={weightCategory} quantity={quantity} />
                             </div>
                         </div>
 
