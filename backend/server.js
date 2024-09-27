@@ -6,7 +6,6 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import userRouter from "./routes/userroutes.js";
 import productRouter from "./routes/productroutes.js";
-import orderRouter from "./routes/orderroutes.js";
 
 dotenv.config();
 
@@ -47,7 +46,6 @@ app.use(cors(corsOptions));
 app.use("/api/cart", cartRouter);
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
-app.use("/api/orders", orderRouter);
 
 // Connect to the database
 connectDB();
