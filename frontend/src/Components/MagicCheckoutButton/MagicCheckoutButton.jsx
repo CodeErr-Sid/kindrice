@@ -29,11 +29,13 @@ const MagicCheckoutButton = ({ productId, weightCategory, quantity, name, classN
         }
     };
 
+    const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
+
 
 
     const displayRazorpay = (orderId) => {
         const options = {
-            key: import.meta.env.VITE_RAZORPAY_KEY_ID,  // Replace with Razorpay Key
+            key: razorpayKey,  // Replace with Razorpay Key
             order_id: orderId,   // Order ID from backend
             name: "Kind Rice",
             one_click_checkout: true,
