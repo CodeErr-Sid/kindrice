@@ -23,7 +23,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL, // Ensure this is set correctly in the environment
   'http://localhost:5173', // Local development
   'https://kindrice-chi.vercel.app', // Razorpay branch frontend
-  'https://www.kindrice.co' // Production frontend
+  'https://kindrice.co' // Production frontend
 ];
 
 // CORS Options
