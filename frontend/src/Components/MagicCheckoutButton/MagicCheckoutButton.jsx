@@ -3,7 +3,7 @@ import { createOrder } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 
 
-const MagicCheckoutButton = ({ productId, weightCategory, quantity }) => {
+const MagicCheckoutButton = ({ productId, weightCategory, quantity, name, className}) => {
 
     const { url } = useContext(AuthContext)
 
@@ -19,8 +19,8 @@ const MagicCheckoutButton = ({ productId, weightCategory, quantity }) => {
     const fetchOrderId = async () => {
         try {
             setLoading(true);
-            const { data } = await createOrder(url, productId, weightCategory, quantity);
-            const orderId = data.orderId;
+            const data = await createOrder(url, productId, weightCategory, quantity);
+            const orderId = await data.data.id;
             displayRazorpay(orderId);
         } catch (error) {
             console.error('Error fetching order ID:', error);
@@ -35,7 +35,7 @@ const MagicCheckoutButton = ({ productId, weightCategory, quantity }) => {
         const options = {
             key: import.meta.env.VITE_RAZORPAY_KEY_ID,  // Replace with Razorpay Key
             order_id: orderId,   // Order ID from backend
-            name: "Kindrice",
+            name: "Kind Rice",
             one_click_checkout: true,
             show_coupons: true,
             handler: function (response) {
@@ -53,8 +53,8 @@ const MagicCheckoutButton = ({ productId, weightCategory, quantity }) => {
     };
 
     return (
-        <button onClick={loadRazorpay} disabled={loading}>
-            {loading ? 'Processing...' : 'Buy Now'}
+        <button onClick={loadRazorpay} disabled={loading} className={className}>
+            {loading ? 'Processing...' : name}
         </button>
     );
 };

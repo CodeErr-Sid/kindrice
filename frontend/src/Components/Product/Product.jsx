@@ -152,7 +152,10 @@ const Product = ({ productId }) => {
                                 >
                                     ADD TO CART
                                 </button>
-                                <MagicCheckoutButton productId={product._id} weightCategory={weightCategory} quantity={quantity} />
+                                <MagicCheckoutButton
+                                 className="buy-now-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+                                 productId={product._id} weightCategory={weightCategory} quantity={quantity} name="Buy Now" 
+                                 />
                             </div>
                         </div>
 

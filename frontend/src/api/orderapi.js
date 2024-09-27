@@ -8,7 +8,7 @@ export const createOrder = async (url, productId, weightCategory, quantity) => {
             quantity
         });
 
-        return response;
+        return response.data;
     } catch (error) {
 
     }
