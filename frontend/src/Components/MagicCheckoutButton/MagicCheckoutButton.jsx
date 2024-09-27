@@ -47,6 +47,7 @@ const MagicCheckoutButton = ({ productId, weightCategory, quantity, name, classN
                 color: '#3399cc',
             },
         };
+        console.log(options)
 
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
