@@ -8,6 +8,10 @@ const productSchema = new mongoose.Schema({
       value: { type: Number, required: true },  // Numeric weight value
       unit: { type: String, required: true }    // Unit of measurement (e.g., kg)
     },
+    sku: {  // Unique SKU for each weight category
+      type: String,
+      required: true
+    },
     price: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
     dimensions: { // Dimensions vary by weight category
@@ -38,10 +42,6 @@ const productSchema = new mongoose.Schema({
     default: 0  // Default to 0 if not provided
   },
   stock: { type: Number },  // Optional field
-  sku: {
-    type: String,
-    required: true  // SKU (Stock Keeping Unit) for inventory management
-  },
   hsnCode: {
     type: String,
     required: true

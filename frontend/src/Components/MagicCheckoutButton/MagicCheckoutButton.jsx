@@ -39,7 +39,7 @@ const MagicCheckoutButton = ({ productId, weightCategory, quantity, name, classN
             order_id: orderId,   // Order ID from backend
             name: "Kind Rice",
             one_click_checkout: true,
-            show_coupons: true,
+            show_coupons: false,
             handler: function (response) {
                 alert(`Payment ID: ${response.razorpay_payment_id}`);
                 alert(`Order ID: ${response.razorpay_order_id}`);

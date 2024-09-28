@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 import userRouter from "./routes/userroutes.js";
 import productRouter from "./routes/productroutes.js";
 import orderRouter from "./routes/orderroutes.js";
+import { getShippingPrice } from "./controllers/courierController.js";
 
 dotenv.config();
 
@@ -25,7 +26,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
   'http://localhost:5173', // For local development
   'https://kindrice-chi.vercel.app', // Your production frontend URL
-  'https://www.kindrice.co'
+  'https://www.kindrice.co',
 ];
 
 
@@ -70,6 +71,7 @@ app.use("/api/cart", cartRouter);
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
 app.use("/api/orders", orderRouter);
+app.post("/api/shippingcharges", getShippingPrice);
 
 
 // Connect to the database
