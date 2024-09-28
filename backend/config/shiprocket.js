@@ -16,6 +16,8 @@ const BASE_URL = process.env.SHIPROCKET_BASE_URL;
 
 // Variable to store the token
 let shiprocketToken = "";
+const pickupPostCode = process.env.PICKUP_POSTCODE;
+
 
 /**
  * Login to Shiprocket to get the authentication token.
@@ -120,11 +122,12 @@ const shippingPrice = async (pincode, weight, price) => {
       await authenticateShiprocket();
     }
 
+
     const shiprocketAPI = getShiprocketAPI();
 
     // Prepare query parameters
     const courierParams = {
-      pickup_postcode: process.env.PICKUP_POSTCODE,  // Your pickup postcode from .env
+      pickup_postcode: pickupPostCode,  // Your pickup postcode from .env
       delivery_postcode: pincode,                    // Delivery postcode
       cod: 0,                                        // Cash on Delivery (0 for no COD)
       weight: weight,                                // Weight of the package
