@@ -23,7 +23,7 @@ const getShippingPrice = async (req, res) => {
 
             // Map the shipping options to the required format
             const shippingMethods = shippingOptions.map((option, index) => ({
-                id: index,
+                id: String(index + 1),
                 description: option.description || option.courier_name,
                 name: `Delivery in ${option.estimated_delivery_days} days`,
                 serviceable: true,
