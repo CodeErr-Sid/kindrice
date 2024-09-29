@@ -34,9 +34,10 @@ const getShippingPrice = async (req, res) => {
                 cod_fee: option.cod === 1 ? Math.round(option.cod_charges * 100) : 0 // cod_fee in paise, set to 0 if not available
             }));
 
-            // Return the address object with shipping methods
+            // Return the address object with shipping methods and capitalize the country
             return {
                 ...address,
+                country: address.country.toUpperCase(), // Capitalize country
                 shipping_methods: shippingMethods
             };
         }));
@@ -44,7 +45,7 @@ const getShippingPrice = async (req, res) => {
         // Send the response with address shipping information
         res.status(200).json({ addresses: addressShippingInfo });
 
-        console.log(JSON.stringify({ addresses: addressShippingInfo }))
+        console.log(JSON.stringify({ addresses: addressShippingInfo }));
 
     } catch (error) {
         res.status(500).json({ message: error.message });
