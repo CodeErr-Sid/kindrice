@@ -5,7 +5,7 @@ const getShippingPrice = async (req, res) => {
     const { razorpay_order_id, addresses } = req.body;
 
     console.log(JSON.stringify(req.body));
-    
+
     try {
         // Fetch order details using the razorpay_order_id
         const order = await fetchOrderId(razorpay_order_id);
@@ -46,6 +46,7 @@ const getShippingPrice = async (req, res) => {
 
 
         // Send the response with address shipping information
+        console.log(JSON.stringify({ addresses: addressShippingInfo }))
         res.status(200).json({ addresses: addressShippingInfo });
 
     } catch (error) {
