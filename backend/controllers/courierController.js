@@ -28,7 +28,7 @@ const getShippingPrice = async (req, res) => {
                 name: `Delivery in ${option.estimated_delivery_days} days`,
                 serviceable: true,
                 shipping_fee: Math.round(option.freight_charge * 100), // converting to paise
-                cod: option.cod === 1, // set to true if cod is available
+                cod: 0, // set to true if cod is available
                 cod_fee: option.cod === 1 ? Math.round(option.cod_charges * 100) : 0 // cod_fee in paise, set to 0 if not available
             }));
 
