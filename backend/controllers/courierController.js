@@ -3,9 +3,7 @@ import { fetchOrderId } from "./orderController.js";
 
 const getShippingPrice = async (req, res) => {
     const { razorpay_order_id, addresses } = req.body;
-
-    console.log(req.body);
-
+    
     try {
         // Fetch order details using the razorpay_order_id
         const order = await fetchOrderId(razorpay_order_id);
@@ -44,8 +42,6 @@ const getShippingPrice = async (req, res) => {
 
         // Send the response with address shipping information
         res.status(200).json({ addresses: addressShippingInfo });
-
-        console.log(JSON.stringify({ addresses: addressShippingInfo }));
 
     } catch (error) {
         res.status(500).json({ message: error.message });
