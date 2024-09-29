@@ -8,7 +8,7 @@ const getShippingPrice = async (req, res) => {
 
     try {
         // Fetch order details using the razorpay_order_id
-        const order = await fetchOrderId("order_" + razorpay_order_id);
+        const order = await fetchOrderId(razorpay_order_id);
 
         // Extract total price (in paise) and convert to rupees
         const totalPrice = order.amount / 100;
