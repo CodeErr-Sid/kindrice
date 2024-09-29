@@ -2,11 +2,11 @@ import { shippingPrice } from "../config/shiprocket.js";
 import { fetchOrderId } from "./orderController.js";
 
 const getShippingPrice = async (req, res) => {
-    const { order_id, addresses } = req.body;
+    const { razorpay_order_id, addresses } = req.body;
 
     try {
-        // Fetch order details using the order_id
-        const order = await fetchOrderId(order_id);
+        // Fetch order details using the razorpay_order_id
+        const order = await fetchOrderId("order_" + razorpay_order_id);
 
         // Extract total price (in paise) and convert to rupees
         const totalPrice = order.amount / 100;
