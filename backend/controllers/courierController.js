@@ -3,6 +3,8 @@ import { fetchOrderId } from "./orderController.js";
 
 const getShippingPrice = async (req, res) => {
     const { razorpay_order_id, addresses } = req.body;
+
+    console.log(req);
     
     try {
         // Fetch order details using the razorpay_order_id
