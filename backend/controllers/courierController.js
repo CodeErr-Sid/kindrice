@@ -46,7 +46,7 @@ const getShippingPrice = async (req, res) => {
 
         // Send the response with address shipping information
         
-        res.json({ addresses: addressShippingInfo });
+        res.send({ addresses: addressShippingInfo });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
