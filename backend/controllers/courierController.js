@@ -15,17 +15,6 @@ const getShippingPrice = async (req, res) => {
 
         // Extract total weight from the order notes
         const totalWeight = order.notes.totalWeight;
-
-        const freeShipping = {
-            "id": "2",
-            "description": "Free Shipping",
-            "name": "Delivered on the same day",
-            "serviceable": true,
-            "shipping_fee": 1000,
-            "cod": false,
-            "cod_fee": 0
-        }
-
         // Iterate over each address and fetch shipping options
         const addressShippingInfo = await Promise.all(addresses.map(async (address) => {
             const pincode = address.zipcode;
@@ -44,14 +33,12 @@ const getShippingPrice = async (req, res) => {
                 cod_fee: 0 // cod_fee in paise, set to 0 if not available
             }));
 
-            shippingMethods.push(freeShipping);
-
             // Return the address object with shipping methods and capitalize the country
             return {
                 id: address.id,
                 zipcode: address.zipcode,
                 state_code: address.state_code,
-                country: address.country.toUpperCase(), // Capitalize country
+                country: address.country, // Capitalize country
                 shipping_methods: shippingMethods
             };
         }));
