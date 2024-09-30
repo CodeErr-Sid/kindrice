@@ -1,5 +1,7 @@
 import express from 'express';
 import { createMultipleOrders, createOrder, fetchAllOrders, fetchOrderById } from "../controllers/orderController.js"
+import { getShippingPrice } from "../controllers/courierController.js";
+
 
 const orderRouter = express.Router();
 
@@ -11,6 +13,8 @@ orderRouter.post("/cartorder", createMultipleOrders);
 orderRouter.get("/list", fetchAllOrders);
 
 orderRouter.post("/list", fetchOrderById);
+
+orderRouter.post("/shippingcharges", getShippingPrice)
 
 
 export default orderRouter;

@@ -8,7 +8,6 @@ import dotenv from "dotenv";
 import userRouter from "./routes/userroutes.js";
 import productRouter from "./routes/productroutes.js";
 import orderRouter from "./routes/orderroutes.js";
-import { getShippingPrice } from "./controllers/courierController.js";
 
 dotenv.config();
 
@@ -72,7 +71,6 @@ app.use("/api/cart", cartRouter);
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
 app.use("/api/orders", orderRouter);
-app.post("/api/shippingcharges", getShippingPrice);
 
 
 // Connect to the database
