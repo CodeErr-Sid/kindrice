@@ -20,13 +20,16 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(express.urlencoded({ extended: true }));
+
+
 // Define allowed origins
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   'http://localhost:5173', // For local development
   'https://kindrice-chi.vercel.app', // Your production frontend URL
   'https://www.kindrice.co',
-  'https://api.razorpay.com/v1/checkout'
+  'https://api.razorpay.com/'
 ];
 
 

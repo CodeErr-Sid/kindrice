@@ -3,17 +3,14 @@ import { createOrder } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 
 
-const MagicCheckoutButton = ({ productId, weightCategory, quantity, name, className}) => {
+const MagicCheckoutButton = ({ productId, weightCategory, quantity, name, className }) => {
 
     const { url } = useContext(AuthContext)
 
     const [loading, setLoading] = useState(false);
 
-    const loadRazorpay = () => {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/magic-checkout.js';
-        script.onload = fetchOrderId;  // Fetch order ID once Razorpay script is loaded
-        document.body.appendChild(script);
+    const loadRazorpay = async () => {
+        await fetchOrderId();  // Fetch order ID once Razorpay script is loaded
     };
 
     const fetchOrderId = async () => {
