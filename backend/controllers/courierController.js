@@ -35,7 +35,7 @@ const getShippingPrice = async (req, res) => {
 
             // Return the address object with shipping methods and capitalize the country
             return {
-                id: address.id,
+                id: String(address.id),
                 zipcode: address.zipcode,
                 state_code: address.state_code,
                 country: address.country, // Capitalize country
