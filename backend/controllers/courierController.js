@@ -25,7 +25,7 @@ const getShippingPrice = async (req, res) => {
             // Map the shipping options to the required format
             const shippingMethods = shippingOptions.map((option, index) => ({
                 id: String(index + 1),
-                description: "Standard Delivery",
+                // description: "Standard Delivery",
                 name: `Delivery within ${option.estimated_delivery_days} days`,
                 serviceable: true,
                 shipping_fee: option.freight_charge * 100, // converting to paise
