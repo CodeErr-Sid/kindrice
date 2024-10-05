@@ -1,5 +1,6 @@
 import axios from "axios"
 import { toast } from 'react-toastify';
+import { clearCart, getCart } from "../api/cartapi"
 
 
 export const createOrder = async (url, productId, weightCategory, quantity) => {
@@ -31,7 +32,7 @@ export const normaCheckoutOrder = async (url, amount, notes) => {
 
 // payment verfication
 
-export const handler = async (url, response) => {
+export const handler = async (url, response, idToken) => {
     const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
 
     try {
@@ -44,7 +45,8 @@ export const handler = async (url, response) => {
 
         if (verificationResponse.data.success) {
             toast.success('Payment was successful!');
-            // Proceed with further actions like order confirmation
+            await clearCart(idToken);
+            await getCart(idToken);
         } else {
             toast.error('Payment verification failed.');
         }

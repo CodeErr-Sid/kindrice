@@ -85,6 +85,20 @@ const removeFromCart = async (productId, token, weight) => {
     }
 };
 
+const clearCart = async (token) => {
+    setAuthToken(token);
+    try {
+        const response = await axiosInstance.delete('/api/cart/clear');
+
+        if (response.success) {
+            return response;
+        }
+    } catch (error) {
+        console.error('Error Clearing the cart:', error.response?.data || error.message);
+        throw error; // Rethrow or handle the error as needed
+    }
+}
+
 
 const getProductById = async (id) => {
     try {
@@ -96,7 +110,7 @@ const getProductById = async (id) => {
     }
 };
 
-export { addToCart, getCart, removeFromCart, getProductById, updateCart };
+export { addToCart, getCart, removeFromCart, getProductById, updateCart, clearCart };
 
 
 

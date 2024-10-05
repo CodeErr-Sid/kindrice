@@ -43,7 +43,7 @@ const getShiprocketAPI = () => {
 /**
  * Example function to create an order with Shiprocket.
  */
-const createShipRocketOrder = async (orderId) => {
+const createShipRocketOrder = async (orderData) => {
   try {
     // Ensure that the user is authenticated
     if (!shiprocketToken) {
@@ -62,6 +62,8 @@ const createShipRocketOrder = async (orderId) => {
     console.error('Error placing order:', error.response ? error.response.data : error.message);
   }
 };
+
+
 
 // sample order creation
 
@@ -100,7 +102,7 @@ const shippingPrice = async (pincode, weight, price) => {
     return recommendedCourier;
   } catch (error) {
     // Catch and display any errors that occur during the request
-    console.error('Error fetching courier serviceability:', error.response ? error.response.data : error.message);
+    res.status(500).json({ success: false, message: "Error Fetching Courier Servicablity" });
   }
 };
 

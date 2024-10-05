@@ -92,7 +92,26 @@ const updateCart = async (req, res) => {
     }
 };
 
+const clearCart = async (req, res) => {
+    try {
+        // Get the user ID from the middleware
+        const userId = req.userId;
 
+        // Find the user by ID
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        // Clear the cart items by setting it to an empty array
+        user.cart.items = [];
+
+        // Save the updated user
+        await user.save();
+
+        res.json({ message: 'Cart cleared successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
 
 // Get user's cart
@@ -147,4 +166,4 @@ const removeFromCart = async (req, res) => {
     }
 };
 
-export { addToCart, removeFromCart, getCart, updateCart };
+export { addToCart, removeFromCart, getCart, updateCart, clearCart };

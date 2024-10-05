@@ -240,6 +240,13 @@ const verifyPayment = (req, res) => {
 
         if (isValid) {
             res.json({ success: true, message: 'Payment verified successfully' });
+
+
+            
+
+
+
+
         } else {
             // The payment is invalid
             res.status(400).json({ success: false, message: 'Payment verification failed' });

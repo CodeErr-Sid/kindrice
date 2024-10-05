@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import { normaCheckoutOrder, handler } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
+import { clearCart } from '../../../../backend/controllers/cartController';
 
 
 const PaymentButton = ({ name, className, amount, notes, disabled, address }) => {
 
-    const { url } = useContext(AuthContext)
+    const { url, idToken, getCart } = useContext(AuthContext)
 
     const [loading, setLoading] = useState(false);
 
@@ -44,7 +45,7 @@ const PaymentButton = ({ name, className, amount, notes, disabled, address }) =>
             show_coupons: false,
             image: assets.rpkindlogo,
             handler: (response) => {
-                handler(url, response);
+                handler(url, response, idToken, getCart);
             },
             prefill: {
                 name: fullname,

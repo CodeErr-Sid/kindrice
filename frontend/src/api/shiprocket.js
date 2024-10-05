@@ -18,7 +18,3 @@ export const getShippingPrices = async (url, pincode, totalWeight, totalPrice) =
 
 
 // Courier Servicablity
-// Order Creation
-// AWB Generation ( shipping )
-// Pickup request
-// Tracking the shipment 
