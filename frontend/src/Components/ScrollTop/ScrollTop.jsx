@@ -12,18 +12,20 @@ export default function ScrollTop() {
     }
   };
 
-  // Scroll to the top of the page
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+  // Debounce function to limit how often toggleVisibility is called
+  const debounce = (func, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func(...args), delay);
+    };
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
+    const handleScroll = debounce(toggleVisibility, 100); // Adjust debounce time as needed
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', toggleVisibility);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -31,7 +33,7 @@ export default function ScrollTop() {
     <div className="fixed bottom-9 left-8 z-50">
       {isVisible && (
         <button
-          onClick={scrollToTop}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="w-12 h-12 text-3xl bg-green-700 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors duration-300"
         >
           &#8679; {/* Upward arrow symbol */}
