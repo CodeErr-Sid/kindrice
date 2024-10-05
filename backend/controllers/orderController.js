@@ -211,7 +211,7 @@ const normalCheckoutOrder = async (req, res) => {
     const { amount, notes } = req.body;
 
     try {
-        const amountInPaise = amount * 100;
+        const amountInPaise = Math.round(amount * 100)
 
         var options = {
             amount: amountInPaise,  // amount in the smallest currency unit
