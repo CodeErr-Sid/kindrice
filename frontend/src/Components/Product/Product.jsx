@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faHeart, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import Accordion from "../Accordion/Accordion"
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faStar, faHeart, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+// import Accordion from "../Accordion/Accordion"
 import MagicCheckoutButton from '../MagicCheckoutButton/MagicCheckoutButton';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +26,6 @@ const Product = ({ productId }) => {
     const [price, setPrice] = useState(0);
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
-
 
 
     const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
@@ -57,7 +56,15 @@ const Product = ({ productId }) => {
 
     const handleBuyNow = () => {
         if (isLoggedIn) {
-            // buy now logic
+            navigate("/checkout", {
+                state: {
+                    items: [{ productId, weightCategory, quantity }],
+                    price,
+                    weight,
+                    singproduct:true,
+                }
+            });
+
         } else {
             navigate("/login");
         }
@@ -152,10 +159,16 @@ const Product = ({ productId }) => {
                                 >
                                     ADD TO CART
                                 </button>
-                                <MagicCheckoutButton
-                                 className="buy-now-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
-                                 productId={product._id} weightCategory={weightCategory} quantity={quantity} name="Buy Now" 
-                                 />
+                                <button
+                                    className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+                                    onClick={handleBuyNow}
+                                >
+                                    Buy Now
+                                </button>
+                                {/* <MagicCheckoutButton
+                                    className="buy-now-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+                                    productId={product._id} weightCategory={weightCategory} quantity={quantity} name="Buy Now"
+                                /> */}
                             </div>
                         </div>
 

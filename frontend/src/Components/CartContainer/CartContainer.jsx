@@ -211,7 +211,7 @@ const CartContainer = () => {
               </dl>
               <button
                 className="mt-4 w-full rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none dark:bg-primary-600 dark:hover:bg-primary-700"
-                onClick={() => navigate('/magic-checkout')}
+                onClick={() => navigate('/checkout')}
               >
                 Proceed to Checkout
               </button>

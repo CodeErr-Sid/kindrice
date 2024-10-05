@@ -1,10 +1,16 @@
 import Razorpay from 'razorpay';
 import Product from '../models/product.js';
+import dotenv from 'dotenv';
+import { validatePaymentVerification } from 'razorpay/dist/utils/razorpay-utils.js';
 
+dotenv.config();
+
+const keyId = process.env.RAZORPAY_KEY_ID
+const keySecret = process.env.RAZORPAY_KEY_SECRET
 
 const instance = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID,
-    key_secret: process.env.RAZORPAY_KEY_SECRET
+    key_id: keyId,
+    key_secret: keySecret
 });
 
 // buy now 
@@ -165,6 +171,17 @@ const fetchOrderById = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error })
     }
 }
+const fetchPaymentById = async (req, res) => {
+    try {
+        const { paymentId } = req.body;
+
+        const response = await instance.payments.fetch(paymentId)
+
+        res.json(response)
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error", error })
+    }
+}
 
 const fetchAllOrders = async (req, res) => {
     try {
@@ -189,5 +206,48 @@ const fetchOrderId = async (orderId) => {
     }
 }
 
+const normalCheckoutOrder = async (req, res) => {
 
-export { createOrder, fetchAllOrders, fetchOrderById, createMultipleOrders, fetchOrderId }
+    const { amount, notes } = req.body;
+
+    try {
+        const amountInPaise = amount * 100;
+
+        var options = {
+            amount: amountInPaise,  // amount in the smallest currency unit
+            currency: "INR",
+            receipt: `reciept${Date.now()}`,
+            notes: notes
+        };
+        const order = await instance.orders.create(options);
+
+        res.json(order);
+    } catch (error) {
+        res.json(error)
+    }
+}
+
+const verifyPayment = (req, res) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+
+    try {
+        // Validate the payment signature
+        const isValid = validatePaymentVerification(
+            { order_id: razorpay_order_id, payment_id: razorpay_payment_id },
+            razorpay_signature,
+            keySecret
+        );
+
+        if (isValid) {
+            res.json({ success: true, message: 'Payment verified successfully' });
+        } else {
+            // The payment is invalid
+            res.status(400).json({ success: false, message: 'Payment verification failed' });
+        }
+    } catch (error) {
+        console.error('Error verifying payment:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+}
+
+export { verifyPayment, createOrder, fetchAllOrders, fetchOrderById, createMultipleOrders, fetchOrderId, fetchPaymentById, normalCheckoutOrder }
