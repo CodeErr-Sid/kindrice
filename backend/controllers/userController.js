@@ -51,6 +51,47 @@ const validateEmail = (email) => {
     return emailRegex.test(email);
 };
 
+const getUserBillingInformation = async (req, res) => {
+    const userId = req.userId;
+    const addresses = [];
+
+    try {
+        // Find the user in MongoDB by Firebase UID
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Map through the user's addresses and format them
+        user.addresses.forEach(address => {
+            const formattedAddress = {
+                firstname: address.firstname,
+                addressLine1: address.addressLine1,
+                zipcode: address.zipcode,
+                city: address.city,
+                state: address.state,
+                country: address.country,
+                phonenumber: address.phonenumber,
+                email: address.email
+            };
+
+            // Optionally add lastname if it exists
+            if (address.lastname) {
+                formattedAddress.lastname = address.lastname;
+            }
+
+            addresses.push(formattedAddress);
+        });
+
+        // Return user data
+        res.status(200).json({ message: "User exists", addresses });
+
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred", error: error.message });
+    }
+};
+
+
 const createNewSubscriber = async (req, res) => {
     const { email } = req.body;
 
@@ -75,4 +116,4 @@ const createNewSubscriber = async (req, res) => {
 
 
 
-export { registerUser, loginUser, createNewSubscriber };
+export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation };

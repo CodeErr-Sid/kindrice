@@ -1,5 +1,23 @@
 import axios from "axios";
 
+const url = import.meta.env.VITE_BACKEND_URL;
+
+const axiosInstance = axios.create({
+    baseURL: url,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
+
+// Function to set the authorization token in the headers
+const setAuthToken = (token) => {
+    if (token) {
+        axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
+    } else {
+        delete axiosInstance.defaults.headers['Authorization'];
+    }
+};
+
 const registerUser = async (firebaseUID, email, name, url) => {
     try {
         // Send POST request to the server
@@ -32,6 +50,17 @@ const registerUser = async (firebaseUID, email, name, url) => {
     }
 };
 
+const getAddresses = async (idToken) => {
+    setAuthToken(idToken); // Set the token for the request
+    try {
+        const response = await axiosInstance.post('/api/user/addresses');
+        return response.data; // This will be the cart data
+    } catch (error) {
+        console.error('Error retrieving cart:', error.response?.data || error.message);
+        throw error; // Rethrow or handle the error as needed
+    }
+}
+
 const subscribeToEmail = async (email, url) => {
     try {
         const response = await fetch(url + '/api/user/subscribe', {
@@ -50,4 +79,4 @@ const subscribeToEmail = async (email, url) => {
     }
 }
 
-export { registerUser, subscribeToEmail }
+export { registerUser, subscribeToEmail, getAddresses }

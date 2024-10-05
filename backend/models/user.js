@@ -1,11 +1,15 @@
 import mongoose from 'mongoose';
 
 const addressSchema = new mongoose.Schema({
-  street: { type: String, required: true },
+  firstname: { type: String, required: true },
+  lastname: { type: String,},
+  addressLine1: { type: String, required: true },
+  zipcode: { type: String, required: true },
   city: { type: String, required: true },
   state: { type: String, required: true },
-  postalCode: { type: String, required: true },
   country: { type: String, required: true },
+  phonenumber: { type: String, required: true },
+  email: { type: String, required: true }
 }, { _id: false });
 
 const cartItemSchema = new mongoose.Schema({
@@ -19,7 +23,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   name: { type: String },
   profilePicture: { type: String },
-  address: addressSchema,
+  addresses: [addressSchema],
   phoneNumber: { type: String },
   cart: {
     items: [cartItemSchema]

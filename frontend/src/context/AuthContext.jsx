@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import { auth } from '../config/firebase';
 import { getCart } from '../api/cartapi';
 import axios from 'axios';
+import { getAddresses } from '../api/userapi';
 
 // Create the context
 export const AuthContext = createContext();
@@ -14,8 +15,9 @@ export const AuthContextProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     const [idToken, setIdToken] = useState("");
+    const [addresses, setAddresses] = useState([])
     const [cart, setCart] = useState([]);
-    
+
     // Function to register a user
 
     useEffect(() => {
@@ -35,22 +37,39 @@ export const AuthContextProvider = ({ children }) => {
     }, []);
 
     const getCartItems = async () => {
-        if(isLoggedIn){
+        if (isLoggedIn) {
             const data = await getCart(idToken);
             setCart(data.items);
-         }
-         else{
-             setCart([])
-         }
-     }
+        }
+        else {
+            setCart([])
+        }
+    }
+
+    const getBillingInformation = async () => {
+        try {
+            if (isLoggedIn) {
+                const response = await getAddresses(idToken);
+                setAddresses(response?.addresses)
+            } else {
+                setAddresses([])
+            }
+        } catch (error) {
+            console.error(error);
+            setAddresses([]);
+        }
+    }
 
     useEffect(() => {
         getCartItems();
-    },[idToken])
+        getBillingInformation();
+    }, [idToken])
+
+
 
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, url, idToken, cart, currency, getCartItems }}>
+        <AuthContext.Provider value={{ isLoggedIn, addresses, url, idToken, cart, currency, getCartItems }}>
             {children}
         </AuthContext.Provider>
     );
