@@ -10,16 +10,26 @@ import { useNavigate } from 'react-router-dom';
 import { addToCart, getProductById } from '../../api/cartapi';
 import Dropdown from '../Dropdown/Dropdown';
 import QuantitySelector from '../Dropdown/QuantitySelector';
+import { toast } from 'react-toastify';
+
 
 const Product = ({ productId }) => {
-
     const productData = {
         "ingredients": { "title": "Ingredients", "content": ["100% Natural low-GI rice"] },
         "keyFeatures": { "title": "Product details", "content": ["Paddy Variety: Indian-RNR", "Processing Method: Boiled", "Age: 6-12 months", "Cooking Time: 15-20 minutes", "Grain Size: Medium and short", "Best Cooking Methods: Open pan, cooker", "Location: India", "Recommended For: White rice, variety rice, thali, meals", "Taste Notes: Earthy", "Texture: Soft and tender", "Cooked Rice Color: White", "Processed at: R.K. Brothers Agro Foods Private Limited, 66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu 625001."] },
         "nutrition": { "title": "Nutritional Benefits", "description": "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.", "content": ["no chemicals", "no nasties", "no adulterant", "no added flavours", "no artificial sweeteners"], "facts": { "title": "Nutritional Facts", "Protein": "6.5", "Fat": "1.1", "Crude Fiber": "0.4", "Carbohydrate": "81.3", "Energy": "361.5", "Moisture": "10.5", "Total Ash": "0.56" } }
     };
 
+    const maxQuantityMap = {
+        1: 20,
+        5: 4,
+        10: 2,
+    };
+
+
     const prevProductIdRef = useRef();
+    const navigate = useNavigate();
+    const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
 
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
@@ -28,11 +38,9 @@ const Product = ({ productId }) => {
     const [price, setPrice] = useState(0);
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
+    const [maxQuantity, setMaxQuantity] = useState(maxQuantityMap[weight]);
 
-
-    const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
-    const navigate = useNavigate();
-
+    // Fetch product data when productId changes
     useEffect(() => {
         const fetchProduct = async () => {
             const productData = await getProductById(productId);
@@ -48,16 +56,19 @@ const Product = ({ productId }) => {
 
         if (prevProductIdRef.current !== productId) {
             fetchProduct();
-            prevProductIdRef.current = productId; // Update the ref to the current product ID
+            prevProductIdRef.current = productId;
         }
     }, [productId]);
 
+    // Update price when weight or quantity changes
     useEffect(() => {
         const selectedWeightData = product.weightPrice?.find(item => item.weight.value === weight);
         if (selectedWeightData) {
             setPrice(selectedWeightData.totalPrice * quantity);
         }
     }, [weight, quantity, product.weightPrice]);
+
+    // Weight limitations check
 
     const handleBuyNow = () => {
         if (isLoggedIn) {
@@ -66,12 +77,11 @@ const Product = ({ productId }) => {
                     items: [{ productId, weightCategory, quantity }],
                     price,
                     weight,
-                    singproduct: true,
+                    singleProduct: true,
                 }
             });
-
         } else {
-            navigate("/login");
+            navigate('/login');
         }
     };
 
@@ -80,23 +90,14 @@ const Product = ({ productId }) => {
             const data = await addToCart(productId, quantity, weight, idToken);
             await getCartItems();
         } else {
-            navigate("/login");
+            navigate('/login');
         }
     };
 
     const handleWeightChange = (selectedWeight) => {
         setWeight(selectedWeight);
-
-        // Find the corresponding weight category based on the selected weight
-        const selectedCategory = product.weightPrice.find(
-            (item) => item.weight.value === selectedWeight
-        );
-
-        if (selectedCategory) {
-            setWeightCategory(selectedCategory._id); // Set the corresponding weight category ID
-        } else {
-            console.error('Weight category not found for the selected weight.');
-        }
+        setMaxQuantity(maxQuantityMap[selectedWeight]); // Update max quantity based on selected weight
+        setQuantity(1); // Reset quantity to 1 when weight category changes
     };
 
     const handleQuantityChange = (selectedQuantity) => {
@@ -122,8 +123,13 @@ const Product = ({ productId }) => {
                                     key={index}
                                     src={image}
                                     alt={`Thumbnail ${index}`}
+                                    style={{
+                                        border: image == selectedImage ? '2px solid #0007f34' : 'none' // Change border width as needed
+                                    }}
                                     onClick={() => selectImage(image)}
                                 />
+
+
                             ))}
                         </div>
                         <div className="p-img">
@@ -153,10 +159,13 @@ const Product = ({ productId }) => {
                                     options={product.weightPrice?.map(item => item.weight.value)}
                                     selected={weight}
                                     onSelect={handleWeightChange}
+                                    title="Weight Category"
                                 />
                                 <QuantitySelector
-                                    quantity={quantity}
+                                    title="Quantity Selector"
+                                    initialQuantity={quantity}
                                     onQuantityChange={handleQuantityChange}
+                                    maxQuantity={maxQuantity}
                                 />
                                 <button
                                     className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"

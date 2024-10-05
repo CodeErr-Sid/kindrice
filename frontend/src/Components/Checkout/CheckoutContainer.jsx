@@ -1,9 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import {
-  CitySelect,
-  CountrySelect,
-  StateSelect,
-} from "react-country-state-city";
+import React, { useContext, useEffect, useState, useMemo } from 'react';
+import { CitySelect, CountrySelect, StateSelect } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -12,16 +8,15 @@ import PaymentButton from "../PaymentButton/PaymentButton";
 
 const CheckoutContainer = () => {
   const location = useLocation();
-  const { cart, user, addresses, currency, url } = useContext(AuthContext); // Get addresses from context
+  const { cart, user, addresses, currency, url } = useContext(AuthContext);
   const { items, weight, price } = location.state || {};
 
-
-  const [shippingPrice, setShippingPrice] = useState(0);
   const [grandTotal, setGrandTotal] = useState(price);
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [isFormVisible, setIsFormVisible] = useState(false);
   const [countryid, setCountryid] = useState(101);
   const [stateid, setstateid] = useState(0);
-  const [selectedAddress, setSelectedAddress] = useState(null); // State for selected address
-  const [isFormVisible, setIsFormVisible] = useState(false); // State to control form visibility
+  const [courier, setCourier] = useState({ shippingPrice: 0, courier_id: null }); // Single state for both courier details
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -37,34 +32,7 @@ const CheckoutContainer = () => {
     saveInfo: false,
   });
 
-
-  useEffect(() => {
-    const shippingPriceSetter = async () => {
-      if (formData.zip && formData.zip.length >= 6 && weight && price) {
-        let courier = await getShippingPrices(url, formData.zip, weight, price);
-
-        console.log(courier)
-        // Calculate the total shipping price, considering freight charge, coverage charges, and any other additional charges
-        const totalShippingPrice = courier.freight_charge;
-
-        // Set the total shipping price, or set it to 0 if no charges exist
-        setShippingPrice(totalShippingPrice || 0);
-      } else {
-        setShippingPrice(0);
-      }
-    };
-
-    // Call the function
-    shippingPriceSetter();
-
-  }, [formData.zip, weight, price, url]);
-
-  useEffect(() => {
-    setGrandTotal(price + shippingPrice);
-  }, [shippingPrice, price]);
-
-  console.log(shippingPrice)
-
+  // Handle form changes
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
     setFormData(prevData => ({
@@ -73,41 +41,71 @@ const CheckoutContainer = () => {
     }));
   };
 
+  // Handle selecting an address from user's saved addresses
   const handleAddressSelect = (address) => {
-    setSelectedAddress(address);
-    const formatedPhoneNumber = address.phonenumber.replace('+91', '').replace(/-/g, '').trim();
+    const formattedPhoneNumber = address.phonenumber.replace('+91', '').replace(/-/g, '').trim();
     setFormData({
-      ...formData,
       firstName: address.firstname,
       lastName: address.lastname,
       email: address.email,
       address: address.addressLine1,
-      phoneno: formatedPhoneNumber,
+      phoneno: formattedPhoneNumber,
       zip: address.zipcode,
       city: address.city,
       state: address.state,
       country: address.country,
     });
-    setIsFormVisible(false); // Hide form if using existing address
+    setIsFormVisible(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const billingDetails = {
-      billing_customer_name: formData.firstName,
-      billing_last_name: formData.lastName,
-      billing_address: formData.address,
-      billing_city: formData.city,
-      billing_pincode: formData.zip,
-      billing_state: formData.state,
-      billing_country: formData.country,
-      billing_email: formData.email,
-      billing_phone: formData.phoneno,
-    };
-    console.log(billingDetails);
-  };
+  // Memoized shipping price and courier ID calculation
+  const shippingPriceSetter = useMemo(() => async () => {
+    if (formData.zip.length >= 6 && weight && price) {
+      try {
+        const courierData = await getShippingPrices(url, formData.zip, weight, price);
+        const totalShippingPrice = courierData.freight_charge || 0 + courierData.coverage_charges || 0 + courierData.other_charges;
 
-  const isButtonEnabled = formData.zip && formData.zip.length >= 6 && items && grandTotal > 0 && shippingPrice > 0;
+        // Store both shipping price and courier ID in one state
+        setCourier({ shippingPrice: totalShippingPrice, courier_id: courierData.courier_company_id });
+      } catch (error) {
+        console.error('Failed to fetch shipping prices:', error);
+        setCourier({ shippingPrice: 0, courier_id: null });
+      }
+    } else {
+      setCourier({ shippingPrice: 0, courier_id: null });
+    }
+  }, [formData.zip, weight, price, url]);
+
+  // Combine shipping and grand total calculations
+  useEffect(() => {
+    shippingPriceSetter();
+    setGrandTotal(price + courier.shippingPrice);
+  }, [price, courier.shippingPrice, shippingPriceSetter]);
+
+  const orderData = [{
+    // billing details 
+    billing_customer_name: formData.firstName,
+    billing_last_name: formData.lastName,
+    billing_address: formData.address,
+    billing_city: formData.city,
+    billing_pincode: formData.zip,
+    billing_state: formData.state,
+    billing_country: formData.country,
+    billing_email: formData.email,
+    billing_phone: formData.phoneno,
+
+    // courier id && shipping price 
+    courier_id: courier.courier_id,  // Use courier ID here
+    // order Items 
+    order_items: items,  // Assuming 'items' is your order items list
+    // prices
+    shipping_price: courier.shippingPrice, // Use shipping price here
+    sub_total: price,
+    grand_total: grandTotal,
+  }];
+
+
+  const isButtonEnabled = formData.zip && formData.zip.length >= 6 && items && grandTotal > 0 && courier.shippingPrice > 0;
 
   return (
     <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg">
@@ -130,7 +128,7 @@ const CheckoutContainer = () => {
             <dl className="flex justify-between pt-4">
               <dt className="text-base font-bold text-gray-900 dark:text-white">Shipping + Delivery</dt>
               <dd className="text-base font-bold text-gray-900 dark:text-white">
-                {currency + shippingPrice}
+                {currency + courier.shippingPrice}
               </dd>
             </dl>
             <dl className="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
@@ -144,7 +142,7 @@ const CheckoutContainer = () => {
               name="Buy Now"
               amount={grandTotal}
               address={formData}
-              notes={items}
+              notes={orderData}
               disabled={!isButtonEnabled}
             />
             <div className="flex items-center justify-center gap-2">
@@ -219,7 +217,9 @@ const CheckoutContainer = () => {
 
 
           {(isFormVisible || !addresses.length) && (
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4"
+            // onSubmit={handleSubmit}
+            >
               <div className="flex flex-col md:flex-row md:space-x-4">
                 <div className="md:w-1/2 mb-4">
                   <label htmlFor="firstName" className="block text-sm font-medium mb-1">First name</label>
