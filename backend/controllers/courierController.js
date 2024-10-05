@@ -4,8 +4,6 @@ import { fetchOrderId } from "./orderController.js";
 const getShippingPrice = async (req, res) => {
     const { razorpay_order_id, addresses } = req.body;
 
-    
-
     try {
         // Fetch order details using the razorpay_order_id
         const order = await fetchOrderId(razorpay_order_id);
@@ -45,7 +43,7 @@ const getShippingPrice = async (req, res) => {
 
 
         // Send the response with address shipping information
-        
+
         res.send({ addresses: addressShippingInfo });
 
     } catch (error) {
@@ -53,4 +51,28 @@ const getShippingPrice = async (req, res) => {
     }
 };
 
-export { getShippingPrice };
+const getCourierService = async (req, res) => {
+    const { pincode, totalWeight, totalPrice } = req.body;
+
+    try {
+        // Assuming shippingPrice is a function that fetches shipping options
+        const shippingOptions = await shippingPrice(pincode, totalWeight, totalPrice);
+
+        // If no shipping options found
+        if (!shippingOptions) {
+            return res.status(404).json({ message: 'No shipping options available for the given details.' });
+        }
+
+        // Success response with shipping options
+        return res.status(200).json({
+            message: 'Shipping options retrieved successfully.',
+            data: shippingOptions
+        });
+    } catch (error) {
+        // Catch any errors and send an internal server error response
+        return res.status(500).json({ message: 'An error occurred while retrieving shipping options.', error: error.message });
+    }
+};
+
+
+export { getShippingPrice, getCourierService };

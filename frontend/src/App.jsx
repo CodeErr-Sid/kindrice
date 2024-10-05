@@ -23,8 +23,7 @@ import Preloader from './Components/Preloader/Preloader';
 import KindLoader from './Components/KindLoader/KindLoader';
 import TermsAndConditions from './pages/Terms-and-Conditions/TermsAndConditions';
 import MagicCheckout from './pages/MagicCheckout/MagicCheckout';
-
-
+import CookieConsentBanner from './Components/CookieConsentBanner/CookieConsentBanner';
 
 function App() {
   const location = useLocation();
@@ -34,6 +33,7 @@ function App() {
 
       <ScrollToTop />
       <KindLoader />
+      <CookieConsentBanner />
       {/* <Preloader/> */}
       <Routes>
         <Route path="/checkout" element={<Checkout />} />

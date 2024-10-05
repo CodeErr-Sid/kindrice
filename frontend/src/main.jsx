@@ -12,8 +12,8 @@ createRoot(document.getElementById('root')).render(
     <AuthContextProvider>
       <Router>
         <App />
+        <ToastContainer />
       </Router>
-      <ToastContainer />
     </AuthContextProvider>
   </StrictMode>,
 )
