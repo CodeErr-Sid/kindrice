@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,8 @@ const Product = ({ productId }) => {
         "keyFeatures": { "title": "Product details", "content": ["Paddy Variety: Indian-RNR", "Processing Method: Boiled", "Age: 6-12 months", "Cooking Time: 15-20 minutes", "Grain Size: Medium and short", "Best Cooking Methods: Open pan, cooker", "Location: India", "Recommended For: White rice, variety rice, thali, meals", "Taste Notes: Earthy", "Texture: Soft and tender", "Cooked Rice Color: White", "Processed at: R.K. Brothers Agro Foods Private Limited, 66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu 625001."] },
         "nutrition": { "title": "Nutritional Benefits", "description": "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.", "content": ["no chemicals", "no nasties", "no adulterant", "no added flavours", "no artificial sweeteners"], "facts": { "title": "Nutritional Facts", "Protein": "6.5", "Fat": "1.1", "Crude Fiber": "0.4", "Carbohydrate": "81.3", "Energy": "361.5", "Moisture": "10.5", "Total Ash": "0.56" } }
     };
+
+    const prevProductIdRef = useRef();
 
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
@@ -44,7 +46,10 @@ const Product = ({ productId }) => {
             }
         };
 
-        fetchProduct();
+        if (prevProductIdRef.current !== productId) {
+            fetchProduct();
+            prevProductIdRef.current = productId; // Update the ref to the current product ID
+        }
     }, [productId]);
 
     useEffect(() => {
@@ -61,7 +66,7 @@ const Product = ({ productId }) => {
                     items: [{ productId, weightCategory, quantity }],
                     price,
                     weight,
-                    singproduct:true,
+                    singproduct: true,
                 }
             });
 
