@@ -1,26 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { removeFromCart } from '../../api/cartapi';
+import { removeFromCart, updateCart } from '../../api/cartapi';
 import { toast } from 'react-toastify';
 
 const CartContainer = () => {
   const navigate = useNavigate();
   const { cart, currency, isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
 
-  // Initialize quantities state based on cart items
   const [quantities, setQuantities] = useState([]);
+  const [totalCartWeight, setTotalCartWeight] = useState(0); // State to keep track of total weight
+  const [totalCartPrice, setTotalCartPrice] = useState(0);
 
   useEffect(() => {
-    // Update quantities when cart changes
     if (cart) {
       setQuantities(cart.map(item => item.quantity || 1));
     }
   }, [cart]);
 
-  const [totalCartPrice, setTotalCartPrice] = useState(0);
-
-  // Function to get the price by weight
   const getPriceByWeight = (product, selectedWeight) => {
     const selectedWeightPrice = product.weightPrice.find(
       (wp) => wp.weight.value === parseFloat(selectedWeight)
@@ -28,9 +25,9 @@ const CartContainer = () => {
 
     if (!selectedWeightPrice) {
       console.error("Weight not found for selected weight:", selectedWeight);
-      return 0; // Return 0 if no matching weight found
+      return 0;
     }
-    return selectedWeightPrice.totalPrice; // Return the totalPrice for the selected weight
+    return selectedWeightPrice.totalPrice;
   };
 
   const handleRemoveFromCart = async (product, weight) => {
@@ -43,31 +40,38 @@ const CartContainer = () => {
     }
   }
 
-  // Calculate total price for each item based on quantity and weight
-  const calculateTotalPrice = (product, selectedWeight, quantity) => {
+  // Calculate total price and weight for each item based on quantity and weight
+  const calculateTotalPriceAndWeight = (product, selectedWeight, quantity) => {
     const price = getPriceByWeight(product, selectedWeight);
-    return price * quantity;
+    const weight = parseFloat(selectedWeight) * quantity; // Calculate weight based on selected weight and quantity
+    return { price: price * quantity, weight };
   };
 
-  // Calculate and update the total cart price whenever quantities or cart items change
   useEffect(() => {
-    const total = cart?.reduce((total, item, index) => {
-      return total + calculateTotalPrice(item.productId, item.weight, quantities[index] || 0);
-    }, 0);
+    const { total, weight } = cart && cart.length > 0 ? cart.reduce((acc, item, index) => {
+      const { price, weight } = calculateTotalPriceAndWeight(item.productId, item.weight, quantities[index] || 0);
+      return {
+        total: acc.total + price,
+        weight: acc.weight + weight,
+      };
+    }, { total: 0, weight: 0 }) : { total: 0, weight: 0 };
 
-    setTotalCartPrice(total); // Update the total cart price
+    setTotalCartPrice(total);
+    setTotalCartWeight(weight); // Update the total cart weight
   }, [cart, quantities]);
 
-  // Handle increment function
   const handleIncrement = (index) => {
-    setQuantities(prevQuantities => {
-      const updatedQuantities = [...prevQuantities];
-      updatedQuantities[index] = (updatedQuantities[index] || 0) + 1; // Increment quantity
-      return updatedQuantities;
-    });
+    if (totalCartWeight + parseFloat(cart[index].weight) <= 20) { // Check if adding this item exceeds 20kg
+      setQuantities(prevQuantities => {
+        const updatedQuantities = [...prevQuantities];
+        updatedQuantities[index] = (updatedQuantities[index] || 0) + 1; // Increment quantity
+        return updatedQuantities;
+      });
+    } else {
+      toast.warn("Total weight exceeds 20 kg. Please reduce the quantity.");
+    }
   };
 
-  // Handle decrement function
   const handleDecrement = (index) => {
     setQuantities(prevQuantities => {
       const updatedQuantities = [...prevQuantities];
@@ -78,10 +82,9 @@ const CartContainer = () => {
     });
   };
 
-  // Handle quantity change
   const handleQuantityChange = (index, event) => {
     const value = Number(event.target.value);
-    if (!isNaN(value) && value >= 0) { // Ensure value is a non-negative number
+    if (!isNaN(value) && value >= 0) {
       setQuantities(prevQuantities => {
         const updatedQuantities = [...prevQuantities];
         updatedQuantities[index] = value;
@@ -90,11 +93,54 @@ const CartContainer = () => {
     }
   };
 
+  const handleCheckout = async () => {
+    if (totalCartWeight <= 20) {
+
+      const cartItems = cart.map((item, index) => ({
+        productId: item.productId._id,
+        weight: item.weight,
+        quantity: quantities[index],
+      }));
+
+      console.log(cartItems)
+      try {
+
+        const success = await updateCart(cartItems, idToken)
+
+        if (success) {
+          await getCartItems(idToken);
+        }
+
+        const items = cart.map((item, index) => ({
+          productId: item.productId._id,
+          weightCategory: item.weight,
+          quantity: quantities[index],
+        }));
+
+        navigate('/checkout', {
+          state: {
+            items,
+            price: totalCartPrice,
+            weight: totalCartWeight,
+            singleProduct: false
+          }
+        });
+      } catch (error) {
+        toast.error(error)
+      }
+
+
+    } else {
+      toast.warn("Total weight exceeds 20 kg. Reduce Quantity or Remove a product.");
+    }
+  };
+
+
   return (
     <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
-          Shopping Cart
+          Shopping Cart : MAXIMUM ORDER CAPACITY : 20Kg
         </h2>
         <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
@@ -128,7 +174,7 @@ const CartContainer = () => {
                         <input
                           type="text"
                           className="w-10 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none dark:text-white"
-                          value={quantities[index] || 0} // Ensure the value is not undefined
+                          value={quantities[index] || 0}
                           onChange={(event) => handleQuantityChange(index, event)}
                         />
                         <button
@@ -143,7 +189,7 @@ const CartContainer = () => {
                       </div>
                       <div className="text-end md:w-32">
                         <p className="text-base font-bold text-gray-900 dark:text-white">
-                          {currency + calculateTotalPrice(item.productId, item.weight, quantities[index] || 0)} {/* Ensure quantity is not undefined */}
+                          {currency + calculateTotalPriceAndWeight(item.productId, item.weight, quantities[index] || 0).price}
                         </p>
                       </div>
                     </div>
@@ -170,7 +216,7 @@ const CartContainer = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
-                            d="M6 18 17.94 6M18 18 6.06 6"
+                            d="M6 18 17 6M6 6l11 12"
                           />
                         </svg>
                         Remove
@@ -185,33 +231,17 @@ const CartContainer = () => {
           <div className="mt-6 lg:mt-0 lg:w-full">
             <div className="border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
               <p className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700">Order summary</p>
-              <dl className="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-                <dt className="text-base font-bold text-gray-900 dark:text-white">Actual Price</dt>
-                <dd className="text-base font-bold text-gray-900 dark:text-white">
-                  {currency + totalCartPrice}
-                </dd>
-              </dl>
-              <dl className="flex justify-between pt-4">
-                <dt className="text-base font-bold text-gray-900 dark:text-white">Tax (included)</dt>
-                <dd className="text-base font-bold text-gray-900 dark:text-white">
-                  5%
-                </dd>
-              </dl>
-              <dl className="flex justify-between pt-4">
-                <dt className="text-base font-bold text-gray-900 dark:text-white">Discount</dt>
-                <dd className="text-base font-bold text-gray-900 dark:text-white">
-                  0%
-                </dd>
-              </dl>
-              <dl className="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-                <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                <dd className="text-base font-bold text-gray-900 dark:text-white">
-                  {currency + totalCartPrice}
-                </dd>
-              </dl>
+              <div className="flex items-center justify-between py-4">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-400">Total Weight:</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{totalCartWeight.toFixed(2)} kg</p>
+              </div>
+              <div className="flex items-center justify-between py-4">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-400">Total Price:</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{currency + totalCartPrice}</p>
+              </div>
               <button
                 className="mt-4 w-full rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none dark:bg-primary-600 dark:hover:bg-primary-700"
-                onClick={() => navigate('/checkout')}
+                onClick={handleCheckout} // Use handleCheckout function here
               >
                 Proceed to Checkout
               </button>
@@ -222,28 +252,14 @@ const CartContainer = () => {
                   className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"
                 >
                   Continue Shopping
-                  <svg
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 12H5m14 0-4 4m4-4-4-4"
-                    />
-                  </svg>
+                  {/* SVG Icon */}
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

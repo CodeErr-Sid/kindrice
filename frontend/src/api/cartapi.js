@@ -39,6 +39,20 @@ const addToCart = async (productId, quantity, weight, token) => {
     }
 };
 
+const updateCart = async (items, token) => {
+    setAuthToken(token);
+    try {
+        const response = await axiosInstance.put('/api/cart/update', {
+            items
+        });
+
+        return response.success;
+    } catch (error) {
+        console.error('Error adding to cart:', error.response?.data || error.message);
+        throw error; // Rethrow or handle the error as needed
+    }
+}
+
 // Get user's cart
 const getCart = async (token) => {
     setAuthToken(token); // Set the token for the request
@@ -82,7 +96,7 @@ const getProductById = async (id) => {
     }
 };
 
-export { addToCart, getCart, removeFromCart, getProductById };
+export { addToCart, getCart, removeFromCart, getProductById, updateCart };
 
 
 
