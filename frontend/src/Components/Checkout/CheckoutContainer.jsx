@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { getShippingPrices } from '../../api/shiprocket';
 import PaymentButton from "../PaymentButton/PaymentButton";
+import axios from 'axios';
 
 const CheckoutContainer = () => {
   const location = useLocation();
@@ -14,8 +15,7 @@ const CheckoutContainer = () => {
   const [grandTotal, setGrandTotal] = useState(price);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [countryid, setCountryid] = useState(101);
-  const [stateid, setstateid] = useState(0);
+  const [cities, setCities] = useState([]); // For multiple city options
   const [courier, setCourier] = useState({ shippingPrice: 0, courier_id: null }); // Single state for both courier details
 
   const [formData, setFormData] = useState({
@@ -25,8 +25,8 @@ const CheckoutContainer = () => {
     address: '',
     phoneno: '',
     country: 'India',
-    city: 'Choose..',
-    state: 'Choose...',
+    city: '',
+    state: '',
     zip: '',
     sameAddress: false,
     saveInfo: false,
@@ -81,6 +81,56 @@ const CheckoutContainer = () => {
     shippingPriceSetter();
     setGrandTotal(price + courier.shippingPrice);
   }, [price, courier.shippingPrice, shippingPriceSetter]);
+
+  useEffect(() => {
+
+    const fetchLocation = async (pin) => {
+      try {
+        const response = await axios.get(`https://api.postalpincode.in/pincode/${pin}`);
+
+        if (response && response.data && response.data[0].Status === 'Success') {
+          const postOffices = response.data[0].PostOffice;
+
+          if (postOffices.length > 0) {
+            // Set state and country
+            setFormData((prev) => ({
+              ...prev,
+              state: postOffices[0].State,
+              country: 'India', // Assuming country is India
+            }));
+
+            if (postOffices.length > 1) {
+              // Multiple cities, set cities list and default city
+              setCities(postOffices.map((po) => po.Name));
+              setFormData((prev) => ({
+                ...prev,
+                city: postOffices[0].Name, // Set default city
+              }));
+            } else {
+              // Single city
+              setCities([]);
+              setFormData((prev) => ({
+                ...prev,
+                city: postOffices[0].Name,
+              }));
+            }
+          }
+        } else {
+          setFormData((prev) => ({ ...prev, city: '', state: '' }));
+          setCities([]);
+        }
+      } catch (err) {
+        console.error(err);  // Log the error for debugging
+        setFormData((prev) => ({ ...prev, city: '', state: '' }));
+        setCities([]);
+      }
+    };
+
+    if (formData.zip) {
+      fetchLocation(formData.zip);
+    }
+  }, [formData.zip]);
+
 
   const orderData = [{
     // billing details 
@@ -296,42 +346,68 @@ const CheckoutContainer = () => {
                 </div>
               </div>
               <div className="flex flex-col md:flex-row md:space-x-4">
+                {/* Country Input */}
                 <div className="md:w-1/3 mb-4">
-                  <label htmlFor="country" className="block text-sm font-medium mb-1">Country</label>
-                  <CountrySelect
-                    onChange={(e) => {
-                      setCountryid(e.id);
-                      setFormData(prev => ({ ...prev, country: e.name }));
-                    }}
-                    defaultValue={{
-                      emoji: "🇮🇳",
-                      name: formData.country
-                    }}
+                  <label htmlFor="country" className="block text-sm font-medium mb-1">
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    id="country"
+                    className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
                     value={formData.country}
-                    placeHolder="Select Country"
-                    className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
+                    onChange={handleChange}
+                    placeholder="Enter Country"
+                    required
                   />
                 </div>
+
+                {/* State Input */}
                 <div className="md:w-1/3 mb-4">
-                  <label htmlFor="state" className="block text-sm font-medium mb-1">State</label>
-                  <StateSelect
-                    countryid={countryid}
-                    onChange={(e) => {
-                      setstateid(e.id);
-                      setFormData(prev => ({ ...prev, state: e.name }));
-                    }}
-                    placeHolder="Select State"
-                    className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
+                  <label htmlFor="state" className="block text-sm font-medium mb-1">
+                    State
+                  </label>
+                  <input
+                    type="text"
+                    id="state"
+                    className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
+                    value={formData.state}
+                    onChange={handleChange}
+                    placeholder="Enter State"
+                    required
                   />
                 </div>
+
+                {/* City Input or Dropdown */}
                 <div className="md:w-1/3 mb-4">
-                  <label htmlFor="city" className="block text-sm font-medium mb-1">City</label>
-                  <CitySelect
-                    stateid={stateid}
-                    onChange={(e) => setFormData(prev => ({ ...prev, city: e.name }))}
-                    placeHolder="Select City"
-                    className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
-                  />
+                  <label htmlFor="city" className="block text-sm font-medium mb-1">
+                    City
+                  </label>
+                  {cities.length > 1 ? (
+                    <select
+                      id="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      className="form-select w-full border rounded-md px-3 py-2 border-gray-300"
+                      required
+                    >
+                      {cities.map((cityName, index) => (
+                        <option key={index} value={cityName}>
+                          {cityName}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      type="text"
+                      id="city"
+                      className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
+                      value={formData.city}
+                      onChange={handleChange}
+                      placeholder="Enter City"
+                      required
+                    />
+                  )}
                 </div>
               </div>
               <button
