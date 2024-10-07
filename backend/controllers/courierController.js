@@ -52,11 +52,11 @@ const getShippingPrice = async (req, res) => {
 };
 
 const getCourierService = async (req, res) => {
-    const { pincode, totalWeight, totalPrice } = req.body;
+    const { pincode, totalWeight, totalPrice, length, breadth, height } = req.body;
 
     try {
         // Assuming shippingPrice is a function that fetches shipping options
-        const shippingOptions = await shippingPrice(pincode, totalWeight, totalPrice);
+        const shippingOptions = await shippingPrice(pincode, totalWeight, totalPrice, length, breadth, height);
 
         // If no shipping options found
         if (!shippingOptions) {
