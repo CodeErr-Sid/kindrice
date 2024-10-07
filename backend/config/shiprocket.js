@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 // Base URL for Shiprocket API
 const BASE_URL = process.env.SHIPROCKET_BASE_URL;
