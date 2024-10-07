@@ -74,10 +74,11 @@ export default function Navbar() {
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <FaBars />
         </div>
-
-        <div className='navbar-logo'>
-          <img src={assets.kindl} alt='brand-logo' />
-        </div>
+        <Link to='/'>
+          <div className='navbar-logo'>
+            <img src={assets.kindl} alt='brand-logo' />
+          </div>
+        </Link>
 
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
@@ -132,10 +133,11 @@ export default function Navbar() {
         <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <FaBars />
         </div>
-
-        <div className='navbar-logo'>
-          <img src={assets.kindl} alt='brand-logo' />
-        </div>
+        <Link to="/">
+          <div className='navbar-logo'>
+            <img src={assets.kindl} alt='brand-logo' />
+          </div>
+        </Link>
 
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
