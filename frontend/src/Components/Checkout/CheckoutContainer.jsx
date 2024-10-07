@@ -7,7 +7,6 @@ import { getShippingPrices } from '../../api/shiprocket';
 import PaymentButton from "../PaymentButton/PaymentButton";
 import axios from 'axios';
 import packageSelector from '../../api/packageSelector';
-import { shippingPrice } from '../../../../backend/config/shiprocket';
 
 const CheckoutContainer = () => {
   const location = useLocation();
