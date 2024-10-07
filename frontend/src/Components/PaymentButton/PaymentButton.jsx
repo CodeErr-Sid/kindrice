@@ -4,7 +4,6 @@ import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
 
-
 const PaymentButton = ({ name, className, amount, notes, disabled, address }) => {
 
     const { url, idToken, getCart, isLoggedIn } = useContext(AuthContext)
