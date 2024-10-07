@@ -2,6 +2,7 @@ import Razorpay from 'razorpay';
 import Product from '../models/product.js';
 import dotenv from 'dotenv';
 import { validatePaymentVerification } from 'razorpay/dist/utils/razorpay-utils.js';
+import { generateOrderID, formatOrderDate } from '../utils/shiprocketOrderUtils.js';
 
 dotenv.config();
 
@@ -171,15 +172,15 @@ const fetchOrderById = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error })
     }
 }
-const fetchPaymentById = async (req, res) => {
+
+const fetchPaymentById = async (paymentId) => {
     try {
-        const { paymentId } = req.body;
-
         const response = await instance.payments.fetch(paymentId)
-
-        res.json(response)
+        if (response) {
+            return { success: true, data: response }
+        }
     } catch (error) {
-        res.status(500).json({ message: "Internal Server Error", error })
+        return ({ message: "Internal Server Error", error })
     }
 }
 
@@ -202,7 +203,7 @@ const fetchOrderId = async (orderId) => {
 
         return response;
     } catch (error) {
-        res.status(500).json({ message: "Internal Server Error", error })
+        return new Error({ message: "Internal Server Error", error })
     }
 }
 
@@ -227,7 +228,7 @@ const normalCheckoutOrder = async (req, res) => {
     }
 }
 
-const verifyPayment = (req, res) => {
+const verifyPayment = async (req, res) => {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
     try {
@@ -241,11 +242,30 @@ const verifyPayment = (req, res) => {
         if (isValid) {
             res.json({ success: true, message: 'Payment verified successfully' });
 
+            const paymentObject = await fetchPaymentById(razorpay_payment_id);
 
-            
+            if (paymentObject.success) {
+                const notes = paymentObject.data.notes[0];
+                const courier_company_id = notes.courier_id;
 
 
+                const orderData = {
+                    order_id: generateOrderID(), // generateOrderID 
+                    order_date: formatOrderDate(), //formatOrderDate
+                    pickup_location: "warehouse",
+                    channel_id: "5475071",
+                    comment: "Kind Low Gi Rice",
+                    payment_method: "Prepaid",
+                    ...notes.orderData
+                }
 
+                console.log(orderData);
+
+                // create order get shipment id 
+
+                // generate awb and get awb no here 
+                // set the pickup date tommorrow 
+            }
 
         } else {
             // The payment is invalid

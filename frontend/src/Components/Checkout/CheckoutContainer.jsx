@@ -6,11 +6,17 @@ import { AuthContext } from '../../context/AuthContext';
 import { getShippingPrices } from '../../api/shiprocket';
 import PaymentButton from "../PaymentButton/PaymentButton";
 import axios from 'axios';
+import packageSelector from '../../api/packageSelector';
+import { shippingPrice } from '../../../../backend/config/shiprocket';
 
 const CheckoutContainer = () => {
   const location = useLocation();
-  const { cart, user, addresses, currency, url } = useContext(AuthContext);
+  const { addresses, currency, url } = useContext(AuthContext);
   const { items, weight, price } = location.state || {};
+
+  const { length, breadth, height } = packageSelector(weight);
+
+
 
   const [grandTotal, setGrandTotal] = useState(price);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -62,7 +68,7 @@ const CheckoutContainer = () => {
   const shippingPriceSetter = useMemo(() => async () => {
     if (formData.zip.length >= 6 && weight && price) {
       try {
-        const courierData = await getShippingPrices(url, formData.zip, weight, price);
+        const courierData = await getShippingPrices(url, formData.zip, weight, price, length, breadth, height);
         const totalShippingPrice = courierData.freight_charge || 0 + courierData.coverage_charges || 0 + courierData.other_charges;
 
         // Store both shipping price and courier ID in one state
@@ -132,27 +138,28 @@ const CheckoutContainer = () => {
   }, [formData.zip]);
 
 
-  const orderData = [{
-    // billing details 
-    billing_customer_name: formData.firstName,
-    billing_last_name: formData.lastName,
-    billing_address: formData.address,
-    billing_city: formData.city,
-    billing_pincode: formData.zip,
-    billing_state: formData.state,
-    billing_country: formData.country,
-    billing_email: formData.email,
-    billing_phone: formData.phoneno,
-
-    // courier id && shipping price 
-    courier_id: courier.courier_id,  // Use courier ID here
-    // order Items 
-    order_items: items,  // Assuming 'items' is your order items list
-    // prices
-    shipping_price: courier.shippingPrice, // Use shipping price here
-    sub_total: price,
-    grand_total: grandTotal,
+  const notesData = [{
+    courier_id: courier.courier_id,
+    orderData: {
+      billing_customer_name: formData.firstName,
+      billing_last_name: formData.lastName,
+      billing_address: formData.address,
+      billing_city: formData.city,
+      billing_pincode: formData.zip,
+      billing_state: formData.state,
+      billing_country: formData.country,
+      billing_email: formData.email,
+      billing_phone: formData.phoneno,
+      shipping_is_billing: true,
+      order_items: items,  // Assuming 'items' is your order items list
+      sub_total: price,
+      length,
+      breadth,
+      height,
+      weight
+    }
   }];
+
 
 
   const isButtonEnabled = formData.zip && formData.zip.length >= 6 && items && grandTotal > 0 && courier.shippingPrice > 0;
@@ -192,7 +199,7 @@ const CheckoutContainer = () => {
               name="Buy Now"
               amount={grandTotal}
               address={formData}
-              notes={orderData}
+              notes={notesData}
               disabled={!isButtonEnabled}
             />
             <div className="flex items-center justify-center gap-2">

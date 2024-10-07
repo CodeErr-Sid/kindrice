@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 const Product = ({ productId }) => {
     const productData = {
         "ingredients": { "title": "Ingredients", "content": ["100% Natural low-GI rice"] },
-        "keyFeatures": { "title": "Product details", "content": ["Paddy Variety: Indian-RNR", "Processing Method: Boiled", "Age: 6-12 months", "Cooking Time: 15-20 minutes", "Grain Size: Medium and short", "Best Cooking Methods: Open pan, cooker", "Location: India", "Recommended For: White rice, variety rice, thali, meals", "Taste Notes: Earthy", "Texture: Soft and tender", "Cooked Rice Color: White", "Processed at: R.K. Brothers Agro Foods Private Limited, 66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu 625001."] },
+        "keyFeatures": { "title": "Product details", "content": ["Paddy Variety: Indian-RNR", "Processing Method: Boiled", "Age: 6-12 months", "Cooking Time: 15-20 minutes", "Grain Size: Medium and short", "Best Cooking Methods: Open pan, cooker", "Location: India", "Recommended For: White rice, variety rice, thali, meals", "Taste Notes: Earthy", "Texture: Soft and tender", "Cooked Rice Color: White"] },
         "nutrition": { "title": "Nutritional Benefits", "description": "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.", "content": ["no chemicals", "no nasties", "no adulterant", "no added flavours", "no artificial sweeteners"], "facts": { "title": "Nutritional Facts", "Protein": "6.5", "Fat": "1.1", "Crude Fiber": "0.4", "Carbohydrate": "81.3", "Energy": "361.5", "Moisture": "10.5", "Total Ash": "0.56" } }
     };
 
@@ -34,7 +34,7 @@ const Product = ({ productId }) => {
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
-    const [weightCategory, setWeightCategory] = useState("");
+    const [weightCategory, setWeightCategory] = useState({});
     const [price, setPrice] = useState(0);
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
@@ -48,7 +48,7 @@ const Product = ({ productId }) => {
                 setProduct(productData.data);
                 setSelectedImage(productData.data.images[0] || assets.rice1);
                 setWeight(productData.data.weightPrice[0].weight.value);
-                setWeightCategory(productData.data.weightPrice[0]._id);
+                setWeightCategory(productData.data.weightPrice[0]);
             } else {
                 setProduct({});
             }
@@ -74,7 +74,16 @@ const Product = ({ productId }) => {
         if (isLoggedIn) {
             navigate("/checkout", {
                 state: {
-                    items: [{ productId, weightCategory, quantity }],
+                    items: [{
+                        "name": `${product.productName} - ${weight}kg`, // Product name using productName and weight
+                        "sku": weightCategory?.sku, // SKU from the selected weight category
+                        "units": quantity, // Quantity from quantities array
+                        "selling_price": weightCategory?.totalPrice, // Selling price using total price from weight category
+                        "discount": "", // Keep as empty string
+                        "tax": product.taxPercentage.toString(), // Tax percentage from productId
+                        "hsn": Number(product.hsnCode) // HSN code from productId
+
+                    }],
                     price,
                     weight,
                     singleProduct: true,

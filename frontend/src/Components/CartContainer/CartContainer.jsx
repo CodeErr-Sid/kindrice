@@ -18,6 +18,7 @@ const CartContainer = () => {
     }
   }, [cart]);
 
+
   const getPriceByWeight = (product, selectedWeight) => {
     const selectedWeightPrice = product.weightPrice.find(
       (wp) => wp.weight.value === parseFloat(selectedWeight)
@@ -95,14 +96,11 @@ const CartContainer = () => {
 
   const handleCheckout = async () => {
     if (totalCartWeight <= 20) {
-
       const cartItems = cart.map((item, index) => ({
         productId: item.productId._id,
         weight: item.weight,
         quantity: quantities[index],
       }));
-
-      console.log(cartItems)
       try {
 
         const success = await updateCart(cartItems, idToken)
@@ -111,11 +109,22 @@ const CartContainer = () => {
           await getCartItems(idToken);
         }
 
-        const items = cart.map((item, index) => ({
-          productId: item.productId._id,
-          weightCategory: item.weight,
-          quantity: quantities[index],
-        }));
+        const items = cart.map((item, index) => {
+          const selectedWeight = parseInt(item.weight, 10);
+
+          const weightCategory = item.productId.weightPrice.find((wp) => wp.weight.value === selectedWeight);
+
+          return {
+            "name": `${item.productId.productName} - ${selectedWeight}kg`, // Product name using productName and weight
+            "sku": weightCategory?.sku, // SKU from the selected weight category
+            "units": quantities[index], // Quantity from quantities array
+            "selling_price": weightCategory?.totalPrice, // Selling price using total price from weight category
+            "discount": "", // Keep as empty string
+            "tax": item.productId.taxPercentage.toString(), // Tax percentage from productId
+            "hsn": Number(item.productId.hsnCode) // HSN code from productIdz
+          };
+        });
+
 
         navigate('/checkout', {
           state: {

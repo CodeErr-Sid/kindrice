@@ -3,12 +3,13 @@ import { normaCheckoutOrder, handler } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
 import { clearCart } from '../../../../backend/controllers/cartController';
+import { useNavigate } from 'react-router-dom';
 
 
 const PaymentButton = ({ name, className, amount, notes, disabled, address }) => {
 
-    const { url, idToken, getCart } = useContext(AuthContext)
-
+    const { url, idToken, getCart, isLoggedIn } = useContext(AuthContext)
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const loadRazorpay = () => {
@@ -18,16 +19,23 @@ const PaymentButton = ({ name, className, amount, notes, disabled, address }) =>
         document.body.appendChild(script);
     };
 
+    console.log(notes);
+
     const fetchOrderId = async () => {
-        try {
-            setLoading(true);
-            const data = await normaCheckoutOrder(url, amount, notes);
-            const orderId = await data.id;
-            displayRazorpay(orderId);
-        } catch (error) {
-            console.error('Error fetching order ID:', error);
-        } finally {
-            setLoading(false);
+        if (isLoggedIn) {
+            try {
+                setLoading(true);
+
+                const data = await normaCheckoutOrder(url, amount, notes);
+                const orderId = await data.id;
+                displayRazorpay(orderId);
+            } catch (error) {
+                console.error('Error fetching order ID:', error);
+            } finally {
+                setLoading(false);
+            }
+        } else {
+            navigate('/login')
         }
     };
 

@@ -64,14 +64,7 @@ const createShipRocketOrder = async (orderData) => {
 };
 
 
-
-// sample order creation
-
-// createOrder(orderData)
-
-// courier servicablity
-
-const shippingPrice = async (pincode, weight, price) => {
+const shippingPrice = async (pincode, weight, price, length, breadth, height) => {
   try {
     // Ensure that the user is authenticated
     if (!shiprocketToken) {
@@ -86,7 +79,10 @@ const shippingPrice = async (pincode, weight, price) => {
       pickup_postcode: pickupPostCode,  // Your pickup postcode from .env
       delivery_postcode: pincode,                    // Delivery postcode
       cod: 0,                      // Cash on Delivery (0 for no COD)
-      weight: weight,                                // Weight of the package
+      weight: weight,
+      length,
+      breadth,
+      height,                          // Weight of the package
       declared_value: price                          // Declared value of the package
     };
 

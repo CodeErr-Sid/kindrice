@@ -24,8 +24,6 @@ orderRouter.post("/courierservice", getCourierService);
 
 // payment 
 
-orderRouter.post("/payment/list", fetchPaymentById)
-
 orderRouter.post("/payment/verify", verifyPayment);
 
 export default orderRouter;
