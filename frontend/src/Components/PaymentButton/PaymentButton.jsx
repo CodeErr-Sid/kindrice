@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { normaCheckoutOrder, handler } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
-import { clearCart } from '../../../../backend/controllers/cartController';
 import { useNavigate } from 'react-router-dom';
 
 
