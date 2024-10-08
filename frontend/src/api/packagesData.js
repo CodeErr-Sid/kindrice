@@ -163,6 +163,39 @@ const packageData = {
             },
             {
                 "weights": [
+                    10,
+                    1
+                ],
+                "quantity": [
+                    1,
+                    1
+                ],
+                "totalWeight": 12
+            },
+            {
+                "weights": [
+                    10,
+                    1
+                ],
+                "quantity": [
+                    1,
+                    2
+                ],
+                "totalWeight": 13
+            },
+            {
+                "weights": [
+                    10,
+                    1
+                ],
+                "quantity": [
+                    1,
+                    3
+                ],
+                "totalWeight": 14
+            },
+            {
+                "weights": [
                     10
                 ],
                 "quantity": [
