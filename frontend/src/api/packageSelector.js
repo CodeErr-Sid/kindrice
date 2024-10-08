@@ -1,22 +1,32 @@
-// Mapping of weight categories to package dimensions
-const packages = {
-    1: { length: 10, breadth: 9.25, height: 1.75 },
-    5: { length: 14.25, breadth: 13.5, height: 3.5 },
-    10: { length: 16, breadth: 15, height: 5.5 },
-    20: { length: 41, breadth: 29, height: 27 }
-};
+import packageData from "./packagesData.js";
 
-// Function to select package dimensions based on weight
-const packageSelector = (weight) => {
-    // Find the largest package key that is greater than or equal to the weight
-    const applicableKey = Object.keys(packages)
-        .map(Number) // Convert keys to numbers
-        .filter(key => weight <= key) // Filter keys based on weight
-        .sort((a, b) => a - b) // Sort in ascending order
-        .shift(); // Get the first (smallest) key
+function findPackageForOrder(orderItems) {
+    for (const [packageKey, packageInfo] of Object.entries(packageData)) {
+        const { possibleCombinations } = packageInfo;
 
-    // Return the corresponding package dimensions or null if none found
-    return applicableKey ? packages[applicableKey] : null;
-};
+        for (const combination of possibleCombinations) {
+            const matches = orderItems.every(item => {
+                const index = combination.weights.indexOf(item.weightCategory);
+                return index !== -1 && combination.quantity[index] === item.quantity;
+            });
 
-export default packageSelector;
+            if (matches) {
+                return {
+                    packageType: packageKey,
+                    dimensions: packageInfo.dimensions,
+                    totalWeight: combination.totalWeight
+                };
+            }
+        }
+    }
+    return null; // No matching package found
+}
+
+const orderItems = [
+    { weightCategory: 10, quantity: 1 },
+    { weightCategory: 5, quantity: 2 }
+];
+
+console.log(findPackageForOrder(orderItems))
+
+export default findPackageForOrder
