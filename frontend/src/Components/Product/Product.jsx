@@ -11,6 +11,7 @@ import { addToCart, getProductById } from '../../api/cartapi';
 import Dropdown from '../Dropdown/Dropdown';
 import QuantitySelector from '../Dropdown/QuantitySelector';
 import { toast } from 'react-toastify';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 
 const Product = ({ productId }) => {
@@ -21,8 +22,8 @@ const Product = ({ productId }) => {
     };
 
     const maxQuantityMap = {
-        1: 20,
-        5: 4,
+        1: 3,
+        5: 2,
         10: 2,
     };
 
@@ -85,7 +86,10 @@ const Product = ({ productId }) => {
 
                     }],
                     price,
-                    weight,
+                    weightQuantity: [{
+                        weight: weight,
+                        quantity: quantity
+                    }],
                     singleProduct: true,
                 }
             });
@@ -176,22 +180,25 @@ const Product = ({ productId }) => {
                                     onQuantityChange={handleQuantityChange}
                                     maxQuantity={maxQuantity}
                                 />
-                                <button
+                                {/* <button
                                     className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     onClick={handleAddToCart}
                                 >
                                     ADD TO CART
-                                </button>
+                                </button> */}
+                                <AddToCartButton
+                                    callback={handleAddToCart}
+                                />
                                 <button
                                     className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     onClick={handleBuyNow}
                                 >
                                     Buy Now
                                 </button>
-                                <MagicCheckoutButton
+                                {/* <MagicCheckoutButton
                                     className="buy-now-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     productId={product._id} weightCategory={weightCategory._id} quantity={quantity} name="Buy Now"
-                                />
+                                /> */}
                             </div>
                         </div>
 

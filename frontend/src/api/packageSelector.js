@@ -1,6 +1,8 @@
-import packageData from "./packagesData.js";
+import packageData from "./packageData.js";
 
 const fetchPackageForOrder = (itemsArray) => {
+
+    console.log(itemsArray)
     // Convert itemsArray to a string format to easily compare with combinations in packageData
     const itemsString = JSON.stringify(itemsArray.sort((a, b) => a.weight - b.weight));
 
@@ -15,9 +17,15 @@ const fetchPackageForOrder = (itemsArray) => {
 
             // Compare the sorted comboString with the sorted itemsArray string
             if (comboString === itemsString) {
+
+                console.log({
+                    packageCategory: packageKey,
+                    totalWeight: combo.totalWeight,
+                    dimensions: dimensions
+                })
                 // If a match is found, return the package details
                 return {
-                    package: packageKey,
+                    packageCategory: packageKey,
                     totalWeight: combo.totalWeight,
                     dimensions: dimensions
                 };
@@ -29,9 +37,6 @@ const fetchPackageForOrder = (itemsArray) => {
     return null;
 }
 
-// Example usage
-const items = [{ weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }];
 
-console.log(fetchPackageForOrder(items))
 
 export default fetchPackageForOrder

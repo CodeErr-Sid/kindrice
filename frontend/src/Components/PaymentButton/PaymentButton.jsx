@@ -17,7 +17,6 @@ const PaymentButton = ({ name, className, amount, notes, disabled, address }) =>
         document.body.appendChild(script);
     };
 
-    console.log(notes);
 
     const fetchOrderId = async () => {
         if (isLoggedIn) {

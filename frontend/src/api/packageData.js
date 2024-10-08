@@ -11,6 +11,7 @@ const packageData = {
         dimensions: { length: 37.5, breadth: 36.5, height: 10 },
         combinations: [
             { items: [{ weight: 1, quantity: 3 }], totalWeight: 3.75 },
+            { items: [{ weight: 1, quantity: 2 }], totalWeight: 2.75 },
             { items: [{ weight: 5, quantity: 1 }], totalWeight: 5.60 }
         ]
     },
@@ -32,7 +33,7 @@ const packageData = {
             { items: [{ weight: 1, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 12 },
             { items: [{ weight: 1, quantity: 2 }, { weight: 10, quantity: 1 }], totalWeight: 13 },
             { items: [{ weight: 1, quantity: 3 }, { weight: 10, quantity: 1 }], totalWeight: 14 },
-            { items: [{ weight: 5, quantity: 2 }], totalWeight: 11 }, 
+            { items: [{ weight: 5, quantity: 2 }], totalWeight: 11 },
             { items: [{ weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 16 },
             { items: [{ weight: 10, quantity: 2 }], totalWeight: 20.95 }
         ]

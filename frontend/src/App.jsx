@@ -32,7 +32,7 @@ function App() {
     <>
 
       <ScrollToTop />
-      <KindLoader />
+      {/* <KindLoader /> */}
       <CookieConsentBanner />
       {/* <Preloader/> */}
       <Routes>

@@ -6,15 +6,17 @@ import { AuthContext } from '../../context/AuthContext';
 import { getShippingPrices } from '../../api/shiprocket';
 import PaymentButton from "../PaymentButton/PaymentButton";
 import axios from 'axios';
-import packageSelector from '../../api/packageSelector';
+import fetchPackageForOrder from '../../api/packageSelector';
 
 const CheckoutContainer = () => {
   const location = useLocation();
   const { addresses, currency, url } = useContext(AuthContext);
-  const { items, weight, price } = location.state || {};
+  const { items, weightQuantity, price, singleProduct } = location.state || {};
 
-  const { length, breadth, height } = packageSelector(weight);
 
+  const { packageCategory, totalWeight, dimensions } = fetchPackageForOrder(weightQuantity)
+
+  const { length, breadth, height } = dimensions;
 
 
   const [grandTotal, setGrandTotal] = useState(price);
@@ -65,21 +67,20 @@ const CheckoutContainer = () => {
 
   // Memoized shipping price and courier ID calculation
   const shippingPriceSetter = useMemo(() => async () => {
-    if (formData.zip.length >= 6 && weight && price) {
+    if (formData.zip.length >= 6 && totalWeight && price) {
       try {
-        const courierData = await getShippingPrices(url, formData.zip, weight, price, length, breadth, height);
+        const courierData = await getShippingPrices(url, formData.zip, totalWeight, price, length, breadth, height);
         const totalShippingPrice = courierData.freight_charge || 0 + courierData.coverage_charges || 0 + courierData.other_charges;
 
         // Store both shipping price and courier ID in one state
         setCourier({ shippingPrice: totalShippingPrice, courier_id: courierData.courier_company_id });
       } catch (error) {
-        console.error('Failed to fetch shipping prices:', error);
         setCourier({ shippingPrice: 0, courier_id: null });
       }
     } else {
       setCourier({ shippingPrice: 0, courier_id: null });
     }
-  }, [formData.zip, weight, price, url]);
+  }, [formData.zip, totalWeight, price, url]);
 
   // Combine shipping and grand total calculations
   useEffect(() => {
@@ -125,7 +126,6 @@ const CheckoutContainer = () => {
           setCities([]);
         }
       } catch (err) {
-        console.error(err);  // Log the error for debugging
         setFormData((prev) => ({ ...prev, city: '', state: '' }));
         setCities([]);
       }
@@ -139,6 +139,7 @@ const CheckoutContainer = () => {
 
   const notesData = [{
     courier_id: courier.courier_id,
+    package: packageCategory,
     orderData: {
       billing_customer_name: formData.firstName,
       billing_last_name: formData.lastName,
@@ -152,10 +153,10 @@ const CheckoutContainer = () => {
       shipping_is_billing: true,
       order_items: items,  // Assuming 'items' is your order items list
       sub_total: price,
-      length,
-      breadth,
-      height,
-      weight
+      lenth: dimensions.length,
+      breadth: dimensions.breadth,
+      height: dimensions.height,
+      weight: totalWeight
     }
   }];
 
