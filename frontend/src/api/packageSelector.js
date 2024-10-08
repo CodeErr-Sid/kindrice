@@ -1,22 +1,202 @@
-// Mapping of weight categories to package dimensions
-const packages = {
-    1: { length: 10, breadth: 9.25, height: 1.75 },
-    5: { length: 14.25, breadth: 13.5, height: 3.5 },
-    10: { length: 16, breadth: 15, height: 5.5 },
-    20: { length: 41, breadth: 29, height: 27 }
-};
+// Package Data
 
-// Function to select package dimensions based on weight
-const packageSelector = (weight) => {
-    // Find the largest package key that is greater than or equal to the weight
-    const applicableKey = Object.keys(packages)
-        .map(Number) // Convert keys to numbers
-        .filter(key => weight <= key) // Filter keys based on weight
-        .sort((a, b) => a - b) // Sort in ascending order
-        .shift(); // Get the first (smallest) key
+const packageData = {
+    "1": {
+        "dimensions": {
+            "length": 21.5,
+            "breadth": 18.5,
+            "height": 9
+        },
+        "possibleCombinations": [
+            {
+                "weights": [
+                    1
+                ],
+                "quantity": [
+                    1
+                ],
+                "totalWeight": 1.90
+            }
+        ]
+    },
+    "5": {
+        "dimensions": {
+            "length": 37.5,
+            "breadth": 36.5,
+            "height": 10
+        },
+        "possibleCombinations": [
+            {
+                "weights": [
+                    5
+                ],
+                "quantity": [
+                    1
+                ],
+                "totalWeight": 5.60
+            },
+            {
+                "weights": [
+                    1
+                ],
+                "quantity": [
+                    3
+                ],
+                "totalWeight": 3.75
+            }
+        ]
+    },
+    "10": {
+        "dimensions": {
+            "length": 42.5,
+            "breadth": 40,
+            "height": 16
+        },
+        "possibleCombinations": [
+            {
+                "weights": [
+                    10
+                ],
+                "quantity": [
+                    1
+                ],
+                "totalWeight": 10.80
+            }
+        ]
+    },
+    "20": {
+        "dimensions": {
+            "length": 21.5,
+            "breadth": 18.5,
+            "height": 9
+        },
+        "possibleCombinations": [
+            {
+                "weights": [
+                    5
+                ],
+                "quantity": [
+                    2
+                ],
+                "totalWeight": 11
+            },
+            {
+                "weights": [
+                    5,
+                    1
+                ],
+                "quantity": [
+                    2,
+                    1
+                ],
+                "totalWeight": 12
+            },
+            {
+                "weights": [
+                    5,
+                    1
+                ],
+                "quantity": [
+                    2,
+                    2
+                ],
+                "totalWeight": 13
+            },
+            {
+                "weights": [
+                    5,
+                    1
+                ],
+                "quantity": [
+                    2,
+                    3
+                ],
+                "totalWeight": 14.2
+            },
+            {
+                "weights": [
+                    10,
+                    5
+                ],
+                "quantity": [
+                    1,
+                    1
+                ],
+                "totalWeight": 16
+            },
+            {
+                "weights": [
+                    10,
+                    5,
+                    1
+                ],
+                "quantity": [
+                    1,
+                    1,
+                    1
+                ],
+                "totalWeight": 17
+            },
+            {
+                "weights": [
+                    10,
+                    5,
+                    1
+                ],
+                "quantity": [
+                    1,
+                    1,
+                    2
+                ],
+                "totalWeight": 18.1
+            },
+            {
+                "weights": [
+                    10,
+                    5,
+                    1
+                ],
+                "quantity": [
+                    1,
+                    1,
+                    3
+                ],
+                "totalWeight": 19.2
+            },
+            {
+                "weights": [
+                    10
+                ],
+                "quantity": [
+                    2
+                ],
+                "totalWeight": 20.95
+            }
+        ]
+    }
+}
 
-    // Return the corresponding package dimensions or null if none found
-    return applicableKey ? packages[applicableKey] : null;
-};
+//  package Selector 
+function findPackageForOrder(orderItems) {
+    for (const [packageKey, packageInfo] of Object.entries(packageData)) {
+        const { possibleCombinations } = packageInfo;
 
-export default packageSelector;
+        for (const combination of possibleCombinations) {
+            const matches = orderItems.every(item => {
+                const index = combination.weights.indexOf(item.weightCategory);
+                return index !== -1 && combination.quantity[index] === item.quantity;
+            });
+
+            if (matches) {
+                return {
+                    packageType: packageKey,
+                    dimensions: packageInfo.dimensions,
+                    totalWeight: combination.totalWeight
+                };
+            }
+        }
+    }
+    return null; // No matching package found
+}
+
+export default findPackageForOrder
