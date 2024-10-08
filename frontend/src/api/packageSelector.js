@@ -1,25 +1,37 @@
-import packageData from "./packageData";
+import packageData from "./packagesData.js";
 
-function findPackageForOrder(orderItems) {
-    for (const [packageKey, packageInfo] of Object.entries(packageData)) {
-        const { possibleCombinations } = packageInfo;
+const fetchPackageForOrder = (itemsArray) => {
+    // Convert itemsArray to a string format to easily compare with combinations in packageData
+    const itemsString = JSON.stringify(itemsArray.sort((a, b) => a.weight - b.weight));
 
-        for (const combination of possibleCombinations) {
-            const matches = orderItems.every(item => {
-                const index = combination.weights.indexOf(item.weightCategory);
-                return index !== -1 && combination.quantity[index] === item.quantity;
-            });
+    // Iterate through the packageData to find the correct package for the given combination
+    for (let packageKey in packageData) {
+        const { dimensions, combinations } = packageData[packageKey];
 
-            if (matches) {
+        // Iterate through each combination in the current package
+        for (let combo of combinations) {
+            // Sort the combo items by weight to match the sorted itemsArray string
+            const comboString = JSON.stringify(combo.items.sort((a, b) => a.weight - b.weight));
+
+            // Compare the sorted comboString with the sorted itemsArray string
+            if (comboString === itemsString) {
+                // If a match is found, return the package details
                 return {
-                    packageType: packageKey,
-                    dimensions: packageInfo.dimensions,
-                    totalWeight: combination.totalWeight
+                    package: packageKey,
+                    totalWeight: combo.totalWeight,
+                    dimensions: dimensions
                 };
             }
         }
     }
-    return null; // No matching package found
+
+    // If no matching package is found, return null or an error message
+    return null;
 }
 
-export default findPackageForOrder
+// Example usage
+const items = [{ weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }];
+
+console.log(fetchPackageForOrder(items))
+
+export default fetchPackageForOrder
