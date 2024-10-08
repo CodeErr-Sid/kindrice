@@ -23,8 +23,8 @@ const getShippingPrice = async (req, res) => {
             // Map the shipping options to the required format
             const shippingMethods = shippingOptions.map((option, index) => ({
                 id: String(index + 1),
-                // description: "Standard Delivery",
-                name: `Delivery within ${option.estimated_delivery_days} days`,
+                description: "Standard Delivery",
+                name: `Delivery within 10 - 15 days`,
                 serviceable: true,
                 shipping_fee: option.freight_charge * 100, // converting to paise
                 cod: false, // set to true if cod is available
@@ -33,7 +33,7 @@ const getShippingPrice = async (req, res) => {
 
             // Return the address object with shipping methods and capitalize the country
             return {
-                id: String(address.id),
+                id: address.id,
                 zipcode: address.zipcode,
                 state_code: address.state_code,
                 country: address.country, // Capitalize country

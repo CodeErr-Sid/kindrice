@@ -188,10 +188,10 @@ const Product = ({ productId }) => {
                                 >
                                     Buy Now
                                 </button>
-                                {/* <MagicCheckoutButton
+                                <MagicCheckoutButton
                                     className="buy-now-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
-                                    productId={product._id} weightCategory={weightCategory} quantity={quantity} name="Buy Now"
-                                /> */}
+                                    productId={product._id} weightCategory={weightCategory._id} quantity={quantity} name="Buy Now"
+                                />
                             </div>
                         </div>
 
