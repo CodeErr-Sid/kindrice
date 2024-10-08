@@ -1,73 +1,193 @@
 import findPackageForOrder from '../api/packageSelector'; // Adjust the import path as needed
 import packageData from '../api/packagesData';
 
-describe('findPackageForOrder - Single Weight Tests', () => {
-    it('should return correct package details for 1kg x 1', () => {
-        const orderItems = [{ weightCategory: 1, quantity: 1 }];
-        const result = findPackageForOrder(orderItems);
+const itemsArray = [
+    {
+        "items": [{ "weight": 1, "quantity": 1 }],
+        "totalWeight": 1.90,
+        "dimensions": { "length": 21.5, "breadth": 18.5, "height": 9 },
+        "package": "1"
+    },
+    {
+        "items": [{ "weight": 1, "quantity": 3 }],
+        "totalWeight": 3.75,
+        "dimensions": { "length": 37.5, "breadth": 36.5, "height": 10 },
+        "package": "5"
+    },
+    {
+        "items": [{ "weight": 5, "quantity": 1 }],
+        "totalWeight": 5.60,
+        "dimensions": { "length": 37.5, "breadth": 36.5, "height": 10 },
+        "package": "5"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }],
+        "totalWeight": 10.80,
+        "dimensions": { "length": 42.5, "breadth": 40, "height": 16 },
+        "package": "10"
+    },
+    {
+        "items": [{ "weight": 5, "quantity": 2 }, { "weight": 1, "quantity": 1 }],
+        "totalWeight": 12,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 5, "quantity": 2 }, { "weight": 1, "quantity": 2 }],
+        "totalWeight": 13,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 5, "quantity": 2 }, { "weight": 1, "quantity": 3 }],
+        "totalWeight": 14.2,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }, { "weight": 1, "quantity": 1 }, { "weight": 5, "quantity": 1 }],
+        "totalWeight": 17,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }, { "weight": 5, "quantity": 1 }, { "weight": 1, "quantity": 2 }],
+        "totalWeight": 18.1,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }, { "weight": 5, "quantity": 1 }, { "weight": 1, "quantity": 3 }],
+        "totalWeight": 19.2,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }, { "weight": 1, "quantity": 1 }],
+        "totalWeight": 12,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }, { "weight": 1, "quantity": 2 }],
+        "totalWeight": 13,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }, { "weight": 1, "quantity": 3 }],
+        "totalWeight": 14,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 5, "quantity": 2 }],
+        "totalWeight": 11,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 1 }, { "weight": 5, "quantity": 1 }],
+        "totalWeight": 16,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    },
+    {
+        "items": [{ "weight": 10, "quantity": 2 }],
+        "totalWeight": 20.95,
+        "dimensions": { "length": 50, "breadth": 40, "height": 23 },
+        "package": "20"
+    }
+]
 
-        expect(result).toEqual({
-            packageType: "1", // 1kg package
-            dimensions: packageData["1"].dimensions,
-            totalWeight: 1.90 // Adjust if necessary based on your logic
-        });
+
+
+describe('findPackageForOrder - All weight tests', () => {
+
+    // Case 1: Single product and quantity
+    describe('Case 1: Single product and quantity', () => {
+        for (let item of itemsArray) {
+            const weights = item.items;
+            if (weights.length === 1 && weights[0].quantity === 1) {
+                const combinationString = `${weights[0].weight} x ${weights[0].quantity}`;
+
+                it(`should return correct package details for ${combinationString}`, () => {
+                    const orderItems = weights;
+                    const result = findPackageForOrder(orderItems);
+
+                    expect(result).toEqual({
+                        package: item.package,
+                        dimensions: item.dimensions,
+                        totalWeight: item.totalWeight
+                    });
+                });
+            }
+        }
     });
 
-    it('should return correct package details for 5kg x 1', () => {
-        const orderItems = [{ weightCategory: 5, quantity: 1 }];
-        const result = findPackageForOrder(orderItems);
+    // Case 2: Multiple quantities of a single product
+    describe('Case 2: Multiple quantities of a single product', () => {
+        for (let item of itemsArray) {
+            const weights = item.items;
+            if (weights.length === 1 && weights[0].quantity > 1) {
+                const combinationString = `${weights[0].weight} x ${weights[0].quantity}`;
 
-        expect(result).toEqual({
-            packageType: "5", // 5kg package
-            dimensions: packageData["5"].dimensions,
-            totalWeight: 5.60 // Adjust if necessary based on your logic
-        });
+                it(`should return correct package details for ${combinationString}`, () => {
+                    const orderItems = weights;
+                    const result = findPackageForOrder(orderItems);
+
+                    expect(result).toEqual({
+                        package: item.package,
+                        dimensions: item.dimensions,
+                        totalWeight: item.totalWeight
+                    });
+                });
+            }
+        }
     });
 
-    it('should return correct package details for 10kg x 1', () => {
-        const orderItems = [{ weightCategory: 10, quantity: 1 }];
-        const result = findPackageForOrder(orderItems);
+    // Case 3: Multiple products with a single quantity each
+    describe('Case 3: Multiple products with a single quantity each', () => {
+        for (let item of itemsArray) {
+            const weights = item.items;
+            if (weights.length > 1 && weights.every(w => w.quantity === 1)) {
+                const combinationString = weights.map(w => `${w.weight} x ${w.quantity}`).join(' + ');
 
-        expect(result).toEqual({
-            packageType: "10", // 10kg package
-            dimensions: packageData["10"].dimensions,
-            totalWeight: 10.80 // Adjust if necessary based on your logic
-        });
+                it(`should return correct package details for ${combinationString}`, () => {
+                    const orderItems = weights;
+                    const result = findPackageForOrder(orderItems);
+
+                    expect(result).toEqual({
+                        package: item.package,
+                        dimensions: item.dimensions,
+                        totalWeight: item.totalWeight
+                    });
+                });
+            }
+        }
+    });
+
+    // Case 4: Multiple products and multiple quantities
+    describe('Case 4: Multiple products and multiple quantities', () => {
+        for (let item of itemsArray) {
+            const weights = item.items;
+            if (weights.length > 1 && weights.some(w => w.quantity > 1)) {
+                const combinationString = weights.map(w => `${w.weight} x ${w.quantity}`).join(' + ');
+
+                it(`should return correct package details for ${combinationString}`, () => {
+                    const orderItems = weights;
+                    const result = findPackageForOrder(orderItems);
+
+                    expect(result).toEqual({
+                        package: item.package,
+                        dimensions: item.dimensions,
+                        totalWeight: item.totalWeight
+                    });
+                });
+            }
+        }
     });
 });
 
-describe('findPackageForOrder - Single Weight Multiple Quantities Tests', () => {
-    it('should return correct package details for 1kg x 3', () => {
-        const orderItems = [{ weightCategory: 1, quantity: 3 }];
-        const result = findPackageForOrder(orderItems);
 
-        expect(result).toEqual({
-            packageType: "5", // Adjust based on your logic for packing 3 x 1kg
-            dimensions: packageData["5"].dimensions,
-            totalWeight: packageData["5"].possibleCombinations[1].totalWeight // Adjust if necessary based on your logic
-        });
-    });
-
-    it('should return correct package details for 5kg x 2', () => {
-        const orderItems = [{ weightCategory: 5, quantity: 2 }];
-        const result = findPackageForOrder(orderItems);
-
-        expect(result).toEqual({
-            packageType: "20", // Adjust based on your logic for packing 2 x 5kg
-            dimensions: packageData["20"].dimensions,
-            totalWeight: packageData["20"].possibleCombinations[0].totalWeight // Adjust if necessary based on your logic
-        });
-    });
-
-    it('should return correct package details for 10kg x 2', () => {
-        const orderItems = [{ weightCategory: 10, quantity: 2 }];
-        const result = findPackageForOrder(orderItems);
-
-        expect(result).toEqual({
-            packageType: "20", // Adjust based on your logic for packing 2 x 10kg
-            dimensions: packageData["20"].dimensions,
-            totalWeight: packageData["20"].possibleCombinations[8].totalWeight // Adjust if necessary based on your logic
-        });
-    });
-});
 
