@@ -7,26 +7,173 @@ import { toast } from 'react-toastify';
 const CartContainer = () => {
   const navigate = useNavigate();
   const { cart, currency, isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
-
   const [quantities, setQuantities] = useState([]);
-  const [totalCartWeight, setTotalCartWeight] = useState(0); // State to keep track of total weight
   const [totalCartPrice, setTotalCartPrice] = useState(0);
 
-  useEffect(() => {
-    if (cart) {
-      setQuantities(cart.map(item => item.quantity || 1));
+
+
+  const maxQuantityMap = {
+    1: 3,
+    5: 2,
+    10: 2,
+  };
+
+  const optionsMap = {
+    2: [
+      { 1: 1, 5: 2 },
+      { 1: 2, 5: 2 },
+      { 1: 3, 5: 2 },
+      { 1: 1, 10: 1 },
+      { 1: 2, 10: 1 },
+      { 1: 3, 10: 1 },
+      { 5: 1, 10: 1 }
+    ],
+    3: [
+      { 1: 1, 5: 1, 10: 1 },
+      { 1: 2, 5: 1, 10: 1 },
+      { 1: 3, 5: 1, 10: 1 }
+    ]
+  };
+
+
+
+  const updateCartQuantities = async () => {
+    if (!cart) return;
+    if (cart.length === 0) return; // No items in cart
+
+    const newQuantities = cart.map((item) => item.quantity); // Create a new array for updated quantities
+
+    try {
+      if (cart.length === 1) {
+        // Single item in the cart
+        const cartItem = cart[0];
+        const maxQuantity = maxQuantityMap[cartItem.weight];
+
+        if (cartItem.quantity > maxQuantity) {
+          newQuantities[0] = Math.min(cartItem.quantity, maxQuantity); // Update quantity
+          const items = [{
+            productId: cartItem.productId._id,
+            quantity: newQuantities[0],
+            weight: cartItem.weight
+          }];
+          await updateCart(items, idToken);
+          await getCartItems();
+          setQuantities([...newQuantities]);
+          toast.success("Cart updated successfully!");
+        } else {
+          newQuantities[0] = cartItem.quantity; // No change needed
+          setQuantities([...newQuantities]);
+        }
+      } else if (cart.length > 1) {
+        // Gather weights and quantities from the cart
+        const quantityWeights = cart.map(item => ({
+          weight: item.weight,
+          quantity: item.quantity
+        }));
+
+        // Get available options based on cart length
+        const availableOptions = optionsMap[cart.length] || [];
+
+        // Find the matching option
+        let matchingOption = null;
+
+        for (const option of availableOptions) {
+          // Check if all weights in the cart match the option
+          const isValid = quantityWeights.every(item => {
+            const limit = option[item.weight]; // Get the limit for the current weight
+            return limit !== undefined && item.quantity <= limit; // Check if within limit
+          });
+
+          if (isValid) {
+            matchingOption = option;
+            break; // Exit loop once a match is found
+          }
+        }
+
+        if (matchingOption) {
+          // No update needed, set new quantities
+
+          const updatedQuantities = quantityWeights.map(item => item.quantity); // Maintain current quantities
+          setQuantities([...updatedQuantities]);
+          toast.success("Cart quantities are within limits. No update needed!");
+          return;
+        } else {
+          // Handle case where no matching option is found
+          const highestCombination = availableOptions.reduce((highest, current) => {
+            return Object.values(current).reduce((sum, val) => sum + val, 0) >
+              Object.values(highest).reduce((sum, val) => sum + val, 0) ? current : highest;
+          }, availableOptions[0]); // Initialize with the first option
+
+          // Prepare items based on the highest combination
+          const fallbackQuantities = quantityWeights.map(item => {
+            const limit = highestCombination[item.weight];
+            return limit ? Math.min(item.quantity, limit) : item.quantity; // Apply the limit
+          });
+
+          setQuantities([...fallbackQuantities]);
+          toast.success("No valid combination found. Updated to highest combination!");
+          return;
+        }
+      }
+
+      setQuantities([...newQuantities]); // Update local state
+      return;
+    } catch (error) {
+      console.error("Error updating cart quantities:", error);
+      toast.error("Failed to update cart. Please try again."); // Display error message
     }
+  };
+
+
+
+  useEffect(() => {
+    updateCartQuantities();
   }, [cart]);
+
+
+  const handleQuantityChange = (index, stringvalue) => {
+
+    const value = Number(stringvalue)
+    const selectedWeight = parseInt(cart[index].weight, 10);
+    const maxQuantity = maxQuantityMap[selectedWeight];
+
+    if (cart.length === 1) {
+      // For a single item in the cart
+      const newQuantity = Math.min(Number(value), maxQuantity); // Limit to max quantity
+      const newQuantities = [...quantities];
+      newQuantities[index] = Number(newQuantity); // Update the quantity
+      setQuantities(newQuantities);
+    } else {
+
+      const newQuantities = [...quantities];
+      const availableOptions = optionsMap[cart.length] || [];
+
+      const validOption = availableOptions.find(option => {
+        return Object.entries(option).every(([w, q]) => {
+          return parseInt(w) === selectedWeight ? value <= q : true;
+        });
+      });
+
+
+      if (validOption) {
+        newQuantities[index] = value; // Update if valid
+        if (newQuantities)
+          setQuantities(newQuantities);
+      } else {
+        toast.error("Invalid quantity selected for this combination.");
+      }
+    }
+  };
 
 
   const getPriceByWeight = (product, selectedWeight) => {
     const selectedWeightPrice = product.weightPrice.find(
-      (wp) => wp.weight.value === parseFloat(selectedWeight)
+      (wp) => wp.weight.value === parseInt(selectedWeight)
     );
 
     if (!selectedWeightPrice) {
       console.error("Weight not found for selected weight:", selectedWeight);
-      return 0;
+      return 0; // Return 0 if no weight found
     }
     return selectedWeightPrice.totalPrice;
   };
@@ -35,114 +182,58 @@ const CartContainer = () => {
     if (isLoggedIn) {
       const message = await removeFromCart(product, idToken, weight);
       await getCartItems();
+      await updateCartQuantities();
       toast.success(message);
     } else {
-      navigate("/login")
+      navigate("/login");
     }
-  }
+  };
 
-  // Calculate total price and weight for each item based on quantity and weight
-  const calculateTotalPriceAndWeight = (product, selectedWeight, quantity) => {
-    const price = getPriceByWeight(product, selectedWeight);
-    const weight = parseFloat(selectedWeight) * quantity; // Calculate weight based on selected weight and quantity
-    return { price: price * quantity, weight };
+  const calculateTotalPrice = (product, selectedWeight, quantity) => {
+    const price = getPriceByWeight(product, selectedWeight) || 0; // Ensure valid price
+    return price * quantity; // Calculate total price
   };
 
   useEffect(() => {
-    const { total, weight } = cart && cart.length > 0 ? cart.reduce((acc, item, index) => {
-      const { price, weight } = calculateTotalPriceAndWeight(item.productId, item.weight, quantities[index] || 0);
-      return {
-        total: acc.total + price,
-        weight: acc.weight + weight,
-      };
-    }, { total: 0, weight: 0 }) : { total: 0, weight: 0 };
+    const total = cart && cart.length > 0 ? cart.reduce((acc, item, index) => {
+      const price = calculateTotalPrice(item.productId, item.weight, quantities[index] || 1); // default to 1 if no quantity is provided
+      return acc + price; // Sum up the total price
+    }, 0) : 0;
 
-    setTotalCartPrice(total);
-    setTotalCartWeight(weight); // Update the total cart weight
+    setTotalCartPrice(total); // Set the total cart price
   }, [cart, quantities]);
 
-  const handleIncrement = (index) => {
-    if (totalCartWeight + parseFloat(cart[index].weight) <= 20) { // Check if adding this item exceeds 20kg
-      setQuantities(prevQuantities => {
-        const updatedQuantities = [...prevQuantities];
-        updatedQuantities[index] = (updatedQuantities[index] || 0) + 1; // Increment quantity
-        return updatedQuantities;
-      });
-    } else {
-      toast.warn("Total weight exceeds 20 kg. Please reduce the quantity.");
-    }
-  };
-
-  const handleDecrement = (index) => {
-    setQuantities(prevQuantities => {
-      const updatedQuantities = [...prevQuantities];
-      if ((updatedQuantities[index] || 1) > 1) { // Prevent decrementing below 1
-        updatedQuantities[index] = (updatedQuantities[index] || 1) - 1;
-      }
-      return updatedQuantities;
-    });
-  };
-
-  const handleQuantityChange = (index, event) => {
-    const value = Number(event.target.value);
-    if (!isNaN(value) && value >= 0) {
-      setQuantities(prevQuantities => {
-        const updatedQuantities = [...prevQuantities];
-        updatedQuantities[index] = value;
-        return updatedQuantities;
-      });
-    }
-  };
 
   const handleCheckout = async () => {
-    if (totalCartWeight <= 20) {
-      const cartItems = cart.map((item, index) => ({
-        productId: item.productId._id,
-        weight: item.weight,
-        quantity: quantities[index],
-      }));
-      try {
+    const weightQuantityData = [];
+    const items = cart.map((item, index) => {
+      const selectedWeight = parseInt(item.weight, 10);
+      const weightCategory = item.productId.weightPrice.find((wp) => wp.weight.value === selectedWeight);
+      const weightInKg = weightCategory.weight.value;
 
-        const success = await updateCart(cartItems, idToken)
+      weightQuantityData.push({ weight: weightInKg, quantity: quantities[index] });
 
-        if (success) {
-          await getCartItems(idToken);
-        }
+      return {
+        name: `${item.productId.productName} - ${selectedWeight}kg`,
+        sku: weightCategory?.sku,
+        units: quantities[index],
+        selling_price: weightCategory?.totalPrice,
+        discount: "",
+        tax: item.productId.taxPercentage.toString(),
+        hsn: Number(item.productId.hsnCode),
+      };
+    });
 
-        const items = cart.map((item, index) => {
-          const selectedWeight = parseInt(item.weight, 10);
+    navigate('/checkout', {
+      state: {
+        items,
+        price: totalCartPrice,
+        weightQuantity: weightQuantityData,
+        singleProduct: true,
+      },
+    });
+  }
 
-          const weightCategory = item.productId.weightPrice.find((wp) => wp.weight.value === selectedWeight);
-
-          return {
-            "name": `${item.productId.productName} - ${selectedWeight}kg`, // Product name using productName and weight
-            "sku": weightCategory?.sku, // SKU from the selected weight category
-            "units": quantities[index], // Quantity from quantities array
-            "selling_price": weightCategory?.totalPrice, // Selling price using total price from weight category
-            "discount": "", // Keep as empty string
-            "tax": item.productId.taxPercentage.toString(), // Tax percentage from productId
-            "hsn": Number(item.productId.hsnCode) // HSN code from productIdz
-          };
-        });
-
-
-        navigate('/checkout', {
-          state: {
-            items,
-            price: totalCartPrice,
-            weight: totalCartWeight,
-            singleProduct: false
-          }
-        });
-      } catch (error) {
-        toast.error(error)
-      }
-
-
-    } else {
-      toast.warn("Total weight exceeds 20 kg. Reduce Quantity or Remove a product.");
-    }
-  };
 
 
   return (
@@ -155,7 +246,7 @@ const CartContainer = () => {
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
             <div className="space-y-6">
               {cart ? cart.length !== 0 && cart.map((item, index) => (
-                <div key={index} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                <div key={`${item.productId._id}-${item.weight}`} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
                   <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                     <a href="#" className="shrink-0">
                       <img
@@ -171,34 +262,21 @@ const CartContainer = () => {
                     </a>
                     <div className="flex items-center justify-between md:order-3 md:justify-end">
                       <div className="flex items-center">
-                        <button
-                          type="button"
-                          onClick={() => handleDecrement(index)}
-                          className="inline-flex h-5 w-5 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
-                        >
-                          <svg className="h-2.5 w-2.5 text-gray-900 dark:text-white" viewBox="0 0 18 2" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h16" />
-                          </svg>
-                        </button>
-                        <input
-                          type="text"
-                          className="w-10 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none dark:text-white"
+                        <select
                           value={quantities[index] || 0}
-                          onChange={(event) => handleQuantityChange(index, event)}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => handleIncrement(index)}
-                          className="inline-flex h-5 w-5 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+                          onChange={(event) => handleQuantityChange(index, event.target.value)}
+                          className="block w-20 px-2 py-1 text-sm font-medium border border-gray-300 rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                          <svg className="h-2.5 w-2.5 text-gray-900 dark:text-white" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 1v16M1 9h16" />
-                          </svg>
-                        </button>
+                          {[...Array(maxQuantityMap[item.weight]).keys()].map(qty => (
+                            <option key={qty + 1} value={qty + 1}>
+                              {qty + 1}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                       <div className="text-end md:w-32">
                         <p className="text-base font-bold text-gray-900 dark:text-white">
-                          {currency + calculateTotalPriceAndWeight(item.productId, item.weight, quantities[index] || 0).price}
+                          {currency + calculateTotalPrice(item.productId, item.weight, quantities[index])}
                         </p>
                       </div>
                     </div>
@@ -241,16 +319,16 @@ const CartContainer = () => {
             <div className="border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
               <p className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700">Order summary</p>
               <div className="flex items-center justify-between py-4">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-400">Total Weight:</p>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">{totalCartWeight.toFixed(2)} kg</p>
-              </div>
-              <div className="flex items-center justify-between py-4">
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-400">Total Price:</p>
                 <p className="text-sm font-semibold text-gray-900 dark:text-white">{currency + totalCartPrice}</p>
               </div>
+              <div className="flex items-center justify-between py-4">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-400">Quantity</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white"></p>
+              </div>
               <button
                 className="mt-4 w-full rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none dark:bg-primary-600 dark:hover:bg-primary-700"
-                onClick={handleCheckout} // Use handleCheckout function here
+                onClick={handleCheckout}
               >
                 Proceed to Checkout
               </button>
@@ -261,7 +339,6 @@ const CartContainer = () => {
                   className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"
                 >
                   Continue Shopping
-                  {/* SVG Icon */}
                 </Link>
               </div>
             </div>

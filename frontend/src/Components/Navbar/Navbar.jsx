@@ -11,6 +11,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const { isLoggedIn, cart } = useContext(AuthContext);
+  const [cartQuatity, setCartQuantity] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -46,6 +47,11 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll); // Cleanup on unmount
     };
   }, [scrollPosition]);
+
+  useEffect(() => {
+    const quantity = cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0;
+    setCartQuantity(prev => prev + quantity);
+  }, [cart]);
 
   const navigate = useNavigate();
   const location = useLocation();
