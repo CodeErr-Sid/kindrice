@@ -10,6 +10,7 @@ const CartContainer = () => {
   const [quantities, setQuantities] = useState([]);
   const [totalCartPrice, setTotalCartPrice] = useState(0);
 
+  console.log(quantities)
 
 
   const maxQuantityMap = {
@@ -38,91 +39,105 @@ const CartContainer = () => {
 
 
   const updateCartQuantities = async () => {
-    if (!cart) return;
-    if (cart.length === 0) return; // No items in cart
+    if (!cart || cart.length === 0) return; // No items in cart
 
-    const newQuantities = cart.map((item) => item.quantity); // Create a new array for updated quantities
+    let newQuantities = cart.map((item) => item.quantity); // Create a new array for updated quantities
 
     try {
       if (cart.length === 1) {
-        // Single item in the cart
         const cartItem = cart[0];
         const maxQuantity = maxQuantityMap[cartItem.weight];
 
         if (cartItem.quantity > maxQuantity) {
           newQuantities[0] = Math.min(cartItem.quantity, maxQuantity); // Update quantity
-          const items = [{
-            productId: cartItem.productId._id,
-            quantity: newQuantities[0],
-            weight: cartItem.weight
-          }];
-          await updateCart(items, idToken);
-          await getCartItems();
-          setQuantities([...newQuantities]);
-          toast.success("Cart updated successfully!");
-        } else {
-          newQuantities[0] = cartItem.quantity; // No change needed
-          setQuantities([...newQuantities]);
         }
       } else if (cart.length > 1) {
-        // Gather weights and quantities from the cart
         const quantityWeights = cart.map(item => ({
           weight: item.weight,
           quantity: item.quantity
         }));
 
-        // Get available options based on cart length
         const availableOptions = optionsMap[cart.length] || [];
-
-        // Find the matching option
         let matchingOption = null;
 
+        // Find exact matching option
         for (const option of availableOptions) {
-          // Check if all weights in the cart match the option
           const isValid = quantityWeights.every(item => {
-            const limit = option[item.weight]; // Get the limit for the current weight
-            return limit !== undefined && item.quantity <= limit; // Check if within limit
+            const limit = option[item.weight];
+            return limit !== undefined && item.quantity <= limit;
           });
 
           if (isValid) {
             matchingOption = option;
-            break; // Exit loop once a match is found
+            break;
           }
         }
 
-        if (matchingOption) {
-          // No update needed, set new quantities
+        if (!matchingOption) {
+          // No exact match, find closest option
+          const closestMatchOptions = availableOptions.filter(option =>
+            quantityWeights.every(item => option.hasOwnProperty(item.weight))
+          );
 
-          const updatedQuantities = quantityWeights.map(item => item.quantity); // Maintain current quantities
-          setQuantities([...updatedQuantities]);
-          toast.success("Cart quantities are within limits. No update needed!");
-          return;
-        } else {
-          // Handle case where no matching option is found
-          const highestCombination = availableOptions.reduce((highest, current) => {
-            return Object.values(current).reduce((sum, val) => sum + val, 0) >
-              Object.values(highest).reduce((sum, val) => sum + val, 0) ? current : highest;
-          }, availableOptions[0]); // Initialize with the first option
+          if (closestMatchOptions.length > 0) {
+            const closestOption = closestMatchOptions.reduce((best, current) => {
+              const currentMatch = Object.entries(current).reduce((acc, [weight, limit]) => {
+                const cartItem = quantityWeights.find(item => item.weight == weight);
+                return cartItem ? acc + Math.min(cartItem.quantity, limit) : acc;
+              }, 0);
 
-          // Prepare items based on the highest combination
-          const fallbackQuantities = quantityWeights.map(item => {
-            const limit = highestCombination[item.weight];
-            return limit ? Math.min(item.quantity, limit) : item.quantity; // Apply the limit
-          });
+              const bestMatch = Object.entries(best).reduce((acc, [weight, limit]) => {
+                const cartItem = quantityWeights.find(item => item.weight == weight);
+                return cartItem ? acc + Math.min(cartItem.quantity, limit) : acc;
+              }, 0);
 
-          setQuantities([...fallbackQuantities]);
-          toast.success("No valid combination found. Updated to highest combination!");
-          return;
+              return currentMatch > bestMatch ? current : best;
+            });
+
+            newQuantities = quantityWeights.map(item => {
+              const limit = closestOption[item.weight];
+              return limit ? Math.min(item.quantity, limit) : item.quantity;
+            });
+          } else {
+            // Fallback to the highest valid combination
+            const highestCombination = availableOptions.reduce((highest, current) =>
+              Object.values(current).reduce((sum, val) => sum + val, 0) >
+                Object.values(highest).reduce((sum, val) => sum + val, 0) ? current : highest
+            );
+
+            newQuantities = quantityWeights.map(item => {
+              const limit = highestCombination[item.weight];
+              return limit ? Math.min(item.quantity, limit) : item.quantity;
+            });
+          }
         }
       }
 
-      setQuantities([...newQuantities]); // Update local state
-      return;
+      // Check if quantities have changed
+      const hasChanged = newQuantities.some((qty, index) => qty !== cart[index].quantity);
+
+      if (hasChanged) {
+        const itemsToUpdate = cart.map((item, index) => ({
+          productId: item.productId._id,
+          quantity: newQuantities[index],
+          weight: item.weight
+        }));
+
+        // Update the cart with the new quantities
+        await updateCart(itemsToUpdate, idToken);
+        await getCartItems(); // Re-fetch the cart
+        setQuantities(newQuantities); // Update local state once
+        toast.success("Cart updated successfully!");
+      } else {
+        toast.success("Cart quantities are within limits. No update needed!");
+        setQuantities(newQuantities);
+      }
     } catch (error) {
       console.error("Error updating cart quantities:", error);
-      toast.error("Failed to update cart. Please try again."); // Display error message
+      toast.error("Failed to update cart. Please try again.");
     }
   };
+
 
 
 
@@ -181,8 +196,8 @@ const CartContainer = () => {
   const handleRemoveFromCart = async (product, weight) => {
     if (isLoggedIn) {
       const message = await removeFromCart(product, idToken, weight);
-      await getCartItems();
       await updateCartQuantities();
+      await getCartItems();
       toast.success(message);
     } else {
       navigate("/login");
@@ -267,12 +282,24 @@ const CartContainer = () => {
                           onChange={(event) => handleQuantityChange(index, event.target.value)}
                           className="block w-20 px-2 py-1 text-sm font-medium border border-gray-300 rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                          {[...Array(maxQuantityMap[item.weight]).keys()].map(qty => (
-                            <option key={qty + 1} value={qty + 1}>
-                              {qty + 1}
-                            </option>
-                          ))}
+                          {cart && cart.length === 1 ? (
+                            // For single item cart, map based on maxQuantityMap[item.weight]
+                            [...Array(maxQuantityMap[cart[0].weight]).keys()].map((qty) => (
+                              <option key={qty + 1} value={qty + 1}>
+                                {qty + 1}
+                              </option>
+                            ))
+                          ) : (
+                            // For multiple items, map based on quantities[index]
+                            Array.from({ length: quantities[index] }, (_, idx) => (
+                              <option key={idx + 1} value={idx + 1}>
+                                {idx + 1}
+                              </option>
+                            ))
+                          )}
                         </select>
+
+
                       </div>
                       <div className="text-end md:w-32">
                         <p className="text-base font-bold text-gray-900 dark:text-white">
