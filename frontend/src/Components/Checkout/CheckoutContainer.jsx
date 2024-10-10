@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { CitySelect, CountrySelect, StateSelect } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { getShippingPrices } from '../../api/shiprocket';
 import PaymentButton from "../PaymentButton/PaymentButton";
@@ -13,6 +13,14 @@ const CheckoutContainer = () => {
   const { addresses, currency, url } = useContext(AuthContext);
   const { items, weightQuantity, price, singleProduct } = location.state || {};
 
+  const navigate = useNavigate();
+
+  (() => {
+    if (!location.state) {
+      window.location.href = '/'
+      return;
+    }
+  })()
 
   const { packageCategory, totalWeight, dimensions } = fetchPackageForOrder(weightQuantity)
 
@@ -139,7 +147,7 @@ const CheckoutContainer = () => {
 
   const notesData = [{
     courier_id: courier.courier_id,
-    package: packageCategory,
+    packageCategory: packageCategory,
     orderData: {
       billing_customer_name: formData.firstName,
       billing_last_name: formData.lastName,
@@ -153,7 +161,7 @@ const CheckoutContainer = () => {
       shipping_is_billing: true,
       order_items: items,  // Assuming 'items' is your order items list
       sub_total: price,
-      lenth: dimensions.length,
+      length: dimensions.length,
       breadth: dimensions.breadth,
       height: dimensions.height,
       weight: totalWeight

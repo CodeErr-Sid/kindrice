@@ -30,7 +30,7 @@ const Product = ({ productId }) => {
 
     const prevProductIdRef = useRef();
     const navigate = useNavigate();
-    const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
+    const { isLoggedIn, idToken, getCartItems, user, refreshToken } = useContext(AuthContext);
 
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
@@ -40,6 +40,8 @@ const Product = ({ productId }) => {
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
     const [maxQuantity, setMaxQuantity] = useState(maxQuantityMap[weight]);
+
+    console.log(product)
 
     // Fetch product data when productId changes
     useEffect(() => {
@@ -100,6 +102,7 @@ const Product = ({ productId }) => {
 
     const handleAddToCart = async () => {
         if (isLoggedIn) {
+            await refreshToken(user);
             const data = await addToCart(productId, quantity, weight, idToken);
             await getCartItems();
         } else {

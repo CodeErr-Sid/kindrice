@@ -25,16 +25,25 @@ export const AuthContextProvider = ({ children }) => {
             if (user) {
                 setIsLoggedIn(true);
                 setUser(user);
-                const token = await user.getIdToken();
-                setIdToken(token);
+                await refreshToken(user);
             } else {
                 setIsLoggedIn(false);
                 setUser(null);
+                setIdToken(null); // Reset idToken when user logs out
             }
         });
 
         return () => unsubscribe(); // Clean up subscription on unmount
     }, []);
+
+    const refreshToken = async (user) => {
+        try {
+            const token = await user.getIdToken(true); // Force refresh the token
+            setIdToken(token);
+        } catch (error) {
+            console.error("Error refreshing token:", error);
+        }
+    };
 
     const getCartItems = async () => {
         if (isLoggedIn) {
@@ -69,7 +78,7 @@ export const AuthContextProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, addresses, url, idToken, cart, currency, getCartItems }}>
+        <AuthContext.Provider value={{ isLoggedIn, addresses, url, user, refreshToken, idToken, cart, currency, getCartItems }}>
             {children}
         </AuthContext.Provider>
     );

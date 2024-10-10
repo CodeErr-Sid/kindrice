@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { normaCheckoutOrder, handler } from '../../api/orderapi';
+import { normaCheckoutOrder, paymentHandler } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
+import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 const PaymentButton = ({ name, className, amount, notes, disabled, address }) => {
 
-    const { url, idToken, getCart, isLoggedIn } = useContext(AuthContext)
+    const { url, idToken, getCart, isLoggedIn, user, refreshToken } = useContext(AuthContext)
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
@@ -25,6 +26,7 @@ const PaymentButton = ({ name, className, amount, notes, disabled, address }) =>
 
                 const data = await normaCheckoutOrder(url, amount, notes);
                 const orderId = await data.id;
+                await refreshToken(user);
                 displayRazorpay(orderId);
             } catch (error) {
                 console.error('Error fetching order ID:', error);
@@ -50,7 +52,7 @@ const PaymentButton = ({ name, className, amount, notes, disabled, address }) =>
             show_coupons: false,
             image: assets.rpkindlogo,
             handler: (response) => {
-                handler(url, response, idToken, getCart);
+                paymentHandler(url, response, idToken, getCart);
             },
             prefill: {
                 name: fullname,

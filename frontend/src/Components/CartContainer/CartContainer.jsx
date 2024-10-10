@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const CartContainer = () => {
   const navigate = useNavigate();
-  const { cart, currency, isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
+  const { cart, currency, isLoggedIn, idToken, user, refreshToken, getCartItems } = useContext(AuthContext);
   const [quantities, setQuantities] = useState([]);
   const [totalCartPrice, setTotalCartPrice] = useState(0);
 
@@ -123,7 +123,7 @@ const CartContainer = () => {
           weight: item.weight
         }));
 
-        // Update the cart with the new quantities
+        await refreshToken(user);
         await updateCart(itemsToUpdate, idToken);
         await getCartItems(); // Re-fetch the cart
         setQuantities(newQuantities); // Update local state once
