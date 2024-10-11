@@ -289,7 +289,7 @@ const verifyPayment = async (req, res) => {
             order_id: generateOrderID(),  // function to generate unique order ID
             order_date: formatOrderDate(), // function to format current date
             pickup_location: "warehouse",
-            channel_id: "5475071",         // Assuming this is static for your case
+            channel_id: 5475071,         // Assuming this is static for your case
             comment: "Kind Low Gi Rice",
             payment_method: "Prepaid",
             ...orderData                   // Merges other necessary order details
@@ -298,19 +298,7 @@ const verifyPayment = async (req, res) => {
         // Create the order in Shiprocket
         const shipRocketOrder = await createShipRocketOrder(shiprocketOrderData);
         if (!shipRocketOrder) {
-            return res.status(500).json({ success: false, message: 'Failed to create Shiprocket order' });
-        }
-
-        // Generate AWB (Air Waybill) for the shipment
-        const shippingDetails = {
-            shipment_id: shipRocketOrder.shipment_id,
-            courier_id
-        };
-
-        const shipRocketAWB = await generateAWB(shippingDetails);
-        
-        if (!shipRocketAWB.success) {
-            const refundResponse = await refundPayment(razorpay_payment_id, paymentObject.data.amount);
+            const refundResponse = await refundPayment(razorpay_payment_id, amount);
 
             if (!refundResponse.success) {
                 console.error(`Refund failed for payment ID ${razorpay_payment_id}. Please contact support.`);
@@ -329,6 +317,18 @@ const verifyPayment = async (req, res) => {
             });
 
             return;
+        }
+
+        // Generate AWB (Air Waybill) for the shipment
+        const shippingDetails = {
+            shipment_id: shipRocketOrder.shipment_id,
+            courier_id
+        };
+
+        const shipRocketAWB = await generateAWB(shippingDetails);
+
+        if (!shipRocketAWB.success) {
+
 
         }
 
