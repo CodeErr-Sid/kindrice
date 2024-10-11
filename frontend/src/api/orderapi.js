@@ -68,7 +68,7 @@ export const paymentHandler = async (url, response, idToken, singleProduct) => {
         if (verificationResponse.data.success) {
             toast.success('Payment was successful!');
             const data = await verificationResponse.data.data;
-            console.log(data)
+            console.log(data);
             if (singleProduct) {
                 await clearCart(idToken);
                 await getCart(idToken);

@@ -28,7 +28,6 @@ const registerUser = async (firebaseUID, email, name, url) => {
         });
 
         // Handle success
-        console.log('User registered successfully:', response.data);
         return response.data; // Return the response data for further processing if needed
 
     } catch (error) {
