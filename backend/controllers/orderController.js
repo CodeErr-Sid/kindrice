@@ -281,7 +281,7 @@ const verifyPayment = async (req, res) => {
             return res.status(500).json({ success: false, message: 'Payment verification failed' });
         }
 
-        const { notes } = paymentObject.data;
+        const { notes, amount } = paymentObject.data;
         const { courier_id, packageCategory, orderData, saveThisAddress } = notes[0]; // Assuming notes[0] has the necessary data
 
         // Prepare order data for Shiprocket
@@ -307,15 +307,35 @@ const verifyPayment = async (req, res) => {
             courier_id
         };
 
-        // const shipRocketAWB = await generateAWB(shippingDetails);
-        // if (!shipRocketAWB.success) {
-        //     // Handle AWB generation failure and possible refund logic
-        // }
+        const shipRocketAWB = await generateAWB(shippingDetails);
+        
+        if (!shipRocketAWB.success) {
+            const refundResponse = await refundPayment(razorpay_payment_id, paymentObject.data.amount);
+
+            if (!refundResponse.success) {
+                console.error(`Refund failed for payment ID ${razorpay_payment_id}. Please contact support.`);
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to generate AWB and refund the payment. Please contact Kindrice support.',
+                    paymentId: razorpay_payment_id,
+                    refundError: refundResponse.error
+                });
+            }
+
+            res.status(500).json({
+                success: false,
+                message: 'Failed to generate AWB, but payment has been refunded successfully',
+                refund: refundResponse.data
+            });
+
+            return;
+
+        }
 
         const customerOrder = {
             razorpay_payment_id,
             shiprocket_order_id: shipRocketOrder.order_id,
-            awb: "Dummy Code", // Place awb code here
+            awb: shipRocketAWB.awb_code, // Place awb code here
             userId
         };
 
@@ -332,8 +352,8 @@ const verifyPayment = async (req, res) => {
 
         res.json({
             success: true,
-            message: 'Order created successfully ' + (saveThisAddress ? ' and address saved successfully.' : ''),
-            data: kindriceOrder
+            message: 'Order created successfully',
+            data: kindriceOrder.link
         });
 
     } catch (error) {

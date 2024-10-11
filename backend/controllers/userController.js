@@ -62,10 +62,6 @@ const isEmailVerified = async (email) => {
     }
 }
 
-const sendAwbToCustomer = async (email, message) => {
-
-}
-
 const getUserBillingInformation = async (req, res) => {
     const userId = req.userId;
     const addresses = [];
