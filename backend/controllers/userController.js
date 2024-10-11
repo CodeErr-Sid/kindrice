@@ -1,5 +1,6 @@
 import User from "../models/user.js"; // Adjust the path based on your project structure
 import Subscriber from "../models/subscriber.js";
+import admin from "../config/firebase.js";
 
 const registerUser = async (req, res) => {
     const { firebaseUID, email, name } = req.body;
@@ -50,6 +51,20 @@ const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailRegex.test(email);
 };
+
+const isEmailVerified = async (email) => {
+    try {
+        const userRecord = await admin.auth().getUserByEmail(email);
+        return userRecord.emailVerified; // This will return true if email is verified, otherwise false
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        throw error;
+    }
+}
+
+const sendAwbToCustomer = async (email, message) => {
+
+}
 
 const getUserBillingInformation = async (req, res) => {
     const userId = req.userId;
@@ -192,4 +207,4 @@ const createNewSubscriber = async (req, res) => {
 
 
 
-export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser };
+export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser, isEmailVerified };
