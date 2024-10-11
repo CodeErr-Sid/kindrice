@@ -2,6 +2,24 @@ import axios from "axios"
 import { toast } from 'react-toastify';
 import { clearCart, getCart } from "../api/cartapi"
 
+const url = import.meta.env.VITE_BACKEND_URL;
+
+const axiosInstance = axios.create({
+    baseURL: url,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
+
+// Function to set the authorization token in the headers
+const setAuthToken = (token) => {
+    if (token) {
+        axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
+    } else {
+        delete axiosInstance.defaults.headers['Authorization'];
+    }
+};
+
 
 export const createOrder = async (url, productId, weightCategory, quantity) => {
     try {
@@ -32,21 +50,29 @@ export const normaCheckoutOrder = async (url, amount, notes) => {
 
 // payment verfication
 
-export const handler = async (url, response, idToken) => {
+export const paymentHandler = async (url, response, idToken, singleProduct) => {
+    setAuthToken(idToken);
     const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
 
     try {
         // Send the payment details to the backend for verification using axios
-        const verificationResponse = await axios.post(url + '/api/orders/payment/verify', {
+        const verificationResponse = await axiosInstance.post(url + '/api/orders/payment/verify', {
             razorpay_payment_id,
             razorpay_order_id,
             razorpay_signature,
         });
 
+
+
+
         if (verificationResponse.data.success) {
             toast.success('Payment was successful!');
-            await clearCart(idToken);
-            await getCart(idToken);
+            const data = await verificationResponse.data.data;
+            console.log(data)
+            if (singleProduct) {
+                await clearCart(idToken);
+                await getCart(idToken);
+            }
         } else {
             toast.error('Payment verification failed.');
         }

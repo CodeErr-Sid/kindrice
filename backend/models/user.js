@@ -1,16 +1,31 @@
 import mongoose from 'mongoose';
 
+const shippingAddressSchema = new mongoose.Schema({
+  customer_name: { type: String },
+  last_name: { type: String },
+  address: { type: String, required: true },
+  address_2: { type: String }, // Optional second address line
+  city: { type: String, required: true },
+  pincode: { type: String, required: true },
+  country: { type: String, required: true },
+  state: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true }
+}, { _id: false });
+
 const addressSchema = new mongoose.Schema({
   firstname: { type: String, required: true },
-  lastname: { type: String,},
+  lastname: { type: String },
   addressLine1: { type: String, required: true },
   zipcode: { type: String, required: true },
   city: { type: String, required: true },
   state: { type: String, required: true },
   country: { type: String, required: true },
   phonenumber: { type: String, required: true },
-  email: { type: String, required: true }
+  email: { type: String, required: true },
+  shippingAddress: shippingAddressSchema  // Define shipping address using its schema
 }, { _id: false });
+
 
 const cartItemSchema = new mongoose.Schema({
   productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },

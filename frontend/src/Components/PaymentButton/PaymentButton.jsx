@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
-const PaymentButton = ({ name, className, amount, notes, disabled, address }) => {
+const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled, address }) => {
 
     const { url, idToken, getCart, isLoggedIn, user, refreshToken } = useContext(AuthContext)
     const navigate = useNavigate();
@@ -52,7 +52,7 @@ const PaymentButton = ({ name, className, amount, notes, disabled, address }) =>
             show_coupons: false,
             image: assets.rpkindlogo,
             handler: (response) => {
-                paymentHandler(url, response, idToken, getCart);
+                paymentHandler(url, response, idToken, getCart,singleProduct);
             },
             prefill: {
                 name: fullname,

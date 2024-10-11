@@ -24,15 +24,18 @@ const packageData = {
     "20": {
         dimensions: { length: 50, breadth: 40, height: 23 },
         combinations: [
-            { items: [{ weight: 1, quantity: 1 }, { weight: 5, quantity: 2 }], totalWeight: 12 }, 
+            { items: [{ weight: 1, quantity: 1 }, { weight: 5, quantity: 2 }], totalWeight: 12 },
             { items: [{ weight: 1, quantity: 2 }, { weight: 5, quantity: 2 }], totalWeight: 13 },
             { items: [{ weight: 1, quantity: 3 }, { weight: 5, quantity: 2 }], totalWeight: 14.2 },
-            { items: [{ weight: 1, quantity: 1 }, { weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 17 },
-            { items: [{ weight: 1, quantity: 2 }, { weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 18.1 },
-            { items: [{ weight: 1, quantity: 3 }, { weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 19.2 },
+            { items: [{ weight: 1, quantity: 1 }, { weight: 5, quantity: 1 }], totalWeight: 7 },
+            { items: [{ weight: 1, quantity: 2 }, { weight: 5, quantity: 1 }], totalWeight: 8 },
+            { items: [{ weight: 1, quantity: 3 }, { weight: 5, quantity: 1 }], totalWeight: 9 },
             { items: [{ weight: 1, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 12 },
             { items: [{ weight: 1, quantity: 2 }, { weight: 10, quantity: 1 }], totalWeight: 13 },
             { items: [{ weight: 1, quantity: 3 }, { weight: 10, quantity: 1 }], totalWeight: 14 },
+            { items: [{ weight: 1, quantity: 1 }, { weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 17 },
+            { items: [{ weight: 1, quantity: 2 }, { weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 18.1 },
+            { items: [{ weight: 1, quantity: 3 }, { weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 19.2 },
             { items: [{ weight: 5, quantity: 2 }], totalWeight: 11 },
             { items: [{ weight: 5, quantity: 1 }, { weight: 10, quantity: 1 }], totalWeight: 16 },
             { items: [{ weight: 10, quantity: 2 }], totalWeight: 20.95 }

@@ -10,8 +10,6 @@ const CartContainer = () => {
   const [quantities, setQuantities] = useState([]);
   const [totalCartPrice, setTotalCartPrice] = useState(0);
 
-  console.log(quantities)
-
 
   const maxQuantityMap = {
     1: 3,
@@ -24,6 +22,9 @@ const CartContainer = () => {
       { 1: 1, 5: 2 },
       { 1: 2, 5: 2 },
       { 1: 3, 5: 2 },
+      { 1: 1, 5: 1 },
+      { 1: 2, 5: 1 },
+      { 1: 3, 5: 1 },
       { 1: 1, 10: 1 },
       { 1: 2, 10: 1 },
       { 1: 3, 10: 1 },
@@ -127,14 +128,14 @@ const CartContainer = () => {
         await updateCart(itemsToUpdate, idToken);
         await getCartItems(); // Re-fetch the cart
         setQuantities(newQuantities); // Update local state once
-        toast.success("Cart updated successfully!");
+        // toast.success("Cart updated successfully!");
       } else {
-        toast.success("Cart quantities are within limits. No update needed!");
+        // toast.success("Cart quantities are within limits. No update needed!");
         setQuantities(newQuantities);
       }
     } catch (error) {
       console.error("Error updating cart quantities:", error);
-      toast.error("Failed to update cart. Please try again.");
+      // toast.error("Failed to update cart. Please try again.");
     }
   };
 
@@ -175,7 +176,7 @@ const CartContainer = () => {
         if (newQuantities)
           setQuantities(newQuantities);
       } else {
-        toast.error("Invalid quantity selected for this combination.");
+        // toast.error("Invalid quantity selected for this combination.");
       }
     }
   };
@@ -198,7 +199,7 @@ const CartContainer = () => {
       const message = await removeFromCart(product, idToken, weight);
       await updateCartQuantities();
       await getCartItems();
-      toast.success(message);
+      // toast.success(message);
     } else {
       navigate("/login");
     }
@@ -351,7 +352,12 @@ const CartContainer = () => {
               </div>
               <div className="flex items-center justify-between py-4">
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-400">Quantity</p>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white"></p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                  {quantities.reduce((accumulator, currentValue) => {
+                    return accumulator + currentValue; // Return the updated accumulator
+                  }, 0)}
+                </p>
+
               </div>
               <button
                 className="mt-4 w-full rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none dark:bg-primary-600 dark:hover:bg-primary-700"

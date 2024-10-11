@@ -1,6 +1,7 @@
 import express from 'express';
 import { createMultipleOrders, createOrder, fetchAllOrders, fetchOrderById, fetchPaymentById, normalCheckoutOrder, verifyPayment } from "../controllers/orderController.js"
 import { getShippingPrice, getCourierService } from "../controllers/courierController.js";
+import authMiddleware from '../middleware/AuthMiddleware.js';
 
 
 const orderRouter = express.Router();
@@ -24,6 +25,6 @@ orderRouter.post("/courierservice", getCourierService);
 
 // payment 
 
-orderRouter.post("/payment/verify", verifyPayment);
+orderRouter.post("/payment/verify", authMiddleware, verifyPayment);
 
 export default orderRouter;

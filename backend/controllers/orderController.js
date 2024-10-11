@@ -3,7 +3,9 @@ import Product from '../models/product.js';
 import dotenv from 'dotenv';
 import { validatePaymentVerification } from 'razorpay/dist/utils/razorpay-utils.js';
 import { generateOrderID, formatOrderDate } from '../utils/shiprocketOrderUtils.js';
-
+import { createShipRocketOrder, generateAWB } from '../config/shiprocket.js';
+import { createCustomerOrder } from './ordersController.js';
+import { saveAddressToUser } from './userController.js';
 dotenv.config();
 
 const keyId = process.env.RAZORPAY_KEY_ID
@@ -13,6 +15,8 @@ const instance = new Razorpay({
     key_id: keyId,
     key_secret: keySecret
 });
+
+
 
 // buy now 
 const createOrder = async (req, res) => {
@@ -207,6 +211,9 @@ const fetchOrderId = async (orderId) => {
     }
 }
 
+
+// Normal Payment API
+
 const normalCheckoutOrder = async (req, res) => {
 
     const { amount, notes } = req.body;
@@ -228,8 +235,33 @@ const normalCheckoutOrder = async (req, res) => {
     }
 }
 
+const refundPayment = async (paymentId, amount) => {
+    try {
+        const response = await instance.payments.refund(paymentId, {
+            "amount": amount,
+            "speed": "normal",
+            "notes": {
+                "message": "Refunded amount ₹" + (amount / 100)
+            },
+            "receipt": "Receipt No. 31"
+        });
+
+        return { success: true, data: response };
+    } catch (error) {
+        console.error(`Failed to refund payment for payment ID ${paymentId}:`, error.response ? error.response.data : error.message);
+
+        // Handle refund failure scenario
+        return {
+            success: false,
+            message: 'Failed to process refund',
+            error: error.response ? error.response.data : error.message
+        };
+    }
+};
+
 const verifyPayment = async (req, res) => {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const userId = req.userId;
 
     try {
         // Validate the payment signature
@@ -239,42 +271,78 @@ const verifyPayment = async (req, res) => {
             keySecret
         );
 
-        if (isValid) {
-            res.json({ success: true, message: 'Payment verified successfully' });
-
-            const paymentObject = await fetchPaymentById(razorpay_payment_id);
-
-            if (paymentObject.success) {
-                const notes = paymentObject.data.notes[0];
-                const courier_company_id = notes.courier_id;
-
-
-                const orderData = {
-                    order_id: generateOrderID(), // generateOrderID 
-                    order_date: formatOrderDate(), //formatOrderDate
-                    pickup_location: "warehouse",
-                    channel_id: "5475071",
-                    comment: "Kind Low Gi Rice",
-                    payment_method: "Prepaid",
-                    ...notes.orderData
-                }
-
-                console.log(orderData);
-
-                // create order get shipment id 
-
-                // generate awb and get awb no here 
-                // set the pickup date tommorrow 
-            }
-
-        } else {
-            // The payment is invalid
-            res.status(400).json({ success: false, message: 'Payment verification failed' });
+        if (!isValid) {
+            return res.status(400).json({ success: false, message: 'Invalid payment signature' });
         }
+
+        // Fetch payment details
+        const paymentObject = await fetchPaymentById(razorpay_payment_id);
+        if (!paymentObject.success) {
+            return res.status(500).json({ success: false, message: 'Payment verification failed' });
+        }
+
+        const { notes } = paymentObject.data;
+        const { courier_id, packageCategory, orderData, saveThisAddress } = notes[0]; // Assuming notes[0] has the necessary data
+
+        // Prepare order data for Shiprocket
+        const shiprocketOrderData = {
+            order_id: generateOrderID(),  // function to generate unique order ID
+            order_date: formatOrderDate(), // function to format current date
+            pickup_location: "warehouse",
+            channel_id: "5475071",         // Assuming this is static for your case
+            comment: "Kind Low Gi Rice",
+            payment_method: "Prepaid",
+            ...orderData                   // Merges other necessary order details
+        };
+
+        // Create the order in Shiprocket
+        const shipRocketOrder = await createShipRocketOrder(shiprocketOrderData);
+        if (!shipRocketOrder) {
+            return res.status(500).json({ success: false, message: 'Failed to create Shiprocket order' });
+        }
+
+        // Generate AWB (Air Waybill) for the shipment
+        const shippingDetails = {
+            shipment_id: shipRocketOrder.shipment_id,
+            courier_id
+        };
+
+        // const shipRocketAWB = await generateAWB(shippingDetails);
+        // if (!shipRocketAWB.success) {
+        //     // Handle AWB generation failure and possible refund logic
+        // }
+
+        const customerOrder = {
+            razorpay_payment_id,
+            shiprocket_order_id: shipRocketOrder.order_id,
+            awb: "Dummy Code", // Place awb code here
+            userId
+        };
+
+        // Initialize address saving status
+        let addressSavingStatus = false;
+
+        // Save address if indicated
+        if (saveThisAddress) {
+            const addressSavingMessage = await saveAddressToUser(orderData, userId);
+            addressSavingStatus = addressSavingMessage.success; // Set status based on result
+        }
+
+        const kindriceOrder = await createCustomerOrder(customerOrder, packageCategory, addressSavingStatus);
+
+        res.json({
+            success: true,
+            message: 'Order created successfully ' + (saveThisAddress ? ' and address saved successfully.' : ''),
+            data: kindriceOrder
+        });
+
     } catch (error) {
         console.error('Error verifying payment:', error);
-        res.status(500).json({ success: false, message: 'Server error' });
+        res.status(500).json({ success: false, message: 'Server error, please try again later' });
     }
-}
+};
+
+
+
 
 export { verifyPayment, createOrder, fetchAllOrders, fetchOrderById, createMultipleOrders, fetchOrderId, fetchPaymentById, normalCheckoutOrder }

@@ -53,15 +53,49 @@ const createShipRocketOrder = async (orderData) => {
     const shiprocketAPI = getShiprocketAPI();
     const response = await shiprocketAPI.post('/orders/create/adhoc', orderData);
 
-
-
-    res.json({ data: response.data })
-
     console.log('Order placed successfully:', response.data);
+
+    return response.data;
+
   } catch (error) {
     console.error('Error placing order:', error.response ? error.response.data : error.message);
   }
 };
+
+const generateAWB = async (shippingDetails, retries = 3) => {
+  try {
+    // Ensure that the user is authenticated
+    if (!shiprocketToken) {
+      await authenticateShiprocket();
+    }
+
+    const shiprocketAPI = getShiprocketAPI();
+    const response = await shiprocketAPI.post('/courier/assign/awb', shippingDetails);
+
+    console.log('Shipment created successfully:', response.data);
+
+    return { success: true, data: response.data };
+
+  } catch (error) {
+    console.error('Error generating AWB:', error.response ? error.response.data : error.message);
+
+    // Handle specific error cases (like invalid shipping details, authentication failure, etc.)
+    if (error.response && error.response.status === 401) {
+      console.error('Authentication error. Re-authenticating...');
+      await authenticateShiprocket();
+    }
+
+    // Retry mechanism with limit
+    if (retries > 0) {
+      console.log(`Retrying AWB generation... Attempts left: ${retries}`);
+      return generateAWB(shippingDetails, retries - 1); // Recursive call with reduced retries
+    }
+
+    // Return failure response after retries are exhausted
+    return { success: false, message: 'Failed to generate AWB after retries', error: error.response ? error.response.data : error.message };
+  }
+};
+
 
 
 const shippingPrice = async (pincode, weight, price, length, breadth, height) => {
@@ -103,4 +137,4 @@ const shippingPrice = async (pincode, weight, price, length, breadth, height) =>
 };
 
 
-export { shippingPrice, createShipRocketOrder }
+export { shippingPrice, createShipRocketOrder, generateAWB }

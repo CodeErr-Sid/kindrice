@@ -41,7 +41,6 @@ const Product = ({ productId }) => {
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
     const [maxQuantity, setMaxQuantity] = useState(maxQuantityMap[weight]);
 
-    console.log(product)
 
     // Fetch product data when productId changes
     useEffect(() => {

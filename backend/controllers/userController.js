@@ -91,6 +91,82 @@ const getUserBillingInformation = async (req, res) => {
     }
 };
 
+const saveAddressToUser = async (orderData, userId) => {
+    try {
+        // Extracting billing details from orderData
+        const address = {
+            firstname: orderData.billing_customer_name,
+            lastname: orderData.billing_last_name,
+            addressLine1: orderData.billing_address,
+            city: orderData.billing_city,
+            zipcode: orderData.billing_pincode,
+            state: orderData.billing_state,
+            country: orderData.billing_country,
+            email: orderData.billing_email,
+            phonenumber: orderData.billing_phone,
+            shippingAddress: {}  // Initialize empty shippingAddress
+        };
+
+        // Find the user by userId
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        // Check if the billing address already exists in the user's addresses array
+        let addressExists = false;
+        let addressIndex = -1;
+
+        user.addresses.forEach((addr, index) => {
+            if (
+                addr.addressLine1 === address.addressLine1 &&
+                addr.city === address.city &&
+                addr.zipcode === address.zipcode &&
+                addr.state === address.state &&
+                addr.country === address.country &&
+                addr.phonenumber === address.phonenumber
+            ) {
+                addressExists = true;
+                addressIndex = index;  // Store the index for updating later
+            }
+        });
+
+        // If shipping_is_billing is false, add the shipping address as an object
+        if (!orderData.shipping_is_billing) {
+            const shippingAddressObject = {
+                customer_name: orderData.shipping_customer_name || "",
+                last_name: orderData.shipping_last_name || "",
+                address: orderData.shipping_address || "",
+                address_2: orderData.shipping_address_2 || "",
+                city: orderData.shipping_city || "",
+                pincode: orderData.shipping_pincode || "",
+                country: orderData.shipping_country || "",
+                state: orderData.shipping_state || "",
+                email: orderData.shipping_email || "",
+                phone: orderData.shipping_phone || ""
+            };
+
+            // Assign shippingAddress to the address object
+            address.shippingAddress = shippingAddressObject;
+        }
+
+        // Update or add the address in the user's addresses array
+        if (addressExists) {
+            // Update the existing address
+            user.addresses[addressIndex] = address;
+            return { success: true, message: 'Address updated successfully' };
+        } else {
+            // Add the new address to the addresses array
+            user.addresses.push(address);
+            return { success: true, message: 'Billing address added successfully' };
+        }
+
+        await user.save();  // Save the updated user document
+    } catch (error) {
+        console.error('Error saving address:', error);
+        return { success: false, message: 'Error saving address', error };
+    }
+};
 
 const createNewSubscriber = async (req, res) => {
     const { email } = req.body;
@@ -116,4 +192,4 @@ const createNewSubscriber = async (req, res) => {
 
 
 
-export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation };
+export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser };
