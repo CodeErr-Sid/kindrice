@@ -14,7 +14,6 @@ const createProduct = async (req, res) => {
             images,
             rating,
             stock,
-            sku,
             hsnCode,
             taxPercentage
         } = req.body;
@@ -30,8 +29,8 @@ const createProduct = async (req, res) => {
         }
 
         const updatedWeightPrices = weightPrices.map(weightPrice => {
-            if (weightPrice.price == null || weightPrice.weight == null) {
-                throw new Error('Weight and price are required for each weightPrice.');
+            if (weightPrice.price == null || weightPrice.weight == null || weightPrice.sku == null) {
+                throw new Error('Weight, price, and SKU are required for each weightPrice.');
             }
 
             // Calculate total price including tax
@@ -51,7 +50,6 @@ const createProduct = async (req, res) => {
             images,
             rating: rating || 0,  // Default rating to 0 if not provided
             stock: stock || 0,    // Default stock to 0 if not provided
-            sku,
             hsnCode,
             taxPercentage
         });
@@ -62,6 +60,7 @@ const createProduct = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 // Get all products
 const getAllProducts = async (req, res) => {

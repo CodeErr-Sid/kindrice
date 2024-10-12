@@ -1,20 +1,12 @@
-import axios from "axios"
-import dotenv from 'dotenv';
-
-// Load environment variables from .env file
-dotenv.config();
-
+import axios from 'axios';
 
 // Base URL for Shiprocket API
 const BASE_URL = process.env.SHIPROCKET_BASE_URL;
 
 // Variable to store the token
-let shiprocketToken = null;
+let shiprocketToken = "";
+const pickupPostCode = process.env.PICKUP_POSTCODE;
 
-/**
- * Login to Shiprocket to get the authentication token.
- * The token is valid for 10 days.
- */
 const authenticateShiprocket = async () => {
   try {
     const response = await axios.post(`${BASE_URL}/auth/login`, {
@@ -22,9 +14,10 @@ const authenticateShiprocket = async () => {
       password: process.env.SHIPROCKET_PASSWORD
     });
 
+    // Log response data for debugging
+
     // Store the token
     shiprocketToken = response.data.token;
-    console.log('Authentication successful, token retrieved:', shiprocketToken);
   } catch (error) {
     console.error('Error during authentication:', error.response ? error.response.data : error.message);
   }
@@ -50,7 +43,7 @@ const getShiprocketAPI = () => {
 /**
  * Example function to create an order with Shiprocket.
  */
-const createOrder = async (orderData) => {
+const createShipRocketOrder = async (orderData) => {
   try {
     // Ensure that the user is authenticated
     if (!shiprocketToken) {
@@ -61,43 +54,87 @@ const createOrder = async (orderData) => {
     const response = await shiprocketAPI.post('/orders/create/adhoc', orderData);
 
     console.log('Order placed successfully:', response.data);
+
+    return response.data;
+
   } catch (error) {
     console.error('Error placing order:', error.response ? error.response.data : error.message);
   }
 };
 
-var orderData = JSON.stringify({
-  "order_id": "224-4779",                    // Your own generated Order ID
-  "order_date": "2024-09-01 12:00",          // Order date and time
-  "pickup_location": "primary",                // Pickup location for the order
-  "channel_id": "5465902",                  // Channel ID (from your Shiprocket account)
-  "comment": "Reseller: M/s Goku",           // Optional comment
-  "billing_customer_name": "Naruto",         // Billing customer name
-  "billing_last_name": "Uzumaki",            // Billing last name
-  "billing_address": "House 221B, Leaf Village", 
-  "billing_city": "New Delhi",               // Billing city
-  "billing_pincode": "110002",               // Billing postal code
-  "billing_state": "Delhi",                  // Billing state
-  "billing_country": "India",                // Billing country
-  "billing_email": "naruto@uzumaki.com",     // Billing email
-  "billing_phone": "9876543210",             // Billing phone
-  "shipping_is_billing": true,               // Shipping same as billing address
-  "order_items": [                           // Ordered items
-    {
-      "name": "Kunai",
-      "sku": "chakra123",                    // SKU for manual orders (optional)
-      "units": 10,                           // Number of units
-      "selling_price": "900",                // Price per unit
-      "hsn": 441122                          // HSN code for tax purposes
+const generateAWB = async (shippingDetails, retries = 3) => {
+  try {
+    // Ensure that the user is authenticated
+    if (!shiprocketToken) {
+      await authenticateShiprocket();
     }
-  ],
-  "payment_method": "Prepaid",               // Prepaid or COD
-  "shipping_charges": 0,                     // Shipping charges
-  "sub_total": 9000,                         // Subtotal
-  "length": 10,                              // Package length
-  "breadth": 15,                             // Package breadth
-  "height": 20,                              // Package height
-  "weight": 2.5                              // Package weight
-});
 
-createOrder(orderData);
+    const shiprocketAPI = getShiprocketAPI();
+    const response = await shiprocketAPI.post('/courier/assign/awb', shippingDetails);
+
+    console.log('Shipment created successfully:', response.data);
+
+    return { success: true, data: response.data };
+
+  } catch (error) {
+    console.error('Error generating AWB:', error.response ? error.response.data : error.message);
+
+    // Handle specific error cases (like invalid shipping details, authentication failure, etc.)
+    if (error.response && error.response.status === 401) {
+      console.error('Authentication error. Re-authenticating...');
+      await authenticateShiprocket();
+    }
+
+    // Retry mechanism with limit
+    if (retries > 0) {
+      console.log(`Retrying AWB generation... Attempts left: ${retries}`);
+      return generateAWB(shippingDetails, retries - 1); // Recursive call with reduced retries
+    }
+
+    // Return failure response after retries are exhausted
+    return { success: false, message: 'Failed to generate AWB after retries', error: error.response ? error.response.data : error.message };
+  }
+};
+
+
+
+const shippingPrice = async (pincode, weight, price, length, breadth, height) => {
+  try {
+    // Ensure that the user is authenticated
+    if (!shiprocketToken) {
+      await authenticateShiprocket();
+    }
+
+
+    const shiprocketAPI = getShiprocketAPI();
+
+    // Prepare query parameters
+    const courierParams = {
+      pickup_postcode: pickupPostCode,  // Your pickup postcode from .env
+      delivery_postcode: pincode,                    // Delivery postcode
+      cod: 0,                      // Cash on Delivery (0 for no COD)
+      weight: weight,
+      length,
+      breadth,
+      height,                          // Weight of the package
+      declared_value: price                          // Declared value of the package
+    };
+
+    // Use axios.get() with query parameters
+    const response = await shiprocketAPI.get('/courier/serviceability', { params: courierParams });
+
+    // Log the response for debugging
+
+    // Find the recommended courier
+    const recommendedCourierId = response.data.data.shiprocket_recommended_courier_id;
+    const recommendedCourier = response.data.data.available_courier_companies.filter(courier => courier.courier_company_id === recommendedCourierId);
+
+    return recommendedCourier;
+  } catch (error) {
+    // Catch and display any errors that occur during the request
+    res.status(500).json({ success: false, message: "Error Fetching Courier Servicablity" });
+  }
+};
+
+
+export { shippingPrice, createShipRocketOrder, generateAWB }

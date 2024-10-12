@@ -79,22 +79,27 @@ const KindLoader = () => {
 
     return (
         <div className="mil-preloader">
-        <div className="mil-preloader-animation">
-          <div className="mil-pos-abs mil-animation-1">
-            <p className="mil-h3 mil-bla mil-thin" id="color-mil-txt"> Healthy</p>
-            <p className="mil-h3 mil-maroon" id="color-mil-txt" style={{ color: '#016533' }}>Rice</p>
-            <p className="mil-h3 mil-black mil-thin" id="color-mil-txt">For a</p>
-            <p className="mil-h3 mil-maroon" id="color-mil-txt" style={{ color: '#016533' }}>Healthy Lifestyle</p>
-          </div>
-          <div className="mil-pos-abs mil-animation-2">
-            <div className="mil-reveal-frame">
-              <p className="mil-reveal-box"></p>
-              <p className="mil-h3 mil-maroon mil-thin" style={{ color: '#016533', fontSize: '2rem' }}><img src={assets.kindl} alt='' className='w-40 h-auto md:w-60 md:h-auto'/></p>
+            <div className="mil-preloader-animation">
+                <div className="mil-pos-abs mil-animation-1">
+                    <p className="mil-h3 mil-bla mil-thin" id="color-mil-txt">Healthy</p>
+                    <p className="mil-h3 mil-maroon" id="color-mil-txt" style={{ color: '#016533' }}>Rice</p>
+                    <p className="mil-h3 mil-black mil-thin" id="color-mil-txt">For a</p>
+                    <p className="mil-h3 mil-maroon" id="color-mil-txt" style={{ color: '#016533' }}>Healthy Lifestyle</p>
+                </div>
+                <div className="mil-pos-abs mil-animation-2">
+                    <div className="mil-reveal-frame">
+                        <p className="mil-reveal-box"></p>
+                        <p className="mil-h3 mil-maroon mil-thin" style={{ color: '#016533', fontSize: '2rem' }}>
+                            <img src={assets.kindl} alt='' className='w-40 h-auto md:w-60 md:h-auto' />
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
+            {/* Add .mil-up element here */}
+            <div className="mil-up">
+                {/* Add content to animate */}
+            </div>
         </div>
-      </div>
-      
     );
 };
 

@@ -1,35 +1,48 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import { assets } from '../../assets/assets'
 import './Product.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faHeart, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import Accordion from "../Accordion/Accordion"
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faStar, faHeart, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+// import Accordion from "../Accordion/Accordion"
+import MagicCheckoutButton from '../MagicCheckoutButton/MagicCheckoutButton';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { addToCart, getProductById } from '../../api/cartapi';
 import Dropdown from '../Dropdown/Dropdown';
 import QuantitySelector from '../Dropdown/QuantitySelector';
+import { toast } from 'react-toastify';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
+
 
 const Product = ({ productId }) => {
-
     const productData = {
         "ingredients": { "title": "Ingredients", "content": ["100% Natural low-GI rice"] },
-        "keyFeatures": { "title": "Product details", "content": ["Paddy Variety: Indian-RNR", "Processing Method: Boiled", "Age: 6-12 months", "Cooking Time: 15-20 minutes", "Grain Size: Medium and short", "Best Cooking Methods: Open pan, cooker", "Location: India", "Recommended For: White rice, variety rice, thali, meals", "Taste Notes: Earthy", "Texture: Soft and tender", "Cooked Rice Color: White", "Processed at: R.K. Brothers Agro Foods Private Limited, 66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu 625001."] },
+        "keyFeatures": { "title": "Product details", "content": ["Paddy Variety: Indian-RNR", "Processing Method: Boiled", "Age: 6-12 months", "Cooking Time: 15-20 minutes", "Grain Size: Medium and short", "Best Cooking Methods: Open pan, cooker", "Location: India", "Recommended For: White rice, variety rice, thali, meals", "Taste Notes: Earthy", "Texture: Soft and tender", "Cooked Rice Color: White"] },
         "nutrition": { "title": "Nutritional Benefits", "description": "Rich in protein, essential for muscle repair and growth. High in fiber, promoting digestive health and satiety.", "content": ["no chemicals", "no nasties", "no adulterant", "no added flavours", "no artificial sweeteners"], "facts": { "title": "Nutritional Facts", "Protein": "6.5", "Fat": "1.1", "Crude Fiber": "0.4", "Carbohydrate": "81.3", "Energy": "361.5", "Moisture": "10.5", "Total Ash": "0.56" } }
     };
+
+    const maxQuantityMap = {
+        1: 3,
+        5: 2,
+        10: 2,
+    };
+
+
+    const prevProductIdRef = useRef();
+    const navigate = useNavigate();
+    const { isLoggedIn, idToken, getCartItems, user, refreshToken } = useContext(AuthContext);
 
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
+    const [weightCategory, setWeightCategory] = useState({});
     const [price, setPrice] = useState(0);
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
+    const [maxQuantity, setMaxQuantity] = useState(maxQuantityMap[weight]);
 
 
-
-    const { isLoggedIn, idToken, getCartItems } = useContext(AuthContext);
-    const navigate = useNavigate();
-
+    // Fetch product data when productId changes
     useEffect(() => {
         const fetchProduct = async () => {
             const productData = await getProductById(productId);
@@ -37,14 +50,19 @@ const Product = ({ productId }) => {
                 setProduct(productData.data);
                 setSelectedImage(productData.data.images[0] || assets.rice1);
                 setWeight(productData.data.weightPrice[0].weight.value);
+                setWeightCategory(productData.data.weightPrice[0]);
             } else {
                 setProduct({});
             }
         };
 
-        fetchProduct();
+        if (prevProductIdRef.current !== productId) {
+            fetchProduct();
+            prevProductIdRef.current = productId;
+        }
     }, [productId]);
 
+    // Update price when weight or quantity changes
     useEffect(() => {
         const selectedWeightData = product.weightPrice?.find(item => item.weight.value === weight);
         if (selectedWeightData) {
@@ -52,25 +70,49 @@ const Product = ({ productId }) => {
         }
     }, [weight, quantity, product.weightPrice]);
 
+    // Weight limitations check
+
     const handleBuyNow = () => {
         if (isLoggedIn) {
-            // buy now logic
+            navigate("/checkout", {
+                state: {
+                    items: [{
+                        "name": `${product.productName} - ${weight}kg`, // Product name using productName and weight
+                        "sku": weightCategory?.sku, // SKU from the selected weight category
+                        "units": quantity, // Quantity from quantities array
+                        "selling_price": weightCategory?.totalPrice, // Selling price using total price from weight category
+                        "discount": "", // Keep as empty string
+                        "tax": product.taxPercentage.toString(), // Tax percentage from productId
+                        "hsn": Number(product.hsnCode) // HSN code from productId
+
+                    }],
+                    price,
+                    weightQuantity: [{
+                        weight: weight,
+                        quantity: quantity
+                    }],
+                    singleProduct: true,
+                }
+            });
         } else {
-            navigate("/login");
+            navigate('/login');
         }
     };
 
     const handleAddToCart = async () => {
         if (isLoggedIn) {
+            await refreshToken(user);
             const data = await addToCart(productId, quantity, weight, idToken);
             await getCartItems();
         } else {
-            navigate("/login");
+            navigate('/login');
         }
     };
 
     const handleWeightChange = (selectedWeight) => {
         setWeight(selectedWeight);
+        setMaxQuantity(maxQuantityMap[selectedWeight]); // Update max quantity based on selected weight
+        setQuantity(1); // Reset quantity to 1 when weight category changes
     };
 
     const handleQuantityChange = (selectedQuantity) => {
@@ -96,8 +138,13 @@ const Product = ({ productId }) => {
                                     key={index}
                                     src={image}
                                     alt={`Thumbnail ${index}`}
+                                    style={{
+                                        border: image == selectedImage ? '2px solid #0007f34' : 'none' // Change border width as needed
+                                    }}
                                     onClick={() => selectImage(image)}
                                 />
+
+
                             ))}
                         </div>
                         <div className="p-img">
@@ -127,23 +174,33 @@ const Product = ({ productId }) => {
                                     options={product.weightPrice?.map(item => item.weight.value)}
                                     selected={weight}
                                     onSelect={handleWeightChange}
+                                    title="Weight Category"
                                 />
                                 <QuantitySelector
-                                    quantity={quantity}
+                                    title="Quantity Selector"
+                                    initialQuantity={quantity}
                                     onQuantityChange={handleQuantityChange}
+                                    maxQuantity={maxQuantity}
                                 />
-                                <button
+                                {/* <button
                                     className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     onClick={handleAddToCart}
                                 >
                                     ADD TO CART
-                                </button>
+                                </button> */}
+                                <AddToCartButton
+                                    callback={handleAddToCart}
+                                />
                                 <button
                                     className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     onClick={handleBuyNow}
                                 >
-                                    BUY NOW
+                                    Buy Now
                                 </button>
+                                {/* <MagicCheckoutButton
+                                    className="buy-now-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+                                    productId={product._id} weightCategory={weightCategory._id} quantity={quantity} name="Buy Now"
+                                /> */}
                             </div>
                         </div>
 

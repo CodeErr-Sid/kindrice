@@ -3,6 +3,7 @@ import floor from "./floor.png";
 import grass1 from "./grass1.png";
 import grass2 from "./grass2.png";
 import vector from "./vector.png";
+import rpkindlogo from './rp_kindrice_logo.jpg'
 import girl from "./girl-hero.png";
 import Home2 from "./second-section.png";
 import Home3 from "./section3.png";
@@ -165,6 +166,7 @@ export const assets = {
   linkedin,
   letterLogo,
   footerLogo,
+  rpkindlogo,
   youtube,
   place,
   outdoor,

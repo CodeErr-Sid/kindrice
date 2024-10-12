@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-const Dropdown = ({ options = [], onSelect }) => {
+const Dropdown = ({ options = [], onSelect, title }) => {
   const [selectedOption, setSelectedOption] = useState(options[0] || 1);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +13,7 @@ const Dropdown = ({ options = [], onSelect }) => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" tooltip={title}>
       <div
         className="quantity-button flex items-center justify-between border-2 border-[#016533] rounded-lg px-4 py-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
