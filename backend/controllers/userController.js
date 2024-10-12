@@ -257,7 +257,7 @@ const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, or
       <p>${message}</p>
       <p>Order ID: ${orderId}</p>
       <p>${awb}</p>
-      <a href=${awb}><button>Track Order</button><a>
+      <a href=${trackingLink}><button>Track Order</button><a>
       <table border="1" cellpadding="5">
         <thead>
           <tr>

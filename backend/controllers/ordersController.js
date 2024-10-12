@@ -19,7 +19,7 @@ const createCustomerOrder = async (orderData, packageCategory, courier_id) => {
         })
         await newOrder.save();
 
-        const link = `https://shiprocket.co/tracking/{awb}`
+        const link = `https://shiprocket.co/tracking/${awb}`
 
         return { success: true, message: "User Order Created Successfully", data: link }
     } catch (error) {
