@@ -213,7 +213,6 @@ const saveContactDetails = async (req, res) => {
             helpMessage: help
         });
 
-        console.log(req.body)
         await newContact.save();
 
         // Send a success response

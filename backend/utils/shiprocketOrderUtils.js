@@ -17,7 +17,6 @@ const formatOrderDate = () => {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   };
   
-  console.log(formatOrderDate()); // Example output: "2024-10-02 11:11"
   
 
 

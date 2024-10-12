@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './ContactForm.css';
 import { submitContactForm } from '../../api/userapi';
+import { toast } from 'react-toastify';
 
 export default function ContactForm() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -10,10 +11,10 @@ export default function ContactForm() {
   const onSubmit = async (data) => {
     try {
       await submitContactForm(data.Name, data.Email, data.help);
-      alert('Form submitted successfully');
+      toast.success('Form submitted successfully');
       reset(); // Reset the form after successful submission
     } catch (error) {
-      alert('There was an error submitting the form. Please try again.');
+      toast.error('There was an error submitting the form. Please try again.');
     }
   };
 
