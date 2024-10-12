@@ -67,12 +67,20 @@ export const paymentHandler = async (url, response, idToken, singleProduct) => {
 
         if (verificationResponse.data.success) {
             toast.success('Payment was successful!');
-            const data = await verificationResponse.data.data;
-            console.log(data);
-            if (singleProduct) {
+            const orderTracking = await verificationResponse.data.data;
+
+            if (!orderTracking) {
+                toast.error("There is no OrderLink")
+            }
+            
+            if (!singleProduct) {
                 await clearCart(idToken);
                 await getCart(idToken);
             }
+
+            window.location.href = orderTracking;
+
+
         } else {
             toast.error('Payment verification failed.');
         }

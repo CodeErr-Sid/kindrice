@@ -245,7 +245,7 @@ const CartContainer = () => {
         items,
         price: totalCartPrice,
         weightQuantity: weightQuantityData,
-        singleProduct: true,
+        singleProduct: false,
       },
     });
   }
