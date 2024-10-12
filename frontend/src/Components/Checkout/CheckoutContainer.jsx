@@ -280,7 +280,26 @@ const CheckoutContainer = () => {
     }
   }];
 
-  const isButtonEnabled = formData.zip && formData.zip.length >= 6 && items && grandTotal > 0 && courier.shippingPrice > 0;
+  // Form Validation
+
+  const isFormDataValid = formData.firstName && formData.lastName && formData.email && formData.address &&
+    formData.phoneno && formData.city && formData.state && formData.zip?.length >= 6 && formData.country;
+
+  const isShippingAddressValid = shippingIsBilling || (
+    formData.shippingAddress.firstName && formData.shippingAddress.lastName &&
+    formData.shippingAddress.address && formData.shippingAddress.city &&
+    formData.shippingAddress.state && formData.shippingAddress.zip?.length >= 6 &&
+    formData.shippingAddress.country && formData.shippingAddress.email &&
+    formData.shippingAddress.phoneno
+  );
+
+  const isNotesDataValid = notesData[0].courier_id && notesData[0].packageCategory && notesData[0].saveThisAddress &&
+    notesData[0].orderData.sub_total > 0 && notesData[0].orderData.length &&
+    notesData[0].orderData.breadth && notesData[0].orderData.height && notesData[0].orderData.weight > 0;
+
+  const isButtonEnabled = isFormDataValid && isShippingAddressValid && items && grandTotal > 0 &&
+    courier.shippingPrice > 0 && isNotesDataValid;
+
   return (
     <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col-reverse md:flex-row-reverse space-y-4 md:space-y-0 md:space-x-4">
