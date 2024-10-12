@@ -290,7 +290,7 @@ const verifyPayment = async (req, res) => {
         }
 
         const { notes, amount } = paymentObject.data;
-        const { courier_id, packageCategory, orderData, saveThisAddress } = notes[0]; // Assuming notes[0] has the necessary data
+        const { courier_id, packageCategory, orderData, shippingPrice, saveThisAddress } = notes[0]; // Assuming notes[0] has the necessary data
 
         // Prepare order data for Shiprocket
         const shiprocketOrderData = {
@@ -363,12 +363,12 @@ const verifyPayment = async (req, res) => {
             sub_total,
             order_items,
             shipping_is_billing,
-            shippingPrice
+
         } = shiprocketOrderData;
 
         // Construct parameters for the email
-        const name = shipping_is_billing ? billing_customer_name : shiping_customer_name;
-        const email = shipping_is_billing ? billing_email : shiping_email;
+        const name = shipping_is_billing ? billing_customer_name : shiprocketOrderData.shipping_customer_name;
+        const email = shipping_is_billing ? billing_email : shiprocketOrderData.shipping_email;
         const orderId = order_id;
         const message = "Thank you for using Kindrice";
         const awb = shipRocketAWB.awb; // Assuming shipRocketAWB is defined elsewhere
@@ -383,7 +383,7 @@ const verifyPayment = async (req, res) => {
         }));
 
         // Sending the email
-        const confirmationMatil = await sendOrderConfirmationEmail(
+        const confirmationMail = await sendOrderConfirmationEmail(
             name,
             email,
             orderId,
@@ -393,6 +393,10 @@ const verifyPayment = async (req, res) => {
             shippingCharge,
             totalAmount
         );
+
+        if (!confirmationMail.success) {
+            res.status(500).json(confirmationMail)
+        }
 
 
         const customerOrder = {
