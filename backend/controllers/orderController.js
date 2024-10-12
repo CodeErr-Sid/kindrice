@@ -8,12 +8,20 @@ import { createCustomerOrder } from './ordersController.js';
 import { saveAddressToUser } from './userController.js';
 dotenv.config();
 
+// test configration
 const keyId = process.env.RAZORPAY_KEY_ID
 const keySecret = process.env.RAZORPAY_KEY_SECRET
 
+
+const liveKeyId = process.env.RAZORPAY_LIVE_KEY_ID
+const liveKeySecret = process.env.RAZORPAY_LIVE_KEY_SECRET
+
+
+
+
 const instance = new Razorpay({
-    key_id: keyId,
-    key_secret: keySecret
+    key_id: liveKeyId,
+    key_secret: liveKeySecret
 });
 
 

@@ -40,19 +40,22 @@ const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled
 
     const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
+    const razorpayLiveKey = import.meta.env.VITE_RAZORPAY_LIVE_KEY_ID;
+
+
     const fullname = address.firstname + " " + address.lastname ? address.lastname : "";
     const email = address.email;
     const contact = address.phoneno;
 
     const displayRazorpay = (orderId) => {
         const options = {
-            key: razorpayKey,  // Replace with Razorpay Key
+            key: razorpayLiveKey,  // Replace with Razorpay Key
             order_id: orderId,   // Order ID from backend
             name: "Kind Rice",
             show_coupons: false,
             image: assets.rpkindlogo,
             handler: (response) => {
-                paymentHandler(url, response, idToken, getCart,singleProduct);
+                paymentHandler(url, response, idToken, getCart, singleProduct);
             },
             prefill: {
                 name: fullname,
