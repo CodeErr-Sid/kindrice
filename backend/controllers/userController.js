@@ -1,6 +1,7 @@
 import User from "../models/user.js"; // Adjust the path based on your project structure
 import Subscriber from "../models/subscriber.js";
 import admin from "../config/firebase.js";
+import Contact from "../models/contact.js";
 
 const registerUser = async (req, res) => {
     const { firebaseUID, email, name } = req.body;
@@ -201,6 +202,28 @@ const createNewSubscriber = async (req, res) => {
     }
 }
 
+const saveContactDetails = async (req, res) => {
+    const { name, email, help } = req.body;
+
+    try {
+        // Create a new Contact document with the form data
+        const newContact = new Contact({
+            name: name,
+            email: email,
+            helpMessage: help
+        });
+
+        console.log(req.body)
+        await newContact.save();
+
+        // Send a success response
+        res.status(201).json({ message: 'Contact details saved successfully!' });
+    } catch (error) {
+        console.error("Error saving contact details: ", error);
+        res.status(500).json({ error: 'Failed to save contact details' });
+    }
+}
 
 
-export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser, isEmailVerified };
+
+export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser, isEmailVerified, saveContactDetails };

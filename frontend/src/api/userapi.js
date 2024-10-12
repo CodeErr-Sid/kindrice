@@ -60,6 +60,22 @@ const getAddresses = async (idToken) => {
     }
 }
 
+const submitContactForm = async (name, email, help) => {
+
+    try {
+        const response = await axios.post(url + '/api/user/contactdetails', {
+            name,
+            email,
+            help,
+        });
+        return response.data; // Return the response data if needed
+    } catch (error) {
+        console.error('Error submitting contact form:', error);
+        throw error; // Re-throw the error for handling in the component
+    }
+};
+
+
 const subscribeToEmail = async (email, url) => {
     try {
         const response = await fetch(url + '/api/user/subscribe', {
@@ -78,4 +94,4 @@ const subscribeToEmail = async (email, url) => {
     }
 }
 
-export { registerUser, subscribeToEmail, getAddresses }
+export { registerUser, subscribeToEmail, getAddresses, submitContactForm }

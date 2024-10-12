@@ -21,6 +21,8 @@ const createCustomerOrder = async (orderData, packageCategory, courier_id) => {
 
         const orderTrackingLink = `https://shiprocket.co/tracking/${awb}`
 
+        // send to email 
+
         return { success: true, message: "User Order Created Successfully", track_link: orderTrackingLink }
     } catch (error) {
         return error;

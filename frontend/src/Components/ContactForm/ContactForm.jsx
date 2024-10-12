@@ -1,62 +1,69 @@
 import React from 'react';
-import { assets } from '../../assets/assets';
+import { useForm } from 'react-hook-form';
 import './ContactForm.css';
+import { submitContactForm } from '../../api/userapi';
 
 export default function ContactForm() {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+
+  const onSubmit = async (data) => {
+    try {
+      await submitContactForm(data.Name, data.Email, data.help);
+      alert('Form submitted successfully');
+      reset(); // Reset the form after successful submission
+    } catch (error) {
+      alert('There was an error submitting the form. Please try again.');
+    }
+  };
+
   return (
     <section className='contact-form-section'>
       <div className="contact-form-container">
         <div className="contact-form-left">
-          {/* <div className="contact-form-up">
-            <h2>Get in Touch with Starbelly</h2>
-          </div> */}
           <div className="contact-form-down">
-            {/* <div className="contact-form-info-left"> */}
-            {/* <button><span>Home</span> / Contact</button> */}
-            {/* <div className="contactForm-img">
-                <img src={assets.communication} alt=''/>
-              </div>
-            </div> */}
             <div className="contact-form-right">
-              <h1>Got a Question? Let's Chat!
-              </h1>
-              <p>
-                If you have any questions about our products or need further information, please feel free to reach out to us. We are here to assist you and would be happy to help.
-              </p>
-              {/* <p>
-                <strong>Email us:</strong>
-                <a href="mailto:hellokindrice@gmail.com" className="mail">hellokindrice@gmail.com</a>
-              </p>
-              <p>
-                <strong>Phone us:</strong>
-                <a href="tel:+919843297474" className="phone">+91-98432-97474</a>
-              </p>
-              <div className='mt-2'>
-                <strong>Address:</strong>
-                <span className='text-black'>
-                  R.K. Brothers Agro Foods Private Limited
-                  66/2, New Ramnad Rd,
-                  Madurai, Meenakshi Nagar,
-                  Tamil Nadu - 625001
-                </span>
-              </div>
-              <p>
-                We look forward to hearing from you!
-              </p> */}
+              <h1>Got a Question? Let's Chat!</h1>
+              <p>If you have any questions about our products or need further information, please feel free to reach out to us. We are here to assist you and would be happy to help.</p>
 
               <p className='mt-2'>
                 You can reach us via email at <a className="text-green-600" href='mailto:hellokindrice@gmail.com '>hellokindrice@gmail.com</a> or call us at <a className="text-green-600" href="tel:+919843297474">+91-98432-97474</a>
-                <br />Our office is located at <br />R.K. Brothers Agro Foods Private Limited, 66/2 New Ramnad Road, Meenakshi Nagar, Madurai, Tamil Nadu - 625001. <br /> We look forward to hearing from you!
               </p>
 
-
-              <form>
+              {/* Form starts here */}
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="Name">Name</label>
-                <input type="text" id="Name" name="Name" placeholder='Enter Your Name' />
+                <input
+                  type="text"
+                  id="Name"
+                  placeholder='Enter Your Name'
+                  {...register("Name", { required: "Name is required" })}
+                />
+                {errors.Name && <p className="error">{errors.Name.message}</p>}
+
                 <label htmlFor="Email">Email</label>
-                <input type="email" id="Email" name="Email" placeholder='Enter Your Email' />
-                <label htmlFor='help'>How can we help?</label>
-                <textarea placeholder=""></textarea>
+                <input
+                  type="email"
+                  id="Email"
+                  placeholder='Enter Your Email'
+                  {...register("Email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Invalid email format"
+                    }
+                  })}
+                />
+                {errors.Email && <p className="error">{errors.Email.message}</p>}
+
+                <label htmlFor="help">How can we help?</label>
+                <textarea
+                  id="help"
+                  placeholder="Enter your message"
+                  {...register("help", { required: "Message is required" })}
+                />
+                {errors.help && <p className="error">{errors.help.message}</p>}
+
                 <h2>*All personal information will be kept confidential.</h2>
                 <button type="submit">Get Started</button>
               </form>
@@ -65,5 +72,5 @@ export default function ContactForm() {
         </div>
       </div>
     </section>
-  )
+  );
 }
