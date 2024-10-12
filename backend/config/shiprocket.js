@@ -71,10 +71,11 @@ const generateAWB = async (shippingDetails, retries = 3) => {
 
     const shiprocketAPI = getShiprocketAPI();
     const response = await shiprocketAPI.post('/courier/assign/awb', shippingDetails);
+    const trackdata = response.data
 
-    console.log('Shipment created successfully:', response.data);
+    console.log('Shipment created successfully:', trackdata);
 
-    return { success: true, data: response.data };
+    return { success: true, data: trackdata.response.data };
 
   } catch (error) {
     console.error('Error generating AWB:', error.response ? error.response.data : error.message);

@@ -363,7 +363,6 @@ const verifyPayment = async (req, res) => {
             sub_total,
             order_items,
             shipping_is_billing,
-
         } = shiprocketOrderData;
 
         // Construct parameters for the email
@@ -371,9 +370,12 @@ const verifyPayment = async (req, res) => {
         const email = shipping_is_billing ? billing_email : shiprocketOrderData.shipping_email;
         const orderId = order_id;
         const message = "Thank you for using Kindrice";
-        const awb = shipRocketAWB.awb; // Assuming shipRocketAWB is defined elsewhere
+        const awb = shipRocketAWB.data.awb_code; // Assuming shipRocketAWB is defined elsewhere
         const shippingCharge = shippingPrice;
         const totalAmount = sub_total + shippingPrice;
+
+        console.log(shipRocketAWB);
+        console.log(awb);
 
         // Format order details for the email
         const orderDetails = order_items.map(item => ({
@@ -402,7 +404,7 @@ const verifyPayment = async (req, res) => {
         const customerOrder = {
             razorpay_payment_id,
             shiprocket_order_id: shipRocketOrder.order_id,
-            awb: shipRocketAWB.awb_code, // Place awb code here
+            awb: shipRocketAWB.data.awb_code, // Place awb code here
             userId
         };
 
