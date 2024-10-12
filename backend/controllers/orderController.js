@@ -420,7 +420,7 @@ const verifyPayment = async (req, res) => {
         res.json({
             success: true,
             message: 'Order created successfully Mail Has been Sent to ' + email,
-            data: kindriceOrder
+            data: kindriceOrder.data
         });
 
     } catch (error) {

@@ -66,13 +66,13 @@ export const paymentHandler = async (url, response, idToken, singleProduct) => {
 
 
         if (verificationResponse.data.success) {
-            toast.success('Payment was successful!');
+            toast.success(verificationResponse.data.message || "Order Created Successfully");
             const orderTracking = await verificationResponse.data.data;
 
             if (!orderTracking) {
                 toast.error("There is no OrderLink")
             }
-            
+
             if (!singleProduct) {
                 await clearCart(idToken);
                 await getCart(idToken);

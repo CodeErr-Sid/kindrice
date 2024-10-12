@@ -206,7 +206,18 @@ const createNewSubscriber = async (req, res) => {
 const saveContactDetails = async (req, res) => {
     const { name, email, help } = req.body;
 
+    // Validate the email format
+    if (!validateEmail(email)) {
+        return res.status(400).json({ error: 'Invalid email format' });
+    }
+
     try {
+        // Check for duplicates by searching for existing contact with the same email
+        const existingContact = await Contact.findOne({ email: email });
+        if (existingContact) {
+            return res.status(409).json({ error: 'Contact with this email already exists' });
+        }
+
         // Create a new Contact document with the form data
         const newContact = new Contact({
             name: name,
@@ -222,7 +233,8 @@ const saveContactDetails = async (req, res) => {
         console.error("Error saving contact details: ", error);
         res.status(500).json({ error: 'Failed to save contact details' });
     }
-}
+};
+
 
 const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, orderDetails, shippingCharge, totalAmount) => {
     // Create an HTML table for the order details
