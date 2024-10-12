@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const getShippingPrices = async (url, pincode, totalWeight, totalPrice, length, breadth, height) => {
 
     try {
