@@ -2,6 +2,7 @@ import User from "../models/user.js"; // Adjust the path based on your project s
 import Subscriber from "../models/subscriber.js";
 import admin from "../config/firebase.js";
 import Contact from "../models/contact.js";
+import transporter from "../config/nodemailer.js";
 
 const registerUser = async (req, res) => {
     const { firebaseUID, email, name } = req.body;
@@ -223,6 +224,56 @@ const saveContactDetails = async (req, res) => {
     }
 }
 
+const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, orderDetails, shippingCharge, totalAmount) => {
+    // Create an HTML table for the order details
+    const orderDetailsHtml = orderDetails.map((item, index) => `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${item.name}</td>
+        <td>${item.quantity}</td>
+        <td>${item.price.toFixed(2)}</td>
+      </tr>
+    `).join('');
+
+    const htmlContent = `
+      <h1>Order Confirmation</h1>
+      <p>Dear ${name},</p>
+      <p>${message}</p>
+      <p>Order ID: ${orderId}</p>
+      <p>AWB Number: ${awb}</p>
+      <table border="1" cellpadding="5">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${orderDetailsHtml}
+        </tbody>
+      </table>
+      <p>Shipping Charge: ${shippingCharge.toFixed(2)}</p>
+      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
+      <p>Thank you for your order!</p>
+    `;
+
+    const mailOptions = {
+        from: 'aliakram9789@gmail.com', // Sender address
+        to: email, // Replace with recipient's email address
+        subject: `Order Confirmation - ${orderId}`,
+        html: htmlContent,
+    };
+
+    try {
+        const info = await transporter.sendMail(mailOptions);
+        return { success: true, message: "Email Sent Successfully", data: info }
+    } catch (error) {
+        return { success: false, message: error }
+    }
+}
 
 
-export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser, isEmailVerified, saveContactDetails };
+
+export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser, isEmailVerified, saveContactDetails, sendOrderConfirmationEmail };

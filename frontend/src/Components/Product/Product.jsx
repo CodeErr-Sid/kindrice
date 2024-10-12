@@ -84,7 +84,6 @@ const Product = ({ productId }) => {
                         "discount": "", // Keep as empty string
                         "tax": product.taxPercentage.toString(), // Tax percentage from productId
                         "hsn": Number(product.hsnCode) // HSN code from productId
-
                     }],
                     price,
                     weightQuantity: [{

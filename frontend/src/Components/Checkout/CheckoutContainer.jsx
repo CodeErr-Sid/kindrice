@@ -7,6 +7,7 @@ import { getShippingPrices } from '../../api/shiprocket';
 import PaymentButton from "../PaymentButton/PaymentButton";
 import axios from 'axios';
 import fetchPackageForOrder from '../../api/packageSelector';
+import { shippingPrice } from '../../../../backend/config/shiprocket';
 
 const CheckoutContainer = () => {
   const location = useLocation();
@@ -249,6 +250,7 @@ const CheckoutContainer = () => {
 
   const notesData = [{
     courier_id: courier.courier_id,
+    shippingPrice: courier.shippingPrice,
     packageCategory: packageCategory,
     saveThisAddress: saveAddress,
     orderData: {

@@ -5,7 +5,7 @@ import { validatePaymentVerification } from 'razorpay/dist/utils/razorpay-utils.
 import { generateOrderID, formatOrderDate } from '../utils/shiprocketOrderUtils.js';
 import { createShipRocketOrder, generateAWB } from '../config/shiprocket.js';
 import { createCustomerOrder } from './ordersController.js';
-import { saveAddressToUser } from './userController.js';
+import { saveAddressToUser, sendOrderConfirmationEmail } from './userController.js';
 dotenv.config();
 
 // test configration
@@ -305,6 +305,7 @@ const verifyPayment = async (req, res) => {
 
         // Create the order in Shiprocket
         const shipRocketOrder = await createShipRocketOrder(shiprocketOrderData);
+
         if (!shipRocketOrder) {
             const refundResponse = await refundPayment(razorpay_payment_id, amount);
 
@@ -336,9 +337,63 @@ const verifyPayment = async (req, res) => {
         const shipRocketAWB = await generateAWB(shippingDetails);
 
         if (!shipRocketAWB.success) {
+            const refundResponse = await refundPayment(razorpay_payment_id, amount);
 
+            if (!refundResponse.success) {
+                console.error(`Refund failed for payment ID ${razorpay_payment_id}. Please contact support.`);
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to generate AWB and refund the payment. Please contact Kindrice support.',
+                    paymentId: razorpay_payment_id,
+                    refundError: refundResponse.error
+                });
+            }
 
+            res.status(500).json({
+                success: false,
+                message: 'Failed to generate AWB, but payment has been refunded successfully',
+                refund: refundResponse.data
+            });
         }
+
+        const {
+            billing_customer_name,
+            billing_email,
+            order_id,
+            sub_total,
+            order_items,
+            shipping_is_billing,
+            shippingPrice
+        } = shiprocketOrderData;
+
+        // Construct parameters for the email
+        const name = shipping_is_billing ? billing_customer_name : shiping_customer_name;
+        const email = shipping_is_billing ? billing_email : shiping_email;
+        const orderId = order_id;
+        const message = "Thank you for using Kindrice";
+        const awb = shipRocketAWB.awb; // Assuming shipRocketAWB is defined elsewhere
+        const shippingCharge = shippingPrice;
+        const totalAmount = sub_total + shippingPrice;
+
+        // Format order details for the email
+        const orderDetails = order_items.map(item => ({
+            name: item.name, // assuming this key is present in order_items
+            quantity: item.units, // assuming 'units' key represents quantity
+            price: item.selling_price // assuming this key represents the selling price
+        }));
+
+        // Sending the email
+        const confirmationMatil = await sendOrderConfirmationEmail(
+            name,
+            email,
+            orderId,
+            message,
+            awb,
+            orderDetails,
+            shippingCharge,
+            totalAmount
+        );
+
 
         const customerOrder = {
             razorpay_payment_id,
@@ -358,10 +413,14 @@ const verifyPayment = async (req, res) => {
 
         const kindriceOrder = await createCustomerOrder(customerOrder, packageCategory, addressSavingStatus);
 
+        if (!kindriceOrder.success) {
+            res.status(500).json(kindriceOrder)
+        }
+
         res.json({
             success: true,
-            message: 'Order created successfully',
-            data: kindriceOrder.track_link
+            message: 'Order created successfully Mail Has been Sent to ' + email,
+            data: kindriceOrder
         });
 
     } catch (error) {
