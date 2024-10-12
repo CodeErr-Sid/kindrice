@@ -276,7 +276,7 @@ const verifyPayment = async (req, res) => {
         const isValid = validatePaymentVerification(
             { order_id: razorpay_order_id, payment_id: razorpay_payment_id },
             razorpay_signature,
-            keySecret
+            liveKeySecret
         );
 
         if (!isValid) {
