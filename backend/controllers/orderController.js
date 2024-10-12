@@ -361,7 +361,7 @@ const verifyPayment = async (req, res) => {
         res.json({
             success: true,
             message: 'Order created successfully',
-            data: kindriceOrder.link
+            data: kindriceOrder.track_link
         });
 
     } catch (error) {
