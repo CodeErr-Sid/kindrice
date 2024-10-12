@@ -31,6 +31,19 @@ export default function ContactForm() {
                 You can reach us via email at <a className="text-green-600" href='mailto:hellokindrice@gmail.com '>hellokindrice@gmail.com</a> or call us at <a className="text-green-600" href="tel:+919843297474">+91-98432-97474</a>
               </p>
 
+              <div className='mt-2'>
+                <strong>Address : </strong>
+                <span className='text-black'>
+                  R.K. Brothers Agro Foods Private Limited
+                  66/2, New Ramnad Rd,
+                  Madurai, Meenakshi Nagar,
+                  Tamil Nadu - 625001
+                </span>
+              </div>
+              <p>
+                We look forward to hearing from you!
+              </p>
+
               {/* Form starts here */}
               <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="Name">Name</label>

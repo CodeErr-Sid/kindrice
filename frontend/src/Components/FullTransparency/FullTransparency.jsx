@@ -6,6 +6,45 @@ export default function FullTransparency() {
 
   const [selectedImage, setSelectedImage] = useState(null);
 
+  const certificates = [
+    {
+      id: 1,
+      src: assets.fssai,
+      alt: "FSSAI Certificate",
+      certificate: assets.certificate5,
+      size: { width: "w-36", height: "h-24", mdWidth: "md:w-40", mdHeight: "md:h-40" },
+    },
+    {
+      id: 2,
+      src: assets.img2,
+      alt: "Test Certificate 1",
+      certificate: assets.certificate1,
+      size: { width: "w-36", height: "h-24", mdWidth: "md:w-40", mdHeight: "md:h-40" },
+    },
+    {
+      id: 3,
+      src: assets.img3,
+      alt: "Test Certificate 2",
+      certificate: assets.certificate4,
+      size: { width: "w-32", height: "h-32", mdWidth: "md:w-36", mdHeight: "md:h-40" },
+    },
+    {
+      id: 4,
+      src: assets.img4,
+      alt: "Test Certificate 3",
+      certificate: assets.certificate6,
+      size: { width: "w-28", height: "h-28", mdWidth: "md:w-32", mdHeight: "md:h-40" },
+    },
+    {
+      id: 5,
+      src: assets.img5,
+      alt: "Test Certificate 4",
+      certificate: assets.Certificate7,
+      size: { width: "w-32", height: "h-32", mdWidth: "md:w-36", mdHeight: "md:h-36" },
+    },
+  ];
+
+
   const handleButtonClick = (imageSrc) => {
     setSelectedImage(imageSrc); // Set the selected image for the overlay
   };
@@ -23,46 +62,20 @@ export default function FullTransparency() {
 
       {/* Icons section */}
       <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mt-0 md:mt-6">
-  {/* FSSAI icon */}
-  <div className="w-36 h-24 md:w-40 md:h-40">
-    <img  onClick={() => handleButtonClick(assets.certificate5)} style={{ cursor: 'pointer', zIndex: 1 }}
-      className="w-40 h-auto object-cover object-center"
-      src={assets.fssai}
-      alt="FSSAI Certificate"
-    />
-  </div>
+        {certificates.map((cert) => (
+          <div key={cert.id} className={`${cert.size.width} ${cert.size.height} ${cert.size.mdWidth} ${cert.size.mdHeight} flex items-center`}>
+            <img
+              onClick={() => handleButtonClick(cert.certificate)}
+              style={{ cursor: 'pointer', zIndex: 1 }}
+              className="w-full h-auto object-cover object-center"
+              src={cert.src}
+              alt={cert.alt}
+            />
+          </div>
+        ))}
+      </div>
 
-  {/* Test icons */}
-  <div className="w-36 h-24 ml-4 md:w-40 md:h-40">
-    <img onClick={() => handleButtonClick(assets.certificate1)} style={{ cursor: 'pointer', zIndex: 1 }}
-      className="w-40 h-auto object-cover "
-      src={assets.img2}
-      alt="Test Certificate 1"
-    />
-  </div>
-  <div className="w-32 h-32 md:w-36 md:h-40 ">
-    <img onClick={() => handleButtonClick(assets.certificate4)} style={{ cursor: 'pointer', zIndex: 1 }}
-      className="w-full h-auto object-cover object-center "
-      src={assets.img3}
-      alt="Test Certificate 2"
-    />
-  </div>
-  <div className="w-28 h-28 md:w-32 md:h-40">
-    <img onClick={() => handleButtonClick(assets.certificate6)} style={{ cursor: 'pointer', zIndex: 1 }}
-      className="w-30 h-auto object-cover object-center"
-      src={assets.img4}
-      alt="Test Certificate 3"
-    />
-  </div>
-  <div className="w-32 h-32 md:w-36 md:h-36">
-    <img onClick={() => handleButtonClick(assets.Certificate7)} style={{ cursor: 'pointer', zIndex: 1 }}
-      className="w-32 h-auto object-cover object-center"
-      src={assets.img5}
-      alt="Test Certificate 4"
-    />
-  </div>
-</div>
-{selectedImage && (
+      {selectedImage && (
         <div className="image-overlay2">
           <div className="overlay-content2">
             <img src={selectedImage} alt="Certificate" />

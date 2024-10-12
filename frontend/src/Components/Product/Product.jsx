@@ -36,7 +36,7 @@ const Product = ({ productId }) => {
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
     const [weightCategory, setWeightCategory] = useState({});
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(159);
     const [selectedImage, setSelectedImage] = useState(assets.rice1);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
     const [maxQuantity, setMaxQuantity] = useState(maxQuantityMap[weight]);

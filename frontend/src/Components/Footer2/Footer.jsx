@@ -31,7 +31,7 @@ const Footer2 = () => {
 
   return (
     <HelmetProvider>
-      <footer>
+      <footer className="kr-footer">
         <Helmet>
           <link
             rel="stylesheet"
