@@ -1,0 +1,21 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "main",
+    "origin",
+    "razorpay_integration",
+    "testing-branch"
+  ],
+  "parent": {
+    "main": null,
+    "origin": "main",
+    "razorpay_integration": "main",
+    "testing-branch": "main"
+  },
+  "order": [
+    "main",
+    "origin",
+    "razorpay_integration",
+    "testing-branch"
+  ]
+}
