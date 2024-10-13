@@ -2,7 +2,7 @@ import User from "../models/user.js"; // Adjust the path based on your project s
 import Subscriber from "../models/subscriber.js";
 import admin from "../config/firebase.js";
 import Contact from "../models/contact.js";
-import transporter from "../config/nodemailer.js";
+import { mailTransport } from "../config/nodemailer.js";
 
 const registerUser = async (req, res) => {
     const { firebaseUID, email, name } = req.body;
@@ -238,6 +238,10 @@ const saveContactDetails = async (req, res) => {
 
 const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, orderDetails, shippingCharge, totalAmount) => {
     // Create an HTML table for the order details
+
+    const senderEmail = process.env.CUSTOME_DOMAIN_EMAIL_USER;
+
+
     const orderDetailsHtml = orderDetails.map((item, index) => `
       <tr>
         <td>${index + 1}</td>
@@ -277,14 +281,19 @@ const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, or
     `;
 
     const mailOptions = {
-        from: 'aliakram9789@gmail.com', // Sender address
+        from: senderEmail, // Sender address
         to: email, // Replace with recipient's email address
         subject: `Order Confirmation - ${orderId}`,
         html: htmlContent,
     };
 
+    console.log(
+        process.env.CUSTOME_DOMAIN_EMAIL_USER,
+        process.env.CUSTOME_DOMAIN_EMAIL_PASS
+    )
+
     try {
-        const info = await transporter.sendMail(mailOptions);
+        const info = await mailTransport.sendMail(mailOptions);
         return { success: true, message: "Email Sent Successfully", data: info }
     } catch (error) {
         return { success: false, message: error }
