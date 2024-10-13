@@ -3,7 +3,7 @@ import Product from '../models/product.js';
 import dotenv from 'dotenv';
 import { validatePaymentVerification } from 'razorpay/dist/utils/razorpay-utils.js';
 import { generateOrderID, formatOrderDate } from '../utils/shiprocketOrderUtils.js';
-import { createShipRocketOrder, generateAWB } from '../config/shiprocket.js';
+import { createShipRocketOrder, generateAWB, pickupGeneration } from '../config/shiprocket.js';
 import { createCustomerOrder } from './ordersController.js';
 import { saveAddressToUser, sendOrderConfirmationEmail } from './userController.js';
 dotenv.config();
@@ -354,6 +354,12 @@ const verifyPayment = async (req, res) => {
                 message: 'Failed to generate AWB, but payment has been refunded successfully',
                 refund: refundResponse.data
             });
+        }
+
+        const shipRocketPickupRequest = await pickupGeneration(shipRocketAWB.data.shipment_id,);
+
+        if (!shipRocketPickupRequest.success) {
+            console.log(shipRocketPickupRequest)
         }
 
         const {

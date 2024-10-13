@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getNextBusinessDay } from '../utils/shiprocketOrderUtils';
 
 // Base URL for Shiprocket API
 const BASE_URL = process.env.SHIPROCKET_BASE_URL;
@@ -97,6 +98,36 @@ const generateAWB = async (shippingDetails, retries = 3) => {
   }
 };
 
+const pickupGeneration = async (shippingId) => {
+  try {
+    // Ensure that the user is authenticated
+    if (!shiprocketToken) {
+      await authenticateShiprocket();
+    }
+
+    const shiprocketAPI = getShiprocketAPI();
+
+    const dateString = getNextBusinessDay();
+
+    const pickupObject = {
+      shipment_id: [shippingId],
+      pickup_date: [dateString]
+    }
+
+    const response = await shiprocketAPI.post('/courier/generate/pickup', pickupObject);
+    const pickupResponse = response.data
+
+    console.log('Shipment created successfully:', pickupResponse);
+
+    return { success: true, data: pickupResponse };
+
+  } catch (error) {
+    console.error('Error generating AWB:', error.response ? error.response.data : error.message);
+
+    return { success: false, message: 'Failed to generate AWB after retries', error: error };
+  }
+};
+
 
 
 const shippingPrice = async (pincode, weight, price, length, breadth, height) => {
@@ -138,4 +169,4 @@ const shippingPrice = async (pincode, weight, price, length, breadth, height) =>
 };
 
 
-export { shippingPrice, createShipRocketOrder, generateAWB }
+export { shippingPrice, createShipRocketOrder, generateAWB, pickupGeneration }
