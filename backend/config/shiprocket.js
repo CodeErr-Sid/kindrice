@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getNextBusinessDay } from '../utils/shiprocketOrderUtils';
+import { getNextBusinessDay } from '../utils/shiprocketOrderUtils.js';
 
 // Base URL for Shiprocket API
 const BASE_URL = process.env.SHIPROCKET_BASE_URL;

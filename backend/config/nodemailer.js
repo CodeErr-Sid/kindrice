@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer'
 
 dotenv.config();
 
-const email = process.env.EMAIL_USER || "aliakram9789@gmail.com"
-const password = process.env.EMAIL_PASS || "xavv dxpy ybjc onla"
+const email = process.env.EMAIL_USER 
+const password = process.env.EMAIL_PASS 
 
 
 const transporter = nodemailer.createTransport({
@@ -14,7 +14,5 @@ const transporter = nodemailer.createTransport({
         pass: password, // Your email password
     },
 });
-
-console.log(email, password)
 
 export default transporter;
