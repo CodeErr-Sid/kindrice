@@ -106,10 +106,10 @@ const generateProductDataHTML = (image, productName, quantity, price) => {
 
 
 
-const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, totalAmount) => {
+const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, sub_total, totalAmount) => {
 
   console.log(
-    "Email Data" + name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, totalAmount
+    "Email Data" + name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, sub_total, totalAmount
   )
 
   const orderDetailsHtml = orderDetails.map((item, index) => {
@@ -611,7 +611,7 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                     Order&nbsp;<a target="_blank" href=""
                                       style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:26px">
                                       <!-- order id -->
-                                      #65000500
+                                      #${orderId}
                                     </a>&nbsp;has
                                     been shipped!&nbsp;</h2>
                                 </td>
@@ -620,7 +620,7 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                 <td align="center" style="padding:0;Margin:0;padding-top:25px;padding-bottom:15px"><span
                                     class="es-button-border"
                                     style="border-style:solid;border-color:#5c68e2;background:#16a34a;border-width:2px;display:inline-block;border-radius:6px;width:auto">                                    
-                                    <a href=${trackingLink} target="_blank" class="es-button"
+                                    <a href=${trackingLink} style="outline:none;border:none" target="_blank" class="es-button"
                                       style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;padding:10px 30px 10px 30px;display:inline-block;background:#16a34a;border-radius:6px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:24px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #16a34a;border-left-width:30px;border-right-width:30px">
                                       <!-- awb track link -->
                                       TRACK YOUR ORDER
@@ -656,9 +656,9 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                 <td align="right" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px">
                                   <p class="es-m-txt-r"
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                    Subtotal:&nbsp; <strong>₹${totalAmount}</strong><br>Shipping:&nbsp;
-                                    <strong>₹${shippingCharge}</strong><br>Tax: <strong>5%</strong><br>Total:
-                                    <strong>₹${totalAmount + shippingCharge}</strong>&nbsp;
+                                    Subtotal:&nbsp; <strong>₹${sub_total}</strong>(All tax incl.)<br>
+                                    Shipping:&nbsp;<strong>₹${shippingCharge}</strong><br>
+                                    Total:<strong>₹${totalAmount}</strong>&nbsp;
                                   </p>
                                 </td>
                               </tr>
@@ -745,9 +745,12 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
                                     Got a question?&nbsp;Email us at <a target="_blank" href=""
                                       style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">hello@kindrice.co</a>&nbsp;or
-                                    give us a call at&nbsp;<a target="_blank" href=""
-                                      style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">+000
-                                      123 456</a>.</p>
+                                    give us a call at&nbsp;
+                                    <a target="_blank" href=""
+                                      style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">
+                                       +91 99401 78297
+                                    </a>
+                                  </p>
                                 </td>
                               </tr>
                             </table>
@@ -782,30 +785,53 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                   <table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social"
                                     role="presentation"
                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr>
-                                      <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><img
-                                          title="Facebook"
-                                          src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png"
-                                          alt="Fb" width="32"
-                                          style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
-                                      </td>
-                                      <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><img
-                                          title="X"
-                                          src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/x-logo-black.png"
-                                          alt="X" width="32"
-                                          style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
-                                      </td>
-                                      <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><img
-                                          title="Instagram"
-                                          src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/instagram-logo-black.png"
-                                          alt="Inst" width="32"
-                                          style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
-                                      </td>
-                                      <td align="center" valign="top" style="padding:0;Margin:0"><img title="Youtube"
-                                          src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/youtube-logo-black.png"
-                                          alt="Yt" width="32"
-                                          style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
-                                      </td>
+                                    <tr>                                    
+                                    <td align="center" class="social-links" valign="top" style="padding:0;Margin:0;padding-right:40px">
+  <a href="https://www.facebook.com/share/Zxd1qe9YRgzQqA7e/?mibextid=LQQJ4d" target="_blank" style="display:block">
+    <img 
+      title="Facebook" 
+      src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png" 
+      alt="Facebook" width="32" 
+      style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
+  </a>
+</td>
+<td align="center" class="social-links" valign="top" style="padding:0;Margin:0;padding-right:40px">
+  <a href="https://x.com/RiceKind83063" target="_blank" style="display:block">
+    <img 
+      title="X" 
+      src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/x-logo-black.png" 
+      alt="X" width="32" 
+      style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
+  </a>
+</td>
+<td align="center" class="social-links" valign="top" style="padding:0;Margin:0;padding-right:40px">
+  <a href="https://www.instagram.com/kindrice.co?igsh=MXExa3JseWxvMDliaw%3D%3D&utm_source=qr" target="_blank" style="display:block">
+    <img 
+      title="Instagram" 
+      src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/instagram-logo-black.png" 
+      alt="Instagram" width="32" 
+      style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
+  </a>
+</td>
+<td align="center" class="social-links" valign="top" style="padding:0;Margin:0;padding-right:40px">
+  <a href="https://www.linkedin.com/company/kind-rice/" target="_blank" style="display:block">
+    <img 
+      title="LinkedIn" 
+      src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/linkedin-logo-black.png" 
+      alt="LinkedIn" width="32" 
+      style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
+  </a>
+</td>
+<td align="center" class="social-links" valign="top" style="padding:0;Margin:0">
+  <a href="https://www.youtube.com/@kindrice" target="_blank" style="display:block">
+    <img 
+      title="YouTube" 
+      src="https://epiedns.stripocdn.email/content/assets/img/social-icons/logo-black/youtube-logo-black.png" 
+      alt="YouTube" width="32" 
+      style="display:block;font-size:14px;border:0;outline:none;text-decoration:none">
+  </a>
+</td>
+
                                     </tr>
                                   </table>
                                 </td>
@@ -814,10 +840,10 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                 <td align="center" style="padding:0;Margin:0;padding-bottom:35px">
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;letter-spacing:0;color:#333333;font-size:12px">
-                                    Style Casual&nbsp;© 2021 Style Casual, Inc. All Rights Reserved.</p>
+                                    Kindrice&nbsp;© 2024 Kindrice, Ltd. All Rights Reserved.</p>
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;letter-spacing:0;color:#333333;font-size:12px">
-                                    4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898</p>
+                                    66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu, India-625001.</p>
                                 </td>
                               </tr>
                               <tr>
@@ -828,19 +854,19 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                     <tr class="links">
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;border:0;padding-top:5px;padding-bottom:5px;padding-right:5px;padding-left:5px">
-                                        <a target="_blank" href=""
+                                        <a target="_blank" href="https://www.kindrice.co/"
                                           style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#999999;font-size:12px">Visit
                                           Us </a>
                                       </td>
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;border:0;padding-top:5px;padding-bottom:5px;padding-right:5px;padding-left:5px;border-left:1px solid #cccccc">
-                                        <a target="_blank" href=""
+                                        <a target="_blank" href="https://www.kindrice.co/privacy_policy.html"
                                           style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#999999;font-size:12px">Privacy
                                           Policy</a>
                                       </td>
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;border:0;padding-top:5px;padding-bottom:5px;padding-right:5px;padding-left:5px;border-left:1px solid #cccccc">
-                                        <a target="_blank" href=""
+                                        <a target="_blank" href="https://www.kindrice.co/terms-and-conditions"
                                           style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#999999;font-size:12px">Terms
                                           of Use</a>
                                       </td>

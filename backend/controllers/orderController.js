@@ -387,7 +387,7 @@ const verifyPayment = async (req, res) => {
         const country = shipping_is_billing ? billing_country : shiprocketOrderData.shipping_country
         const state = shipping_is_billing ? billing_state : shiprocketOrderData.shipping_state
         const orderId = order_id;
-        const message = "Thank you for using Kindrice";
+        const message = "We're thankful you've chosen Kind Rice, and we're excited to bring wholesome goodness to your plate while helping nurture a healthy community.";
         const awb = shipRocketAWB.data.awb_code; // Assuming shipRocketAWB is defined elsewhere
         const shippingCharge = shippingPrice;
         const totalAmount = sub_total + shippingPrice;
@@ -426,6 +426,7 @@ const verifyPayment = async (req, res) => {
             productImage,
             shipping_address,
             shippingCharge,
+            sub_total,
             totalAmount
         );
 

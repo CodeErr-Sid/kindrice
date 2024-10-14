@@ -238,12 +238,12 @@ const saveContactDetails = async (req, res) => {
 };
 
 
-const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, totalAmount) => {
+const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, sub_total, totalAmount) => {
     // Create an HTML table for the order details
 
     const senderEmail = process.env.CUSTOME_DOMAIN_EMAIL_USER;
 
-    const htmlContent = generateHtml(name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, totalAmount)
+    const htmlContent = generateHtml(name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, sub_total, totalAmount)
 
     const mailOptions = {
         from: `"Kind Rice" <${senderEmail}>`, // Sender address
