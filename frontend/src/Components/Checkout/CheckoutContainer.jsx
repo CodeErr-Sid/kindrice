@@ -173,7 +173,7 @@ const CheckoutContainer = () => {
               }));
 
               // Set billing cities list
-              if (postOffices.length > 1) {
+              if (postOffices.length) {
                 setBillingCities(postOffices.map((po) => po.Name));
               } else {
                 setBillingCities([]);
@@ -226,15 +226,15 @@ const CheckoutContainer = () => {
 
     // Check if shippingIsBilling is true or false
     if (shippingIsBilling) {
-      if (formData.zip) {
+      if (formData.zip && formData.zip >= 6) {
         fetchLocation(formData.zip); // Fetch location for billing address
       }
     } else {
       // If shippingIsBilling is false, fetch both billing and shipping locations
-      if (formData.zip) {
+      if (formData.zip && formData.zip >= 6) {
         fetchLocation(formData.zip); // Fetch location for billing address
       }
-      if (formData.shippingAddress.zip) {
+      if (formData.shippingAddress.zip && formData.shippingAddress.zip >= 6) {
         fetchLocation(formData.shippingAddress.zip, true); // Fetch location for shipping address
       }
     }
@@ -456,15 +456,19 @@ const CheckoutContainer = () => {
                   <div className="mb-4 md:w-1/2">
                     <label htmlFor="phoneno" className="block text-sm font-medium mb-1">Phone no</label>
                     <input
-                      type="text"
+                      type="tel" // This ensures the input is treated as a telephone number
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
                       id="phoneno"
-                      placeholder="+91-000-000-0000"
+                      placeholder="Enter 10-digit phone number"
                       value={formData.phoneno}
                       onChange={handleChange}
+                      maxLength={10} // Limits input to 10 characters
+                      pattern="\d{10}" // Ensures only digits are accepted
+                      title="Phone number must be 10 digits"
                       required
                     />
                   </div>
+
                 </div>
                 <div className="flex flex-col md:flex-row md:space-x-4">
                   <div className="mb-4 md:w-1/2">
@@ -482,11 +486,14 @@ const CheckoutContainer = () => {
                   <div className="mb-4 md:w-1/2">
                     <label htmlFor="zip" className="block text-sm font-medium mb-1">Zip</label>
                     <input
-                      type="text"
+                      type="text" // Use 'text' to ensure flexibility, but restrict input through validation
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
                       id="zip"
+                      maxLength={6} // Limits input to 6 characters
                       value={formData.zip}
                       onChange={handleChange}
+                      pattern="\d{6}" // Ensures input contains exactly 6 digits
+                      title="ZIP code must be exactly 6 digits"
                       required
                     />
                   </div>

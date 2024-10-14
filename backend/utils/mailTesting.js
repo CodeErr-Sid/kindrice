@@ -20,7 +20,7 @@ const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, or
     const htmlContent = generateHtml(name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, totalAmount)
 
     const mailOptions = {
-        from: senderEmail, // Sender address
+        from: `"Kind Rice" <${senderEmail}>`, // Sender address
         to: email, // Replace with recipient's email address
         subject: `Order Confirmation - ${orderId}`,
         html: htmlContent,
@@ -67,7 +67,7 @@ const productImage = "https://res.cloudinary.com/dtiqiqrw7/image/upload/v1726375
 
 const confirmationMail = await sendOrderConfirmationEmail(
     "John Doe", // name
-    "aliakram9789@gmail.com", // email
+    "thahaseenbegum8248@gmail.com", // email
     "ORD12345", // orderId
     "Thank you for your purchase!", // message
     "AWB123456789", // awb (tracking number)

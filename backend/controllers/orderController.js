@@ -364,11 +364,13 @@ const verifyPayment = async (req, res) => {
 
         const {
             billing_customer_name,
+            billing_last_name,
             billing_email,
             billing_city,
             billing_pincode,
             billing_country,
             billing_state,
+            billing_address,
             order_id,
             sub_total,
             order_items,
@@ -377,8 +379,9 @@ const verifyPayment = async (req, res) => {
 
         // Construct parameters for the email
         const name = shipping_is_billing ? billing_customer_name : shiprocketOrderData.shipping_customer_name;
+        const lastname = shipping_is_billing ? billing_last_name : shiprocketOrderData.shipping_last_name;
         const email = shipping_is_billing ? billing_email : shiprocketOrderData.shipping_email;
-        const addressLine1 = shipping_is_billing ? billing_email : shiprocketOrderData.shipping_address;
+        const addressLine1 = shipping_is_billing ? billing_address : shiprocketOrderData.shipping_address;
         const city = shipping_is_billing ? billing_city : shiprocketOrderData.shipping_city
         const pincode = shipping_is_billing ? billing_pincode : shiprocketOrderData.shipping_pincode
         const country = shipping_is_billing ? billing_country : shiprocketOrderData.shipping_country
@@ -400,7 +403,7 @@ const verifyPayment = async (req, res) => {
         }));
 
         const shipping_address = {
-            name: name,
+            name: name + " " + lastname,
             addressLine1: addressLine1,
             city: city,
             pincode: pincode,

@@ -28,6 +28,7 @@ const Login = () => {
             if (user) {
                 await registerUser(user.uid, user.email, user.name, url);
                 const redirectTo = location.state?.from || '/';
+                console.log(location.state.from);
                 navigate(redirectTo);
             } else {
                 toast.error("Registration failed", error)
@@ -224,7 +225,6 @@ const Login = () => {
                                     </p>
                                 </form>
                             )}
-
                         </div>
                     </div>
                 </div>

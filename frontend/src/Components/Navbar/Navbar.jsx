@@ -3,6 +3,7 @@ import { assets } from '../../assets/assets';
 import './Navbar.css';
 import { FaUser, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import kindricesvglogo from '/Kind_rice_logotype.svg'
 import { AuthContext } from '../../context/AuthContext';
 import { logout } from "../../config/firebase";
 
@@ -69,7 +70,7 @@ export default function Navbar() {
         </div>
         <Link to='/'>
           <div className='navbar-logo'>
-            <img src={assets.kindl} alt='brand-logo' />
+            <img src={kindricesvglogo} alt='brand-logo' />
           </div>
         </Link>
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
@@ -119,7 +120,7 @@ export default function Navbar() {
 
           <Link to="/">
             <div className='navbar-logo'>
-              <img src={assets.kindl} alt='brand-logo' />
+              <img src={kindricesvglogo} alt='brand-logo' />
             </div>
           </Link>
 
