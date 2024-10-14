@@ -107,6 +107,11 @@ const generateProductDataHTML = (image, productName, quantity, price) => {
 
 
 const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, totalAmount) => {
+
+  console.log(
+    "Email Data" + name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image, shippingAddress, shippingCharge, totalAmount
+  )
+
   const orderDetailsHtml = orderDetails.map((item, index) => {
     return generateProductDataHTML(image, item.name, item.quantity, item.price)
   })
