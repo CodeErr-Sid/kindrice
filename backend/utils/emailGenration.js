@@ -840,7 +840,7 @@ const generateHtml = (name, email, orderId, message, awb, orderDetails, paymentM
                                 <td align="center" style="padding:0;Margin:0;padding-bottom:35px">
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;letter-spacing:0;color:#333333;font-size:12px">
-                                    Kindrice&nbsp;© 2024 Kindrice, Ltd. All Rights Reserved.</p>
+                                    © 2024 R.K. Brothers Agro Foods Pvt. Ltd All rights reserved.</p>
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;letter-spacing:0;color:#333333;font-size:12px">
                                     66/2, New Ramnad Rd, Madurai, Meenakshi Nagar, Tamil Nadu, India-625001.</p>

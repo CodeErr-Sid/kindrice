@@ -112,21 +112,27 @@ const Footer2 = () => {
           <div className="footer-section babyfoot">
             <h3>Connect With Us</h3>
             <div className="social-links">
-              <a href="#" target="_blank" aria-label="Facebook">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" target="_blank" aria-label="Twitter">
-                <i className="fa-brands fa-x-twitter"></i>
-              </a>
-              <a href="#" target="_blank" aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" target="_blank" aria-label="Instagram">
+              <a href="https://www.instagram.com/kindrice.co?igsh=MXExa3JseWxvMDliaw%3D%3D&utm_source=qr"
+                target="_blank" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" target="_blank" aria-label="Instagram">
+              <a href="https://www.facebook.com/share/Zxd1qe9YRgzQqA7e/?mibextid=LQQJ4d"
+                target="_blank" aria-label="Facebook">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/kind-rice/"
+                target="_blank" aria-label="LinkedIn">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://www.youtube.com/@kindrice"
+                target="_blank" aria-label="YouTube">
                 <i className="fab fa-youtube"></i>
               </a>
+              <a href="https://x.com/RiceKind83063"
+                target="_blank" aria-label="X (Twitter)">
+                <i className="fa-brands fa-x-twitter"></i>
+              </a>
+
             </div>
             <div className="newsletter">
               <h4>Subscribe to Our Newsletter</h4>

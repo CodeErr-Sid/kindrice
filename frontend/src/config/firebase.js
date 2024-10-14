@@ -63,11 +63,32 @@ const loginWithEmailPassword = async (email, password) => {
 
 const logout = async () => {
     try {
+        // Capture the current and previous URLs
+        const currentPage = window.location.pathname; // e.g., '/cart', '/checkout', etc.
+        const previousPage = document.referrer; // referrer gives the previous page URL
+        console.log(previousPage)
+        console.log(currentPage)
+
         await signOut(auth);
-        window.location.href="/"
+
+        // If the user is on /cart or /checkout, redirect to /shop after logout
+        if (currentPage === '/cart' || currentPage === '/checkout') {
+            window.location.href = '/shop';
+        }
+        // If the previous page is /cart or /checkout, also go to /shop
+        else if (previousPage.includes('/cart') || previousPage.includes('/checkout')) {
+            window.location.href = '/shop';
+        }
+        // Otherwise, just go back to the previous page or home if no previous page is available
+        else if (previousPage) {
+            window.location.href = previousPage;
+        } else {
+            window.location.href = '/';
+        }
     } catch (error) {
         console.error('Error signing out:', error.message);
     }
 };
+
 
 export { auth, signInWithGooglePopup, registerWithEmailPassword, loginWithEmailPassword, logout }

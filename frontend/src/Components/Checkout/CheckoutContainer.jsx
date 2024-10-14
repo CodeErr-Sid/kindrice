@@ -295,7 +295,7 @@ const CheckoutContainer = () => {
     formData.shippingAddress.phoneno
   );
 
-  const isNotesDataValid = notesData[0].courier_id && notesData[0].packageCategory && notesData[0].saveThisAddress &&
+  const isNotesDataValid = notesData[0].courier_id && notesData[0].packageCategory &&
     notesData[0].orderData.sub_total > 0 && notesData[0].orderData.length &&
     notesData[0].orderData.breadth && notesData[0].orderData.height && notesData[0].orderData.weight > 0;
 
@@ -459,7 +459,7 @@ const CheckoutContainer = () => {
                       type="tel" // This ensures the input is treated as a telephone number
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
                       id="phoneno"
-                      placeholder="Enter 10-digit phone number"
+                      placeholder="0000000000"
                       value={formData.phoneno}
                       onChange={handleChange}
                       maxLength={10} // Limits input to 10 characters

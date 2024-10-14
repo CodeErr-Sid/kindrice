@@ -4,9 +4,10 @@ import { auth, signInWithGooglePopup, registerWithEmailPassword, loginWithEmailP
 import { assets } from '../../assets/assets';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { registerUser } from '../../api/userapi';
 import { AuthContext } from '../../context/AuthContext';
-
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 const Login = () => {
 
     const location = useLocation();
@@ -49,8 +50,7 @@ const Login = () => {
         const user = await loginWithEmailPassword(email, password);
 
         if (user) {
-            const redirectTo = location.state?.from || '/';
-            navigate(redirectTo);
+            navigate(-1);
         } else {
             // Show an error toast if login fails
             toast.error('Login failed. Please check your email and password.');
@@ -76,6 +76,10 @@ const Login = () => {
         setName(''); // Clear name when switching to login
         setEmail('');
         setPassword('');
+    };
+
+    const goToPreviousPage = () => {
+        navigate(-1); // This goes back to the previous page
     };
 
     return (
@@ -105,6 +109,7 @@ const Login = () => {
                                         />
                                         Sign in with Google
                                     </button>
+                                    <p onClick={goToPreviousPage}><FontAwesomeIcon icon={faArrowLeft} />Go back to website </p>
                                     <div className="flex items-center mb-3">
                                         <hr className="h-0 border-b border-solid border-grey-500 grow" />
                                         <p className="mx-4 text-grey-600">or</p>
@@ -179,6 +184,7 @@ const Login = () => {
                                         />
                                         Sign in with Google
                                     </button>
+                                    <p className='cursor-pointer' onClick={goToPreviousPage}><FontAwesomeIcon icon={faArrowLeft} />Go back to website </p>
                                     <div className="flex items-center mb-3">
                                         <hr className="h-0 border-b border-solid border-grey-500 grow" />
                                         <p className="mx-4 text-grey-600">or</p>

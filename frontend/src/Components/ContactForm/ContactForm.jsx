@@ -28,7 +28,7 @@ export default function ContactForm() {
               <p>If you have any questions about our products or need further information, please feel free to reach out to us. We are here to assist you and would be happy to help.</p>
 
               <p className='mt-2'>
-                You can reach us via email at <a className="text-green-600" href='mailto:hellokindrice@gmail.com '>hellokindrice@gmail.com</a> or call us at <a className="text-green-600" href="tel:+919843297474">+91-98432-97474</a>
+                You can reach us via email at <a className="text-green-600" href='mailto:hello@kindrice.co '>hello@kindrice.co</a> or call us at <a className="text-green-600" href="tel:+919940178297">91-99401-78297</a>
               </p>
 
               <div className='mt-2'>
