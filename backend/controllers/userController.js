@@ -3,6 +3,8 @@ import Subscriber from "../models/subscriber.js";
 import admin from "../config/firebase.js";
 import Contact from "../models/contact.js";
 import { mailTransport } from "../config/nodemailer.js";
+import generateHtml from "../utils/emailGenration.js";
+
 
 const registerUser = async (req, res) => {
     const { firebaseUID, email, name } = req.body;
@@ -236,49 +238,12 @@ const saveContactDetails = async (req, res) => {
 };
 
 
-const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, orderDetails, shippingCharge, totalAmount) => {
+const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image,  shippingAddress, shippingCharge, totalAmount) => {
     // Create an HTML table for the order details
 
     const senderEmail = process.env.CUSTOME_DOMAIN_EMAIL_USER;
 
-
-    const orderDetailsHtml = orderDetails.map((item, index) => `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${item.name}</td>
-        <td>${item.quantity}</td>
-        <td>${item.price.toFixed(2)}</td>
-      </tr>
-    `).join('');
-
-    const trackingLink = `https://shiprocket.co/tracking/${awb}`
-
-
-
-    const htmlContent = `
-      <h1>Order Confirmation</h1>
-      <p>Dear ${name},</p>
-      <p>${message}</p>
-      <p>Order ID: ${orderId}</p>
-      <p>${awb}</p>
-      <a href=${trackingLink}><button>Track Order</button><a>
-      <table border="1" cellpadding="5">
-        <thead>
-          <tr>
-            <th>S.No</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${orderDetailsHtml}
-        </tbody>
-      </table>
-      <p>Shipping Charge: ${shippingCharge.toFixed(2)}</p>
-      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
-      <p>Thank you for your order!</p>
-    `;
+    const htmlContent = generateHtml(name, email, orderId, message, awb, orderDetails, paymentMethod, courierCompanyName, image,  shippingAddress, shippingCharge, totalAmount)
 
     const mailOptions = {
         from: senderEmail, // Sender address

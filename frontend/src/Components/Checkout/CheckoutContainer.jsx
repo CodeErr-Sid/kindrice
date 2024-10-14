@@ -32,7 +32,7 @@ const CheckoutContainer = () => {
   const [billingCities, setBillingCities] = useState([]);  // For billing city dropdown
   const [shippingCities, setShippingCities] = useState([]); // For shipping city dropdown
 
-  const [courier, setCourier] = useState({ shippingPrice: 0, courier_id: null }); // Single state for both courier details
+  const [courier, setCourier] = useState({ shippingPrice: 0, courier_id: null, courier_company_name: "" }); // Single state for both courier details
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -120,7 +120,7 @@ const CheckoutContainer = () => {
         const courierData = await getShippingPrices(url, shippingZip, totalWeight, price, length, breadth, height);
         const totalShippingPrice = (courierData.freight_charge || 0) + (courierData.coverage_charges || 0) + (courierData.other_charges || 0);
 
-        setCourier({ shippingPrice: totalShippingPrice, courier_id: courierData.courier_company_id });
+        setCourier({ shippingPrice: totalShippingPrice, courier_id: courierData.courier_company_id, courier_company_name: courierData.courier_name });
       } catch (error) {
         setCourier({ shippingPrice: 0, courier_id: null });
       }
@@ -250,6 +250,7 @@ const CheckoutContainer = () => {
   const notesData = [{
     courier_id: courier.courier_id,
     shippingPrice: courier.shippingPrice,
+    courier_company_name: courier.courier_company_name,
     packageCategory: packageCategory,
     saveThisAddress: saveAddress,
     orderData: {

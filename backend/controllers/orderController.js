@@ -289,8 +289,8 @@ const verifyPayment = async (req, res) => {
             return res.status(500).json({ success: false, message: 'Payment verification failed' });
         }
 
-        const { notes, amount } = paymentObject.data;
-        const { courier_id, packageCategory, orderData, shippingPrice, saveThisAddress } = notes[0]; // Assuming notes[0] has the necessary data
+        const { notes, amount, method } = paymentObject.data;
+        const { courier_id, courier_company_name, packageCategory, orderData, shippingPrice, saveThisAddress } = notes[0]; // Assuming notes[0] has the necessary data
 
         // Prepare order data for Shiprocket
         const shiprocketOrderData = {
@@ -365,6 +365,10 @@ const verifyPayment = async (req, res) => {
         const {
             billing_customer_name,
             billing_email,
+            billing_city,
+            billing_pincode,
+            billing_country,
+            billing_state,
             order_id,
             sub_total,
             order_items,
@@ -374,6 +378,11 @@ const verifyPayment = async (req, res) => {
         // Construct parameters for the email
         const name = shipping_is_billing ? billing_customer_name : shiprocketOrderData.shipping_customer_name;
         const email = shipping_is_billing ? billing_email : shiprocketOrderData.shipping_email;
+        const addressLine1 = shipping_is_billing ? billing_email : shiprocketOrderData.shipping_address;
+        const city = shipping_is_billing ? billing_city : shiprocketOrderData.shipping_city
+        const pincode = shipping_is_billing ? billing_pincode : shiprocketOrderData.shipping_pincode
+        const country = shipping_is_billing ? billing_country : shiprocketOrderData.shipping_country
+        const state = shipping_is_billing ? billing_state : shiprocketOrderData.shipping_state
         const orderId = order_id;
         const message = "Thank you for using Kindrice";
         const awb = shipRocketAWB.data.awb_code; // Assuming shipRocketAWB is defined elsewhere
@@ -390,6 +399,17 @@ const verifyPayment = async (req, res) => {
             price: item.selling_price // assuming this key represents the selling price
         }));
 
+        const shipping_address = {
+            name: name,
+            addressLine1: addressLine1,
+            city: city,
+            pincode: pincode,
+            country: country,
+            state: state,
+        }
+
+        const productImage = "https://res.cloudinary.com/dtiqiqrw7/image/upload/v1726375202/Kindrice_Products/low_gi_rice/zwoygyfdg9pvurtdslei.jpg"
+
         // Sending the email
         const confirmationMail = await sendOrderConfirmationEmail(
             name,
@@ -398,6 +418,10 @@ const verifyPayment = async (req, res) => {
             message,
             awb,
             orderDetails,
+            method,
+            courier_company_name,
+            productImage,
+            shipping_address,
             shippingCharge,
             totalAmount
         );
