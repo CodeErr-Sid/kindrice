@@ -106,6 +106,10 @@
   left: 3vw;
 }
 
+.dummy-section .hamburger {
+  top: 6vw;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -167,9 +171,11 @@
 .overlay-active {
   display: none;
 }
+
 .user2 {
   display: none;
 }
+
 @media screen and (max-width: 1029px) {
   .navbar-icons {
     font-size: 2vw;
@@ -208,17 +214,20 @@
   .user {
     display: block;
     position: absolute;
-    top: 3rem;
-    right: 1rem; /* Adjusted to align with the right edge */
+    top: 12vw;
+    right: 1rem;
+    /* Adjusted to align with the right edge */
     font-size: 1.5rem;
   }
 
   .cart {
-    margin-right: 2rem; /* Added margin to separate from the user icon */
+    margin-right: 2rem;
+    /* Added margin to separate from the user icon */
   }
 
   .user {
-    margin-right: 0; /* No extra margin */
+    margin-right: 0;
+    /* No extra margin */
   }
 
   .overlay {
@@ -269,6 +278,7 @@
   transform: scale(0);
   transition-delay: 0.2s;
 }
+
 .fill {
   display: flex;
   align-items: center;
@@ -291,12 +301,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Ensure image does not overflow */
+  overflow: hidden;
+  /* Ensure image does not overflow */
   cursor: pointer;
 }
 
 .icon-container img {
-  width: 25px; /* Make image fit within the container */
-  height: 25px; /* Make image fit within the container */
-  object-fit: cover; /* Ensure image maintains aspect ratio */
+  width: 25px;
+  /* Make image fit within the container */
+  height: 25px;
+  /* Make image fit within the container */
+  object-fit: cover;
+  /* Ensure image maintains aspect ratio */
 }

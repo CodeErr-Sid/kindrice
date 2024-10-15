@@ -57,6 +57,7 @@ export default function Navbar() {
 
   const handleProfile = () => {
     if (isLoggedIn) {
+      console.log("hi")
       toggleLogout();
     } else {
       navigate('/login', { state: { from: location.pathname } });
@@ -95,19 +96,31 @@ export default function Navbar() {
               <FaUser className='icon user cursor-pointer' onClick={handleProfile} />
               {isLoggedIn && showLogout && (
                 <button
-                  className='absolute z-10 right-1/2 top-[113%] translate-x-1/2 bg-[#006634] text-white rounded-xl text-xl px-[5px] py-[10px]'
+                  className='absolute hidden md:block right-1/2 top-[113%] translate-x-1/2 bg-[#006634] text-white rounded-xl text-xl px-[5px] py-[10px]'
                   onClick={handleLogout}
                 >
                   Logout
                 </button>
               )}
             </div>
-            <FaUser className='icon user user2' onClick={handleProfile}/>
+            <FaUser className='icon user user2' onClick={handleProfile} />
+            {isLoggedIn && showLogout && (
+              <button
+                className='absolute block md:hidden right-[45px] top-[73px] translate-x-1/2 bg-[#006634] text-white rounded-xl text-xl px-[5px] py-[10px]'
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            )}
             <div className="cart-icon-container relative">
               <FaShoppingCart className='icon cart cursor-pointer' onClick={() => navigate("/cart")} />
               <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={() => navigate("/cart")}>
                 {cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0}
               </div>
+            </div>
+            <FaShoppingCart className='icon cart cursor-pointer block md:hidden' onClick={() => navigate("/cart")} />
+            <div className="cart-quantity-alert flex md:hidden absolute bg-green-950 rounded-2xlabsolute top-[39px] right-[43px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px]  items-center justify-center text-[13px] p-0" onClick={() => navigate("/cart")}>
+              {cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0}
             </div>
           </div>
         </div>
@@ -146,19 +159,31 @@ export default function Navbar() {
                 <FaUser className='icon user cursor-pointer' onClick={handleProfile} />
                 {isLoggedIn && showLogout && (
                   <button
-                    className='absolute right-1/2 top-[113%] translate-x-1/2 bg-[#006634] text-white rounded-xl text-xl px-[5px] py-[10px]'
+                    className='absolute hidden md:block right-1/2 top-[113%] translate-x-1/2 bg-[#006634] text-white rounded-xl text-xl px-[5px] py-[10px]'
                     onClick={handleLogout}
                   >
                     Logout
                   </button>
                 )}
               </div>
-              <FaUser className='icon user user2' />
+              <FaUser className='icon user user2' onClick={handleProfile} />
+              {isLoggedIn && showLogout && (
+                <button
+                  className='absolute block md:hidden right-[45px] top-[73px] translate-x-1/2 bg-[#006634] text-white rounded-xl text-xl px-[5px] py-[10px]'
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              )}
               <div className="cart-icon-container relative">
                 <FaShoppingCart className='icon cart cursor-pointer' onClick={() => navigate("/cart")} />
                 <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={() => navigate("/cart")}>
                   {cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0}
                 </div>
+              </div>
+              <FaShoppingCart className='icon cart cursor-pointer block md:hidden' onClick={() => navigate("/cart")} />
+              <div className="cart-quantity-alert flex md:hidden absolute bg-green-950 rounded-2xlabsolute top-[39px] right-[43px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px]  items-center justify-center text-[13px] p-0" onClick={() => navigate("/cart")}>
+                {cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0}
               </div>
             </div>
           </div>
