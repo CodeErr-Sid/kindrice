@@ -6,6 +6,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import kindricesvglogo from '/Kind_rice_logotype.svg'
 import { AuthContext } from '../../context/AuthContext';
 import { logout } from "../../config/firebase";
+import { faX } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,7 +76,7 @@ export default function Navbar() {
           </div>
         </Link>
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
-          <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+          <div className={`navbar-menu overlay ${isMenuOpen ? 'active' : ''}`}>
             <ul>
               {currentPath !== '/' && <li><Link to='/' className='link'>Home</Link></li>}
               <li><Link to='/shop' className='link'>Shop</Link></li>
@@ -85,6 +87,7 @@ export default function Navbar() {
               <li><Link to='/contact' className='link'>Contact</Link></li>
               <li><Link to='/lab-test' className='link'>Lab Test</Link></li>
             </ul>
+            <FontAwesomeIcon onClick={toggleMenu} className='absolute top-4 right-4 text-2xl' icon={faX} style={{ color: "#005922", }} />
           </div>
 
           <div className='navbar-icons'>
@@ -99,7 +102,7 @@ export default function Navbar() {
                 </button>
               )}
             </div>
-            <FaUser className='icon user user2' />
+            <FaUser className='icon user user2' onClick={handleProfile}/>
             <div className="cart-icon-container relative">
               <FaShoppingCart className='icon cart cursor-pointer' onClick={() => navigate("/cart")} />
               <div className="cart-quantity-alert hidden absolute bg-green-950 rounded-2xlabsolute top-[-10px] right-[-10px] bg-gradient-to-br from-green-500 to-green-900 text-white font-medium rounded-full w-[18px] h-[18px] md:flex items-center justify-center text-[13px] p-0" onClick={() => navigate("/cart")}>

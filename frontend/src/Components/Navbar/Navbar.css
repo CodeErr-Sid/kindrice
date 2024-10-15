@@ -134,6 +134,7 @@
   padding: 0;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   flex-direction: column;
   margin-top: 7rem;
@@ -175,11 +176,12 @@
   }
 
   .navbar-menu ul li a {
-    font-size: 2vw;
+    font-size: 1rem;
   }
 
   .navbar-menu ul {
     gap: 3.5rem;
+    flex-direction: column;
   }
 }
 
