@@ -55,7 +55,7 @@ function App() {
       <ScrollTop />
       {location.pathname !== '/login' && (
         <FloatingWhatsApp
-          phoneNumber="+91 98432 97474"
+          phoneNumber="+91 99401 78297"
           allowClickAway
           chatMessage="Hi there, How can we help you?"
           statusMessage="Chief Rice Officer"

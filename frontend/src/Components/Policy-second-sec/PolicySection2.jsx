@@ -26,7 +26,7 @@ export default function PolicySection2() {
             <ul>
               <p>Process:</p>
               <li>
-                To initiate a return, please contact our customer service team at <b>hellokindrice@gmail.com</b> within 14 days of receiving your order.
+                To initiate a return, please contact our customer service team at <b>hello@kindrice.co</b> within 14 days of receiving your order.
               </li>
               <li>Once your return request is approved, we will provide you with a return address and instructions.</li>
             </ul>
@@ -69,7 +69,7 @@ export default function PolicySection2() {
             <ul>
               <p>Eligibility:</p>
               <li>
-                We only replace items if they are defective or damaged. If you need to exchange an item for the same product, please contact us at <b>hellokindrice@gmail.com</b>.
+                We only replace items if they are defective or damaged. If you need to exchange an item for the same product, please contact us at <b>hello@kindrice.co</b>.
               </li>
             </ul>
             <ul>
