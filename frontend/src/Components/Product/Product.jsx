@@ -191,7 +191,7 @@ const Product = ({ productId }) => {
                                     callback={handleAddToCart}
                                 />
                                 <button
-                                    className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
+                                    className="add-to-cart-button text-lg bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     onClick={handleBuyNow}
                                 >
                                     Buy Now

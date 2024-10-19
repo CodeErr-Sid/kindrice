@@ -40,7 +40,7 @@ export default function ContactForm() {
                   Tamil Nadu - 625001
                 </span>
               </div>
-              <p>
+              <p className='mt-7'>
                 We look forward to hearing from you!
               </p>
 

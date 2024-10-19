@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-
-import { auth, signInWithGooglePopup, registerWithEmailPassword, loginWithEmailPassword } from "../../config/firebase"
+import React, { useContext, useState } from 'react';
+import { auth, signInWithGooglePopup, registerWithEmailPassword, loginWithEmailPassword } from "../../config/firebase";
 import { assets } from '../../assets/assets';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -8,18 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { registerUser } from '../../api/userapi';
 import { AuthContext } from '../../context/AuthContext';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-const Login = () => {
 
+const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { url } = useContext(AuthContext)
+    const { url } = useContext(AuthContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('')
+    const [name, setName] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
-
 
     const logGoogleUser = async () => {
         const response = await signInWithGooglePopup();
@@ -29,21 +27,19 @@ const Login = () => {
             if (user) {
                 await registerUser(user.uid, user.email, user.name, url);
                 const redirectTo = location.state?.from || '/';
-                console.log(location.state.from);
                 navigate(redirectTo);
             } else {
-                toast.error("Registration failed", error)
+                toast.error("Registration failed");
             }
         } else {
             if (user) {
                 const redirectTo = location.state?.from || '/';
                 navigate(redirectTo);
             } else {
-                // Show an error toast if login fails
                 toast.error('Login failed. Please check your email and password.');
             }
         }
-    }
+    };
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -52,34 +48,32 @@ const Login = () => {
         if (user) {
             navigate(-1);
         } else {
-            // Show an error toast if login fails
             toast.error('Login failed. Please check your email and password.');
         }
     };
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-
         const user = await registerWithEmailPassword(name, email, password);
 
         if (user) {
-            await registerUser(user.uid, user.email, user.name, url)
+            await registerUser(user.uid, user.email, user.name, url);
         } else {
-            toast.error("Registration failed", error)
+            toast.error("Registration failed");
         }
 
         toggleForm();
     };
 
     const toggleForm = () => {
-        setShowLogin(!showLogin); // Toggle between login and signup
-        setName(''); // Clear name when switching to login
+        setShowLogin(!showLogin);
+        setName('');
         setEmail('');
         setPassword('');
     };
 
     const goToPreviousPage = () => {
-        navigate(-1); // This goes back to the previous page
+        navigate(-1);
     };
 
     return (
@@ -93,8 +87,11 @@ const Login = () => {
                                     className="flex flex-col mx-auto my-0 w-full sm:w-1/2 h-full pb-6 text-center bg-white rounded-3xl"
                                     onSubmit={handleSignIn}
                                 >
+                                     <p className='cursor-pointer mb-5 absolute left-4 text-grey-700' onClick={goToPreviousPage}>
+                                        <FontAwesomeIcon icon={faArrowLeft} /> Go back
+                                    </p>
                                     <span className="mb-3 w-1/2 self-center">
-                                        <img src={assets.kindl} className='object-contain' alt="" />
+                                        <img src={assets.kindl} className='object-contain' alt="Kind Logo" />
                                     </span>
                                     <p className="mb-5 text-grey-700">Enter your email and password</p>
                                     <button
@@ -109,7 +106,7 @@ const Login = () => {
                                         />
                                         Sign in with Google
                                     </button>
-                                    <p onClick={goToPreviousPage}><FontAwesomeIcon icon={faArrowLeft} />Go back to website </p>
+                                   
                                     <div className="flex items-center mb-3">
                                         <hr className="h-0 border-b border-solid border-grey-500 grow" />
                                         <p className="mx-4 text-grey-600">or</p>
@@ -155,7 +152,7 @@ const Login = () => {
                                     </div>
                                     <button
                                         type="submit"
-                                        className="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300  rounded-2xl hover:bg-[#026635] focus:ring-4 focus:ring-purple-blue-100 bg-[#026635]"
+                                        className="w-full px-6 py-5 mb-5 text-sm font-bold leading-none text-white transition duration-300 rounded-2xl hover:bg-[#026635] focus:ring-4 focus:ring-purple-blue-100 bg-[#026635]"
                                     >
                                         Sign In
                                     </button>
@@ -169,7 +166,7 @@ const Login = () => {
                                     onSubmit={handleSignUp}
                                 >
                                     <span className="mb-5 w-1/4 self-center">
-                                        <img src={assets.kindl} alt="" />
+                                        <img src={assets.kindl} alt="Kind Logo" />
                                     </span>
                                     <p className="mb-4 text-grey-700">Enter your email and password</p>
                                     <button
@@ -184,13 +181,15 @@ const Login = () => {
                                         />
                                         Sign in with Google
                                     </button>
-                                    <p className='cursor-pointer' onClick={goToPreviousPage}><FontAwesomeIcon icon={faArrowLeft} />Go back to website </p>
+                                    <p className='cursor-pointer mb-5' onClick={goToPreviousPage}>
+                                        <FontAwesomeIcon icon={faArrowLeft} /> Go back to website
+                                    </p>
                                     <div className="flex items-center mb-3">
                                         <hr className="h-0 border-b border-solid border-grey-500 grow" />
                                         <p className="mx-4 text-grey-600">or</p>
                                         <hr className="h-0 border-b border-solid border-grey-500 grow" />
                                     </div>
-                                    <label htmlFor="email" className="mb-2 text-sm text-start text-grey-900">Name*</label>
+                                    <label htmlFor="name" className="mb-2 text-sm text-start text-grey-900">Name*</label>
                                     <input
                                         id="name"
                                         type="text"
@@ -200,7 +199,7 @@ const Login = () => {
                                         className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded-2xl"
                                         required
                                     />
-                                    <label htmlFor="name" className="mb-2 text-sm text-start text-grey-900">Email*</label>
+                                    <label htmlFor="email" className="mb-2 text-sm text-start text-grey-900">Email*</label>
                                     <input
                                         id="email"
                                         type="email"
@@ -227,7 +226,7 @@ const Login = () => {
                                         Sign Up
                                     </button>
                                     <p className="text-sm leading-relaxed text-grey-900">
-                                        Already have and Account <a href="#!" className="font-bold text-grey-700" onClick={toggleForm}>Login here</a>
+                                        Already registered? <a href="#!" className="font-bold text-grey-700" onClick={toggleForm}>Sign In</a>
                                     </p>
                                 </form>
                             )}

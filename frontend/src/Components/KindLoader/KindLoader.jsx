@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger, ScrollToPlugin } from 'gsap/all';
 import './KindLoader.css'; // Import CSS file
 import { assets } from '../../assets/assets';
+import kindricesvglogo from '/Kind_rice_logotype.svg'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -90,7 +91,7 @@ const KindLoader = () => {
                     <div className="mil-reveal-frame">
                         <p className="mil-reveal-box"></p>
                         <p className="mil-h3 mil-maroon mil-thin" style={{ color: '#016533', fontSize: '2rem' }}>
-                            <img src={assets.kindl} alt='' className='w-40 h-auto md:w-60 md:h-auto' />
+                            <img src={kindricesvglogo} alt='' className='w-40 h-auto md:w-60 md:h-auto' />
                         </p>
                     </div>
                 </div>
