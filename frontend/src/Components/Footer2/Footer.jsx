@@ -25,7 +25,7 @@ const Footer2 = () => {
       toast.success(data.message);
       setEmail("");
     } else {
-      toast.error(data.message);
+      toast.error(data.error);
     }
   }
 

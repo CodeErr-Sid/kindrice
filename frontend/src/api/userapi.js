@@ -86,8 +86,7 @@ const subscribeToEmail = async (email, url) => {
             body: JSON.stringify({ email }),
         });
 
-        const data = response.json();
-
+        const data = await response.json();
         return data;
     } catch (error) {
         return 'Error occurred while subscribing.' + error
