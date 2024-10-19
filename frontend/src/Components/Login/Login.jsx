@@ -26,15 +26,13 @@ const Login = () => {
         if (isNewUser) {
             if (user) {
                 await registerUser(user.uid, user.email, user.name, url);
-                const redirectTo = location.state?.from || '/';
-                navigate(redirectTo);
+                navigate(-1);
             } else {
                 toast.error("Registration failed");
             }
         } else {
             if (user) {
-                const redirectTo = location.state?.from || '/';
-                navigate(redirectTo);
+                navigate(-1);
             } else {
                 toast.error('Login failed. Please check your email and password.');
             }
