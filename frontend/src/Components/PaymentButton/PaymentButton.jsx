@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets';
 import { redirect, useNavigate } from 'react-router-dom';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
-const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled, address }) => {
+const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled, address, pathway }) => {
 
     const { url, idToken, getCart, isLoggedIn, user, refreshToken } = useContext(AuthContext)
     const navigate = useNavigate();
@@ -36,7 +36,12 @@ const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled
         } else {
             navigate('/login', {
                 state: {
-                    redirectToCheckout: true
+                    redirectToCheckout: true,
+                    items: pathway?.items,
+                    price: pathway?.price,
+                    weightQuantity: pathway?.weightQuantity,
+                    singleProduct: pathway?.singleProduct,
+
                 }
             })
         }

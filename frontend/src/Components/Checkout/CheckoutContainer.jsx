@@ -340,6 +340,7 @@ const CheckoutContainer = () => {
               amount={grandTotal}
               address={formData}
               notes={notesData}
+              pathway={{ items, weightQuantity, price, singleProduct }}
               disabled={!isButtonEnabled}
             />
             <div className="flex items-center justify-center gap-2">
@@ -485,7 +486,7 @@ const CheckoutContainer = () => {
                     />
                   </div>
                   <div className="mb-4 md:w-1/2">
-                    <label htmlFor="zip" className="block text-sm font-medium mb-1">Zip</label>
+                    <label htmlFor="zip" className="block text-sm font-medium mb-1">Pincode</label>
                     <input
                       type="text" // Use 'text' to ensure flexibility, but restrict input through validation
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -659,7 +660,7 @@ const CheckoutContainer = () => {
                       />
                     </div>
                     <div className="mb-4 md:w-1/2">
-                      <label htmlFor="zip" className="block text-sm font-medium mb-1">Zip</label>
+                      <label htmlFor="zip" className="block text-sm font-medium mb-1">Pincode</label>
                       <input
                         type="text"
                         className="form-input w-full border rounded-md px-3 py-2 border-gray-300"

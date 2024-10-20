@@ -23,10 +23,10 @@ const Footer2 = () => {
 
     if (data.success) {
       toast.success(data.message);
-      setEmail("");
     } else {
-      toast.error(data.error);
+      toast.warn(data.error);
     }
+    setEmail("");
   }
 
   return (
