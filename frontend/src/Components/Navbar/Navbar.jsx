@@ -59,8 +59,7 @@ export default function Navbar() {
       // Redirect to the shop page
       navigate('/shop');
     } else {
-      // Redirect to the previous page
-      navigate(-1);
+      navigate(0);
     }
   };
 
@@ -71,9 +70,9 @@ export default function Navbar() {
     } else {
       navigate('/login', {
         state: {
-            redirectToCheckout: false
+          redirectToCheckout: false
         }
-    })
+      })
     }
   };
 
