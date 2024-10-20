@@ -20,6 +20,7 @@ const CheckoutContainer = () => {
     }
   })();
 
+
   const { packageCategory, totalWeight, dimensions } = fetchPackageForOrder(weightQuantity);
   const { length, breadth, height } = dimensions;
 

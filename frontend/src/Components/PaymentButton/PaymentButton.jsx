@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { normaCheckoutOrder, paymentHandler } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled, address }) => {
@@ -34,7 +34,11 @@ const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled
                 setLoading(false);
             }
         } else {
-            navigate('/login')
+            navigate('/login', {
+                state: {
+                    redirectToCheckout: true
+                }
+            })
         }
     };
 

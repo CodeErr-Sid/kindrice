@@ -94,7 +94,26 @@ const Product = ({ productId }) => {
                 }
             });
         } else {
-            navigate('/login');
+            navigate('/login', {
+                state: {
+                    redirectToCheckout: true,
+                    items: [{
+                        "name": `${product.productName} - ${weight}kg`, // Product name using productName and weight
+                        "sku": weightCategory?.sku, // SKU from the selected weight category
+                        "units": quantity, // Quantity from quantities array
+                        "selling_price": weightCategory?.totalPrice, // Selling price using total price from weight category
+                        "discount": "", // Keep as empty string
+                        "tax": product.taxPercentage.toString(), // Tax percentage from productId
+                        "hsn": Number(product.hsnCode) // HSN code from productId
+                    }],
+                    price,
+                    weightQuantity: [{
+                        weight: weight,
+                        quantity: quantity
+                    }],
+                    singleProduct: true,
+                }
+            })
         }
     };
 
@@ -104,7 +123,11 @@ const Product = ({ productId }) => {
             const data = await addToCart(productId, quantity, weight, idToken);
             await getCartItems();
         } else {
-            navigate('/login');
+            navigate('/login', {
+                state: {
+                    redirectToCheckout: false
+                }
+            })
         }
     };
 

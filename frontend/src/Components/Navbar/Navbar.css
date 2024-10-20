@@ -107,66 +107,79 @@
 }
 
 .dummy-section .hamburger {
-  top: 6vw;
+  top: 12vw;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
-  z-index: 9999;
-  transition: left 0.5s ease;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(20px);
+@media screen and (0<=width<=320px) {
+
+  .hamburger,
+  .cart,
+  .user {
+    top: 13vw;
+  }
 }
 
-.overlay.active {
-  left: 0;
+@media screen and (0<=width<=768px) {
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 9999;
+    transition: left 0.5s ease;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+  }
+
+  .overlay.active {
+    left: 0;
+  }
+
+  .overlay-content {
+    text-align: center;
+  }
+
+  .overlay-content ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 7rem;
+  }
+
+  .overlay-content ul li {
+    margin: 1rem 0;
+  }
+
+  .overlay-content ul li a {
+    color: #000;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .overlay-content ul li a:hover {
+    color: #016533;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #000;
+  }
 }
 
-.overlay-content {
-  text-align: center;
-}
 
-.overlay-content ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 7rem;
-}
-
-.overlay-content ul li {
-  margin: 1rem 0;
-}
-
-.overlay-content ul li a {
-  color: #000;
-  font-size: 1rem;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.overlay-content ul li a:hover {
-  color: #016533;
-}
-
-.close-icon {
-  position: absolute;
-  top: 2rem;
-  left: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #000;
-}
 
 .overlay-active {
   display: none;
@@ -197,7 +210,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .navbar-menu {
     display: none;
   }

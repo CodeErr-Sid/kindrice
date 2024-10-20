@@ -12,12 +12,28 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { url } = useContext(AuthContext);
+    const { redirectToCheckout } = location.state;
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
+
+    const redirectToCheckoutMethod = () => {
+        if (redirectToCheckout) {
+            navigate('/checkout', {
+                state: {
+                    items: location.state?.items,
+                    price: location.state?.price,
+                    weightQuantity: location.state?.weightQuantity,
+                    singleProduct: location.state?.singleProduct,
+                }
+            });
+        } else {
+            navigate(-1)
+        }
+    }
 
     const logGoogleUser = async () => {
         const response = await signInWithGooglePopup();
@@ -26,13 +42,13 @@ const Login = () => {
         if (isNewUser) {
             if (user) {
                 await registerUser(user.uid, user.email, user.name, url);
-                navigate(-1);
+                redirectToCheckoutMethod();
             } else {
                 toast.error("Registration failed");
             }
         } else {
             if (user) {
-                navigate(-1);
+                redirectToCheckoutMethod();
             } else {
                 toast.error('Login failed. Please check your email and password.');
             }
@@ -44,7 +60,8 @@ const Login = () => {
         const user = await loginWithEmailPassword(email, password);
 
         if (user) {
-            navigate(-1);
+            redirectToCheckoutMethod();
+
         } else {
             toast.error('Login failed. Please check your email and password.');
         }
@@ -85,7 +102,7 @@ const Login = () => {
                                     className="flex flex-col mx-auto my-0 w-full sm:w-1/2 h-full pb-6 text-center bg-white rounded-3xl"
                                     onSubmit={handleSignIn}
                                 >
-                                     <p className='cursor-pointer mb-5 absolute left-4 text-grey-700' onClick={goToPreviousPage}>
+                                    <p className='cursor-pointer mb-5 absolute left-4 text-grey-700' onClick={goToPreviousPage}>
                                         <FontAwesomeIcon icon={faArrowLeft} /> Go back
                                     </p>
                                     <span className="mb-3 w-1/2 self-center">
@@ -104,7 +121,7 @@ const Login = () => {
                                         />
                                         Sign in with Google
                                     </button>
-                                   
+
                                     <div className="flex items-center mb-3">
                                         <hr className="h-0 border-b border-solid border-grey-500 grow" />
                                         <p className="mx-4 text-grey-600">or</p>

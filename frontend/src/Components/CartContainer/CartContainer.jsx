@@ -201,7 +201,11 @@ const CartContainer = () => {
       await getCartItems();
       // toast.success(message);
     } else {
-      navigate("/login");
+      navigate('/login', {
+        state: {
+          redirectToCheckout: false
+        }
+      })
     }
   };
 
@@ -240,14 +244,25 @@ const CartContainer = () => {
       };
     });
 
-    navigate('/checkout', {
-      state: {
-        items,
-        price: totalCartPrice,
-        weightQuantity: weightQuantityData,
-        singleProduct: false,
-      },
-    });
+    if (isLoggedIn) {
+      navigate('/checkout', {
+        state: {
+          items,
+          price: totalCartPrice,
+          weightQuantity: weightQuantityData,
+          singleProduct: false,
+        },
+      });
+    } else {
+      navigate('/login', {
+        state: {
+          items,
+          price: totalCartPrice,
+          weightQuantity: weightQuantityData,
+          singleProduct: false,
+        },
+      });
+    }
   }
 
 
