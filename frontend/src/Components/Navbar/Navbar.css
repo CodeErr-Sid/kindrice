@@ -200,7 +200,6 @@
 
   .navbar-menu ul {
     gap: 3.5rem;
-    flex-direction: column;
   }
 }
 
