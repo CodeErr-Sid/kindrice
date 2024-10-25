@@ -3,27 +3,39 @@ import { normaCheckoutOrder, paymentHandler } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
 import { redirect, useNavigate } from 'react-router-dom';
-import { faRefresh } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';  // Toastify imports
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
 
-const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled, address, pathway }) => {
-
-    const { url, idToken, getCart, isLoggedIn, user, refreshToken } = useContext(AuthContext)
+const PaymentButton = ({ 
+    name, 
+    className, 
+    amount, 
+    singleProduct, 
+    notes, 
+    disabled, 
+    address, 
+    pathway 
+}) => {
+    const { url, idToken, getCart, isLoggedIn, user, refreshToken } = useContext(AuthContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const loadRazorpay = () => {
+        if (disabled) {
+            toast.error('Please fill the form before proceeding!');
+            return;
+        }
+
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
-        script.onload = fetchOrderId;  // Fetch order ID once Razorpay script is loaded
+        script.onload = fetchOrderId; // Fetch order ID once Razorpay script is loaded
         document.body.appendChild(script);
     };
-
 
     const fetchOrderId = async () => {
         if (isLoggedIn) {
             try {
                 setLoading(true);
-
                 const data = await normaCheckoutOrder(url, amount, notes);
                 const orderId = await data.id;
                 await refreshToken(user);
@@ -41,24 +53,21 @@ const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled
                     price: pathway?.price,
                     weightQuantity: pathway?.weightQuantity,
                     singleProduct: pathway?.singleProduct,
-
                 }
-            })
+            });
         }
     };
 
     const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
-
     const razorpayLiveKey = import.meta.env.VITE_RAZORPAY_LIVE_KEY_ID;
 
-
-    const fullname = address.firstname + " " + address.lastname ? address.lastname : "";
+    const fullname = address.firstname + " " + (address.lastname || "");
     const email = address.email;
     const contact = address.phoneno;
 
     const displayRazorpay = (orderId) => {
         const options = {
-            key: razorpayLiveKey,  // Replace with Razorpay Key
+            key: razorpayLiveKey, // Replace with Razorpay Key
             order_id: orderId,   // Order ID from backend
             name: "Kind Rice",
             show_coupons: false,
@@ -81,9 +90,15 @@ const PaymentButton = ({ name, className, amount, singleProduct, notes, disabled
     };
 
     return (
-        <button onClick={loadRazorpay} disabled={disabled ? disabled : loading} className={className}>
-            {loading ? 'Processing...' : name}
-        </button>
+        <>
+            <button 
+                onClick={loadRazorpay} 
+                className={className}
+            >
+                {loading ? 'Processing...' : name}
+            </button>
+            <ToastContainer position="top-right" autoClose={3000} />
+        </>
     );
 };
 
