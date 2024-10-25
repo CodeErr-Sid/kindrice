@@ -139,11 +139,11 @@
     left: 0;
   }
 
-  .overlay-content {
+  .overlay {
     text-align: center;
   }
 
-  .overlay-content ul {
+  .overlay ul {
     list-style: none;
     padding: 0;
     display: flex;
@@ -154,18 +154,18 @@
     margin-top: 7rem;
   }
 
-  .overlay-content ul li {
+  .overlay ul li {
     margin: 1rem 0;
   }
 
-  .overlay-content ul li a {
+  .overlay ul li a {
     color: #000;
     font-size: 1rem;
     text-decoration: none;
     font-weight: 700;
   }
 
-  .overlay-content ul li a:hover {
+  .overlay ul li a:hover {
     color: #016533;
   }
 
@@ -206,6 +206,9 @@
 @media screen and (max-width: 980px) {
   .navbar-menu ul {
     gap: 2.5rem;
+  }
+  .overlay ul{
+    gap: 1.5rem;
   }
 }
 
