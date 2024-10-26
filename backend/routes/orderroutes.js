@@ -1,5 +1,5 @@
 import express from 'express';
-import { createMultipleOrders, createOrder, fetchAllOrders, fetchOrderById, fetchPaymentById, normalCheckoutOrder, verifyPayment } from "../controllers/orderController.js"
+import { createMultipleOrders, createOrder, fetchAllOrders, fetchOrderById, fetchPaymentById, guestPaymentVerification, normalCheckoutOrder, verifyPayment } from "../controllers/orderController.js"
 import { getShippingPrice, getCourierService } from "../controllers/courierController.js";
 import authMiddleware from '../middleware/AuthMiddleware.js';
 
@@ -26,5 +26,9 @@ orderRouter.post("/courierservice", getCourierService);
 // payment 
 
 orderRouter.post("/payment/verify", authMiddleware, verifyPayment);
+
+// guest user payment 
+
+orderRouter.post('/payment/guest/verify', guestPaymentVerification)
 
 export default orderRouter;

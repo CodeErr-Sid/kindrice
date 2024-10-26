@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { validatePaymentVerification } from 'razorpay/dist/utils/razorpay-utils.js';
 import { generateOrderID, formatOrderDate } from '../utils/shiprocketOrderUtils.js';
 import { createShipRocketOrder, generateAWB, pickupGeneration } from '../config/shiprocket.js';
-import { createCustomerOrder } from './ordersController.js';
+import { createCustomerOrder, createGuestOrder } from './ordersController.js';
 import { saveAddressToUser, sendOrderConfirmationEmail } from './userController.js';
 dotenv.config();
 
@@ -451,7 +451,7 @@ const verifyPayment = async (req, res) => {
             addressSavingStatus = addressSavingMessage.success; // Set status based on result
         }
 
-        const kindriceOrder = await createCustomerOrder(customerOrder, packageCategory, addressSavingStatus);
+        const kindriceOrder = await createCustomerOrder(customerOrder, packageCategory, courier_id);
 
         if (!kindriceOrder.success) {
             res.status(500).json(kindriceOrder)
@@ -469,7 +469,207 @@ const verifyPayment = async (req, res) => {
     }
 };
 
+const guestPaymentVerification = async (req, res) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+
+    try {
+        // Validate the payment signature
+        const isValid = validatePaymentVerification(
+            { order_id: razorpay_order_id, payment_id: razorpay_payment_id },
+            razorpay_signature,
+            liveKeySecret
+        );
+
+        if (!isValid) {
+            return res.status(400).json({ success: false, message: 'Invalid payment signature' });
+        }
+
+        // Fetch payment details
+        const paymentObject = await fetchPaymentById(razorpay_payment_id);
+        if (!paymentObject.success) {
+            return res.status(500).json({ success: false, message: 'Payment verification failed' });
+        }
+
+        const { notes, amount, method } = paymentObject.data;
+        const { courier_id, courier_company_name, packageCategory, orderData, shippingPrice } = notes[0]; // Assuming notes[0] has the necessary data
+
+        // Prepare order data for Shiprocket
+        const shiprocketOrderData = {
+            order_id: generateOrderID(),  // function to generate unique order ID
+            order_date: formatOrderDate(), // function to format current date
+            pickup_location: "warehouse",
+            channel_id: 5475071,         // Assuming this is static for your case
+            comment: "Kind Low Gi Rice",
+            payment_method: "Prepaid",
+            ...orderData                   // Merges other necessary order details
+        };
+
+        // Create the order in Shiprocket
+        const shipRocketOrder = await createShipRocketOrder(shiprocketOrderData);
+
+        if (!shipRocketOrder) {
+            const refundResponse = await refundPayment(razorpay_payment_id, amount);
+
+            if (!refundResponse.success) {
+                console.error(`Refund failed for payment ID ${razorpay_payment_id}. Please contact support.`);
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to generate AWB and refund the payment. Please contact Kindrice support.',
+                    paymentId: razorpay_payment_id,
+                    refundError: refundResponse.error
+                });
+            }
+
+            res.status(500).json({
+                success: false,
+                message: 'Failed to generate AWB, but payment has been refunded successfully',
+                refund: refundResponse.data
+            });
+
+            return;
+        }
+
+        // Generate AWB (Air Waybill) for the shipment
+        const shippingDetails = {
+            shipment_id: shipRocketOrder.shipment_id,
+            courier_id
+        };
+
+        const shipRocketAWB = await generateAWB(shippingDetails);
+
+        if (!shipRocketAWB.success) {
+            const refundResponse = await refundPayment(razorpay_payment_id, amount);
+
+            if (!refundResponse.success) {
+                console.error(`Refund failed for payment ID ${razorpay_payment_id}. Please contact support.`);
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to generate AWB and refund the payment. Please contact Kindrice support.',
+                    paymentId: razorpay_payment_id,
+                    refundError: refundResponse.error
+                });
+            }
+
+            res.status(500).json({
+                success: false,
+                message: 'Failed to generate AWB, but payment has been refunded successfully',
+                refund: refundResponse.data
+            });
+        }
+
+        const shipRocketPickupRequest = await pickupGeneration(shipRocketAWB.data.shipment_id,);
+
+        if (!shipRocketPickupRequest.success) {
+            console.log(shipRocketPickupRequest)
+        }
+
+        const {
+            billing_customer_name,
+            billing_last_name,
+            billing_email,
+            billing_phone,
+            billing_city,
+            billing_pincode,
+            billing_country,
+            billing_state,
+            billing_address,
+            order_id,
+            sub_total,
+            order_items,
+            shipping_is_billing,
+        } = shiprocketOrderData;
+
+        // Construct parameters for the email
+        const name = shipping_is_billing ? billing_customer_name : shiprocketOrderData.shipping_customer_name;
+        const lastname = shipping_is_billing ? billing_last_name : shiprocketOrderData.shipping_last_name;
+        const email = shipping_is_billing ? billing_email : shiprocketOrderData.shipping_email;
+        const phoneno = shipping_is_billing ? billing_phone : shiprocketOrderData.shiping_phone;
+        const addressLine1 = shipping_is_billing ? billing_address : shiprocketOrderData.shipping_address;
+        const city = shipping_is_billing ? billing_city : shiprocketOrderData.shipping_city
+        const pincode = shipping_is_billing ? billing_pincode : shiprocketOrderData.shipping_pincode
+        const country = shipping_is_billing ? billing_country : shiprocketOrderData.shipping_country
+        const state = shipping_is_billing ? billing_state : shiprocketOrderData.shipping_state
+        const orderId = order_id;
+        const message = "We're thankful you've chosen Kind Rice, and we're excited to bring wholesome goodness to your plate while helping nurture a healthy community.";
+        const awb = shipRocketAWB.data.awb_code; // Assuming shipRocketAWB is defined elsewhere
+        const shippingCharge = shippingPrice;
+        const totalAmount = sub_total + shippingPrice;
+
+        console.log(shipRocketAWB);
+        console.log(awb);
+
+        // Format order details for the email
+        const orderDetails = order_items.map(item => ({
+            name: item.name, // assuming this key is present in order_items
+            quantity: item.units, // assuming 'units' key represents quantity
+            price: item.selling_price // assuming this key represents the selling price
+        }));
+
+        const shipping_address = {
+            name: name + " " + lastname,
+            addressLine1: addressLine1,
+            city: city,
+            pincode: pincode,
+            country: country,
+            state: state,
+        }
+
+        const productImage = "https://res.cloudinary.com/dtiqiqrw7/image/upload/v1726375202/Kindrice_Products/low_gi_rice/zwoygyfdg9pvurtdslei.jpg"
+
+        // Sending the email
+        const confirmationMail = await sendOrderConfirmationEmail(
+            name,
+            email,
+            orderId,
+            message,
+            awb,
+            orderDetails,
+            method,
+            courier_company_name,
+            productImage,
+            shipping_address,
+            shippingCharge,
+            sub_total,
+            totalAmount
+        );
+
+        if (!confirmationMail.success) {
+            res.status(500).json(confirmationMail)
+        }
+
+
+        const customerOrder = {
+            razorpay_payment_id,
+            shiprocket_order_id: shipRocketOrder.order_id,
+            awb: shipRocketAWB.data.awb_code, // Place awb code here
+        };
+
+        // Initialize address saving status
+        const guestData = {
+            name: name + lastname,
+            email: email,
+            phoneno: phoneno
+        }
+
+        const kindriceGuestOrder = await createGuestOrder(guestData, customerOrder, packageCategory, courier_id);
+
+        if (!kindriceGuestOrder.success) {
+            res.status(500).json(kindriceGuestOrder)
+        }
+
+        res.json({
+            success: true,
+            message: 'Order created successfully Mail Has been Sent to ' + email,
+            data: kindriceOrder.data
+        });
+
+    } catch (error) {
+        console.error('Error verifying payment:', error);
+        res.status(500).json({ success: false, message: 'Server error, please try again later' });
+    }
+};
 
 
 
-export { verifyPayment, createOrder, fetchAllOrders, fetchOrderById, createMultipleOrders, fetchOrderId, fetchPaymentById, normalCheckoutOrder }
+
+export { verifyPayment, createOrder, fetchAllOrders, fetchOrderById, createMultipleOrders, fetchOrderId, fetchPaymentById, normalCheckoutOrder, guestPaymentVerification }
