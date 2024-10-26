@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { normaCheckoutOrder, paymentHandler } from '../../api/orderapi';
+import { normaCheckoutOrder, paymentHandler, guestPaymentHandler } from '../../api/orderapi'; 
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
-import { redirect, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';  // Toastify imports
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const PaymentButton = ({ 
     name, 
@@ -16,8 +15,14 @@ const PaymentButton = ({
     address, 
     pathway 
 }) => {
-    const { url, idToken, getCart, isLoggedIn, user, refreshToken } = useContext(AuthContext);
-    const navigate = useNavigate();
+    const { 
+        url, 
+        idToken, 
+        getCart, 
+        isLoggedIn, 
+        user, 
+        refreshToken 
+    } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
 
     const loadRazorpay = () => {
@@ -28,37 +33,30 @@ const PaymentButton = ({
 
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
-        script.onload = fetchOrderId; // Fetch order ID once Razorpay script is loaded
+        script.onload = fetchOrderId;
         document.body.appendChild(script);
     };
 
     const fetchOrderId = async () => {
-        if (isLoggedIn) {
-            try {
-                setLoading(true);
-                const data = await normaCheckoutOrder(url, amount, notes);
-                const orderId = await data.id;
-                await refreshToken(user);
-                displayRazorpay(orderId);
-            } catch (error) {
-                console.error('Error fetching order ID:', error);
-            } finally {
-                setLoading(false);
+        try {
+            setLoading(true);
+
+            const data = await normaCheckoutOrder(url, amount, notes);
+            const orderId = data.id;
+
+            if (isLoggedIn) {
+                await refreshToken(user); // Refresh token for logged-in users
             }
-        } else {
-            navigate('/login', {
-                state: {
-                    redirectToCheckout: true,
-                    items: pathway?.items,
-                    price: pathway?.price,
-                    weightQuantity: pathway?.weightQuantity,
-                    singleProduct: pathway?.singleProduct,
-                }
-            });
+
+            displayRazorpay(orderId);
+        } catch (error) {
+            console.error('Error fetching order ID:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
-    const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
+    // const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
     const razorpayLiveKey = import.meta.env.VITE_RAZORPAY_LIVE_KEY_ID;
 
     const fullname = address.firstname + " " + (address.lastname || "");
@@ -67,13 +65,18 @@ const PaymentButton = ({
 
     const displayRazorpay = (orderId) => {
         const options = {
-            key: razorpayLiveKey, // Replace with Razorpay Key
-            order_id: orderId,   // Order ID from backend
+            key: razorpayLiveKey, 
+            order_id: orderId,   
             name: "Kind Rice",
             show_coupons: false,
             image: assets.rpkindlogo,
             handler: (response) => {
-                paymentHandler(url, response, idToken, getCart, singleProduct);
+                // Determine which payment handler to use based on login status
+                if (isLoggedIn) {
+                    paymentHandler(url, response, idToken, getCart, singleProduct);
+                } else {
+                    guestPaymentHandler(url, response, singleProduct); // Use guest handler for guest users
+                }
             },
             prefill: {
                 name: fullname,

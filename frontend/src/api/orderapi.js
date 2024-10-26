@@ -90,6 +90,37 @@ export const paymentHandler = async (url, response, idToken, singleProduct) => {
     }
 };
 
+export const guestPaymentHandlder = async (url, response, singleProduct) => {
+    const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
+
+    try {
+        // Send the payment details to the backend for verification using axios
+        const verificationResponse = await axios.post(url + '/api/orders/payment/guest/verify', {
+            razorpay_payment_id,
+            razorpay_order_id,
+            razorpay_signature,
+        });
+
+        if (verificationResponse.data.success) {
+            toast.success(verificationResponse.data.message || "Order Created Successfully");
+            const orderTracking = await verificationResponse.data.data;
+
+            if (!orderTracking) {
+                toast.error("There is no OrderLink")
+            }
+
+            window.location.href = orderTracking;
+
+        } else {
+            toast.error('Payment verification failed.');
+        }
+    } catch (error) {
+        console.error('Error verifying payment:', error);
+        toast.error('There was an error during payment verification.');
+    }
+};
+
+
 
 
 
