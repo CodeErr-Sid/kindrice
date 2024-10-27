@@ -1,9 +1,8 @@
-// AuthContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import { auth } from '../config/firebase';
 import { getCart } from '../api/cartapi';
-import axios from 'axios';
 import { getAddresses } from '../api/userapi';
+import { guestGetCart } from '../api/localcartapi';
 
 // Create the context
 export const AuthContext = createContext();
@@ -11,14 +10,12 @@ export const AuthContext = createContext();
 // Create the provider component
 export const AuthContextProvider = ({ children }) => {
     const url = import.meta.env.VITE_BACKEND_URL;
-    const currency = "₹"
+    const currency = "₹";
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     const [idToken, setIdToken] = useState("");
-    const [addresses, setAddresses] = useState([])
+    const [addresses, setAddresses] = useState([]);
     const [cart, setCart] = useState([]);
-
-    // Function to register a user
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -29,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
             } else {
                 setIsLoggedIn(false);
                 setUser(null);
-                setIdToken(null); // Reset idToken when user logs out
+                setIdToken(""); // Reset idToken when user logs out
             }
         });
 
@@ -46,36 +43,43 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     const getCartItems = async () => {
-        if (isLoggedIn) {
-            const data = await getCart(idToken);
-            setCart(data.items);
+        try {
+            if (isLoggedIn) {
+                // Fetch cart from the backend if the user is logged in
+                const data = await getCart(idToken);
+                setCart(data.items);
+                localStorage.setItem('cart', JSON.stringify(data.items)); // Sync to localStorage
+            } else {
+                // Use cart from localStorage for guest users
+                const localCart = await guestGetCart() || [];
+                setCart(localCart);
+            }
+        } catch (error) {
+            console.error("Error fetching cart:", error);
+            setCart([]); // Fallback to an empty cart on error
         }
-        else {
-            setCart([])
-        }
-    }
+    };
 
     const getBillingInformation = async () => {
         try {
             if (isLoggedIn) {
                 const response = await getAddresses(idToken);
-                setAddresses(response?.addresses)
+                setAddresses(response?.addresses);
             } else {
-                setAddresses([])
+                setAddresses([]);
             }
         } catch (error) {
             console.error(error);
             setAddresses([]);
         }
-    }
+    };
 
     useEffect(() => {
-        getCartItems();
-        getBillingInformation();
-    }, [idToken])
-
-
-
+        getCartItems(); // Fetch cart whenever isLoggedIn or idToken changes
+        if (isLoggedIn) {
+            getBillingInformation();
+        }
+    }, [isLoggedIn, idToken, cart]); // Add isLoggedIn to dependencies
 
     return (
         <AuthContext.Provider value={{ isLoggedIn, addresses, url, user, refreshToken, idToken, cart, currency, getCartItems }}>

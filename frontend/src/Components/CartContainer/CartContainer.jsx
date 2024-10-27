@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { removeFromCart, updateCart } from '../../api/cartapi';
 import { toast } from 'react-toastify';
+import { guestRemoveFromCart, guestUpdateCartItems } from '../../api/localcartapi';
 
 const CartContainer = () => {
   const navigate = useNavigate();
@@ -124,8 +125,12 @@ const CartContainer = () => {
           weight: item.weight
         }));
 
-        await refreshToken(user);
-        await updateCart(itemsToUpdate, idToken);
+        if (isLoggedIn) {
+          await refreshToken(user);
+          await updateCart(itemsToUpdate, idToken);
+        } else {
+          guestUpdateCartItems(itemsToUpdate);
+        }
         await getCartItems(); // Re-fetch the cart
         setQuantities(newQuantities); // Update local state once
         // toast.success("Cart updated successfully!");
@@ -194,18 +199,23 @@ const CartContainer = () => {
     return selectedWeightPrice.totalPrice;
   };
 
-  const handleRemoveFromCart = async (product, weight) => {
+  const handleRemoveFromCart = async (productId, weight) => {
     if (isLoggedIn) {
-      const message = await removeFromCart(product, idToken, weight);
+      const message = await removeFromCart(productId, idToken, weight);
       await updateCartQuantities();
       await getCartItems();
       // toast.success(message);
     } else {
-      navigate('/login', {
-        state: {
-          redirectToCheckout: false
-        }
-      })
+      // navigate('/login', {
+      //   state: {
+      //     redirectToCheckout: false
+      //   }
+      // })
+
+      // remove local cart Item
+      await updateCartQuantities();
+      await guestRemoveFromCart({ productId, weight });
+      await getCartItems();
     }
   };
 
@@ -254,7 +264,16 @@ const CartContainer = () => {
         },
       });
     } else {
-      navigate('/login', {
+      // navigate('/login', {
+      //   state: {
+      //     items,
+      //     price: totalCartPrice,
+      //     weightQuantity: weightQuantityData,
+      //     singleProduct: false,
+      //   },
+      // });
+
+      navigate('/checkout', {
         state: {
           items,
           price: totalCartPrice,

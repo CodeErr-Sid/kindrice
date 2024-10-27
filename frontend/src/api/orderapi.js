@@ -90,7 +90,7 @@ export const paymentHandler = async (url, response, idToken, singleProduct) => {
     }
 };
 
-export const guestPaymentHandlder = async (url, response, singleProduct) => {
+export const guestPaymentHandler = async (url, response, singleProduct) => {
     const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
 
     try {

@@ -58,6 +58,7 @@ const getCart = async (token) => {
     setAuthToken(token); // Set the token for the request
     try {
         const response = await axiosInstance.get('/api/cart/list');
+        console.log(response.data)
         return response.data; // This will be the cart data
     } catch (error) {
         console.error('Error retrieving cart:', error.response?.data || error.message);
