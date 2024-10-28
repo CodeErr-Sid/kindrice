@@ -141,18 +141,11 @@ const Product = ({ productId }) => {
         if (isLoggedIn) {
             await refreshToken(user);
             const data = await addToCart(productId, quantity, weight, idToken);
-            await getCartItems();
         } else {
-            // navigate('/login', {
-            //     state: {
-            //         redirectToCheckout: false
-            //     }
-            // })
-
-            // add local storage add to cart functionality 
-            guestAddToCart({ productId, quantity, weight });
+            await guestAddToCart({ productId, quantity, weight });
             await getCartItems();
         }
+
     };
 
     const handleWeightChange = (selectedWeight) => {

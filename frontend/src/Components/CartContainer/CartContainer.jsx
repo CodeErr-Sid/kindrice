@@ -128,62 +128,62 @@ const CartContainer = () => {
         if (isLoggedIn) {
           await refreshToken(user);
           await updateCart(itemsToUpdate, idToken);
+          setQuantities(newQuantities); // Only update when necessary
+          await getCartItems(); // Optional re-fetch
         } else {
           guestUpdateCartItems(itemsToUpdate);
+          setQuantities(newQuantities); // Only update when necessary
+          await getCartItems(); // Optional re-fetch
         }
-        await getCartItems(); // Re-fetch the cart
-        setQuantities(newQuantities); // Update local state once
-        // toast.success("Cart updated successfully!");
+
       } else {
-        // toast.success("Cart quantities are within limits. No update needed!");
-        setQuantities(newQuantities);
+        setQuantities(newQuantities); // Avoid unnecessary updates
+
       }
+
     } catch (error) {
       console.error("Error updating cart quantities:", error);
       // toast.error("Failed to update cart. Please try again.");
     }
   };
 
-
-
-
   useEffect(() => {
-    updateCartQuantities();
-  }, [cart]);
+    if (cart && cart.length > 0) {
+      setQuantities(cart.map(item => item.quantity)); // Initialize quantities
+      updateCartQuantities(); // Run once when the cart is ready
+    }
+  }, [cart]); // Runs only when cart is updated
 
 
-  const handleQuantityChange = (index, stringvalue) => {
 
-    const value = Number(stringvalue)
+  const handleQuantityChange = (index, stringValue) => {
+    const value = Number(stringValue);
     const selectedWeight = parseInt(cart[index].weight, 10);
     const maxQuantity = maxQuantityMap[selectedWeight];
 
+    const newQuantities = [...quantities];
+
     if (cart.length === 1) {
-      // For a single item in the cart
-      const newQuantity = Math.min(Number(value), maxQuantity); // Limit to max quantity
-      const newQuantities = [...quantities];
-      newQuantities[index] = Number(newQuantity); // Update the quantity
-      setQuantities(newQuantities);
+      // Limit to max quantity for a single item
+      newQuantities[index] = Math.min(value, maxQuantity);
     } else {
-
-      const newQuantities = [...quantities];
+      // Check for valid quantity combination
       const availableOptions = optionsMap[cart.length] || [];
-
-      const validOption = availableOptions.find(option => {
-        return Object.entries(option).every(([w, q]) => {
-          return parseInt(w) === selectedWeight ? value <= q : true;
-        });
-      });
-
+      const validOption = availableOptions.find(option =>
+        Object.entries(option).every(([w, q]) =>
+          parseInt(w) === selectedWeight ? value <= q : true
+        )
+      );
 
       if (validOption) {
         newQuantities[index] = value; // Update if valid
-        if (newQuantities)
-          setQuantities(newQuantities);
       } else {
-        // toast.error("Invalid quantity selected for this combination.");
+        // Optionally show an error or feedback
+        console.error("Invalid quantity selected for this combination.");
       }
     }
+
+    setQuantities(newQuantities); // Update the state
   };
 
 

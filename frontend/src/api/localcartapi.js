@@ -29,18 +29,18 @@ export const guestUpdateCart = (cart) => {
 // Add an item to the cart (no need for existing item check if cart is empty)
 export const guestAddToCart = async ({ productId, quantity, weight }) => {
     try {
-        let cart = await guestGetCartItems(); // Get the current cart
+        let newCart = await guestGetCartItems(); // Get the current cart
 
-        if (cart.length === 0) {
+        if (newCart.length === 0) {
             // If the cart is empty, add the item directly
-            cart.push({
+            newCart.push({
                 productId: productId.toString(),
                 quantity,
                 weight: weight.toString(),
             });
         } else {
             // Check for existing item only if cart has items
-            const existingItemIndex = cart.findIndex(
+            const existingItemIndex = newCart.findIndex(
                 (item) =>
                     item.productId === productId.toString() &&
                     item.weight === weight.toString()
@@ -48,10 +48,10 @@ export const guestAddToCart = async ({ productId, quantity, weight }) => {
 
             if (existingItemIndex > -1) {
                 // If the product with the same weight exists, increase the quantity
-                cart[existingItemIndex].quantity += quantity;
+                newCart[existingItemIndex].quantity += quantity;
             } else {
                 // Add as a new item if it doesn't exist
-                cart.push({
+                newCart.push({
                     productId: productId.toString(),
                     quantity,
                     weight: weight.toString(),
@@ -59,7 +59,7 @@ export const guestAddToCart = async ({ productId, quantity, weight }) => {
             }
         }
 
-        guestUpdateCart(cart); // Update the cart in localStorage
+        guestUpdateCart(newCart); // Update the cart in localStorage
     } catch (error) {
         console.error("Error adding to cart:", error);
     }
@@ -86,7 +86,10 @@ export const guestRemoveFromCart = async ({ productId, weight }) => {
 // Get cart and fetch product details for each item
 export const guestGetCart = async () => {
     try {
-        const localCart = await guestGetCartItems(); // Get cart items
+        const localCart = await JSON.parse(localStorage.getItem('cart')); // Get cart items
+
+        console.log(localCart)
+
         if (localCart.length === 0) return []; // Return empty if no items
 
         const items = await Promise.all(

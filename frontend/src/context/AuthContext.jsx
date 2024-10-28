@@ -48,11 +48,10 @@ export const AuthContextProvider = ({ children }) => {
                 // Fetch cart from the backend if the user is logged in
                 const data = await getCart(idToken);
                 setCart(data.items);
-                localStorage.setItem('cart', JSON.stringify(data.items)); // Sync to localStorage
             } else {
-                // Use cart from localStorage for guest users
-                const localCart = await guestGetCart() || [];
-                setCart(localCart);
+                console.log("AuthContext is running")
+                const localCart = await guestGetCart();
+                setCart(localCart)
             }
         } catch (error) {
             console.error("Error fetching cart:", error);
@@ -79,7 +78,7 @@ export const AuthContextProvider = ({ children }) => {
         if (isLoggedIn) {
             getBillingInformation();
         }
-    }, [isLoggedIn, idToken, cart]); // Add isLoggedIn to dependencies
+    }, [isLoggedIn, idToken]); // Add isLoggedIn to dependencies
 
     return (
         <AuthContext.Provider value={{ isLoggedIn, addresses, url, user, refreshToken, idToken, cart, currency, getCartItems }}>
