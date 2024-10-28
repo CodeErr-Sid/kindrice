@@ -420,7 +420,9 @@ const CheckoutContainer = () => {
               <form className="space-y-4">
                 <div className="flex flex-col md:flex-row md:space-x-4">
                   <div className="md:w-1/2 mb-4">
-                    <label htmlFor="firstName" className="block text-sm font-medium mb-1">First name</label>
+                    <label htmlFor="firstName" className="block text-sm font-medium mb-1">
+                      First name <span className="text-red-500">*</span>
+                    </label>
                     <input
                       type="text"
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -430,8 +432,11 @@ const CheckoutContainer = () => {
                       required
                     />
                   </div>
+
                   <div className="md:w-1/2 mb-4">
-                    <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last name</label>
+                    <label htmlFor="lastName" className="block text-sm font-medium mb-1">
+                      Last name<span className="text-red-500">*</span>
+                    </label>
                     <input
                       type="text"
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -444,7 +449,7 @@ const CheckoutContainer = () => {
                 </div>
                 <div className="flex flex-col md:flex-row md:space-x-4">
                   <div className="mb-4 md:w-1/2">
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">Email<span className="text-red-500">*</span></label>
                     <input
                       type="email"
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -456,7 +461,7 @@ const CheckoutContainer = () => {
                     />
                   </div>
                   <div className="mb-4 md:w-1/2">
-                    <label htmlFor="phoneno" className="block text-sm font-medium mb-1">Phone no</label>
+                    <label htmlFor="phoneno" className="block text-sm font-medium mb-1">Phone no<span className="text-red-500">*</span></label>
                     <input
                       type="tel" // This ensures the input is treated as a telephone number
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -474,7 +479,7 @@ const CheckoutContainer = () => {
                 </div>
                 <div className="flex flex-col md:flex-row md:space-x-4">
                   <div className="mb-4 md:w-1/2">
-                    <label htmlFor="address" className="block text-sm font-medium mb-1">Address</label>
+                    <label htmlFor="address" className="block text-sm font-medium mb-1">Address<span className="text-red-500">*</span></label>
                     <input
                       type="text"
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -486,7 +491,7 @@ const CheckoutContainer = () => {
                     />
                   </div>
                   <div className="mb-4 md:w-1/2">
-                    <label htmlFor="zip" className="block text-sm font-medium mb-1">Pincode</label>
+                    <label htmlFor="zip" className="block text-sm font-medium mb-1">Pincode<span className="text-red-500">*</span></label>
                     <input
                       type="text" // Use 'text' to ensure flexibility, but restrict input through validation
                       className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -503,7 +508,7 @@ const CheckoutContainer = () => {
                 <div className="flex flex-col md:flex-row md:space-x-4">
                   {/* Country Input */}
                   <div className="md:w-1/3 mb-4">
-                    <label htmlFor="country" className="block text-sm font-medium mb-1">Country</label>
+                    <label htmlFor="country" className="block text-sm font-medium mb-1">Country<span className="text-red-500">*</span></label>
                     <input
                       type="text"
                       id="country"
@@ -517,7 +522,7 @@ const CheckoutContainer = () => {
 
                   {/* State Input */}
                   <div className="md:w-1/3 mb-4">
-                    <label htmlFor="state" className="block text-sm font-medium mb-1">State</label>
+                    <label htmlFor="state" className="block text-sm font-medium mb-1">State<span className="text-red-500">*</span></label>
                     <input
                       type="text"
                       id="state"
@@ -531,7 +536,7 @@ const CheckoutContainer = () => {
 
                   {/* City Input or Dropdown */}
                   <div className="md:w-1/3 mb-4">
-                    <label htmlFor="city" className="block text-sm font-medium mb-1">City</label>
+                    <label htmlFor="city" className="block text-sm font-medium mb-1">City<span className="text-red-500">*</span></label>
                     {billingCities.length > 1 ? (
                       <select
                         id="city"
@@ -598,7 +603,7 @@ const CheckoutContainer = () => {
                   <h3 className="text-lg font-medium">Shipping Address</h3>
                   <div className="flex flex-col md:flex-row md:space-x-4">
                     <div className="md:w-1/2 mb-4">
-                      <label htmlFor="firstName" className="block text-sm font-medium mb-1">First name</label>
+                      <label htmlFor="firstName" className="block text-sm font-medium mb-1">First name<span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -609,7 +614,7 @@ const CheckoutContainer = () => {
                       />
                     </div>
                     <div className="md:w-1/2 mb-4">
-                      <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last name</label>
+                      <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last name<span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -622,7 +627,7 @@ const CheckoutContainer = () => {
                   </div>
                   <div className="flex flex-col md:flex-row md:space-x-4">
                     <div className="mb-4 md:w-1/2">
-                      <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                      <label htmlFor="email" className="block text-sm font-medium mb-1">Email<span className="text-red-500">*</span></label>
                       <input
                         type="email"
                         className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -634,7 +639,7 @@ const CheckoutContainer = () => {
                       />
                     </div>
                     <div className="mb-4 md:w-1/2">
-                      <label htmlFor="phoneno" className="block text-sm font-medium mb-1">Phone no</label>
+                      <label htmlFor="phoneno" className="block text-sm font-medium mb-1">Phone no<span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -648,7 +653,7 @@ const CheckoutContainer = () => {
                   </div>
                   <div className="flex flex-col md:flex-row md:space-x-4">
                     <div className="mb-4 md:w-1/2">
-                      <label htmlFor="address" className="block text-sm font-medium mb-1">Address</label>
+                      <label htmlFor="address" className="block text-sm font-medium mb-1">Address<span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -660,7 +665,7 @@ const CheckoutContainer = () => {
                       />
                     </div>
                     <div className="mb-4 md:w-1/2">
-                      <label htmlFor="zip" className="block text-sm font-medium mb-1">Pincode</label>
+                      <label htmlFor="zip" className="block text-sm font-medium mb-1">Pincode<span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         className="form-input w-full border rounded-md px-3 py-2 border-gray-300"
@@ -674,7 +679,7 @@ const CheckoutContainer = () => {
                   <div className="flex flex-col md:flex-row md:space-x-4">
                     {/* Shipping Country Input */}
                     <div className="md:w-1/3 mb-4">
-                      <label htmlFor="country" className="block text-sm font-medium mb-1">Country</label>
+                      <label htmlFor="country" className="block text-sm font-medium mb-1">Country<span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         id="country"
@@ -688,7 +693,7 @@ const CheckoutContainer = () => {
 
                     {/* Shipping State Input */}
                     <div className="md:w-1/3 mb-4">
-                      <label htmlFor="state" className="block text-sm font-medium mb-1">State</label>
+                      <label htmlFor="state" className="block text-sm font-medium mb-1">State<span className="text-red-500">*</span></label>
                       <input
                         type="text"
                         id="state"
@@ -702,7 +707,7 @@ const CheckoutContainer = () => {
 
                     {/* Shipping City Input or Dropdown */}
                     <div className="md:w-1/3 mb-4">
-                      <label htmlFor="city" className="block text-sm font-medium mb-1">City</label>
+                      <label htmlFor="city" className="block text-sm font-medium mb-1">City<span className="text-red-500">*</span></label>
                       {shippingCities.length > 1 ? (
                         <select
                           id="city"
