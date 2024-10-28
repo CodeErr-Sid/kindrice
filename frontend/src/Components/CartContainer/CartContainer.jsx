@@ -9,6 +9,7 @@ const CartContainer = () => {
   const navigate = useNavigate();
   const { cart, currency, isLoggedIn, idToken, user, refreshToken, getCartItems } = useContext(AuthContext);
   const [quantities, setQuantities] = useState([]);
+  const [limit, setLimit] = useState([]);
   const [totalCartPrice, setTotalCartPrice] = useState(0);
 
 
@@ -129,15 +130,18 @@ const CartContainer = () => {
           await refreshToken(user);
           await updateCart(itemsToUpdate, idToken);
           setQuantities(newQuantities); // Only update when necessary
+          setLimit(newQuantities);
           await getCartItems(); // Optional re-fetch
         } else {
           guestUpdateCartItems(itemsToUpdate);
           setQuantities(newQuantities); // Only update when necessary
+          setLimit(newQuantities)
           await getCartItems(); // Optional re-fetch
         }
 
       } else {
         setQuantities(newQuantities); // Avoid unnecessary updates
+        setLimit(newQuantities);
 
       }
 
@@ -149,7 +153,7 @@ const CartContainer = () => {
 
   useEffect(() => {
     if (cart && cart.length > 0) {
-      setQuantities(cart.map(item => item.quantity)); // Initialize quantities
+      // setQuantities(cart.map(item => item.quantity)); // Initialize quantities
       updateCartQuantities(); // Run once when the cart is ready
     }
   }, [cart]); // Runs only when cart is updated
@@ -326,11 +330,14 @@ const CartContainer = () => {
                             ))
                           ) : (
                             // For multiple items, map based on quantities[index]
-                            Array.from({ length: quantities[index] }, (_, idx) => (
-                              <option key={idx + 1} value={idx + 1}>
-                                {idx + 1}
-                              </option>
-                            ))
+                            Array.from({ length: limit[index] }, (_, idx) => {
+                              console.log(limit[index])
+                              return (
+                                <option key={idx + 1} value={idx + 1}>
+                                  {idx + 1}
+                                </option>
+                              )
+                            })
                           )}
                         </select>
 
