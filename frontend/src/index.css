@@ -14,3 +14,7 @@ body {
 html{
   overflow-x: hidden;
 }
+
+img{
+  user-select: none;
+}

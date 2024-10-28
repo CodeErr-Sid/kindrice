@@ -85,7 +85,7 @@ export default function Navbar() {
         </div>
         <Link to='/'>
           <div className='navbar-logo'>
-            <img src={kindricesvglogo} alt='brand-logo' />
+            <img className='pointer-events-none' src={kindricesvglogo} alt='brand-logo' />
           </div>
         </Link>
         <div className={`navbar-menu-container ${isMenuOpen ? 'active' : ''}`}>
@@ -151,7 +151,7 @@ export default function Navbar() {
 
           <Link to="/">
             <div className='navbar-logo'>
-              <img src={kindricesvglogo} alt='brand-logo' />
+              <img className='pointer-events-none' src={kindricesvglogo} alt='brand-logo' />
             </div>
           </Link>
 

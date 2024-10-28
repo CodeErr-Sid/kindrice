@@ -1,5 +1,7 @@
 /* Navbar.css */
 
+
+
 .navbar-section {
   width: 100%;
   background-color: white;
@@ -36,12 +38,14 @@
 
 
 .navbar-logo {
+  user-select: none;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .navbar-logo img {
+  user-select: none;
   width: 100%;
   max-width: 141px;
   height: 105px;
@@ -207,7 +211,8 @@
   .navbar-menu ul {
     gap: 2.5rem;
   }
-  .overlay ul{
+
+  .overlay ul {
     gap: 1.5rem;
   }
 }
