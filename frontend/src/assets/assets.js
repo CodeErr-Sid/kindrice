@@ -66,6 +66,7 @@ import certificate3 from "./certificate3.jpeg";
 import certificate4 from "./certificate4.jpeg";
 import certificate5 from "./kindrice_fssai_cert.png/";
 // import certificate5 from "./certificate5.jpeg";
+import newKindriceBag from './kind_rice_cart_product_image.jpg'
 import certificate6 from "./certificate6.jpeg";
 import checking from "./checking.svg";
 import yoga2 from "./yoga2.png";
@@ -140,6 +141,7 @@ import cta from "./DG_05771.jpg";
 import maarnadu from "./maarnadu.jpg";
 
 export const assets = {
+  newKindriceBag,
   w_profile,
   bgcircle,
   ShopBowl,

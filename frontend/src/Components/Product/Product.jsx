@@ -49,7 +49,7 @@ const Product = ({ productId }) => {
             const productData = await getProductById(productId);
             if (productData.success) {
                 setProduct(productData.data);
-                setSelectedImage(productData.data.images[0] || assets.rice1);
+                setSelectedImage(productData.data.images[0] || assets.newKindriceBag);
                 setWeight(productData.data.weightPrice[0].weight.value);
                 setWeightCategory(productData.data.weightPrice[0]);
             } else {
