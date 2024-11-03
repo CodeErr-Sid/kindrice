@@ -48,7 +48,7 @@ export default function Healthyrice2() {
           <p className='mt-2'>It’s Here: the healthiest rice we’ve ever offered
           </p>
           <div className="healthyrice2-info">
-            <p  onClick={() => handleButtonClick(assets.certificate3)} style={{cursor:'pointer'}}><i>Click for Lab report</i></p>
+            <p  onClick={() => handleButtonClick(assets.Certificate7)} style={{cursor:'pointer'}}><i>Click for Lab report</i></p>
           </div>
         </div>
         <div className="healthyrice2-consultation-container">
