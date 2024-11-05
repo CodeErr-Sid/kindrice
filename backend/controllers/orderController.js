@@ -660,7 +660,7 @@ const guestPaymentVerification = async (req, res) => {
         res.json({
             success: true,
             message: 'Order created successfully Mail Has been Sent to ' + email,
-            data: kindriceOrder.data
+            data: kindriceGuestOrder.data
         });
 
     } catch (error) {
