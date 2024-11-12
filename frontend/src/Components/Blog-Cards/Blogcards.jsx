@@ -78,7 +78,7 @@ export default function Blogcards() {
                   },
 
                   {
-                    title: 'No Pesticides or Harmful Chemica',
+                    title: 'No Pesticides or Harmful Chemicals',
                     content: 'We take great care in ensuring that Kind Rice is grown without the use of harmful pesticides or chemicals. This means you can trust that it’s free from the residues often found in conventionally grown crops, making it a cleaner, healthier option for you and your loved ones.',
                   },
                   {
