@@ -12,7 +12,7 @@ import lab from "./lab-test.svg";
 import rice from "./Rice.png";
 import environment from "./environment.svg";
 import gym from "./gym.svg";
-import philosophy from "./philosophy.png";
+import philosophy from "./philosophy.svg";
 import truth from "./truth.jpeg";
 import whyKindRice from "./whyKindRice.png";
 import yoga from "./yoga.svg";
