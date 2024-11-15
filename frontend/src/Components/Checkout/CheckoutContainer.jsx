@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { getShippingPrices } from '../../api/shiprocket';
 import PaymentButton from "../PaymentButton/PaymentButton";
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import fetchPackageForOrder from '../../api/packageSelector';
 
@@ -119,11 +120,29 @@ const CheckoutContainer = () => {
     if (shippingZip.length >= 6 && totalWeight && price) {
       try {
         const courierData = await getShippingPrices(url, shippingZip, totalWeight, price, length, breadth, height);
+
+        if (!courierData.success) {
+          toast.error(courierData.message);
+          setCourier({ shippingPrice: 0, courier_id: null });
+          setFormData(prevState => ({
+            ...prevState,
+            zip: "", // Update the zip in the main address
+            shippingAddress: {
+              ...prevState.shippingAddress,
+              zip: "" // Optionally reset the shippingAddress.zip as well
+            }
+          }));
+
+        }
+
+        console.log(courierData)
+
         const totalShippingPrice = (courierData.freight_charge || 0) + (courierData.coverage_charges || 0) + (courierData.other_charges || 0);
 
         setCourier({ shippingPrice: totalShippingPrice, courier_id: courierData.courier_company_id, courier_company_name: courierData.courier_name });
       } catch (error) {
         setCourier({ shippingPrice: 0, courier_id: null });
+        toast.error("Invalid Pincode")
       }
     } else {
       setCourier({ shippingPrice: 0, courier_id: null });

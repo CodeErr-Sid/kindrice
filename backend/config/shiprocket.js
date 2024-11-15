@@ -154,6 +154,10 @@ const shippingPrice = async (pincode, weight, price, length, breadth, height) =>
     // Fetch serviceability data
     const response = await shiprocketAPI.get('/courier/serviceability', { params: courierParams });
 
+    if (response.data.status == 404) {
+      return { success: false, message: response.data.message };
+    }
+
     // Extract data from the response
     const availableCouriers = response.data.data.available_courier_companies;
 
@@ -178,7 +182,6 @@ const shippingPrice = async (pincode, weight, price, length, breadth, height) =>
     // Return the courier with the least total charges
     return selectedCourier;
   } catch (error) {
-    console.error('Error Fetching Courier Serviceability:', error.message);
     // Return an appropriate response for errors
     return { success: false, message: "Error Fetching Courier Serviceability" };
   }

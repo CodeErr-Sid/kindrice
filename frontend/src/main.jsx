@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')).render(
     <AuthContextProvider>
       <Router>
         <App />
-        <ToastContainer />
+        <ToastContainer position="top-right" autoClose={3000} />
       </Router>
     </AuthContextProvider>
   </StrictMode>,
