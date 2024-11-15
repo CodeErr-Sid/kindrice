@@ -24,6 +24,7 @@ const PaymentButton = ({
         refreshToken 
     } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+    const [waiting, setWaiting] = useState(false); // State for showing the overlay
 
     const loadRazorpay = () => {
         if (disabled) {
@@ -56,14 +57,18 @@ const PaymentButton = ({
         }
     };
 
-    // const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
     const razorpayLiveKey = import.meta.env.VITE_RAZORPAY_LIVE_KEY_ID;
+
+    // test key id
+    // const razorpayLiveKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
     const fullname = address.firstname + " " + (address.lastname || "");
     const email = address.email;
     const contact = address.phoneno;
 
     const displayRazorpay = (orderId) => {
+        setWaiting(true); // Show the overlay before opening Razorpay
+
         const options = {
             key: razorpayLiveKey, 
             order_id: orderId,   
@@ -71,6 +76,7 @@ const PaymentButton = ({
             show_coupons: false,
             image: assets.rpkindlogo,
             handler: (response) => {
+                setWaiting(false); // Hide the overlay after handler executes
                 // Determine which payment handler to use based on login status
                 if (isLoggedIn) {
                     paymentHandler(url, response, idToken, getCart, singleProduct);
@@ -90,6 +96,11 @@ const PaymentButton = ({
 
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
+
+        rzp1.on('payment.failed', () => {
+            setWaiting(false); // Hide overlay if payment fails
+            toast.error('Payment failed. Please try again.');
+        });
     };
 
     return (
@@ -100,9 +111,40 @@ const PaymentButton = ({
             >
                 {loading ? 'Processing...' : name}
             </button>
-            <ToastContainer position="top-right" autoClose={3000} />
+
+            {waiting && (
+                <div style={overlayStyle}>
+                    <div style={messageBoxStyle}>
+                        <p>Please do not close the tab or turn off the internet until the payment is processed.</p>
+                    </div>
+                </div>
+            )}
+
         </>
     );
+};
+
+// Styles for the overlay and message box
+const overlayStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+};
+
+const messageBoxStyle = {
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    textAlign: 'center',
+    fontSize: '16px',
+    color: '#333',
 };
 
 export default PaymentButton;

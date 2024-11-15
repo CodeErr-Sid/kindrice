@@ -121,7 +121,8 @@ const CheckoutContainer = () => {
       try {
         const courierData = await getShippingPrices(url, shippingZip, totalWeight, price, length, breadth, height);
 
-        if (!courierData.success) {
+
+        if (courierData?.success === false) {
           toast.error(courierData.message);
           setCourier({ shippingPrice: 0, courier_id: null });
           setFormData(prevState => ({
@@ -132,10 +133,7 @@ const CheckoutContainer = () => {
               zip: "" // Optionally reset the shippingAddress.zip as well
             }
           }));
-
         }
-
-        console.log(courierData)
 
         const totalShippingPrice = (courierData.freight_charge || 0) + (courierData.coverage_charges || 0) + (courierData.other_charges || 0);
 
