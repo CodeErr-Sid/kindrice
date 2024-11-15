@@ -12,7 +12,7 @@ export const getShippingPrices = async (url, pincode, totalWeight, totalPrice, l
             height
         })
 
-        return response.data.data[0];
+        return response.data.data
     } catch (error) {
         return error
     }

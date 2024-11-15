@@ -4,7 +4,9 @@ const packageData = {
     "1": {
         dimensions: { length: 21.5, breadth: 18.5, height: 9 },
         combinations: [
-            { items: [{ weight: 1, quantity: 1 }], totalWeight: 1.90 }
+            { items: [{ weight: 1, quantity:
+                
+                 1 }], totalWeight: 1.90 }
         ]
     },
     "5": {

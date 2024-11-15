@@ -137,36 +137,77 @@ const shippingPrice = async (pincode, weight, price, length, breadth, height) =>
       await authenticateShiprocket();
     }
 
-
     const shiprocketAPI = getShiprocketAPI();
 
     // Prepare query parameters
     const courierParams = {
       pickup_postcode: pickupPostCode,  // Your pickup postcode from .env
-      delivery_postcode: pincode,                    // Delivery postcode
-      cod: 0,                      // Cash on Delivery (0 for no COD)
+      delivery_postcode: pincode,      // Delivery postcode
+      cod: 0,                          // Cash on Delivery (0 for no COD)
       weight: weight,
       length,
       breadth,
-      height,                          // Weight of the package
-      declared_value: price                          // Declared value of the package
+      height,                          // Weight and dimensions of the package
+      declared_value: price            // Declared value of the package
     };
 
-    // Use axios.get() with query parameters
+    // Fetch serviceability data
     const response = await shiprocketAPI.get('/courier/serviceability', { params: courierParams });
 
-    // Log the response for debugging
-
-    // Find the recommended courier
+    // Extract data from the response
+    const availableCouriers = response.data.data.available_courier_companies;
     const recommendedCourierId = response.data.data.shiprocket_recommended_courier_id;
-    const recommendedCourier = response.data.data.available_courier_companies.filter(courier => courier.courier_company_id === recommendedCourierId);
 
-    return recommendedCourier;
+    // Variables to store the best options
+    let selectedCourier = null;
+    let cheapestCourier = null;
+    let minCharges = Infinity;
+
+    // Iterate through available couriers once
+    for (const courier of availableCouriers) {
+      const totalCharges = courier.coverage_charges + courier.freight_charge + courier.other_charges;
+
+      // Check for the cheapest courier
+      if (totalCharges < minCharges) {
+        minCharges = totalCharges;
+        cheapestCourier = courier;
+      }
+
+      // Check if it's the recommended courier and satisfies the price condition
+      if (
+        courier.courier_company_id === recommendedCourierId &&
+        totalCharges < price
+      ) {
+        selectedCourier = courier;
+        break; // Stop searching if we find the best option
+      }
+
+      // Otherwise, keep track of the first courier that fits the price condition
+      if (!selectedCourier && totalCharges < price) {
+        selectedCourier = courier;
+      }
+    }
+
+    // If no courier fits within the product price, use the cheapest option
+    if (!selectedCourier) {
+      selectedCourier = cheapestCourier;
+    }
+
+    // Return the selected courier
+    if (selectedCourier) {
+      return selectedCourier;
+    } else {
+      // Handle case where no couriers are available
+      throw new Error('No couriers available.');
+    }
   } catch (error) {
-    // Catch and display any errors that occur during the request
-    res.status(500).json({ success: false, message: "Error Fetching Courier Servicablity" });
+    console.error('Error Fetching Courier Serviceability:', error.message);
+    // Return an appropriate response for errors
+    return { success: false, message: "Error Fetching Courier Serviceability" };
   }
 };
+
+
 
 
 export { shippingPrice, createShipRocketOrder, generateAWB, pickupGeneration }
