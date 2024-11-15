@@ -1,27 +1,27 @@
 import React, { useContext, useState } from 'react';
-import { normaCheckoutOrder, paymentHandler, guestPaymentHandler } from '../../api/orderapi'; 
+import { normaCheckoutOrder, paymentHandler, guestPaymentHandler } from '../../api/orderapi';
 import { AuthContext } from '../../context/AuthContext';
 import { assets } from '../../assets/assets';
-import { ToastContainer, toast } from 'react-toastify'; 
-import 'react-toastify/dist/ReactToastify.css'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const PaymentButton = ({ 
-    name, 
-    className, 
-    amount, 
-    singleProduct, 
-    notes, 
-    disabled, 
-    address, 
-    pathway 
+const PaymentButton = ({
+    name,
+    className,
+    amount,
+    singleProduct,
+    notes,
+    disabled,
+    address,
+    pathway
 }) => {
-    const { 
-        url, 
-        idToken, 
-        getCart, 
-        isLoggedIn, 
-        user, 
-        refreshToken 
+    const {
+        url,
+        idToken,
+        getCart,
+        isLoggedIn,
+        user,
+        refreshToken
     } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [waiting, setWaiting] = useState(false); // State for showing the overlay
@@ -67,11 +67,9 @@ const PaymentButton = ({
     const contact = address.phoneno;
 
     const displayRazorpay = (orderId) => {
-        setWaiting(true); // Show the overlay before opening Razorpay
-
         const options = {
-            key: razorpayLiveKey, 
-            order_id: orderId,   
+            key: razorpayLiveKey,
+            order_id: orderId,
             name: "Kind Rice",
             show_coupons: false,
             image: assets.rpkindlogo,
@@ -92,21 +90,30 @@ const PaymentButton = ({
             theme: {
                 color: '#15803d',
             },
+            // Payment is about to start, show waiting message
+            modal: {
+                ondismiss: () => {
+                    setWaiting(false); // Hide the overlay if user closes Razorpay popup
+                }
+            }
         };
 
         const rzp1 = new window.Razorpay(options);
-        rzp1.open();
-
         rzp1.on('payment.failed', () => {
             setWaiting(false); // Hide overlay if payment fails
             toast.error('Payment failed. Please try again.');
         });
+
+        // Show the waiting overlay once Razorpay opens
+        setWaiting(true);
+
+        rzp1.open();
     };
 
     return (
         <>
-            <button 
-                onClick={loadRazorpay} 
+            <button
+                onClick={loadRazorpay}
                 className={className}
             >
                 {loading ? 'Processing...' : name}
@@ -119,7 +126,6 @@ const PaymentButton = ({
                     </div>
                 </div>
             )}
-
         </>
     );
 };
@@ -139,12 +145,13 @@ const overlayStyle = {
 };
 
 const messageBoxStyle = {
-    backgroundColor: '#fff',
+    backgroundColor: '#15803d',
     padding: '20px',
     borderRadius: '8px',
     textAlign: 'center',
     fontSize: '16px',
-    color: '#333',
+    color: '#fff',
 };
 
 export default PaymentButton;
+
