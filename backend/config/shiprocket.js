@@ -156,56 +156,34 @@ const shippingPrice = async (pincode, weight, price, length, breadth, height) =>
 
     // Extract data from the response
     const availableCouriers = response.data.data.available_courier_companies;
-    const recommendedCourierId = response.data.data.shiprocket_recommended_courier_id;
 
-    // Variables to store the best options
+    if (!availableCouriers || availableCouriers.length === 0) {
+      throw new Error('No couriers available.');
+    }
+
+    // Find the courier with the least total charges
     let selectedCourier = null;
-    let cheapestCourier = null;
     let minCharges = Infinity;
 
-    // Iterate through available couriers once
     for (const courier of availableCouriers) {
       const totalCharges = courier.coverage_charges + courier.freight_charge + courier.other_charges;
 
-      // Check for the cheapest courier
+      // Update selected courier if this one has lower charges
       if (totalCharges < minCharges) {
         minCharges = totalCharges;
-        cheapestCourier = courier;
-      }
-
-      // Check if it's the recommended courier and satisfies the price condition
-      if (
-        courier.courier_company_id === recommendedCourierId &&
-        totalCharges < price
-      ) {
-        selectedCourier = courier;
-        break; // Stop searching if we find the best option
-      }
-
-      // Otherwise, keep track of the first courier that fits the price condition
-      if (!selectedCourier && totalCharges < price) {
         selectedCourier = courier;
       }
     }
 
-    // If no courier fits within the product price, use the cheapest option
-    if (!selectedCourier) {
-      selectedCourier = cheapestCourier;
-    }
-
-    // Return the selected courier
-    if (selectedCourier) {
-      return selectedCourier;
-    } else {
-      // Handle case where no couriers are available
-      throw new Error('No couriers available.');
-    }
+    // Return the courier with the least total charges
+    return selectedCourier;
   } catch (error) {
     console.error('Error Fetching Courier Serviceability:', error.message);
     // Return an appropriate response for errors
     return { success: false, message: "Error Fetching Courier Serviceability" };
   }
 };
+
 
 
 
