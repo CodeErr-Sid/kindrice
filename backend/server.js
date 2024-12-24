@@ -75,7 +75,6 @@ app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
 app.use("/api/orders", orderRouter)
 
-
 // Connect to the database
 connectDB();
 
