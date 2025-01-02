@@ -36,21 +36,22 @@ function App() {
       <CookieConsentBanner />
       {/* <Preloader/> */}
       <Routes>
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/magic-checkout" element={<MagicCheckout />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Auth />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        <Route path="/shop" element={<Shop />} />
         <Route path='/' element={<Home2 />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path='/story' element={<Story />} />
         <Route path='/impact' element={<Impact />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/low-gi' element={<Lowgi />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path="/return-policy" element={<ReturnPolicy />} />
         <Route path="/lab-test" element={<Certificates />} />
         <Route path="/blog-article" element={<BlogArticlePage />} />
+
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/magic-checkout" element={<MagicCheckout />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Auth />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/return-policy" element={<ReturnPolicy />} />
       </Routes>
       <ScrollTop />
       {location.pathname !== '/login' && (

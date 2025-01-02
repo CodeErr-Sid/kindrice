@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kindrice.co/sitemap.xml
