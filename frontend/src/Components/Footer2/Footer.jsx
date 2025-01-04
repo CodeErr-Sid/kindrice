@@ -153,7 +153,10 @@ const Footer2 = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p className="text-xs md:text-sm ">&copy; 2024 R.K. Brothers Agro Foods Pvt. Ltd All rights reserved.</p>
+          <p className="text-xs md:text-sm">
+            &copy; {new Date().getFullYear()} R.K. Brothers Agro Foods Pvt. Ltd. All rights reserved.
+          </p>
+
           {/* <a href="#" className="back-to-top" aria-label="Back to top">
           <i className="fas fa-chevron-up"></i>
         </a> */}
