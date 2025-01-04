@@ -4,6 +4,8 @@ import admin from "../config/firebase.js";
 import Contact from "../models/contact.js";
 import { mailTransport } from "../config/nodemailer.js";
 import generateHtml from "../utils/emailGenration.js";
+import ExcelJS from 'exceljs'
+
 
 
 const registerUser = async (req, res) => {
@@ -205,6 +207,53 @@ const createNewSubscriber = async (req, res) => {
     }
 }
 
+
+const getSubscribersAsExcel = async (req, res) => {
+    try {
+
+        // Fetch all subscribers from MongoDB
+        const subscribers = await Subscriber.find();
+
+        // Create a new Excel workbook and worksheet
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Subscribers');
+
+        // Define columns for the Excel file
+        worksheet.columns = [
+            { header: 'ID', key: '_id', width: 24 },
+            { header: 'Email', key: 'email', width: 30 },
+            { header: 'Created At', key: 'createdAt', width: 20 },
+        ];
+
+        // Add rows to the worksheet
+        subscribers.forEach((subscriber) => {
+            worksheet.addRow({
+                _id: subscriber._id.toString(),
+                email: subscriber.email,
+                createdAt: subscriber.createdAt ? subscriber.createdAt.toISOString() : '',
+            });
+        });
+
+        // Set the response headers for file download
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename="subscribers.xlsx"');
+
+        // Write the Excel file to the response
+        await workbook.xlsx.write(res);
+
+        // End the response
+        res.end();
+    } catch (error) {
+        console.error('Error exporting subscribers:', error);
+        res.status(500).json({
+            success: false,
+            error: 'An error occurred while exporting subscribers to Excel',
+        });
+    }
+};
+
+
+
 const saveContactDetails = async (req, res) => {
     const { name, email, help } = req.body;
 
@@ -267,4 +316,4 @@ const sendOrderConfirmationEmail = async (name, email, orderId, message, awb, or
 
 
 
-export { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser, isEmailVerified, saveContactDetails, sendOrderConfirmationEmail };
+export { registerUser, getSubscribersAsExcel, loginUser, createNewSubscriber, getUserBillingInformation, saveAddressToUser, isEmailVerified, saveContactDetails, sendOrderConfirmationEmail };

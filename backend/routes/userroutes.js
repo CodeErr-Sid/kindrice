@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveContactDetails } from '../controllers/userController.js';
+import { registerUser, loginUser, createNewSubscriber, getUserBillingInformation, saveContactDetails, getSubscribersAsExcel } from '../controllers/userController.js';
 import authMiddleware from '../middleware/AuthMiddleware.js';
 const userRouter = express.Router();
 
@@ -14,6 +14,8 @@ userRouter.post('/login', loginUser);
 userRouter.post('/addresses', authMiddleware, getUserBillingInformation);
 
 userRouter.post('/subscribe', createNewSubscriber)
+
+userRouter.get('/subscribersexcel', getSubscribersAsExcel)
 
 userRouter.post('/contactdetails', saveContactDetails)
 
