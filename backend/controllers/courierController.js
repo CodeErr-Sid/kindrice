@@ -4,15 +4,22 @@ import { fetchOrderId } from "./orderController.js";
 const getShippingPrice = async (req, res) => {
     const { razorpay_order_id, addresses } = req.body;
 
+    console.log("body : "+req.body);
+
     try {
         // Fetch order details using the razorpay_order_id
         const order = await fetchOrderId(razorpay_order_id);
 
+        console.log("Order : "+order);
+
         // Extract total price (in paise) and convert to rupees
         const totalPrice = order.amount / 100;
 
+        console.log("Total Price :"+totalPrice);
+
         // Extract total weight from the order notes
         const totalWeight = order.notes.totalWeight;
+        console.log("Total weight :"+totalWeight);
         // Iterate over each address and fetch shipping options
         const addressShippingInfo = await Promise.all(addresses.map(async (address) => {
             const pincode = address.zipcode;
@@ -41,9 +48,6 @@ const getShippingPrice = async (req, res) => {
             };
         }));
 
-
-        // Send the response with address shipping information
-        console.log(req.body);
         console.log(JSON.stringify({ addresses: addressShippingInfo }))
 
         res.status(200).json({ addresses: addressShippingInfo });
