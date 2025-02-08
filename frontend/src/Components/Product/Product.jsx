@@ -221,25 +221,19 @@ const Product = ({ productId }) => {
                                     onQuantityChange={handleQuantityChange}
                                     maxQuantity={maxQuantity}
                                 />
-                                {/* <button
-                                    className="add-to-cart-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
-                                    onClick={handleAddToCart}
-                                >
-                                    ADD TO CART
-                                </button> */}
                                 <AddToCartButton
                                     callback={handleAddToCart}
                                 />
-                                <button
+                                {/* <button
                                     className="add-to-cart-button text-lg bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     onClick={handleBuyNow}
                                 >
                                     Buy Now
-                                </button>
-                                {/* <MagicCheckoutButton
+                                </button> */}
+                                <MagicCheckoutButton
                                     className="buy-now-button bg-[#016533] text-white font-bold rounded-lg py-2 mt-2"
                                     productId={product._id} weightCategory={weightCategory._id} quantity={quantity} name="Buy Now"
-                                /> */}
+                                />
                             </div>
                         </div>
 

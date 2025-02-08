@@ -20,8 +20,8 @@ const liveKeySecret = process.env.RAZORPAY_LIVE_KEY_SECRET
 
 
 const instance = new Razorpay({
-    key_id: liveKeyId,
-    key_secret: liveKeySecret
+    key_id: keyId,
+    key_secret: keySecret
 });
 
 
@@ -33,6 +33,8 @@ const createOrder = async (req, res) => {
     try {
         // Find the product by ID
         const product = await Product.findById(productId);
+
+        console.log(weightCategory);
 
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
@@ -276,7 +278,7 @@ const verifyPayment = async (req, res) => {
         const isValid = validatePaymentVerification(
             { order_id: razorpay_order_id, payment_id: razorpay_payment_id },
             razorpay_signature,
-            liveKeySecret
+            keySecret
         );
 
         if (!isValid) {
@@ -477,7 +479,7 @@ const guestPaymentVerification = async (req, res) => {
         const isValid = validatePaymentVerification(
             { order_id: razorpay_order_id, payment_id: razorpay_payment_id },
             razorpay_signature,
-            liveKeySecret
+            keySecret
         );
 
         if (!isValid) {
