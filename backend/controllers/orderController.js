@@ -20,8 +20,8 @@ const liveKeySecret = process.env.RAZORPAY_LIVE_KEY_SECRET
 
 
 const instance = new Razorpay({
-    key_id: keyId,
-    key_secret: keySecret
+    key_id: liveKeyId,
+    key_secret: liveKeySecret
 });
 
 
