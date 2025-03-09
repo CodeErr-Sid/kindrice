@@ -8,11 +8,6 @@ import { createCustomerOrder, createGuestOrder } from './ordersController.js';
 import { saveAddressToUser, sendOrderConfirmationEmail } from './userController.js';
 dotenv.config();
 
-// test configration
-const keyId = process.env.RAZORPAY_KEY_ID
-const keySecret = process.env.RAZORPAY_KEY_SECRET
-
-
 const liveKeyId = process.env.RAZORPAY_LIVE_KEY_ID
 const liveKeySecret = process.env.RAZORPAY_LIVE_KEY_SECRET
 
@@ -278,7 +273,7 @@ const verifyPayment = async (req, res) => {
         const isValid = validatePaymentVerification(
             { order_id: razorpay_order_id, payment_id: razorpay_payment_id },
             razorpay_signature,
-            keySecret
+            liveKeySecret,
         );
 
         if (!isValid) {
