@@ -39,9 +39,9 @@ export default function Home2() {
         imageSrc={assets.cta}
         title="Kind Low-GI Rice"
         description="So Clean, So Tasty, So Healthy"
-        price="From ₹159"
+        price="From ₹169"
       />
-      <Footer2/>
+      <Footer2 />
     </>
   );
 }

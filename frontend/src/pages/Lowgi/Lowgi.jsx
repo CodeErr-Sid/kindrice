@@ -17,22 +17,22 @@ import KindLowGi from '../../Components/KindLowGi/KindLowGi';
 export default function Lowgi() {
   return (
     <>
-    {/* <Preloader/> */}
-    <Navbar/>
-    <LowgiHero/>
-    <Example/>
-    {/* <LowGlycemic/> */}
-    <Howitworks/>
-    <Howlowgi/>
-    <Whyitmatters/>
-    <VerifiedCertificate/>
-    <KindLowGi
+      {/* <Preloader/> */}
+      <Navbar />
+      <LowgiHero />
+      <Example />
+      {/* <LowGlycemic/> */}
+      <Howitworks />
+      <Howlowgi />
+      <Whyitmatters />
+      <VerifiedCertificate />
+      <KindLowGi
         imageSrc={assets.rice5}
         title="Kind Low-GI Rice"
         description="So Clean, So Tasty, So Healthy"
-        price="From ₹159" style={{margin:'3rem 0'}}
+        price="From ₹169" style={{ margin: '3rem 0' }}
       />
-    <Footer2/>
+      <Footer2 />
     </>
   )
 }
