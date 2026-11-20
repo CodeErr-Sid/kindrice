@@ -8,4 +8,4 @@ export default defineConfig({
   define: {
     'process.env': {}  // Optional polyfill if needed for some legacy libraries
   },
-})
+});
