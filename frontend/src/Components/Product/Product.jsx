@@ -29,16 +29,55 @@ const Product = ({ productId }) => {
     };
 
 
+    const defaultProduct = {
+        _id: "66e6787904d4bf5cb4e83693",
+        productName: "Kind Low Gi Rice",
+        description: "Kind Rice Low-GI Rice | Gluten-Free | 100% Natural | Chemical-Free | 6-12 Months aged",
+        weightPrice: [
+            {
+                _id: "66e6787904d4bf5cb4e83694",
+                weight: { value: 1, unit: "kg" },
+                price: 151.5,
+                totalPrice: 169,
+                sku: "KIND-RICE-LOWGI-1KG",
+                dimensions: { length: 10, breadth: 9.25, height: 1.75 }
+            },
+            {
+                _id: "66e6787904d4bf5cb4e83695",
+                weight: { value: 5, unit: "kg" },
+                price: 551.5,
+                totalPrice: 779,
+                sku: "KIND-RICE-LOWGI-5KG",
+                dimensions: { length: 14.25, breadth: 13.5, height: 3.5 }
+            },
+            {
+                _id: "66e6787904d4bf5cb4e83696",
+                weight: { value: 10, unit: "kg" },
+                price: 980,
+                totalPrice: 1229,
+                sku: "KIND-RICE-LOWGI-10KG",
+                dimensions: { length: 16, breadth: 15, height: 5.5 }
+            }
+        ],
+        category: "semi-milled or wholly milled rice",
+        images: [
+            assets.rice1,
+            assets.newKindriceBag
+        ],
+        taxPercentage: 5,
+        hsnCode: "10063010"
+    };
+
     const prevProductIdRef = useRef();
     const navigate = useNavigate();
     const { isLoggedIn, idToken, getCartItems, user, refreshToken } = useContext(AuthContext);
 
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState(defaultProduct);
     const [quantity, setQuantity] = useState(1);
     const [weight, setWeight] = useState(1);
-    const [weightCategory, setWeightCategory] = useState({});
+    const [weightCategory, setWeightCategory] = useState(defaultProduct.weightPrice[0]);
     const [price, setPrice] = useState(169);
-    const [selectedImage, setSelectedImage] = useState(assets.rice1);
+    const [selectedImage, setSelectedImage] = useState(defaultProduct.images[0] || assets.newKindriceBag);
     const [currentContent, setCurrentContent] = useState(productData["keyFeatures"]);
     const [maxQuantity, setMaxQuantity] = useState(maxQuantityMap[weight]);
 
@@ -46,14 +85,22 @@ const Product = ({ productId }) => {
     // Fetch product data when productId changes
     useEffect(() => {
         const fetchProduct = async () => {
-            const productData = await getProductById(productId);
-            if (productData.success) {
-                setProduct(productData.data);
-                setSelectedImage(productData.data.images[0] || assets.newKindriceBag);
-                setWeight(productData.data.weightPrice[0].weight.value);
-                setWeightCategory(productData.data.weightPrice[0]);
-            } else {
-                setProduct({});
+            try {
+                if (!productId) return;
+                const productData = await getProductById(productId);
+                if (productData && productData.success && productData.data) {
+                    setProduct(productData.data);
+                    if (productData.data.images && productData.data.images.length > 0) {
+                        setSelectedImage(productData.data.images[0]);
+                    }
+                    if (productData.data.weightPrice && productData.data.weightPrice.length > 0) {
+                        const initialWp = productData.data.weightPrice.find(item => item.weight?.value === weight) || productData.data.weightPrice[0];
+                        setWeight(initialWp.weight?.value || 1);
+                        setWeightCategory(initialWp);
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching product data:", error);
             }
         };
 
@@ -150,7 +197,11 @@ const Product = ({ productId }) => {
 
     const handleWeightChange = (selectedWeight) => {
         setWeight(selectedWeight);
-        setMaxQuantity(maxQuantityMap[selectedWeight]); // Update max quantity based on selected weight
+        const selectedWp = product.weightPrice?.find(item => item.weight?.value === selectedWeight);
+        if (selectedWp) {
+            setWeightCategory(selectedWp);
+        }
+        setMaxQuantity(maxQuantityMap[selectedWeight] || 2); // Update max quantity based on selected weight
         setQuantity(1); // Reset quantity to 1 when weight category changes
     };
 
@@ -210,7 +261,7 @@ const Product = ({ productId }) => {
                         <div className="quantity-section">
                             <div className="quantity-button-group flex flex-col gap-2 md:w-4/6">
                                 <Dropdown
-                                    options={product.weightPrice?.map(item => item.weight.value)}
+                                    options={product.weightPrice?.map(item => item.weight?.value) || [1, 5, 10]}
                                     selected={weight}
                                     onSelect={handleWeightChange}
                                     title="Weight Category"
